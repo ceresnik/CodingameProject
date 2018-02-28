@@ -5,27 +5,24 @@ namespace CodingameProject.Source
     public class NumberRepresentation
     {
         private int number;
+        private readonly ICondition condition;
 
         public NumberRepresentation(int number)
+        :this(number, new NoRestrictionCondition()) { }
+
+        public NumberRepresentation(int number, ICondition condition)
         {
             this.number = number;
+            this.condition = condition;
         }
 
-        public int Sum => number;
-
-        public NumberRepresentation GetSumOfDigits()
+        public int GetSumOfDigits()
         {
-            number = number.ToString().Sum(digit => int.Parse(digit.ToString()));
-            return this;
-        }
-        public int GetSumOfDigitsUntilNine()
-        {
-            NumberRepresentation numberRepresentation;
             do
-                numberRepresentation = GetSumOfDigits();
-            while (numberRepresentation.number > 9);
-            return numberRepresentation.number;
+            {
+                number = number.ToString().Sum(digit => int.Parse(digit.ToString()));
+            } while (condition.IsFulfilled(number) == false);
+            return number;
         }
-
     }
 }

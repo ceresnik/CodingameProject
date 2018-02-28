@@ -110,6 +110,7 @@ namespace KGood.Tests
             Assert.That(result, Is.EqualTo(4));
         }
 
+        [Ignore]
         [Test]
         public void Todo()
         {

@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace CodingameProject.Tests
 {
     [TestFixture]
-    public class NumberTests
+    public class NumberRepresentationTests
     {
         [TestCase(12, 3)]
         [TestCase(23891, 23)]
@@ -13,7 +13,8 @@ namespace CodingameProject.Tests
         [Test]
         public void Test_GetSumOfDigits(int input, int expected)
         {
-            Assert.That(new NumberRepresentation(input).GetSumOfDigits().Sum, Is.EqualTo(expected));
+            int result = new NumberRepresentation(input).GetSumOfDigits();
+            Assert.That(result, Is.EqualTo(expected));
         }
 
         [TestCase(12, 3)]
@@ -24,7 +25,8 @@ namespace CodingameProject.Tests
         [Test]
         public void Test_GetSumOfDigitsUntilNine(int input, int expected)
         {
-            Assert.That(new NumberRepresentation(input).GetSumOfDigitsUntilNine(), Is.EqualTo(expected));
+            int result = new NumberRepresentation(input, new LessThanNineCondition()).GetSumOfDigits();
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }

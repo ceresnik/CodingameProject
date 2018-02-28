@@ -47,8 +47,11 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\NoRestrictionCondition.cs" />
     <Compile Include="Source\NumberRepresentation.cs" />
-    <Compile Include="Tests\NumberTests.cs" />
+    <Compile Include="Source\LessThanNineCondition.cs" />
+    <Compile Include="Source\ICondition.cs" />
+    <Compile Include="Tests\NumberRepresentationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
