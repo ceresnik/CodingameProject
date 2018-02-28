@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E4FE1972-9B62-4449-9BEA-277336F61E49}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KGood</RootNamespace>
+    <AssemblyName>KGood</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NUnit.Framework">
+      <HintPath>D:\TFS_WS\Modules\CIP\PCP\v5\bin\x64\Debug\NUnit.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Test.Library, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CodeDiscipline.Test.Library.1.0.2\lib\net45\Test.Library.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\ArithmeticProgression.cs" />
+    <Compile Include="Source\HofstadterConwaySequence\HofstadterConwaySequenceGenerator.cs" />
+    <Compile Include="Source\LongestSubstringFinder\LongestSubstringFinder.cs" />
+    <Compile Include="Source\LongestSubstringFinder\WordRepresentation.cs" />
+    <Compile Include="Source\Sudoku\CountOfNumbersRule.cs" />
+    <Compile Include="Source\Sudoku\ISudokuLineRule.cs" />
+    <Compile Include="Source\Sudoku\LengthRule.cs" />
+    <Compile Include="Source\Sudoku\NullOrEmptyRule.cs" />
+    <Compile Include="Source\Sudoku\QuestionMarkRule.cs" />
+    <Compile Include="Source\AlphabetUtility.cs" />
+    <Compile Include="Source\SumCounter\ISumSelector.cs" />
+    <Compile Include="Tests\AlphabetUtilityTests.cs" />
+    <Compile Include="Tests\ArithmeticProgressionTests.cs" />
+    <Compile Include="Source\AverageOfTwoIntegers.cs" />
+    <Compile Include="Tests\AsciiArtTests.cs" />
+    <Compile Include="Tests\AverageOfTwoIntegersTests.cs" />
+    <Compile Include="Source\Bonobo.cs" />
+    <Compile Include="Tests\BonoboTests.cs" />
+    <Compile Include="Source\AsciiArt.cs" />
+    <Compile Include="Source\ChocolateBarSplitter.cs" />
+    <Compile Include="Tests\ChocolateBarSplitterTests.cs" />
+    <Compile Include="Tests\EasyMoney\EasyMoneyAcceptanceTests.cs" />
+    <Compile Include="Source\EasyMoney\EasyMoneyCounter.cs" />
+    <Compile Include="Tests\EasyMoney\EasyMoneyUnitTests.cs" />
+    <Compile Include="Source\SumCounter\EvenNumbersSelector.cs" />
+    <Compile Include="Tests\HofstadterConwaySequence\Tests.cs" />
+    <Compile Include="Tests\LongestSubstringFinder\AcceptanceTests.cs" />
+    <Compile Include="Source\LongestSerieOfSameNumbersFinder.cs" />
+    <Compile Include="Tests\LongestSerieOfSameNumbersFinderTests.cs" />
+    <Compile Include="Tests\LongestSubstringFinder\LongestSubstringFinderUnitTests.cs" />
+    <Compile Include="Source\StringDividing\StringDivider.cs" />
+    <Compile Include="Source\StringDividing\BeginningOfGroupOfSameLettersSignalizer.cs" />
+    <Compile Include="Source\Sudoku\OneLineSudoku.cs" />
+    <Compile Include="Source\NumberUtilities.cs" />
+    <Compile Include="Tests\NumberUtilitiesTests.cs" />
+    <Compile Include="Tests\StringDividing\AcceptanceTests.cs" />
+    <Compile Include="Tests\StringDividing\BeginningOfGroupOfSameLettersSignalizerTests.cs" />
+    <Compile Include="Tests\StringDividing\WhenCreated.cs" />
+    <Compile Include="Tests\StringDividing\WhenDivided.cs" />
+    <Compile Include="Tests\StringDividing\WhenDividedAndOrdered.cs" />
+    <Compile Include="Tests\Sudoku\ConstructorTests.cs" />
+    <Compile Include="Tests\Sudoku\AcceptanceTests.cs" />
+    <Compile Include="Tests\ConvertTimeToMinutesTests.cs" />
+    <Compile Include="Source\SumCounter\EverySecondNumberSelector.cs" />
+    <Compile Include="Tests\SumCounter\SumCounterTests.cs" />
+    <Compile Include="Source\SumCounter\OddNumbersSelector.cs" />
+    <Compile Include="Source\SumCounter\Numbers.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="test.library.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
