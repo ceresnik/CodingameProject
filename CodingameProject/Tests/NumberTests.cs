@@ -1,6 +1,5 @@
 ﻿using CodingameProject.Source;
 using NUnit.Framework;
-using NUnit.Framework.Constraints;
 
 namespace CodingameProject.Tests
 {
@@ -14,7 +13,7 @@ namespace CodingameProject.Tests
         [Test]
         public void Test_GetSumOfDigits(int input, int expected)
         {
-            Assert.That((object)new NumberRepresentation(input).GetSumOfDigits(), (IResolveConstraint)Is.EqualTo((object)expected));
+            Assert.That(new NumberRepresentation(input).GetSumOfDigits().Sum, Is.EqualTo(expected));
         }
 
         [TestCase(12, 3)]
@@ -25,7 +24,7 @@ namespace CodingameProject.Tests
         [Test]
         public void Test_GetSumOfDigitsUntilNine(int input, int expected)
         {
-            Assert.That((object)new NumberRepresentation(input).GetSumOfDigitsUntilNine(), (IResolveConstraint)Is.EqualTo((object)expected));
+            Assert.That(new NumberRepresentation(input).GetSumOfDigitsUntilNine(), Is.EqualTo(expected));
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace CodingameProject.Source
 {
@@ -12,26 +11,21 @@ namespace CodingameProject.Source
             this.number = number;
         }
 
-        public int Number
-        {
-            get
-            {
-                return this.number;
-            }
-        }
+        public int Sum => number;
 
-        public int GetSumOfDigits()
+        public NumberRepresentation GetSumOfDigits()
         {
-            this.number = this.number.ToString().Sum<char>((Func<char, int>)(digit => int.Parse(digit.ToString())));
-            return this.number;
+            number = number.ToString().Sum(digit => int.Parse(digit.ToString()));
+            return this;
         }
-
         public int GetSumOfDigitsUntilNine()
         {
+            NumberRepresentation numberRepresentation;
             do
-                ;
-            while (new NumberRepresentation(this.GetSumOfDigits()).number > 9);
-            return this.number;
+                numberRepresentation = GetSumOfDigits();
+            while (numberRepresentation.number > 9);
+            return numberRepresentation.number;
         }
+
     }
 }
