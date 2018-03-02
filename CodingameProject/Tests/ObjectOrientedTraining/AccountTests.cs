@@ -83,16 +83,6 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Number7_Test_DepositToFrozenAccount_IsNotFreezed()
-        {
-            sut.Deposit(10);
-            sut.Verify();
-            sut.Freeze();
-            sut.Deposit(1);
-            Assert.That(sut.IsFreezed, Is.EqualTo(false));
-        }
-
-        [Test]
         public void Number8_Test_DepositToNotFrozenAccount_DoesNotTriggerAction()
         {
             sut.Deposit(10);
@@ -111,14 +101,13 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Number10_Test_WithdrawFromFreezedAccount_IsNotFreezed()
+        public void Number10_Test_WithdrawFromFreezedAccount_Withdrawn()
         {
             sut.Deposit(30);
             sut.Verify();
             sut.Freeze();
             sut.Withdraw(20);
             Assert.That(sut.Balance, Is.EqualTo(10));
-            Assert.That(sut.IsFreezed, Is.EqualTo(false));
         }
 
         [Test]
@@ -131,27 +120,15 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Test_FreezeNotVerified_IsNotFreezed()
+        public void Test_WithdrawTwoTimesFromFreezedAccount_TriggersOnlyOneAction()
         {
-            sut.Freeze();
-            Assert.That(sut.IsFreezed, Is.EqualTo(false));
-        }
-
-        [Test]
-        public void Test_FreezeClosedAccount_IsNotFreezed()
-        {
-            sut.Verify();
-            sut.Close();
-            sut.Freeze();
-            Assert.That(sut.IsFreezed, Is.EqualTo(false));
-        }
-
-        [Test]
-        public void Test_FreezeVerifiedAndNotClosed_IsFreezed()
-        {
+            sut.Deposit(10);
             sut.Verify();
             sut.Freeze();
-            Assert.That(sut.IsFreezed, Is.EqualTo(true));
+            sut.Withdraw(1);
+            unfreezingWasTriggered = false;
+            sut.Withdraw(1);
+            Assert.That(unfreezingWasTriggered, Is.EqualTo(false));
         }
     }
 }

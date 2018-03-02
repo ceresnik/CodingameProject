@@ -10,13 +10,13 @@ namespace CodingameProject.Source.ObjectOrientedTraining
 
         public bool IsVerified { get; set; }
 
-        public bool IsFreezed { get; set; }
-
         private Action<string> OnUnfreeze { get; }
+        private Action ManageUnfreezing { get; set; }
 
         public Account(Action<string> onUnfreeze)
         {
             OnUnfreeze = onUnfreeze;
+            ManageUnfreezing = StayUnfrozen;
         }
 
 
@@ -26,17 +26,8 @@ namespace CodingameProject.Source.ObjectOrientedTraining
             {
                 return;
             }
-            if (IsFreezed)
-            {
-                IsFreezed = false;
-                OnUnfreeze("I'm unfreezed.");
-            }
+            ManageUnfreezing();
             Balance += amount;
-        }
-
-        public void Close()
-        {
-            IsClosed = true;
         }
 
         public void Withdraw(int amount)
@@ -49,17 +40,19 @@ namespace CodingameProject.Source.ObjectOrientedTraining
             {
                 return;
             }
-            if (IsFreezed)
-            {
-                IsFreezed = false;
-                OnUnfreeze("I'm unfreezed.");
-            }
+            ManageUnfreezing();
             Balance -= amount;
         }
 
-        public void Verify()
+        private void UnFreeze()
         {
-            IsVerified = true;
+            OnUnfreeze("I'm unfreezed.");
+            ManageUnfreezing = StayUnfrozen;
+        }
+
+        private void StayUnfrozen()
+        {
+            
         }
 
         public void Freeze()
@@ -72,7 +65,17 @@ namespace CodingameProject.Source.ObjectOrientedTraining
             {
                 return;
             }
-            IsFreezed = true;
+            ManageUnfreezing = UnFreeze;
+        }
+
+        public void Close()
+        {
+            IsClosed = true;
+        }
+
+        public void Verify()
+        {
+            IsVerified = true;
         }
     }
 }
