@@ -47,11 +47,13 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Source\NoRestrictionCondition.cs" />
-    <Compile Include="Source\NumberRepresentation.cs" />
-    <Compile Include="Source\LessThanNineCondition.cs" />
-    <Compile Include="Source\ICondition.cs" />
-    <Compile Include="Tests\NumberRepresentationTests.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\Account.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\AccountTests.cs" />
+    <Compile Include="Source\SumOfDigitsCounter\NoRestrictionCondition.cs" />
+    <Compile Include="Source\SumOfDigitsCounter\NumberRepresentation.cs" />
+    <Compile Include="Source\SumOfDigitsCounter\LessThanNineCondition.cs" />
+    <Compile Include="Source\SumOfDigitsCounter\ICondition.cs" />
+    <Compile Include="Tests\SumOfDigitsCounter\NumberRepresentationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

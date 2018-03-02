@@ -1,7 +1,7 @@
-﻿using CodingameProject.Source;
+﻿using CodingameProject.Source.SumOfDigitsCounter;
 using NUnit.Framework;
 
-namespace CodingameProject.Tests
+namespace CodingameProject.Tests.SumOfDigitsCounter
 {
     [TestFixture]
     public class NumberRepresentationTests

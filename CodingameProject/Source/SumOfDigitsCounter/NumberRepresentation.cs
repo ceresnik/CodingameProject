@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace CodingameProject.Source
+namespace CodingameProject.Source.SumOfDigitsCounter
 {
     public class NumberRepresentation
     {
