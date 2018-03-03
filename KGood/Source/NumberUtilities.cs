@@ -266,11 +266,31 @@ namespace KGood.Source
         {
             int result = input
                 .Split(' ')
-                .Select(int.Parse)
+                .Select(Int32.Parse)
                 .GroupBy(s => s)
                 .OrderBy(s => s.Count())
                 .First()
                 .Key;
+            return result;
+        }
+
+        public static string CountSyracuzeSequence(int input)
+        {
+            int resultNumbers = input;
+            var list = new List<int> { input };
+            do
+            {
+                if (resultNumbers % 2 == 0)
+                {
+                    resultNumbers = resultNumbers / 2;
+                }
+                else
+                {
+                    resultNumbers = resultNumbers * 3 + 1;
+                }
+                list.Add(resultNumbers);
+            } while (resultNumbers != 1);
+            string result = String.Join(" ", list);
             return result;
         }
     }

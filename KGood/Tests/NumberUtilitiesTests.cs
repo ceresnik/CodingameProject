@@ -223,5 +223,13 @@ namespace KGood.Tests
                 Console.WriteLine($"Number: {item.Number}, repetitionCount: {item.RepetitionCount}");
             }
         }
+
+        [TestCase(5, "5 16 8 4 2 1")]
+        [Test]
+        public void Test_SyracuzeSequence(int input, string expected)
+        {
+            var result = NumberUtilities.CountSyracuzeSequence(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
