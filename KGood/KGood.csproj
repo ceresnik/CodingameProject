@@ -76,7 +76,6 @@
     <Compile Include="Source\Sudoku\NullOrEmptyRule.cs" />
     <Compile Include="Source\Sudoku\QuestionMarkRule.cs" />
     <Compile Include="Source\AlphabetUtility.cs" />
-    <Compile Include="Source\SumCounter\ISumSelector.cs" />
     <Compile Include="Tests\AlphabetUtilityTests.cs" />
     <Compile Include="Tests\ArithmeticProgressionTests.cs" />
     <Compile Include="Source\AverageOfTwoIntegers.cs" />
@@ -90,7 +89,6 @@
     <Compile Include="Tests\EasyMoney\EasyMoneyAcceptanceTests.cs" />
     <Compile Include="Source\EasyMoney\EasyMoneyCounter.cs" />
     <Compile Include="Tests\EasyMoney\EasyMoneyUnitTests.cs" />
-    <Compile Include="Source\SumCounter\EvenNumbersSelector.cs" />
     <Compile Include="Tests\HofstadterConwaySequence\Tests.cs" />
     <Compile Include="Tests\LongestSubstringFinder\AcceptanceTests.cs" />
     <Compile Include="Source\LongestSerieOfSameNumbersFinder.cs" />
@@ -109,10 +107,6 @@
     <Compile Include="Tests\Sudoku\ConstructorTests.cs" />
     <Compile Include="Tests\Sudoku\AcceptanceTests.cs" />
     <Compile Include="Tests\ConvertTimeToMinutesTests.cs" />
-    <Compile Include="Source\SumCounter\EverySecondNumberSelector.cs" />
-    <Compile Include="Tests\SumCounter\SumCounterTests.cs" />
-    <Compile Include="Source\SumCounter\OddNumbersSelector.cs" />
-    <Compile Include="Source\SumCounter\Numbers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="test.library.ico" />

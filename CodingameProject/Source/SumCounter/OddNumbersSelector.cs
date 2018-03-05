@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 
-namespace KGood.Source.SumCounter
+namespace CodingameProject.Source.SumCounter
 {
     public class OddNumbersSelector : ISumSelector
     {

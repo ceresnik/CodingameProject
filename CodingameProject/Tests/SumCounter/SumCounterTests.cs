@@ -2,10 +2,10 @@
    Restricted - Copyright (C) Siemens Healthcare GmbH/Siemens Medical Solutions USA, Inc., 2018. All rights reserved
    ------------------------------------------------------------------------------------------------- */
 
-using KGood.Source.SumCounter;
+using CodingameProject.Source.SumCounter;
 using NUnit.Framework;
 
-namespace KGood.Tests.SumCounter
+namespace CodingameProject.Tests.SumCounter
 {
     [TestFixture]
     public class SumCounterTests

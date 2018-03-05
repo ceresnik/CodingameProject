@@ -49,12 +49,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\LogicalOperations\LogicalOperation.cs" />
     <Compile Include="Source\ObjectOrientedTraining\Account.cs" />
+    <Compile Include="Source\SumCounter\EvenNumbersSelector.cs" />
+    <Compile Include="Source\SumCounter\EverySecondNumberSelector.cs" />
+    <Compile Include="Source\SumCounter\ISumSelector.cs" />
+    <Compile Include="Source\SumCounter\Numbers.cs" />
+    <Compile Include="Source\SumCounter\OddNumbersSelector.cs" />
     <Compile Include="Tests\LogicalOperations\UnitTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\AccountTests.cs" />
     <Compile Include="Source\SumOfDigitsCounter\NoRestrictionCondition.cs" />
     <Compile Include="Source\SumOfDigitsCounter\NumberRepresentation.cs" />
     <Compile Include="Source\SumOfDigitsCounter\LessThanNineCondition.cs" />
     <Compile Include="Source\SumOfDigitsCounter\ICondition.cs" />
+    <Compile Include="Tests\SumCounter\SumCounterTests.cs" />
     <Compile Include="Tests\SumOfDigitsCounter\NumberRepresentationTests.cs" />
   </ItemGroup>
   <ItemGroup>
