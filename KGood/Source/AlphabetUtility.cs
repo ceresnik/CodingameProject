@@ -277,5 +277,62 @@ namespace KGood.Source
                 .First()
                 .Count();
         }
+
+        public static string ValidateUpperCaseLowerCaseAndNumberInput(string input)
+        {
+            string result;
+            if (input.Length <= 3 || input.Length > 30)
+            {
+                result = "INVALID";
+            }
+            else
+            {
+                bool valid = true;
+                foreach (char c in input)
+                {
+                    if (c < 48 || c > 57 && c < 65 || c > 90 && c < 97 || c > 122)
+                    {
+                        Console.WriteLine($"{c}");
+                        valid = false;
+                    }
+                }
+                result = valid ? "VALID" : "INVALID";
+            }
+            return result;
+        }
+
+        public static string DoLogicalOr(string input1, string input2)
+        {
+            string result = "";
+            for (var i = 0; i < input1.Length; i++)
+            {
+                if (input1[i] == '1' || input2[i] == '1')
+                {
+                    result += "1";
+                }
+                else
+                {
+                    result += "0";
+                }
+            }
+            return result;
+        }
+
+        public static string DoLogicalOrWithCharSubtraction(string input1, string input2)
+        {
+            string result = "";
+            for (var i = 0; i < input1.Length; i++)
+            {
+                if (input1[i] - '0' + (input2[i] - '0') > 0)
+                {
+                    result += "1";
+                }
+                else
+                {
+                    result += "0";
+                }
+            }
+            return result;
+        }
     }
 }

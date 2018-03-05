@@ -110,31 +110,30 @@ namespace KGood.Tests
             Assert.That(result, Is.EqualTo(4));
         }
 
-        [Ignore]
+        [TestCase("ThisIsValidNumberInput1234", "VALID")]
+        [TestCase("123", "INVALID")]
+        [TestCase("UnsupportedChar?", "INVALID")]
         [Test]
-        public void Todo()
+        public void Test_ValidateUpperCaseLowerCaseAndNumberInput(string input, string expected)
         {
-            string u = Console.ReadLine();
-            if (u.Length < 3 || u.Length > 20)
-            {
-                Console.WriteLine("INVALID");
-            }
-            else
-            {
-                bool valid = true;
-                foreach (char c in u)
-                {
-                    if (c < 48 || (c > 57 && c < 65) || (c > 90 && c < 97) || c > 122)
-                    {
-                        Console.Error.WriteLine($"{c}");
-                        valid = false;
-                    }
-                }
-                if (valid)
-                    Console.WriteLine("VALID");
-                else
-                    Console.WriteLine("INVALID");
-            }
+            var result = AlphabetUtility.ValidateUpperCaseLowerCaseAndNumberInput(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase("0001010", "0101010", "0101010")]
+        [Test]
+        public void Test_DoLogicalOr(string input1, string input2, string expected)
+        {
+            string result = AlphabetUtility.DoLogicalOr(input1, input2);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase("0001010", "0101010", "0101010")]
+        [Test]
+        public void Test_DoLogicalOrWithCharSubtraction(string input1, string input2, string expected)
+        {
+            string result = AlphabetUtility.DoLogicalOrWithCharSubtraction(input1, input2);
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }
