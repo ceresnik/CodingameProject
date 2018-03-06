@@ -10,15 +10,15 @@ namespace CodingameProject.Source.ObjectOrientedTraining
 
         public bool IsVerified { get; set; }
 
+        private IFreezable accountType { get; set; }
+
         private Action<string> OnUnfreeze { get; }
-        private Action ManageUnfreezing { get; set; }
 
         public Account(Action<string> onUnfreeze)
         {
             OnUnfreeze = onUnfreeze;
-            ManageUnfreezing = StayUnfrozen;
+            accountType = new Active(onUnfreeze);
         }
-
 
         public void Deposit(int amount)
         {
@@ -26,7 +26,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining
             {
                 return;
             }
-            ManageUnfreezing();
+            accountType = accountType.Deposit();
             Balance += amount;
         }
 
@@ -40,19 +40,8 @@ namespace CodingameProject.Source.ObjectOrientedTraining
             {
                 return;
             }
-            ManageUnfreezing();
+            accountType = accountType.Withdraw();
             Balance -= amount;
-        }
-
-        private void UnFreeze()
-        {
-            OnUnfreeze("I'm unfreezed.");
-            ManageUnfreezing = StayUnfrozen;
-        }
-
-        private void StayUnfrozen()
-        {
-            
         }
 
         public void Freeze()
@@ -65,7 +54,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining
             {
                 return;
             }
-            ManageUnfreezing = UnFreeze;
+            accountType = accountType.Freeze();
         }
 
         public void Close()
