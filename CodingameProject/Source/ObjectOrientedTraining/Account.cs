@@ -10,11 +10,11 @@ namespace CodingameProject.Source.ObjectOrientedTraining
 
         public bool IsVerified { get; set; }
 
-        private IFreezable Freezable { get; set; }
+        public IAccountState AccountState { get; private set; }
 
         public Account(Action<string> onUnfreeze)
         {
-            Freezable = new Active(onUnfreeze);
+            AccountState = new NotVerified(onUnfreeze);
         }
 
         public void Deposit(int amount)
@@ -23,7 +23,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining
             {
                 return;
             }
-            Freezable = Freezable.Deposit();
+            AccountState = AccountState.Deposit();
             Balance += amount;
         }
 
@@ -37,7 +37,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining
             {
                 return;
             }
-            Freezable = Freezable.Withdraw();
+            AccountState = AccountState.Withdraw();
             Balance -= amount;
         }
 
@@ -51,17 +51,19 @@ namespace CodingameProject.Source.ObjectOrientedTraining
             {
                 return;
             }
-            Freezable = Freezable.Freeze();
+            AccountState = AccountState.Freeze();
         }
 
         public void Close()
         {
             IsClosed = true;
+            AccountState = AccountState.Close();
         }
 
         public void Verify()
         {
             IsVerified = true;
+            AccountState = AccountState.Verify();
         }
     }
 }

@@ -50,8 +50,10 @@
     <Compile Include="Source\LogicalOperations\LogicalOperation.cs" />
     <Compile Include="Source\ObjectOrientedTraining\Account.cs" />
     <Compile Include="Source\ObjectOrientedTraining\Active.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\Closed.cs" />
     <Compile Include="Source\ObjectOrientedTraining\Frozen.cs" />
-    <Compile Include="Source\ObjectOrientedTraining\IFreezable.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\IAccountState.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\NotVerified.cs" />
     <Compile Include="Source\SumCounter\EvenNumbersSelector.cs" />
     <Compile Include="Source\SumCounter\EverySecondNumberSelector.cs" />
     <Compile Include="Source\SumCounter\ISumSelector.cs" />
@@ -64,7 +66,9 @@
     <Compile Include="Source\SumOfDigitsCounter\LessThanNineCondition.cs" />
     <Compile Include="Source\SumOfDigitsCounter\ICondition.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\ActiveTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\ClosedTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\FrozenTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\NotVerifiedTests.cs" />
     <Compile Include="Tests\SumCounter\SumCounterTests.cs" />
     <Compile Include="Tests\SumOfDigitsCounter\NumberRepresentationTests.cs" />
   </ItemGroup>

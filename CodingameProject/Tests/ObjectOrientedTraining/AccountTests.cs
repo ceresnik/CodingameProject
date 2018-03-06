@@ -29,6 +29,41 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
+        public void Constructor_NotVerifiedStateIsCreated()
+        {
+            Assert.That(sut.AccountState, Is.TypeOf<NotVerified>());
+        }
+
+        [Test]
+        public void Deposit_StateIsNotVerified()
+        {
+            sut.Deposit(10);
+            Assert.That(sut.AccountState, Is.TypeOf<NotVerified>());
+        }
+
+        [Test]
+        public void WithDraw_StateIsNotVerified()
+        {
+            sut.Deposit(10);
+            sut.Withdraw(1);
+            Assert.That(sut.AccountState, Is.TypeOf<NotVerified>());
+        }
+
+        [Test]
+        public void Verify_StateIsActive()
+        {
+            sut.Verify();
+            Assert.That(sut.AccountState, Is.TypeOf<Active>());
+        }
+
+        [Test]
+        public void Close_StateIsClosed()
+        {
+            sut.Close();
+            Assert.That(sut.AccountState, Is.TypeOf<Closed>());
+        }
+
+        [Test]
         public void Number1_Test_DepositToClosedAccount_NoChange()
         {
             sut.Deposit(20);

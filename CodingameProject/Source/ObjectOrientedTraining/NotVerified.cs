@@ -2,31 +2,33 @@
 
 namespace CodingameProject.Source.ObjectOrientedTraining
 {
-    internal class Frozen : IAccountState
+    class NotVerified : IAccountState
     {
         private Action<string> OnUnfreeze { get; }
 
-        public Frozen(Action<string> onUnfreeze)
+        public NotVerified(Action<string> onUnfreeze)
         {
             OnUnfreeze = onUnfreeze;
         }
 
         public IAccountState Deposit()
         {
-            OnUnfreeze("I'm unfreezed.");
-            return new Active(OnUnfreeze);
+            return this;
         }
 
         public IAccountState Withdraw()
         {
-            OnUnfreeze("I'm unfreezed.");
-            return new Active(OnUnfreeze);
+            return this;
         }
 
-        public IAccountState Freeze() => this;
+        public IAccountState Freeze()
+        {
+            return this;
+        }
+
         public IAccountState Close()
         {
-            throw new NotImplementedException();
+            return new Closed(OnUnfreeze);
         }
 
         public IAccountState Verify()

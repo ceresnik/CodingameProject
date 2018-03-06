@@ -11,7 +11,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
     [TestFixture]
     public class FrozenTests
     {
-        private IFreezable sut;
+        private IAccountState sut;
         private bool unfreezingWasTriggered;
 
         private void DoUnfreezeAction(string message)
@@ -51,6 +51,13 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         {
             var result = sut.Freeze();
             Assert.That(result, Is.TypeOf<Frozen>());
+        }
+
+        [Test]
+        public void Test_Verify_ReturnsActive()
+        {
+            var result = sut.Verify();
+            Assert.That(result, Is.TypeOf<Active>());
         }
 
         [Test]

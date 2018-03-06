@@ -2,7 +2,7 @@
 
 namespace CodingameProject.Source.ObjectOrientedTraining
 {
-    class Active : IFreezable
+    class Active : IAccountState
     {
         private Action<string> OnUnfreeze { get; }
 
@@ -11,10 +11,14 @@ namespace CodingameProject.Source.ObjectOrientedTraining
             OnUnfreeze = onUnfreeze;
         }
 
-        public IFreezable Deposit() => this;
+        public IAccountState Deposit() => this;
 
-        public IFreezable Withdraw() => this;
+        public IAccountState Withdraw() => this;
 
-        public IFreezable Freeze() => new Frozen(OnUnfreeze);
+        public IAccountState Freeze() => new Frozen(OnUnfreeze);
+
+        public IAccountState Close() => new Closed(OnUnfreeze);
+
+        public IAccountState Verify() => new Active(OnUnfreeze);
     }
 }
