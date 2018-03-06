@@ -1,33 +1,20 @@
-﻿/* -------------------------------------------------------------------------------------------------
-   Restricted - Copyright (C) Siemens Healthcare GmbH/Siemens Medical Solutions USA, Inc., 2018. All rights reserved
-   ------------------------------------------------------------------------------------------------- */
-
-using System;
+﻿using System;
 
 namespace CodingameProject.Source.ObjectOrientedTraining
 {
     class Active : IFreezable
     {
-        private readonly Action<string> onUnfreeze;
+        private Action<string> OnUnfreeze { get; }
 
         public Active(Action<string> onUnfreeze)
         {
-            this.onUnfreeze = onUnfreeze;
+            OnUnfreeze = onUnfreeze;
         }
 
-        public IFreezable Deposit()
-        {
-            return this;
-        }
+        public IFreezable Deposit() => this;
 
-        public IFreezable Withdraw()
-        {
-            return this;
-        }
+        public IFreezable Withdraw() => this;
 
-        public IFreezable Freeze()
-        {
-            return new Frozen(onUnfreeze);
-        }
+        public IFreezable Freeze() => new Frozen(OnUnfreeze);
     }
 }

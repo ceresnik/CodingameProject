@@ -73,31 +73,11 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Number6_Test_DepositToFreezedAccountTriggersAction()
-        {
-            sut.Deposit(10);
-            sut.Verify();
-            sut.Freeze();
-            sut.Deposit(1);
-            Assert.That(unfreezingWasTriggered, Is.EqualTo(true));
-        }
-
-        [Test]
         public void Number8_Test_DepositToNotFrozenAccount_DoesNotTriggerAction()
         {
             sut.Deposit(10);
             sut.Deposit(1);
             Assert.That(unfreezingWasTriggered, Is.EqualTo(false));
-        }
-
-        [Test]
-        public void Number9_Test_WithdrawFromFreezedAccountTriggersAction()
-        {
-            sut.Deposit(10);
-            sut.Verify();
-            sut.Freeze();
-            sut.Withdraw(1);
-            Assert.That(unfreezingWasTriggered, Is.EqualTo(true));
         }
 
         [Test]
@@ -115,18 +95,6 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         {
             sut.Deposit(10);
             sut.Verify();
-            sut.Withdraw(1);
-            Assert.That(unfreezingWasTriggered, Is.EqualTo(false));
-        }
-
-        [Test]
-        public void Test_WithdrawTwoTimesFromFreezedAccount_TriggersOnlyOneAction()
-        {
-            sut.Deposit(10);
-            sut.Verify();
-            sut.Freeze();
-            sut.Withdraw(1);
-            unfreezingWasTriggered = false;
             sut.Withdraw(1);
             Assert.That(unfreezingWasTriggered, Is.EqualTo(false));
         }

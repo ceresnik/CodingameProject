@@ -63,6 +63,8 @@
     <Compile Include="Source\SumOfDigitsCounter\NumberRepresentation.cs" />
     <Compile Include="Source\SumOfDigitsCounter\LessThanNineCondition.cs" />
     <Compile Include="Source\SumOfDigitsCounter\ICondition.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\ActiveTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\FrozenTests.cs" />
     <Compile Include="Tests\SumCounter\SumCounterTests.cs" />
     <Compile Include="Tests\SumOfDigitsCounter\NumberRepresentationTests.cs" />
   </ItemGroup>

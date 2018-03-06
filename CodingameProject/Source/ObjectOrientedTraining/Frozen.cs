@@ -4,28 +4,25 @@ namespace CodingameProject.Source.ObjectOrientedTraining
 {
     internal class Frozen : IFreezable
     {
-        private readonly Action<string> onUnfreeze;
+        private Action<string> OnUnfreeze { get; }
 
         public Frozen(Action<string> onUnfreeze)
         {
-            this.onUnfreeze = onUnfreeze;
+            OnUnfreeze = onUnfreeze;
         }
 
         public IFreezable Deposit()
         {
-            onUnfreeze("I'm unfreezed.");
-            return new Active(onUnfreeze);
+            OnUnfreeze("I'm unfreezed.");
+            return new Active(OnUnfreeze);
         }
 
         public IFreezable Withdraw()
         {
-            onUnfreeze("I'm unfreezed.");
-            return new Active(onUnfreeze);
+            OnUnfreeze("I'm unfreezed.");
+            return new Active(OnUnfreeze);
         }
 
-        public IFreezable Freeze()
-        {
-            return this;
-        }
+        public IFreezable Freeze() => this;
     }
 }
