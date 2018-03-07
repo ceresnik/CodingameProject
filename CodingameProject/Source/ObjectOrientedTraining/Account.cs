@@ -6,36 +6,41 @@ namespace CodingameProject.Source.ObjectOrientedTraining
     {
         public int Balance { get; private set; }
 
-        public IAccountState AccountState { get; private set; }
+        public IAccountState State { get; private set; }
 
-        public Account(Action<string> onUnfreeze)
+        public Account(Action<string> onUnfreeze) 
+            : this(onUnfreeze, new NotVerified(onUnfreeze))
         {
-            AccountState = new NotVerified(onUnfreeze);
+        }
+
+        public Account(Action<string> onUnfreeze, IAccountState state)
+        {
+            this.State = state;
         }
 
         public void Deposit(int amount)
         {
-            AccountState = AccountState.Deposit(() => Balance += amount);
+            State = State.Deposit(() => Balance += amount);
         }
 
         public void Withdraw(int amount)
         {
-            AccountState = AccountState.Withdraw(() => Balance -= amount);
+            State = State.Withdraw(() => Balance -= amount);
         }
 
         public void Freeze()
         {
-            AccountState = AccountState.Freeze();
+            State = State.Freeze();
         }
 
         public void Close()
         {
-            AccountState = AccountState.Close();
+            State = State.Close();
         }
 
         public void Verify()
         {
-            AccountState = AccountState.Verify();
+            State = State.Verify();
         }
     }
 }

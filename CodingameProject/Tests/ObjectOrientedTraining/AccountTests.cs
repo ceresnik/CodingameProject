@@ -1,5 +1,6 @@
 ﻿using System;
 using CodingameProject.Source.ObjectOrientedTraining;
+using Moq;
 using NUnit.Framework;
 
 namespace CodingameProject.Tests.ObjectOrientedTraining
@@ -8,6 +9,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
     {
         private Account sut;
         private bool unfreezingWasTriggered;
+        private IAccountState mState;
 
         private void DoUnfreezeAction(string message)
         {
@@ -18,6 +20,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         [SetUp]
         public void SetUp()
         {
+            //mState = new Mock<IAccountState>().Object;
             sut = new Account(DoUnfreezeAction);
         }
 
@@ -31,14 +34,14 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         [Test]
         public void Constructor_NotVerifiedStateIsCreated()
         {
-            Assert.That(sut.AccountState, Is.TypeOf<NotVerified>());
+            Assert.That(sut.State, Is.TypeOf<NotVerified>());
         }
 
         [Test]
         public void Deposit_StateIsNotVerified()
         {
             sut.Deposit(10);
-            Assert.That(sut.AccountState, Is.TypeOf<NotVerified>());
+            Assert.That(sut.State, Is.TypeOf<NotVerified>());
         }
 
         [Test]
@@ -46,7 +49,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         {
             sut.Verify();
             sut.Deposit(10);
-            Assert.That(sut.AccountState, Is.TypeOf<Active>());
+            Assert.That(sut.State, Is.TypeOf<Active>());
         }
 
         [Test]
@@ -54,7 +57,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         {
             sut.Close();
             sut.Deposit(10);
-            Assert.That(sut.AccountState, Is.TypeOf<Closed>());
+            Assert.That(sut.State, Is.TypeOf<Closed>());
         }
 
         [Test]
@@ -63,14 +66,14 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
             sut.Verify();
             sut.Freeze();
             sut.Deposit(10);
-            Assert.That(sut.AccountState, Is.TypeOf<Active>());
+            Assert.That(sut.State, Is.TypeOf<Active>());
         }
 
         [Test]
         public void Withdraw_StateIsNotVerified()
         {
             sut.Withdraw(1);
-            Assert.That(sut.AccountState, Is.TypeOf<NotVerified>());
+            Assert.That(sut.State, Is.TypeOf<NotVerified>());
         }
 
         [Test]
@@ -78,21 +81,21 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         {
             sut.Verify();
             sut.Withdraw(1);
-            Assert.That(sut.AccountState, Is.TypeOf<Active>());
+            Assert.That(sut.State, Is.TypeOf<Active>());
         }
 
         [Test]
         public void Verify_StateIsActive()
         {
             sut.Verify();
-            Assert.That(sut.AccountState, Is.TypeOf<Active>());
+            Assert.That(sut.State, Is.TypeOf<Active>());
         }
 
         [Test]
         public void Close_StateIsClosed()
         {
             sut.Close();
-            Assert.That(sut.AccountState, Is.TypeOf<Closed>());
+            Assert.That(sut.State, Is.TypeOf<Closed>());
         }
 
         [Test]
@@ -143,7 +146,6 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         public void Id8_Test_DepositToNotFrozenAccount_DoesNotTriggerAction()
         {
             sut.Deposit(10);
-            sut.Deposit(1);
             Assert.That(unfreezingWasTriggered, Is.EqualTo(false));
         }
 
@@ -164,6 +166,22 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
             sut.Verify();
             sut.Withdraw(1);
             Assert.That(unfreezingWasTriggered, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_DepositToFrozenAccount_TriggersAction()
+        {
+            sut.Verify();
+            sut.Freeze();
+            sut.Deposit(10);
+            Assert.That(unfreezingWasTriggered, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Test_Deposit_DepositOnStateIsCalled()
+        {
+            sut.Deposit(10);
+            //mState.Verify(x => x.Deposit(It.IsAny<Action>()), Times.Once);
         }
     }
 }
