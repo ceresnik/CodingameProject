@@ -2,7 +2,6 @@
    Restricted - Copyright (C) Siemens Healthcare GmbH/Siemens Medical Solutions USA, Inc., 2018. All rights reserved
    ------------------------------------------------------------------------------------------------- */
 
-using System;
 using CodingameProject.Source.ObjectOrientedTraining;
 using NUnit.Framework;
 
@@ -12,24 +11,39 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
     public class ClosedTests
     {
         private Closed sut;
+        private bool addedToBalance;
+        private bool removedFromBalance;
 
         [SetUp]
         public void SetUp()
         {
-            sut = new Closed(Console.WriteLine);
+            sut = new Closed();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            addedToBalance = false;
         }
 
         [Test]
         public void Test_Deposit_ReturnsClosed()
         {
-            var result = sut.Deposit();
+            var result = sut.Deposit(AddToBalance);
             Assert.That(result, Is.EqualTo(sut));
+        }
+
+        [Test]
+        public void Test_Deposit_AddToBalanceWasNotCalled()
+        {
+            sut.Deposit(AddToBalance);
+            Assert.That(addedToBalance, Is.False);
         }
 
         [Test]
         public void Test_Withdraw_ReturnsClosed()
         {
-            var result = sut.Withdraw();
+            var result = sut.Withdraw(RemoveFromBalance);
             Assert.That(result, Is.EqualTo(sut));
         }
 
@@ -51,7 +65,18 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         public void Test_Verify_ReturnsActive()
         {
             var result = sut.Verify();
-            Assert.That(result, Is.TypeOf<Active>());
+            Assert.That(result, Is.EqualTo(sut));
         }
+
+        private void AddToBalance()
+        {
+            addedToBalance = true;
+        }
+
+        private void RemoveFromBalance()
+        {
+            removedFromBalance = true;
+        }
+
     }
 }

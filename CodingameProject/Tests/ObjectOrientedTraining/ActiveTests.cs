@@ -8,6 +8,8 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
     public class ActiveTests
     {
         private IAccountState sut;
+        private bool addedToBalance;
+        private bool removedFromBalance;
 
         [SetUp]
         public void SetUp()
@@ -15,17 +17,30 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
             this.sut = new Active(Console.WriteLine);
         }
 
+        [TearDown]
+        public void TearDown()
+        {
+            addedToBalance = false;
+        }
+
         [Test]
         public void Test_Deposit_ReturnsActive()
         {
-            var result = sut.Deposit();
+            var result = sut.Deposit(AddToBalance);
             Assert.That(result, Is.TypeOf<Active>());
+        }
+
+        [Test]
+        public void Test_Deposit_AddToBalanceWasCalled()
+        {
+            sut.Deposit(AddToBalance);
+            Assert.That(addedToBalance, Is.True);
         }
 
         [Test]
         public void Test_Withdraw_ReturnsActive()
         {
-            var result = sut.Withdraw();
+            var result = sut.Withdraw(RemoveFromBalance);
             Assert.That(result, Is.TypeOf<Active>());
         }
 
@@ -48,6 +63,16 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         {
             var result = sut.Close();
             Assert.That(result, Is.TypeOf<Closed>());
+        }
+
+        private void AddToBalance()
+        {
+            addedToBalance = true;
+        }
+
+        private void RemoveFromBalance()
+        {
+            removedFromBalance = true;
         }
     }
 }

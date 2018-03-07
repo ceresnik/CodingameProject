@@ -11,29 +11,18 @@ namespace CodingameProject.Source.ObjectOrientedTraining
             OnUnfreeze = onUnfreeze;
         }
 
-        public IAccountState Deposit()
+        public IAccountState Deposit(Action addToBalance)
         {
+            addToBalance();
             return this;
         }
 
-        public IAccountState Withdraw()
-        {
-            return this;
-        }
+        public IAccountState Withdraw(Action removeFromBalance) => this;
 
-        public IAccountState Freeze()
-        {
-            return this;
-        }
+        public IAccountState Freeze() => this;
 
-        public IAccountState Close()
-        {
-            return new Closed(OnUnfreeze);
-        }
+        public IAccountState Close() => new Closed();
 
-        public IAccountState Verify()
-        {
-            return new Active(OnUnfreeze);
-        }
+        public IAccountState Verify() => new Active(OnUnfreeze);
     }
 }

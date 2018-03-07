@@ -42,11 +42,43 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void WithDraw_StateIsNotVerified()
+        public void DepositToVerified_StateIsActive()
         {
+            sut.Verify();
             sut.Deposit(10);
+            Assert.That(sut.AccountState, Is.TypeOf<Active>());
+        }
+
+        [Test]
+        public void DepositToClosed_StateIsClosed()
+        {
+            sut.Close();
+            sut.Deposit(10);
+            Assert.That(sut.AccountState, Is.TypeOf<Closed>());
+        }
+
+        [Test]
+        public void DepositToVerifiedAndFrozen_StateIsActive()
+        {
+            sut.Verify();
+            sut.Freeze();
+            sut.Deposit(10);
+            Assert.That(sut.AccountState, Is.TypeOf<Active>());
+        }
+
+        [Test]
+        public void Withdraw_StateIsNotVerified()
+        {
             sut.Withdraw(1);
             Assert.That(sut.AccountState, Is.TypeOf<NotVerified>());
+        }
+
+        [Test]
+        public void WithDrawFromVerified_StateIsActive()
+        {
+            sut.Verify();
+            sut.Withdraw(1);
+            Assert.That(sut.AccountState, Is.TypeOf<Active>());
         }
 
         [Test]
@@ -64,7 +96,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Number1_Test_DepositToClosedAccount_NoChange()
+        public void Id1_Test_DepositToClosedAccount_NoChange()
         {
             sut.Deposit(20);
             sut.Close();
@@ -73,7 +105,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Number2_Test_Deposit()
+        public void Id2_Test_Deposit()
         {
             sut.Deposit(10);
             sut.Deposit(1);
@@ -81,7 +113,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Number3_Test_WithdrawFromNotVerifiedAccount_NoChange()
+        public void Id3_Test_WithdrawFromNotVerifiedAccount_NoChange()
         {
             sut.Deposit(20);
             sut.Withdraw(20);
@@ -89,7 +121,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Number4_Test_WithdrawFromClosedAccount_NoChange()
+        public void Id4_Test_WithdrawFromClosedAccount_NoChange()
         {
             sut.Deposit(20);
             sut.Verify();
@@ -99,7 +131,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Number5_Test_Withdraw()
+        public void Id5_Test_Withdraw()
         {
             sut.Deposit(10);
             sut.Verify();
@@ -108,7 +140,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Number8_Test_DepositToNotFrozenAccount_DoesNotTriggerAction()
+        public void Id8_Test_DepositToNotFrozenAccount_DoesNotTriggerAction()
         {
             sut.Deposit(10);
             sut.Deposit(1);
@@ -116,7 +148,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Number10_Test_WithdrawFromFreezedAccount_Withdrawn()
+        public void Id10_Test_WithdrawFromFreezedAccount_Withdrawn()
         {
             sut.Deposit(30);
             sut.Verify();
@@ -126,7 +158,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Number11_Test_WithdrawFromNotFrozenAccount_DoesNotTriggerAction()
+        public void Id11_Test_WithdrawFromNotFrozenAccount_DoesNotTriggerAction()
         {
             sut.Deposit(10);
             sut.Verify();

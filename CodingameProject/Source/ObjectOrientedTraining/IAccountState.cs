@@ -1,9 +1,11 @@
-﻿namespace CodingameProject.Source.ObjectOrientedTraining
+﻿using System;
+
+namespace CodingameProject.Source.ObjectOrientedTraining
 {
     public interface IAccountState
     {
-        IAccountState Deposit();
-        IAccountState Withdraw();
+        IAccountState Deposit(Action addToBalance);
+        IAccountState Withdraw(Action removeFromBalance);
         IAccountState Freeze();
         IAccountState Close();
         IAccountState Verify();

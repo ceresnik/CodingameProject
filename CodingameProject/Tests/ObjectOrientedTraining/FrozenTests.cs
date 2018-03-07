@@ -13,6 +13,8 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
     {
         private IAccountState sut;
         private bool unfreezingWasTriggered;
+        private bool addedToBalance;
+        private bool removedFromBalance;
 
         private void DoUnfreezeAction(string message)
         {
@@ -23,27 +25,43 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         [SetUp]
         public void SetUp()
         {
-            this.sut = new Frozen(DoUnfreezeAction);
+            sut = new Frozen(DoUnfreezeAction);
+            addedToBalance = false;
         }
 
         [TearDown]
         public void TearDown()
         {
             unfreezingWasTriggered = false;
+            addedToBalance = false;
         }
 
         [Test]
         public void Test_Deposit_ReturnsActive()
         {
-            var result = sut.Deposit();
+            var result = sut.Deposit(AddToBalance);
             Assert.That(result, Is.TypeOf<Active>());
+        }
+
+        [Test]
+        public void Test_Deposit_AddToBalanceWasCalled()
+        {
+            sut.Deposit(AddToBalance);
+            Assert.That(addedToBalance, Is.True);
         }
 
         [Test]
         public void Test_Withdraw_ReturnsActive()
         {
-            var result = sut.Withdraw();
+            var result = sut.Withdraw(RemoveFromBalance);
             Assert.That(result, Is.TypeOf<Active>());
+        }
+
+        [Test]
+        public void Test_Withdraw_RemoveFromBalanceWasCalled()
+        {
+            sut.Withdraw(RemoveFromBalance);
+            Assert.That(removedFromBalance, Is.True);
         }
 
         [Test]
@@ -54,6 +72,13 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
+        public void Test_Close_ReturnsClosed()
+        {
+            var result = sut.Close();
+            Assert.That(result, Is.TypeOf<Closed>());
+        }
+
+        [Test]
         public void Test_Verify_ReturnsActive()
         {
             var result = sut.Verify();
@@ -61,28 +86,28 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Number6_Test_DepositToFreezedAccountTriggersAction()
+        public void Id6_Test_DepositToFreezedAccountTriggersAction()
         {
-            sut.Deposit();
+            sut.Deposit(AddToBalance);
             Assert.That(unfreezingWasTriggered, Is.EqualTo(true));
         }
 
         [Test]
-        public void Number9_Test_WithdrawFromFreezedAccountTriggersAction()
+        public void Id9_Test_WithdrawFromFreezedAccountTriggersAction()
         {
-            sut.Deposit();
-            sut.Withdraw();
+            sut.Deposit(AddToBalance);
+            sut.Withdraw(RemoveFromBalance);
             Assert.That(unfreezingWasTriggered, Is.EqualTo(true));
         }
 
-        [Test]
-        public void Test_WithdrawTwoTimesFromFreezedAccount_TriggersOnlyOneAction()
+        private void AddToBalance()
         {
-            sut.Deposit();
-            sut = sut.Withdraw();
-            unfreezingWasTriggered = false;
-            sut.Withdraw();
-            Assert.That(unfreezingWasTriggered, Is.EqualTo(false));
+            addedToBalance = true;
+        }
+
+        private void RemoveFromBalance()
+        {
+            removedFromBalance = true;
         }
     }
 }

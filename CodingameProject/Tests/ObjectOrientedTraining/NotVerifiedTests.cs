@@ -8,6 +8,8 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
     public class NotVerifiedTests
     {
         private NotVerified sut;
+        private bool addedToBalance;
+        private bool removedFromBalance;
 
         [SetUp]
         public void SetUp()
@@ -15,17 +17,30 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
             sut = new NotVerified(Console.WriteLine);
         }
 
+        [TearDown]
+        public void TearDown()
+        {
+            addedToBalance = false;
+        }
+
         [Test]
         public void Test_Deposit_ReturnsNotVerified()
         {
-            var result = sut.Deposit();
+            var result = sut.Deposit(AddToBalance);
             Assert.That(result, Is.EqualTo(sut));
+        }
+
+        [Test]
+        public void Test_Deposit_AddToBalanceWasCalled()
+        {
+            sut.Deposit(AddToBalance);
+            Assert.That(addedToBalance, Is.True);
         }
 
         [Test]
         public void Test_Withdraw_ReturnsNotVerified()
         {
-            var result = sut.Withdraw();
+            var result = sut.Withdraw(RemoveFromBalance);
             Assert.That(result, Is.EqualTo(sut));
         }
 
@@ -48,6 +63,16 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         {
             var result = sut.Verify();
             Assert.That(result, Is.TypeOf<Active>());
+        }
+
+        private void AddToBalance()
+        {
+            addedToBalance = true;
+        }
+
+        private void RemoveFromBalance()
+        {
+            removedFromBalance = true;
         }
     }
 }
