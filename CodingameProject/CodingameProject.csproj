@@ -61,28 +61,28 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\LogicalOperations\LogicalOperation.cs" />
-    <Compile Include="Source\ObjectOrientedTraining\Account.cs" />
-    <Compile Include="Source\ObjectOrientedTraining\Active.cs" />
-    <Compile Include="Source\ObjectOrientedTraining\Closed.cs" />
-    <Compile Include="Source\ObjectOrientedTraining\Frozen.cs" />
-    <Compile Include="Source\ObjectOrientedTraining\IAccountState.cs" />
-    <Compile Include="Source\ObjectOrientedTraining\NotVerified.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\StatePattern\Account.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\StatePattern\Active.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\StatePattern\Closed.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\StatePattern\Frozen.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\StatePattern\IAccountState.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\StatePattern\NotVerified.cs" />
     <Compile Include="Source\SumCounter\EvenNumbersSelector.cs" />
     <Compile Include="Source\SumCounter\EverySecondNumberSelector.cs" />
     <Compile Include="Source\SumCounter\ISumSelector.cs" />
     <Compile Include="Source\SumCounter\Numbers.cs" />
     <Compile Include="Source\SumCounter\OddNumbersSelector.cs" />
     <Compile Include="Tests\LogicalOperations\UnitTests.cs" />
-    <Compile Include="Tests\ObjectOrientedTraining\AccountIntegrationTests.cs" />
-    <Compile Include="Tests\ObjectOrientedTraining\AccountUnitTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\StatePattern\AccountIntegrationTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\StatePattern\AccountUnitTests.cs" />
     <Compile Include="Source\SumOfDigitsCounter\NoRestrictionCondition.cs" />
     <Compile Include="Source\SumOfDigitsCounter\NumberRepresentation.cs" />
     <Compile Include="Source\SumOfDigitsCounter\LessThanNineCondition.cs" />
     <Compile Include="Source\SumOfDigitsCounter\ICondition.cs" />
-    <Compile Include="Tests\ObjectOrientedTraining\ActiveTests.cs" />
-    <Compile Include="Tests\ObjectOrientedTraining\ClosedTests.cs" />
-    <Compile Include="Tests\ObjectOrientedTraining\FrozenTests.cs" />
-    <Compile Include="Tests\ObjectOrientedTraining\NotVerifiedTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\StatePattern\ActiveTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\StatePattern\ClosedTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\StatePattern\FrozenTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\StatePattern\NotVerifiedTests.cs" />
     <Compile Include="Tests\SumCounter\SumCounterTests.cs" />
     <Compile Include="Tests\SumOfDigitsCounter\NumberRepresentationTests.cs" />
   </ItemGroup>
@@ -93,6 +93,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

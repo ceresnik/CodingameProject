@@ -1,9 +1,9 @@
 ﻿using System;
-using CodingameProject.Source.ObjectOrientedTraining;
+using CodingameProject.Source.ObjectOrientedTraining.StatePattern;
 using Moq;
 using NUnit.Framework;
 
-namespace CodingameProject.Tests.ObjectOrientedTraining
+namespace CodingameProject.Tests.ObjectOrientedTraining.StatePattern
 {
     class AccountUnitTests
     {

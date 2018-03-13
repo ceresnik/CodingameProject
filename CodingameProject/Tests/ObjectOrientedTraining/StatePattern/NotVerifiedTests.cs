@@ -1,20 +1,20 @@
 ﻿using System;
-using CodingameProject.Source.ObjectOrientedTraining;
+using CodingameProject.Source.ObjectOrientedTraining.StatePattern;
 using NUnit.Framework;
 
-namespace CodingameProject.Tests.ObjectOrientedTraining
+namespace CodingameProject.Tests.ObjectOrientedTraining.StatePattern
 {
     [TestFixture]
-    public class ActiveTests
+    public class NotVerifiedTests
     {
-        private IAccountState sut;
+        private NotVerified sut;
         private bool addedToBalance;
         private bool removedFromBalance;
 
         [SetUp]
         public void SetUp()
         {
-            this.sut = new Active(Console.WriteLine);
+            sut = new NotVerified(Console.WriteLine);
         }
 
         [TearDown]
@@ -24,10 +24,10 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Test_Deposit_ReturnsActive()
+        public void Test_Deposit_ReturnsNotVerified()
         {
             var result = sut.Deposit(AddToBalance);
-            Assert.That(result, Is.TypeOf<Active>());
+            Assert.That(result, Is.EqualTo(sut));
         }
 
         [Test]
@@ -38,24 +38,24 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         }
 
         [Test]
-        public void Test_Withdraw_ReturnsActive()
+        public void Test_Withdraw_ReturnsNotVerified()
         {
             var result = sut.Withdraw(RemoveFromBalance);
-            Assert.That(result, Is.TypeOf<Active>());
+            Assert.That(result, Is.EqualTo(sut));
         }
 
         [Test]
-        public void Test_Freeze_ReturnsFrozen()
+        public void Test_Withdraw_NotRemovedFromBalance()
+        {
+            sut.Withdraw(RemoveFromBalance);
+            Assert.That(removedFromBalance, Is.False);
+        }
+
+        [Test]
+        public void Test_Freeze_ReturnsNotVerified()
         {
             var result = sut.Freeze();
-            Assert.That(result, Is.TypeOf<Frozen>());
-        }
-
-        [Test]
-        public void Test_Verify_ReturnsActive()
-        {
-            var result = sut.Verify();
-            Assert.That(result, Is.TypeOf<Active>());
+            Assert.That(result, Is.EqualTo(sut));
         }
 
         [Test]
@@ -63,6 +63,13 @@ namespace CodingameProject.Tests.ObjectOrientedTraining
         {
             var result = sut.Close();
             Assert.That(result, Is.TypeOf<Closed>());
+        }
+
+        [Test]
+        public void Test_Verify_ReturnsActive()
+        {
+            var result = sut.Verify();
+            Assert.That(result, Is.TypeOf<Active>());
         }
 
         private void AddToBalance()

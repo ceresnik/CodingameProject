@@ -1,11 +1,7 @@
-﻿/* -------------------------------------------------------------------------------------------------
-   Restricted - Copyright (C) Siemens Healthcare GmbH/Siemens Medical Solutions USA, Inc., 2018. All rights reserved
-   ------------------------------------------------------------------------------------------------- */
-
-using CodingameProject.Source.ObjectOrientedTraining;
+﻿using CodingameProject.Source.ObjectOrientedTraining.StatePattern;
 using NUnit.Framework;
 
-namespace CodingameProject.Tests.ObjectOrientedTraining
+namespace CodingameProject.Tests.ObjectOrientedTraining.StatePattern
 {
     [TestFixture]
     public class ClosedTests

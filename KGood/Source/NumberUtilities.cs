@@ -276,22 +276,21 @@ namespace KGood.Source
 
         public static string CountSyracuzeSequence(int input)
         {
-            int resultNumbers = input;
-            var list = new List<int> { input };
+            int intermediateNumber = input;
+            var results = new List<int> { input };
             do
             {
-                if (resultNumbers % 2 == 0)
+                if (intermediateNumber % 2 == 0)
                 {
-                    resultNumbers = resultNumbers / 2;
+                    intermediateNumber = intermediateNumber / 2;
                 }
                 else
                 {
-                    resultNumbers = resultNumbers * 3 + 1;
+                    intermediateNumber = intermediateNumber * 3 + 1;
                 }
-                list.Add(resultNumbers);
-            } while (resultNumbers != 1);
-            string result = String.Join(" ", list);
-            return result;
+                results.Add(intermediateNumber);
+            } while (intermediateNumber != 1);
+            return String.Join(" ", results);
         }
     }
 }

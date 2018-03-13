@@ -1,8 +1,8 @@
 ﻿using System;
-using CodingameProject.Source.ObjectOrientedTraining;
+using CodingameProject.Source.ObjectOrientedTraining.StatePattern;
 using NUnit.Framework;
 
-namespace CodingameProject.Tests.ObjectOrientedTraining
+namespace CodingameProject.Tests.ObjectOrientedTraining.StatePattern
 {
     [TestFixture]
     public class AccountIntegrationTests

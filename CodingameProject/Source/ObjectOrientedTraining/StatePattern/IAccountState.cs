@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CodingameProject.Source.ObjectOrientedTraining
+namespace CodingameProject.Source.ObjectOrientedTraining.StatePattern
 {
     public interface IAccountState
     {
