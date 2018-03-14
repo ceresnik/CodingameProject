@@ -1,28 +1,38 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
+using CodingameProject.Source.ObjectOrientedTraining.IteratorDemo;
 
 namespace CodingameProject
 {
     class Program
     {
-        private static int Sum(int[] input, bool oddNumbersOnly)
+        private static IPainter FindCheapestPainter(int squareMeters, IEnumerable<IPainter> painters)
         {
-            int result = 0;
-            foreach (int number in input)
+            IPainter result = painters.ElementAt(0);
+            foreach (var painter in painters)
             {
-                if (oddNumbersOnly == false || number % 2 != 0)
+                if (painter.IsAvailable)
                 {
-                    result += number;
+                    if (painter.EstimateCosts(squareMeters) < result.EstimateCosts(squareMeters))
+                    {
+                        result = painter;
+                    }
                 }
             }
             return result;
         }
+
         static void Main(string[] args)
         {
-            int result = Sum(new[] { 1, 2, 3, 4, 5 }, true);
-            Console.WriteLine($"Sum of odd numbers: {result}");
-            result = Sum(new[] { 1, 2, 3, 4, 5 }, false);
-            Console.WriteLine($"Sum of all numbers: {result}");
-            Console.ReadLine();
+            IEnumerable<IPainter> painters = new List<IPainter>
+                                             {
+                                                 new Painter(2, 3, true),
+                                                 new Painter(4, 7, false),
+                                                 new Painter(1, 5, true),
+                                                 new Painter(5, 2, true),
+                                                 new Painter(9, 3, false)
+                                             };
+            var cheapestPainter = FindCheapestPainter(10, painters);
         }
     }
 }
