@@ -292,5 +292,12 @@ namespace KGood.Source
             } while (intermediateNumber != 1);
             return String.Join(" ", results);
         }
+
+
+        public static int FindMiddleValue(string x, string y, string z)
+        {
+            var input = new List<string> { x, y, z };
+            return input.Select(Int32.Parse).OrderBy(n => n).ElementAt(input.Count / 2);
+        }
     }
 }

@@ -231,5 +231,15 @@ namespace KGood.Tests
             var result = NumberUtilities.CountSyracuzeSequence(input);
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase("1", "2", "3", 2)]
+        [TestCase("5", "3", "8", 5)]
+        [Test]
+        public void Test_FindMiddleValue(string x, string y, string z, int expected)
+        {
+            var result = NumberUtilities.FindMiddleValue(x, y, z);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
     }
 }
