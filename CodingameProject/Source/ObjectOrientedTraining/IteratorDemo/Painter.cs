@@ -1,8 +1,4 @@
-﻿/* -------------------------------------------------------------------------------------------------
-   Restricted - Copyright (C) Siemens Healthcare GmbH/Siemens Medical Solutions USA, Inc., 2018. All rights reserved
-   ------------------------------------------------------------------------------------------------- */
-   
-using System;
+﻿using System;
 
 namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 {
@@ -30,5 +26,17 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
         {
             return squareMeters * euroPerSquareMeter;
         }
+
+        public override bool Equals(object obj)
+        {
+            Painter otherPainter = (Painter)obj;
+            if (otherPainter != null && IsAvailable == otherPainter.IsAvailable && squareMetersPerHour == otherPainter.squareMetersPerHour && euroPerSquareMeter == otherPainter.euroPerSquareMeter)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public override int GetHashCode() => base.GetHashCode();
     }
 }

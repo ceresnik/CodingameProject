@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\PainterClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\LogicalOperations\LogicalOperation.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Source\ObjectOrientedTraining\SumCounter\Numbers.cs" />
     <Compile Include="Source\ObjectOrientedTraining\SumCounter\OddNumbersSelector.cs" />
     <Compile Include="Tests\LogicalOperations\UnitTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\PainterClientTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\PainterTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\StatePattern\AccountIntegrationTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\StatePattern\AccountUnitTests.cs" />
