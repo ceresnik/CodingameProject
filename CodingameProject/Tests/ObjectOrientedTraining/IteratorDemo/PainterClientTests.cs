@@ -21,5 +21,14 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             var cheapestPainter = sut.FindCheapestPainter(10, painters);
             Assert.That(cheapestPainter, Is.EqualTo(new Painter(5, 2, true)));
         }
+
+        [Test]
+        public void Test_FindCheapestPainter_NoPainter_Null()
+        {
+            IEnumerable<IPainter> painters = new List<IPainter>();
+            var sut = new PainterClient();
+            var result = sut.FindCheapestPainter(10, painters);
+            Assert.That(result, Is.EqualTo(null));
+        }
     }
 }

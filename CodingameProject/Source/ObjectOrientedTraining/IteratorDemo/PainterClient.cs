@@ -23,17 +23,30 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 
         public IPainter FindCheapestPainter(int squareMeters, IEnumerable<IPainter> painters)
         {
+            //int bestCost = 10000;
+            //IPainter cheapestPainter = null;
+            //foreach (var painter in painters)
+            //{
+            //    int price = painter.EstimateCosts(squareMeters);
+            //    if (cheapestPainter == null || price < bestCost)
+            //    {
+            //        bestCost = price;
+            //        cheapestPainter = painter;
+            //    }
+            //}
+            //return cheapestPainter;
+            //return
+            //    painters
+            //        .Where(painter => painter.IsAvailable)
+            //        .Aggregate((IPainter)null, (best, current)
+            //                                       => best == null ||
+            //                                          best.EstimateCosts(squareMeters) > current.EstimateCosts(squareMeters)
+            //                                           ? current
+            //                                           : best);
             return
                 painters
                     .Where(painter => painter.IsAvailable)
-                    .OrderBy(x => x.EstimateCosts(squareMeters))
-                    .FirstOrDefault();
-            //.Aggregate((s1, s2) => s1.EstimateCosts(squareMeters) < s2.EstimateCosts(squareMeters) ? s1:s2);
-
-            //return 
-            //    painters
-            //    .WhichAreAvailable()
-            //    .WithMinimum(painter.EstimateCosts(squareMeters));
+                    .WithMinimum(painter => painter.EstimateCosts(squareMeters));
         }
     }
 }

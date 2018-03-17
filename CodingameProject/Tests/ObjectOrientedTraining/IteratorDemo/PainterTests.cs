@@ -17,7 +17,6 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         }
 
         [TestCase(5, 8, 40)]
-        //Todo: is euroPerSquareMeter parameter in constructor?
         [Test]
         public void Test_EstimateCosts_1(int euroPerSquareMeter, int squareMeters, int expected)
         {

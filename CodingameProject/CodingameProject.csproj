@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\EnumerableExtensions.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\PainterClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

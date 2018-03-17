@@ -24,13 +24,16 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 
         public int EstimateCosts(int squareMeters)
         {
-            return squareMeters * euroPerSquareMeter;
+            return euroPerSquareMeter * squareMeters;
         }
 
         public override bool Equals(object obj)
         {
             Painter otherPainter = (Painter)obj;
-            if (otherPainter != null && IsAvailable == otherPainter.IsAvailable && squareMetersPerHour == otherPainter.squareMetersPerHour && euroPerSquareMeter == otherPainter.euroPerSquareMeter)
+            if (otherPainter != null 
+                && IsAvailable == otherPainter.IsAvailable 
+                && squareMetersPerHour == otherPainter.squareMetersPerHour 
+                && euroPerSquareMeter == otherPainter.euroPerSquareMeter)
             {
                 return true;
             }
