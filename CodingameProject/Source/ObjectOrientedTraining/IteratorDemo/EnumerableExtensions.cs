@@ -9,7 +9,9 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
         public static T WithMinimum<T, TKey>(this IEnumerable<T> input, Func<T, TKey> criterion)
             where T : class
             where TKey : IComparable<TKey> =>
-            input.Aggregate((T)null, (best, current) =>
-                                         best == null || criterion(best).CompareTo(criterion(current)) > 0 ? current : best);
+            input.Select(obj => Tuple.Create(obj, criterion(obj)))
+                .Aggregate((Tuple<T, TKey>)null, (best, current) =>
+                                                     best == null || best.Item2.CompareTo(current.Item2) > 0 ? current : best)
+                .Item1;
     }
 }

@@ -40,6 +40,11 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
             return false;
         }
 
+        public override string ToString()
+        {
+            return $"Painter: metersPerHour: {squareMetersPerHour}, euroPerMeter: {euroPerSquareMeter}, available: {IsAvailable}";
+        }
+
         public override int GetHashCode() => base.GetHashCode();
     }
 }
