@@ -6,8 +6,8 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
     [TestFixture]
     public class PainterTests
     {
-        [TestCase(1, 12, "12:00")]
-        [TestCase(3, 12, "4:00")]
+        [TestCase(1, 12, "12:00:00")]
+        [TestCase(3, 12, "04:00:00")]
         [Test]
         public void Test_EstimateDuration(int squareMetersPerHour, int squareMeters, string expected)
         {

@@ -10,16 +10,16 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
         public Painter(int squareMetersPerHour, int euroPerSquareMeter, bool isAvailable)
         {
             this.squareMetersPerHour = squareMetersPerHour;
-            IsAvailable = isAvailable;
             this.euroPerSquareMeter = euroPerSquareMeter;
+            IsAvailable = isAvailable;
         }
 
         public bool IsAvailable { get; }
 
-        public DateTime EstimateDuration(int squareMeters)
+        public TimeSpan EstimateDuration(int squareMeters)
         {
             var durationInHours = squareMeters/squareMetersPerHour;
-            return new DateTime().Date.AddHours(durationInHours);
+            return new TimeSpan(0, durationInHours, 0, 0);
         }
 
         public int EstimateCosts(int squareMeters)

@@ -241,5 +241,14 @@ namespace KGood.Tests
             Assert.That(result, Is.EqualTo(expected));
         }
 
+        [Test]
+        public void Test_DateTime()
+        {
+            DateTime dateOfProduction = new DateTime(2018, 3, 14);
+            TimeSpan duration = new TimeSpan(15, 0, 0, 0);
+            DateTime bestBefore = dateOfProduction.Add(duration);
+
+            Assert.That(bestBefore, Is.EqualTo(new DateTime(2018, 3, 29)));
+        }
     }
 }

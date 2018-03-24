@@ -24,6 +24,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             Assert.That(cheapestPainter, Is.EqualTo(new Painter(5, 2, true)));
         }
 
+        [Ignore]
         [Test]
         public void Test_FindCheapestPainter_NoPainter_Null()
         {
@@ -32,6 +33,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             Assert.That(result, Is.EqualTo(null));
         }
 
+        [Ignore]
         [Test]
         public void Test_FindCheapestPainter_NoneIsAvailable_Null()
         {
@@ -87,21 +89,31 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         }
 
         [Test]
-        public void Test_WorkTogether()
+        public void Test_WorkTogether_Duration()
         {
-            int squareMeters = 1000;
+            int squareMeters = 72;
             IList<IPainter> painters = new List<IPainter>
                                        {
-                                           new Painter(8, 3, false),
-                                           new Painter(9, 12, true),
-                                           new Painter(4, 5, true),
-                                           new Painter(5, 9, true),
-                                           new Painter(2, 2, true),
-                                           new Painter(4, 8, false)
+                                           new Painter(8, 3, true),
+                                           new Painter(4, 8, true)
                                        };
             PainterClient sut = new PainterClient();
-            IPainter result = sut.WorkTogether(squareMeters, painters);
-            Assert.That(result, Is.EqualTo(new Painter(5, 7, true)));
+            TimeSpan result = sut.WorkTogether(squareMeters, painters).EstimateDuration(squareMeters);
+            Assert.That(result, Is.EqualTo(new TimeSpan(0, 6, 0, 0)));
+        }
+
+        [Test]
+        public void Test_WorkTogether_Costs()
+        {
+            int squareMeters = 72;
+            IList<IPainter> painters = new List<IPainter>
+                                       {
+                                           new Painter(8, 3, true),
+                                           new Painter(4, 8, true)
+                                       };
+            PainterClient sut = new PainterClient();
+            int result = sut.WorkTogether(squareMeters, painters).EstimateCosts(squareMeters);
+            Assert.That(result, Is.EqualTo(66));
         }
     }
 }
