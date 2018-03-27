@@ -51,7 +51,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         }
 
         [Test]
-        public void Test_TestTuple()
+        public void Test_FindCheapest_TestTuple()
         {
             int squareMeters = 10;
             IList<IPainter> painters = new List<IPainter>
@@ -67,7 +67,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
                 .Where(painter => painter.IsAvailable)
                 .Select(painter => new Tuple<IPainter, int>(painter, painter.EstimateCosts(squareMeters)))
                 .Aggregate((best, current) => best.Item2 > current.Item2 ? current : best).Item1;
-            Assert.That(result, Is.EqualTo(new Painter(4, 2, true)));
+            Assert.That(result, Is.EqualTo(new Painter(8, 3, true)));
         }
 
         [Test]

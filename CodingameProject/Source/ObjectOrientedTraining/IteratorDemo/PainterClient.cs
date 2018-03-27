@@ -23,16 +23,18 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
         public IPainter WorkTogether(int squareMeters, IList<IPainter> painters)
         {
             int sumOfSpeeds = 0;
-            int sumOfCosts = 0;
+            int sumOfEuroPerHour = 0;
+
             foreach (var painter in painters)
             {
                 if (painter.IsAvailable)
                 {
-                    sumOfSpeeds += squareMeters / painter.EstimateDuration(squareMeters).Hours;
-                    sumOfCosts += painter.EstimateCosts(squareMeters) / squareMeters;
+                    int durationInHours = painter.EstimateDuration(squareMeters).Hours;
+                    sumOfSpeeds += squareMeters / durationInHours;
+                    sumOfEuroPerHour += painter.EstimateCosts(squareMeters) / durationInHours;
                 }
             }
-            return new Painter(sumOfSpeeds, sumOfCosts, true);
+            return new Painter(sumOfSpeeds, sumOfEuroPerHour, true);
         }
     }
 }

@@ -5,12 +5,12 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
     class Painter : IPainter
     {
         private readonly int squareMetersPerHour;
-        private readonly int euroPerSquareMeter;
+        private readonly int euroPerHour;
 
-        public Painter(int squareMetersPerHour, int euroPerSquareMeter, bool isAvailable)
+        public Painter(int squareMetersPerHour, int euroPerHour, bool isAvailable)
         {
             this.squareMetersPerHour = squareMetersPerHour;
-            this.euroPerSquareMeter = euroPerSquareMeter;
+            this.euroPerHour = euroPerHour;
             IsAvailable = isAvailable;
         }
 
@@ -24,7 +24,8 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 
         public int EstimateCosts(int squareMeters)
         {
-            return euroPerSquareMeter * squareMeters;
+            var durationInHours = EstimateDuration(squareMeters).Hours;
+            return euroPerHour * durationInHours;
         }
 
         public override bool Equals(object obj)
@@ -33,7 +34,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
             if (otherPainter != null 
                 && IsAvailable == otherPainter.IsAvailable 
                 && squareMetersPerHour == otherPainter.squareMetersPerHour 
-                && euroPerSquareMeter == otherPainter.euroPerSquareMeter)
+                && euroPerHour == otherPainter.euroPerHour)
             {
                 return true;
             }
@@ -42,7 +43,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 
         public override string ToString()
         {
-            return $"Painter: metersPerHour: {squareMetersPerHour}, euroPerMeter: {euroPerSquareMeter}, available: {IsAvailable}";
+            return $"Painter: metersPerHour: {squareMetersPerHour}, euroPerMeter: {euroPerHour}, available: {IsAvailable}";
         }
 
         public override int GetHashCode() => base.GetHashCode();

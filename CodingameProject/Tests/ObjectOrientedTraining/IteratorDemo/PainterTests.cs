@@ -16,13 +16,31 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             Assert.That(result, Is.EqualTo(expected));
         }
 
-        [TestCase(5, 8, 40)]
+        [TestCase(8, 5, 20)]
+        [TestCase(9, 5, 20)]
+        [TestCase(10, 5, 25)]
+        [TestCase(11, 5, 25)]
+        [TestCase(12, 5, 30)]
         [Test]
-        public void Test_EstimateCosts_1(int euroPerSquareMeter, int squareMeters, int expected)
+        public void Test_EstimateCosts_TwoMetersPerHour(int squareMeters, int euroPerHour, int expectedCost)
         {
-            var sut = new Painter(2, euroPerSquareMeter, true);
+            var sut = new Painter(2, euroPerHour, true);
             int result = sut.EstimateCosts(squareMeters);
-            Assert.That(result, Is.EqualTo(expected));
+            Assert.That(result, Is.EqualTo(expectedCost));
+        }
+
+        [TestCase(1, 5, 0)]
+        [TestCase(5, 5, 5)]
+        [TestCase(9, 5, 5)]
+        [TestCase(10, 5, 10)]
+        [TestCase(16, 5, 15)]
+        [TestCase(99, 5, 95)]
+        [Test]
+        public void Test_EstimateCosts_FiveMetersPerHour(int squareMeters, int euroPerHour, int expectedCost)
+        {
+            var sut = new Painter(5, euroPerHour, true);
+            int result = sut.EstimateCosts(squareMeters);
+            Assert.That(result, Is.EqualTo(expectedCost));
         }
 
         [Test]
