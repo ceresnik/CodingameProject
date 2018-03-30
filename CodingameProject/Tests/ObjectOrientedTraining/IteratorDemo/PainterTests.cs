@@ -11,7 +11,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         [Test]
         public void Test_EstimateDuration(int squareMetersPerHour, int squareMeters, string expected)
         {
-            var sut = new Painter(squareMetersPerHour, 1, true);
+            var sut = new ProportionalPainter(squareMetersPerHour, 1, true);
             string result = sut.EstimateDuration(squareMeters).ToString("t");
             Assert.That(result, Is.EqualTo(expected));
         }
@@ -24,7 +24,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         [Test]
         public void Test_EstimateCosts_TwoMetersPerHour(int squareMeters, int euroPerHour, int expectedCost)
         {
-            var sut = new Painter(2, euroPerHour, true);
+            var sut = new ProportionalPainter(2, euroPerHour, true);
             int result = sut.EstimateCosts(squareMeters);
             Assert.That(result, Is.EqualTo(expectedCost));
         }
@@ -38,7 +38,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         [Test]
         public void Test_EstimateCosts_FiveMetersPerHour(int squareMeters, int euroPerHour, int expectedCost)
         {
-            var sut = new Painter(5, euroPerHour, true);
+            var sut = new ProportionalPainter(5, euroPerHour, true);
             int result = sut.EstimateCosts(squareMeters);
             Assert.That(result, Is.EqualTo(expectedCost));
         }
@@ -46,7 +46,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         [Test]
         public void Test_IsAvailable_ReturnsTrue()
         {
-            var sut = new Painter(10, 1, true);
+            var sut = new ProportionalPainter(10, 1, true);
             Assert.That(sut.IsAvailable, Is.EqualTo(true));
         }
     }

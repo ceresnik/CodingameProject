@@ -2,12 +2,12 @@
 
 namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 {
-    class Painter : IPainter
+    class ProportionalPainter : IPainter
     {
         private readonly int squareMetersPerHour;
         private readonly int euroPerHour;
 
-        public Painter(int squareMetersPerHour, int euroPerHour, bool isAvailable)
+        public ProportionalPainter(int squareMetersPerHour, int euroPerHour, bool isAvailable)
         {
             this.squareMetersPerHour = squareMetersPerHour;
             this.euroPerHour = euroPerHour;
@@ -18,8 +18,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 
         public TimeSpan EstimateDuration(int squareMeters)
         {
-            var durationInHours = squareMeters/squareMetersPerHour;
-            return new TimeSpan(0, durationInHours, 0, 0);
+            return TimeSpan.FromHours(squareMeters/squareMetersPerHour);
         }
 
         public int EstimateCosts(int squareMeters)
@@ -30,11 +29,11 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 
         public override bool Equals(object obj)
         {
-            Painter otherPainter = (Painter)obj;
-            if (otherPainter != null 
-                && IsAvailable == otherPainter.IsAvailable 
-                && squareMetersPerHour == otherPainter.squareMetersPerHour 
-                && euroPerHour == otherPainter.euroPerHour)
+            ProportionalPainter otherProportionalPainter = (ProportionalPainter)obj;
+            if (otherProportionalPainter != null 
+                && IsAvailable == otherProportionalPainter.IsAvailable 
+                && squareMetersPerHour == otherProportionalPainter.squareMetersPerHour 
+                && euroPerHour == otherProportionalPainter.euroPerHour)
             {
                 return true;
             }

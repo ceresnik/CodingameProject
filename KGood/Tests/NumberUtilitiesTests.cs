@@ -250,5 +250,22 @@ namespace KGood.Tests
 
             Assert.That(bestBefore, Is.EqualTo(new DateTime(2018, 3, 29)));
         }
+
+        [TestCase(9, "1, 3, 5, 7, 9")]
+        [TestCase(17, "1, 3, 5, 7, 9, 11, 13, 15, 17")]
+        [Test]
+        public void Test_SelectOddNumbers(int input, string expected)
+        {
+            IEnumerable<int> result = Enumerable
+                .Range(1, input)
+                .Where(x => x % 2 == 1)
+                .Select(x => x);
+            Enumerable
+                .Range(1, input)
+                .Where(x => x % 2 == 1)
+                .ToList()
+                .ForEach(Console.WriteLine);
+            Assert.That(string.Join(", ", result), Is.EqualTo(expected));
+        }
     }
 }
