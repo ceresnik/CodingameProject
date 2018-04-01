@@ -23,26 +23,18 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 
         public IPainter WorkTogether(int squareMeters, IEnumerable<ProportionalPainter> painters)
         {
-            int overallSpeed = 0;
-            int sumOfEuroPerHour = 0;
-            foreach (var painter in painters)
-            {
-                if (painter.IsAvailable)
-                {
-                    int durationInHours = painter.EstimateDuration(squareMeters).Hours;
-                    overallSpeed += squareMeters / durationInHours;
-                    sumOfEuroPerHour += painter.EstimateCosts(squareMeters) / durationInHours;
-                }
-            }
-
             TimeSpan timeForEntireWork =
-                TimeSpan.FromHours(
+                TimeSpan.FromMinutes(
                     1 / painters
                         .Where(p => p.IsAvailable)
-                        .Select(p => (double)1 / p.EstimateDuration(squareMeters).Hours).Sum());
+                        .Select(p => 1 / p.EstimateDuration(squareMeters).TotalMinutes).Sum());
+            timeForEntireWork = TimeSpan.FromMinutes(5 * Math.Ceiling(timeForEntireWork.TotalMinutes / 5));
 
-            var totalCosts = timeForEntireWork.Hours * sumOfEuroPerHour;
-            return new ProportionalPainter(overallSpeed, sumOfEuroPerHour, true);
+            double sumOfEuroPerHour = painters
+                .Where(painter => painter.IsAvailable)
+                .Select(painter => painter.EstimateCosts(squareMeters) / painter.EstimateDuration(squareMeters).TotalHours).Sum();
+
+            return new ProportionalPainter(TimeSpan.FromMinutes(timeForEntireWork.TotalMinutes/squareMeters), (int)sumOfEuroPerHour, true);
         }
     }
 }

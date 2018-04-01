@@ -4,12 +4,12 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 {
     class ProportionalPainter : IPainter
     {
-        private readonly int squareMetersPerHour;
         private readonly int euroPerHour;
+        private TimeSpan timeForOneSquareMeter;
 
-        public ProportionalPainter(int squareMetersPerHour, int euroPerHour, bool isAvailable)
+        public ProportionalPainter(TimeSpan timeForOneSquareMeter, int euroPerHour, bool isAvailable)
         {
-            this.squareMetersPerHour = squareMetersPerHour;
+            this.timeForOneSquareMeter = timeForOneSquareMeter;
             this.euroPerHour = euroPerHour;
             IsAvailable = isAvailable;
         }
@@ -18,13 +18,15 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 
         public TimeSpan EstimateDuration(int squareMeters)
         {
-            return TimeSpan.FromHours(squareMeters/squareMetersPerHour);
+            TimeSpan estimatedDuration = TimeSpan.FromMinutes(squareMeters * timeForOneSquareMeter.TotalMinutes);
+            estimatedDuration = TimeSpan.FromMinutes(5 * Math.Ceiling(estimatedDuration.TotalMinutes / 5));
+            return estimatedDuration;
         }
 
         public int EstimateCosts(int squareMeters)
         {
-            var durationInHours = EstimateDuration(squareMeters).Hours;
-            return euroPerHour * durationInHours;
+            var durationInHours = EstimateDuration(squareMeters).TotalHours;
+            return (int)(euroPerHour * durationInHours);
         }
 
         public override bool Equals(object obj)
@@ -32,7 +34,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
             ProportionalPainter otherProportionalPainter = (ProportionalPainter)obj;
             if (otherProportionalPainter != null 
                 && IsAvailable == otherProportionalPainter.IsAvailable 
-                && squareMetersPerHour == otherProportionalPainter.squareMetersPerHour 
+                && timeForOneSquareMeter == otherProportionalPainter.timeForOneSquareMeter
                 && euroPerHour == otherProportionalPainter.euroPerHour)
             {
                 return true;
@@ -42,7 +44,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 
         public override string ToString()
         {
-            return $"Painter: metersPerHour: {squareMetersPerHour}, euroPerMeter: {euroPerHour}, available: {IsAvailable}";
+            return $"Painter: timeForOneSquareMeter: {timeForOneSquareMeter}, euroPerMeter: {euroPerHour}, available: {IsAvailable}";
         }
 
         public override int GetHashCode() => base.GetHashCode();
