@@ -27,14 +27,22 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
                 TimeSpan.FromMinutes(
                     1 / painters
                         .Where(p => p.IsAvailable)
-                        .Select(p => 1 / p.EstimateDuration(squareMeters).TotalMinutes).Sum());
+                        .Select(p => 1 / p.EstimateDuration(squareMeters).TotalMinutes)
+                        .Sum());
             timeForEntireWork = TimeSpan.FromMinutes(5 * Math.Ceiling(timeForEntireWork.TotalMinutes / 5));
 
-            double sumOfEuroPerHour = painters
+            double totalCost = painters
                 .Where(painter => painter.IsAvailable)
-                .Select(painter => painter.EstimateCosts(squareMeters) / painter.EstimateDuration(squareMeters).TotalHours).Sum();
+                .Select(painter => 
+                    painter.EstimateCosts(squareMeters) / 
+                    painter.EstimateDuration(squareMeters).TotalHours * 
+                    timeForEntireWork.TotalHours)
+                .Sum();
 
-            return new ProportionalPainter(TimeSpan.FromMinutes(timeForEntireWork.TotalMinutes/squareMeters), (int)sumOfEuroPerHour, true);
+            return new ProportionalPainter(
+                TimeSpan.FromMinutes(timeForEntireWork.TotalMinutes/squareMeters), 
+                (int)(totalCost/timeForEntireWork.TotalHours), 
+                true);
         }
     }
 }

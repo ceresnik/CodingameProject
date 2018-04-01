@@ -27,7 +27,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
         {
             var durationInHours = EstimateDuration(squareMeters).TotalHours;
             return (int)(euroPerHour * durationInHours);
-        }
+         }
 
         public override bool Equals(object obj)
         {
