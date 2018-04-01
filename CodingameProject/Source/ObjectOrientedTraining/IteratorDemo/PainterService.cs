@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 {
-    internal class PainterClient
+    internal class PainterService
     {
         public IPainter FindCheapestPainter(int squareMeters, IEnumerable<IPainter> painters)
         {

@@ -6,10 +6,10 @@ using NUnit.Framework;
 
 namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
 {
-    public class PainterClientTests
+    public class PainterServiceTests
     {
         [Test]
-        public void Test_FindCheapestPainter()
+        public void FindCheapestPainter()
         {
             IEnumerable<IPainter> painters = new List<IPainter>
                                              {
@@ -19,23 +19,23 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
                                                  new ProportionalPainter(1, 5, true),
                                                  new ProportionalPainter(9, 3, false)
                                              };
-            var sut = new PainterClient();
+            var sut = new PainterService();
             var cheapestPainter = sut.FindCheapestPainter(10, painters);
             Assert.That(cheapestPainter, Is.EqualTo(new ProportionalPainter(5, 2, true)));
         }
 
         [Ignore]
         [Test]
-        public void Test_FindCheapestPainter_NoPainter_Null()
+        public void FindCheapestPainter_NoPainter_Null()
         {
-            var sut = new PainterClient();
+            var sut = new PainterService();
             var result = sut.FindCheapestPainter(10, new List<IPainter>());
             Assert.That(result, Is.EqualTo(null));
         }
 
         [Ignore]
         [Test]
-        public void Test_FindCheapestPainter_NoneIsAvailable_Null()
+        public void FindCheapestPainter_NoneIsAvailable_Null()
         {
             IEnumerable<IPainter> painters = new List<IPainter>
                                              {
@@ -45,13 +45,13 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
                                                  new ProportionalPainter(1, 5, false),
                                                  new ProportionalPainter(9, 3, false)
                                              };
-            var sut = new PainterClient();
+            var sut = new PainterService();
             var cheapestPainter = sut.FindCheapestPainter(10, painters);
             Assert.That(cheapestPainter, Is.EqualTo(null));
         }
 
         [Test]
-        public void Test_FindCheapest_TestTuple()
+        public void FindCheapest_TestTuple()
         {
             int squareMeters = 10;
             IList<IPainter> painters = new List<IPainter>
@@ -71,7 +71,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         }
 
         [Test]
-        public void Test_FindFastestPainter()
+        public void FindFastestPainter()
         {
             int squareMeters = 10;
             IList<IPainter> painters = new List<IPainter>
@@ -83,13 +83,13 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
                                            new ProportionalPainter(4, 2, true),
                                            new ProportionalPainter(4, 8, true)
                                        };
-            PainterClient sut = new PainterClient();
+            PainterService sut = new PainterService();
             IPainter result = sut.FindFastestPainter(squareMeters, painters);
             Assert.That(result, Is.EqualTo(new ProportionalPainter(7, 14, true)));
         }
 
         [Test]
-        public void Test_WorkTogether_Duration()
+        public void WorkTogether_Duration()
         {
             int squareMeters = 72;
             IList<ProportionalPainter> painters = new List<ProportionalPainter>
@@ -97,13 +97,13 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
                                            new ProportionalPainter(8, 3, true),
                                            new ProportionalPainter(4, 8, true)
                                        };
-            PainterClient sut = new PainterClient();
+            PainterService sut = new PainterService();
             TimeSpan result = sut.WorkTogether(squareMeters, painters).EstimateDuration(squareMeters);
             Assert.That(result, Is.EqualTo(new TimeSpan(0, 6, 0, 0)));
         }
 
         [Test]
-        public void Test_WorkTogether_Costs()
+        public void WorkTogether_Costs()
         {
             int squareMeters = 72;
             IList<ProportionalPainter> painters = new List<ProportionalPainter>
@@ -111,7 +111,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
                                            new ProportionalPainter(8, 3, true),
                                            new ProportionalPainter(4, 8, true)
                                        };
-            PainterClient sut = new PainterClient();
+            PainterService sut = new PainterService();
             int result = sut.WorkTogether(squareMeters, painters).EstimateCosts(squareMeters);
             Assert.That(result, Is.EqualTo(66));
         }
