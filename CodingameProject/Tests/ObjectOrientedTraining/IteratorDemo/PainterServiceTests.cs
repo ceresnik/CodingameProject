@@ -20,7 +20,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
                                                  new ProportionalPainter(TimeSpan.FromMinutes(6), 3, false)
                                              };
             var sut = new PainterService();
-            var cheapestPainter = sut.FindCheapestPainter(10, painters);
+            var cheapestPainter = sut.FindCheapestPainter(10, new Painters(painters));
             Assert.That(cheapestPainter, Is.EqualTo(new ProportionalPainter(TimeSpan.FromMinutes(10), 2, true)));
         }
 
@@ -29,7 +29,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         public void FindCheapestPainter_NoPainter_Null()
         {
             var sut = new PainterService();
-            var result = sut.FindCheapestPainter(10, new List<IPainter>());
+            var result = sut.FindCheapestPainter(10, new Painters(new List<IPainter>()));
             Assert.That(result, Is.EqualTo(null));
         }
 
@@ -46,7 +46,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
                                                  new ProportionalPainter(TimeSpan.FromMinutes(10), 3, false)
                                              };
             var sut = new PainterService();
-            var cheapestPainter = sut.FindCheapestPainter(10, painters);
+            var cheapestPainter = sut.FindCheapestPainter(10, new Painters(painters));
             Assert.That(cheapestPainter, Is.EqualTo(null));
         }
 
@@ -142,6 +142,23 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             PainterService sut = new PainterService();
             int result = sut.WorkTogether(squareMeters, painters).EstimateCosts(squareMeters);
             Assert.That(result, Is.EqualTo(51));
+        }
+
+        [Test]
+        public void FindCheapestPainter_FromPainters()
+        {
+            IEnumerable<IPainter> sequenceOfPainters = new List<IPainter>
+                                             {
+                                                 new ProportionalPainter(TimeSpan.FromMinutes(30), 3, true),
+                                                 new ProportionalPainter(TimeSpan.FromMinutes(10), 2, true),
+                                                 new ProportionalPainter(TimeSpan.FromMinutes(15), 7, false),
+                                                 new ProportionalPainter(TimeSpan.FromMinutes(60), 5, true),
+                                                 new ProportionalPainter(TimeSpan.FromMinutes(6), 3, false)
+                                             };
+            var sut = new PainterService();
+            Painters painters = new Painters(sequenceOfPainters);
+            var cheapestPainter = sut.FindCheapestPainter(10, painters);
+            Assert.That(cheapestPainter, Is.EqualTo(new ProportionalPainter(TimeSpan.FromMinutes(10), 2, true)));
         }
     }
 }

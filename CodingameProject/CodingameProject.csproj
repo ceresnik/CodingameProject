@@ -77,6 +77,7 @@
     <Compile Include="Source\ObjectOrientedTraining\SumCounter\Numbers.cs" />
     <Compile Include="Source\ObjectOrientedTraining\SumCounter\OddNumbersSelector.cs" />
     <Compile Include="Tests\LogicalOperations\UnitTests.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\Painters.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\PainterServiceTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\ProportionalPainterTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\StatePattern\AccountIntegrationTests.cs" />

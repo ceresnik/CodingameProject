@@ -6,12 +6,11 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 {
     internal class PainterService
     {
-        public IPainter FindCheapestPainter(int squareMeters, IEnumerable<IPainter> painters)
+        public IPainter FindCheapestPainter(int squareMeters, Painters painters)
         {
-            return
-                painters
-                    .Where(painter => painter.IsAvailable)
-                    .WithMinimum(painter => painter.EstimateCosts(squareMeters));
+            return painters
+                .ThoseAvailable
+                .WithMinimum(painter => painter.EstimateCosts(squareMeters));
         }
 
         public IPainter FindFastestPainter(int squareMeters, IEnumerable<IPainter> painters)
