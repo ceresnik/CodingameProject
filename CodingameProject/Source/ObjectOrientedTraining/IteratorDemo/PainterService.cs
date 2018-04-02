@@ -13,10 +13,10 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
                 .WithMinimum(painter => painter.EstimateCosts(squareMeters));
         }
 
-        public IPainter FindFastestPainter(int squareMeters, IEnumerable<IPainter> painters)
+        public IPainter FindFastestPainter(int squareMeters, Painters painters)
         {
             return painters
-                .Where(painter => painter.IsAvailable)
+                .ThoseAvailable
                 .WithMinimum(painter => painter.EstimateDuration(squareMeters));
         }
 
