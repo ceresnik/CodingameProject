@@ -17,7 +17,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
                                                  new ProportionalPainter(TimeSpan.FromMinutes(10), 2, true),
                                                  new ProportionalPainter(TimeSpan.FromMinutes(15), 7, false),
                                                  new ProportionalPainter(TimeSpan.FromMinutes(60), 5, true),
-                                                 new ProportionalPainter(TimeSpan.FromMinutes(6), 3, false)
+                                                 new ProportionalPainter(TimeSpan.FromMinutes(6), 1, false)
                                              };
             var sut = new PainterService();
             var cheapestPainter = sut.FindCheapestPainter(10, new Painters(painters));
@@ -77,7 +77,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             IList<IPainter> painters = new List<IPainter>
                                        {
                                            new ProportionalPainter(TimeSpan.FromMinutes(11), 5, true),
-                                           new ProportionalPainter(TimeSpan.FromMinutes(10), 3, false),
+                                           new ProportionalPainter(TimeSpan.FromMinutes(9), 3, false),
                                            new ProportionalPainter(TimeSpan.FromMinutes(19), 9, true),
                                            new ProportionalPainter(TimeSpan.FromMinutes(10), 14, true),
                                            new ProportionalPainter(TimeSpan.FromMinutes(12), 2, true),

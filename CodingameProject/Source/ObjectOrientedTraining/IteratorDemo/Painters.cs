@@ -12,9 +12,19 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
             this.painters = painters;
         }
 
-        public IEnumerable<IPainter> ThoseAvailable
+        public Painters ThoseAvailable
         {
-            get { return painters.Where(painter => painter.IsAvailable); }
+            get { return new Painters(painters.Where(painter => painter.IsAvailable)); }
+        }
+
+        public IPainter GetCheapest(int squareMeters)
+        {
+            return painters.WithMinimum(painter => painter.EstimateDuration(squareMeters));
+        }
+
+        internal IPainter GetFastest(int squareMeters)
+        {
+            return painters.WithMinimum(painter => painter.EstimateDuration(squareMeters));
         }
     }
 }
