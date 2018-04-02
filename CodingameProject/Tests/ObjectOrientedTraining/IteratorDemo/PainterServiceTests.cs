@@ -136,8 +136,8 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             int squareMeters = 72;
             IList<ProportionalPainter> painters = new List<ProportionalPainter>
                                                   {
-                                                      new ProportionalPainter(TimeSpan.FromMinutes(6), 3, true),
-                                                      new ProportionalPainter(TimeSpan.FromMinutes(15), 8, true)
+                                                      new ProportionalPainter(TimeSpan.FromMinutes(6), 8, true),
+                                                      new ProportionalPainter(TimeSpan.FromMinutes(15), 3, true)
                                                   };
             PainterService sut = new PainterService();
             int result = sut.WorkTogether(squareMeters, painters).EstimateCosts(squareMeters);

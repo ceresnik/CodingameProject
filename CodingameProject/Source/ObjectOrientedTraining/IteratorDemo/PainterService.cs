@@ -21,7 +21,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
                 .WithMinimum(painter => painter.EstimateDuration(squareMeters));
         }
 
-        public IPainter WorkTogether(int squareMeters, IEnumerable<ProportionalPainter> painters)
+        public IPainter WorkTogether(int squareMeters, IEnumerable<IPainter> painters)
         {
             TimeSpan timeForEntireWork =
                 TimeSpan.FromMinutes(
