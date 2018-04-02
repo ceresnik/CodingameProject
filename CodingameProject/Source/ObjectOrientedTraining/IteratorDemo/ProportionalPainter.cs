@@ -16,10 +16,18 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 
         public bool IsAvailable { get; }
 
+        /// <summary>
+        /// Estimates duration for given area in m2.
+        /// </summary>
+        /// <remarks>Accuracy is two minutes, rounding up.</remarks>
+        /// <example>Calculated duration 62 minutes is not changed.</example>
+        /// <example>Calculated duration 63 minutes is adapted to 64 minutes.</example>
+        /// <param name="squareMeters"></param>
+        /// <returns></returns>
         public TimeSpan EstimateDuration(int squareMeters)
         {
             TimeSpan estimatedDuration = TimeSpan.FromMinutes(squareMeters * timeForOneSquareMeter.TotalMinutes);
-            estimatedDuration = TimeSpan.FromMinutes(5 * Math.Ceiling(estimatedDuration.TotalMinutes / 5));
+            estimatedDuration = TimeSpan.FromMinutes(2 * Math.Ceiling(estimatedDuration.TotalMinutes / 2));
             return estimatedDuration;
         }
 

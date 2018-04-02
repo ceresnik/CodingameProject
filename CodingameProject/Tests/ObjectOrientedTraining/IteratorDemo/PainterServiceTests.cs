@@ -76,12 +76,12 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             int squareMeters = 10;
             IList<IPainter> painters = new List<IPainter>
                                        {
-                                           new ProportionalPainter(TimeSpan.FromMinutes(15), 5, true),
+                                           new ProportionalPainter(TimeSpan.FromMinutes(11), 5, true),
                                            new ProportionalPainter(TimeSpan.FromMinutes(10), 3, false),
-                                           new ProportionalPainter(TimeSpan.FromMinutes(15), 9, true),
+                                           new ProportionalPainter(TimeSpan.FromMinutes(19), 9, true),
                                            new ProportionalPainter(TimeSpan.FromMinutes(10), 14, true),
-                                           new ProportionalPainter(TimeSpan.FromMinutes(15), 2, true),
-                                           new ProportionalPainter(TimeSpan.FromMinutes(15), 8, true)
+                                           new ProportionalPainter(TimeSpan.FromMinutes(12), 2, true),
+                                           new ProportionalPainter(TimeSpan.FromMinutes(13), 8, true)
                                        };
             PainterService sut = new PainterService();
             IPainter result = sut.FindFastestPainter(squareMeters, painters);
@@ -99,7 +99,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
                                        };
             PainterService sut = new PainterService();
             TimeSpan result = sut.WorkTogether(squareMeters, painters).EstimateDuration(squareMeters);
-            Assert.That(result, Is.EqualTo(TimeSpan.FromMinutes(315)));
+            Assert.That(result, Is.EqualTo(TimeSpan.FromMinutes(310)));
         }
 
         [Test]
@@ -141,7 +141,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
                                                   };
             PainterService sut = new PainterService();
             int result = sut.WorkTogether(squareMeters, painters).EstimateCosts(squareMeters);
-            Assert.That(result, Is.EqualTo(52));
+            Assert.That(result, Is.EqualTo(51));
         }
     }
 }

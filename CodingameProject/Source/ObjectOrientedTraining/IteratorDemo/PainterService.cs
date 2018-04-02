@@ -29,7 +29,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
                         .Where(p => p.IsAvailable)
                         .Select(p => 1 / p.EstimateDuration(squareMeters).TotalMinutes)
                         .Sum());
-            timeForEntireWork = TimeSpan.FromMinutes(5 * Math.Ceiling(timeForEntireWork.TotalMinutes / 5));
+            timeForEntireWork = TimeSpan.FromMinutes(2 * Math.Ceiling(timeForEntireWork.TotalMinutes / 2));
 
             double totalCost = painters
                 .Where(painter => painter.IsAvailable)
