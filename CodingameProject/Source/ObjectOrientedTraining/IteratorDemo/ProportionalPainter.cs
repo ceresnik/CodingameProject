@@ -27,7 +27,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
         public TimeSpan EstimateDuration(int squareMeters)
         {
             TimeSpan estimatedDuration = TimeSpan.FromMinutes(squareMeters * timeForOneSquareMeter.TotalMinutes);
-            estimatedDuration = TimeSpan.FromMinutes(2 * Math.Ceiling(estimatedDuration.TotalMinutes / 2));
+            estimatedDuration = TimeSpan.FromMinutes(Math.Round(estimatedDuration.TotalMinutes, MidpointRounding.AwayFromZero));
             return estimatedDuration;
         }
 

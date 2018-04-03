@@ -12,9 +12,9 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         [TestCase(5, 48, 240)]
         [TestCase(10, 48, 480)]
         [TestCase(7, 6, 42)]
-        [TestCase(7, 7, 50)]
+        [TestCase(7, 7, 49)]
         [TestCase(7, 8, 56)]
-        [TestCase(7, 9, 64)]
+        [TestCase(7, 9, 63)]
         [Test]
         public void EstimateDuration(int minutesPerOneSquareMeter, int squareMeters, int expected)
         {
