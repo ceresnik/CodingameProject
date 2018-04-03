@@ -25,9 +25,9 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
 
 
         [TestCase(8, 5, 20)]
-        [TestCase(9, 1, 4)]
+        [TestCase(9, 1, 5)]
         [TestCase(10, 54, 270)]
-        [TestCase(11, 35, 192)]
+        [TestCase(11, 35, 193)]
         [TestCase(12, 7, 42)]
         [Test]
         public void EstimateCosts_ThirtyMinutesForOneMeter(int squareMeters, int euroPerHour, int expectedCost)
@@ -37,7 +37,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             Assert.That(result, Is.EqualTo(expectedCost));
         }
 
-        [TestCase(1, 4, 0)]
+        [TestCase(1, 4, 1)]
         [TestCase(6, 7, 7)]
         [TestCase(90, 9, 135)]
         [TestCase(12, 2, 4)]

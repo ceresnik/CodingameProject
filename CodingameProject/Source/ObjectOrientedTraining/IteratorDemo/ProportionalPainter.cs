@@ -34,8 +34,8 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
         public int EstimateCosts(int squareMeters)
         {
             var durationInHours = EstimateDuration(squareMeters).TotalHours;
-            return (int)(euroPerHour * durationInHours);
-         }
+            return (int)Math.Round(euroPerHour * durationInHours, MidpointRounding.AwayFromZero);
+        }
 
         public override bool Equals(object obj)
         {

@@ -64,6 +64,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\LogicalOperations\LogicalOperation.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\IPainter.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\PaintingGroup.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\ProportionalPainter.cs" />
     <Compile Include="Source\ObjectOrientedTraining\StatePattern\Account.cs" />
     <Compile Include="Source\ObjectOrientedTraining\StatePattern\Active.cs" />
@@ -79,6 +80,8 @@
     <Compile Include="Tests\LogicalOperations\UnitTests.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\Painters.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\PainterServiceTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\PaintersTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\PaintingGroupTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\ProportionalPainterTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\StatePattern\AccountIntegrationTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\StatePattern\AccountUnitTests.cs" />

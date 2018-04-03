@@ -6,32 +6,6 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 {
     internal class PainterService
     {
-        public IPainter FindCheapestAvailablePainter(int squareMeters, Painters painters)
-        {
-            return painters
-                .ThoseAvailable
-                .GetCheapest(squareMeters);
-        }
-
-        public IPainter FindCheapestPainter(int squareMeters, Painters painters)
-        {
-            return painters
-                .GetCheapest(squareMeters);
-        }
-
-        public IPainter FindFastestAvailablePainter(int squareMeters, Painters painters)
-        {
-            return painters
-                .ThoseAvailable
-                .GetFastest(squareMeters);
-        }
-
-        public IPainter FindFastestPainter(int squareMeters, Painters painters)
-        {
-            return painters
-                .GetFastest(squareMeters);
-        }
-
         public IPainter WorkTogether(int squareMeters, IEnumerable<IPainter> painters)
         {
             TimeSpan timeForEntireWork =
@@ -41,6 +15,14 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
                         .Select(p => 1 / p.EstimateDuration(squareMeters).TotalMinutes)
                         .Sum());
             timeForEntireWork = TimeSpan.FromMinutes(2 * Math.Ceiling(timeForEntireWork.TotalMinutes / 2));
+
+            //TimeSpan time =  painters.ThoseAvailable.EstimateTimeForEntireWork(squareMeters);
+            //double cost = painters.ThoseAvailable.EstimateTotalCosts(squareMeters);
+            //IPainter result = painters.WorkTogether(squareMeters);
+
+            PaintingGroup paintingGroup = new PaintingGroup(painters);
+            //paintingGroup.EstimateDuration(squareMeters);
+            //paintingGroup.EstimateCosts(squareMeters);
 
             double totalCost = painters
                 .Where(painter => painter.IsAvailable)
