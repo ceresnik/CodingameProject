@@ -132,5 +132,29 @@ namespace KGood.Tests
             string result = AlphabetUtility.DoLogicalOrWithCharSubtraction(input1, input2);
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase("100020300001", 4)]
+        [TestCase("123456789", 0)]
+        [TestCase("23659801452", 1)]
+        [TestCase("10000000000000000", 16)]
+        [Test]
+        public void Test_CountZeros(string input, int expected)
+        {
+            int actualCount = 0;
+            int maxCount = 0;
+            foreach (char c in input)
+            {
+                if (c == '0')
+                {
+                    actualCount++;
+                    maxCount = actualCount;
+                }
+                else
+                {
+                    actualCount = 0;
+                }
+            }
+            Assert.That(maxCount, Is.EqualTo(expected));
+        }
     }
 }

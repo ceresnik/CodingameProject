@@ -13,7 +13,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
             Painters = sequenceOfPainters;
         }
 
-        public bool IsAvailable => true;
+        public bool IsAvailable => Painters.Any(painter => painter.IsAvailable);
 
         public TimeSpan EstimateDuration(int squareMeters)
         {

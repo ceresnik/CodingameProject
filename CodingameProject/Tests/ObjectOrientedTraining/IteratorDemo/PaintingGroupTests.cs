@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Channels;
 using CodingameProject.Source.ObjectOrientedTraining.IteratorDemo;
 using NUnit.Framework;
 
@@ -54,10 +53,10 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         }
 
         [Test]
-        public void WorkTogether_Duration()
+        public void EstimateDuration_Medium()
         {
             int squareMeters = 72;
-            IList<ProportionalPainter> sequenceOfPainters = new List<ProportionalPainter>
+            IList<IPainter> sequenceOfPainters = new List<IPainter>
                                                   {
                                                       new ProportionalPainter(TimeSpan.FromMinutes(6), 3, true),
                                                       new ProportionalPainter(TimeSpan.FromMinutes(15), 8, true)
@@ -68,10 +67,10 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         }
 
         [Test]
-        public void WorkTogether_DurationEasy()
+        public void EstimateDuration_Simple()
         {
             int squareMeters = 10;
-            IList<ProportionalPainter> sequenceOfPainters = new List<ProportionalPainter>
+            IList<IPainter> sequenceOfPainters = new List<IPainter>
                                                   {
                                                       new ProportionalPainter(TimeSpan.FromMinutes(6), 3, true),
                                                       new ProportionalPainter(TimeSpan.FromMinutes(12), 8, true)
@@ -82,10 +81,10 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         }
 
         [Test]
-        public void WorkTogether_Costs()
+        public void EstimateCosts_Medium()
         {
             int squareMeters = 72;
-            IList<ProportionalPainter> sequenceOfPainters = new List<ProportionalPainter>
+            IList<IPainter> sequenceOfPainters = new List<IPainter>
                                                   {
                                                       new ProportionalPainter(TimeSpan.FromMinutes(6), 8, true),
                                                       new ProportionalPainter(TimeSpan.FromMinutes(15), 3, true)
@@ -96,10 +95,10 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         }
 
         [Test]
-        public void WorkTogether_CostsEasy()
+        public void EstimateCosts_Easy()
         {
             int squareMeters = 10;
-            IList<ProportionalPainter> sequenceOfPainters = new List<ProportionalPainter>
+            IList<IPainter> sequenceOfPainters = new List<IPainter>
                                                   {
                                                       new ProportionalPainter(TimeSpan.FromMinutes(6), 30, true),
                                                       new ProportionalPainter(TimeSpan.FromMinutes(12), 15, true)
@@ -107,6 +106,32 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             var sut = new PaintingGroup(sequenceOfPainters);
             int result = sut.EstimateCosts(squareMeters);
             Assert.That(result, Is.EqualTo(30));
+        }
+
+        [Test]
+        public void NotAvailable_WhenNoOnePainterIsAvailable()
+        {
+            IList<IPainter> sequenceOfPainters = new List<IPainter>
+                                                            {
+                                                                new ProportionalPainter(TimeSpan.FromMinutes(6), 30, false),
+                                                                new ProportionalPainter(TimeSpan.FromMinutes(12), 15, false)
+                                                            };
+            var sut = new PaintingGroup(sequenceOfPainters);
+            bool result = sut.IsAvailable;
+            Assert.That(result, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Available_WhenOnePainterIsAvailable()
+        {
+            IList<IPainter> sequenceOfPainters = new List<IPainter>
+                                                            {
+                                                                new ProportionalPainter(TimeSpan.FromMinutes(6), 30, false),
+                                                                new ProportionalPainter(TimeSpan.FromMinutes(12), 15, true)
+                                                            };
+            var sut = new PaintingGroup(sequenceOfPainters);
+            bool result = sut.IsAvailable;
+            Assert.That(result, Is.EqualTo(true));
         }
     }
 }
