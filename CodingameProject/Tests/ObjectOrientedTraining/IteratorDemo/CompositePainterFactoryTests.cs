@@ -9,7 +9,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
     public class CompositePainterFactoryTests
     {
         [Test]
-        public void CreateCheapestSelector()
+        public void CreateCheapestSelector_EstimateDuration()
         {
             IEnumerable<IPainter> sequenceOfPainters = new List<IPainter>
                                                        {
@@ -20,7 +20,23 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
                                                            new ProportionalPainter(TimeSpan.FromMinutes(6), 1, false)
                                                        };
             var cheapestPainter = CompositePainterFactory.CreateCheapestSelector(sequenceOfPainters, 10);
-            Assert.That(cheapestPainter, Is.EqualTo(new ProportionalPainter(TimeSpan.FromMinutes(10), 2, true)));
+            var result = cheapestPainter.EstimateDuration(10);
+            Assert.That(result, Is.EqualTo(TimeSpan.FromMinutes(100)));
+        }
+        [Test]
+        public void CreateCheapestSelector_EstimateCosts()
+        {
+            IEnumerable<IPainter> sequenceOfPainters = new List<IPainter>
+                                                       {
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(30), 3, true),
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(10), 2, true),
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(15), 7, false),
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(60), 5, true),
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(6), 1, false)
+                                                       };
+            var cheapestPainter = CompositePainterFactory.CreateCheapestSelector(sequenceOfPainters, 10);
+            var result = cheapestPainter.EstimateCosts(10);
+            Assert.That(result, Is.EqualTo(3));
         }
 
         [TestCase(9, 30)]

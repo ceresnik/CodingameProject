@@ -7,13 +7,13 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
     static class CompositePainterFactory
     {
         public static IPainter CreateGroup(IEnumerable<ProportionalPainter> sequenceOfPainters) 
-            => new CompositePainter<ProportionalPainter>(sequenceOfPainters, EstimateDuration, EstimateCosts);
+            => new CompositePainter<ProportionalPainter>(sequenceOfPainters, EstimateDurationForGroupOfPainters, EstimateCostsForGroupOfPainters);
 
-        private static TimeSpan EstimateDuration(IEnumerable<ProportionalPainter> painters, int squareMeters)
+        private static TimeSpan EstimateDurationForGroupOfPainters(IEnumerable<ProportionalPainter> sequenceOfPainters, int squareMeters)
         {
             TimeSpan timeForEntireWork =
                 TimeSpan.FromMinutes(
-                    1 / painters
+                    1 / sequenceOfPainters
                         .Where(p => p.IsAvailable)
                         .Select(p => 1 / p.EstimateDuration(squareMeters).TotalMinutes)
                         .Sum());
@@ -21,10 +21,10 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
             return timeForEntireWork;
         }
 
-        private static int EstimateCosts(IEnumerable<ProportionalPainter> painters, int squareMeters)
+        private static int EstimateCostsForGroupOfPainters(IEnumerable<ProportionalPainter> sequenceOfPainters, int squareMeters)
         {
-            TimeSpan timeForEntireWork = EstimateDuration(painters, squareMeters);
-            double totalCost = painters
+            TimeSpan timeForEntireWork = EstimateDurationForGroupOfPainters(sequenceOfPainters, squareMeters);
+            double totalCost = sequenceOfPainters
                 .Where(painter => painter.IsAvailable)
                 .Select(painter =>
                             painter.EstimateCosts(squareMeters) /
@@ -36,6 +36,16 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
         }
 
         public static IPainter CreateCheapestSelector(IEnumerable<IPainter> sequenceOfPainters, int squareMeters)
-            => new Painters(sequenceOfPainters).ThoseAvailable.GetCheapest(squareMeters);
+            => new CompositePainter<IPainter>(sequenceOfPainters, EstimateDurationForOnePainter, EstimateCostsForOnePainter);
+
+        private static TimeSpan EstimateDurationForOnePainter(IEnumerable<IPainter> painters, int squareMeters)
+        {
+            return new Painters(painters).ThoseAvailable.GetCheapest(squareMeters).EstimateDuration(squareMeters);
+        }
+
+        private static int EstimateCostsForOnePainter(IEnumerable<IPainter> painters, int squareMeters)
+        {
+            return new Painters(painters).ThoseAvailable.GetCheapest(squareMeters).EstimateCosts(squareMeters);
+        }
     }
 }
