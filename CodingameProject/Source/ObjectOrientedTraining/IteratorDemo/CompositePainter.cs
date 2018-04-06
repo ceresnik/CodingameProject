@@ -11,11 +11,15 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 
         private readonly Func<IEnumerable<TPainter>, int, TimeSpan> EstimateDurationFunc;
 
+        private readonly Func<IEnumerable<TPainter>, int, int> EstimateCostsFunc;
+
         public CompositePainter(IEnumerable<TPainter> sequenceOfPainters, 
-            Func<IEnumerable<TPainter>, int, TimeSpan> estimateDurationFunc)
+            Func<IEnumerable<TPainter>, int, TimeSpan> estimateDurationFunc, 
+            Func<IEnumerable<TPainter>, int, int> estimateCostsFunc)
         {
             Painters = sequenceOfPainters;
             EstimateDurationFunc = estimateDurationFunc;
+            EstimateCostsFunc = estimateCostsFunc;
         }
 
         public bool IsAvailable => Painters.Any(painter => painter.IsAvailable);
@@ -27,15 +31,7 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 
         public int EstimateCosts(int squareMeters)
         {
-            TimeSpan timeForEntireWork = EstimateDuration(squareMeters);
-            double totalCost = Painters
-                .Where(painter => painter.IsAvailable)
-                .Select(painter =>
-                            painter.EstimateCosts(squareMeters) /
-                            painter.EstimateDuration(squareMeters).TotalHours *
-                            timeForEntireWork.TotalHours)
-                .Sum();
-            return (int)totalCost;
+            return EstimateCostsFunc(Painters, squareMeters);
         }
     }
 }
