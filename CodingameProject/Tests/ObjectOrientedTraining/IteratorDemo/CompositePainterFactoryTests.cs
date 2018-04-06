@@ -23,6 +23,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             var result = cheapestPainter.EstimateDuration(10);
             Assert.That(result, Is.EqualTo(TimeSpan.FromMinutes(100)));
         }
+
         [Test]
         public void CreateCheapestSelector_EstimateCosts()
         {
@@ -37,6 +38,38 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             var cheapestPainter = CompositePainterFactory.CreateCheapestSelector(sequenceOfPainters, 10);
             var result = cheapestPainter.EstimateCosts(10);
             Assert.That(result, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void CreateFastestSelector_EstimateDuration()
+        {
+            IEnumerable<IPainter> sequenceOfPainters = new List<IPainter>
+                                                       {
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(30), 3, true),
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(10), 8, true),
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(15), 7, false),
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(60), 5, true),
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(6), 1, false)
+                                                       };
+            var fastestPainter = CompositePainterFactory.CreateFastestSelector(sequenceOfPainters, 10);
+            var result = fastestPainter.EstimateDuration(10);
+            Assert.That(result, Is.EqualTo(TimeSpan.FromMinutes(100)));
+        }
+
+        [Test]
+        public void CreateFastestSelector_EstimateCosts()
+        {
+            IEnumerable<IPainter> sequenceOfPainters = new List<IPainter>
+                                                       {
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(30), 3, true),
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(10), 8, true),
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(15), 7, false),
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(60), 5, true),
+                                                           new ProportionalPainter(TimeSpan.FromMinutes(6), 1, false)
+                                                       };
+            var fastestPainter = CompositePainterFactory.CreateFastestSelector(sequenceOfPainters, 10);
+            var result = fastestPainter.EstimateCosts(10);
+            Assert.That(result, Is.EqualTo(13));
         }
 
         [TestCase(9, 30)]

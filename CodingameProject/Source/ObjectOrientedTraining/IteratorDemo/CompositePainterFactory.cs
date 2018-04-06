@@ -38,6 +38,11 @@ namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
         public static IPainter CreateCheapestSelector(IEnumerable<IPainter> sequenceOfPainters, int squareMeters)
             => new CompositePainter<IPainter>(sequenceOfPainters, EstimateDurationForOnePainter, EstimateCostsForOnePainter);
 
+        public static IPainter CreateFastestSelector(IEnumerable<IPainter> sequenceOfPainters, int squareMeters)
+        {
+            return new CompositePainter<IPainter>(sequenceOfPainters, EstimateDurationForOnePainter, EstimateCostsForOnePainter);
+        }
+
         private static TimeSpan EstimateDurationForOnePainter(IEnumerable<IPainter> painters, int squareMeters)
         {
             return new Painters(painters).ThoseAvailable.GetCheapest(squareMeters).EstimateDuration(squareMeters);
