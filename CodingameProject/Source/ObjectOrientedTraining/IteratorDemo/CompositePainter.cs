@@ -4,27 +4,25 @@ using System.Linq;
 
 namespace CodingameProject.Source.ObjectOrientedTraining.IteratorDemo
 {
-    internal class PaintingGroup:IPainter
+    internal class CompositePainter<TPainter>:IPainter
+        where TPainter:IPainter
     {
-        public IEnumerable<IPainter> Painters { get; }
+        public IEnumerable<TPainter> Painters { get; }
 
-        public PaintingGroup(IEnumerable<IPainter> sequenceOfPainters)
+        private readonly Func<IEnumerable<TPainter>, int, TimeSpan> EstimateDurationFunc;
+
+        public CompositePainter(IEnumerable<TPainter> sequenceOfPainters, 
+            Func<IEnumerable<TPainter>, int, TimeSpan> estimateDurationFunc)
         {
             Painters = sequenceOfPainters;
+            EstimateDurationFunc = estimateDurationFunc;
         }
 
         public bool IsAvailable => Painters.Any(painter => painter.IsAvailable);
 
         public TimeSpan EstimateDuration(int squareMeters)
         {
-            TimeSpan timeForEntireWork =
-                TimeSpan.FromMinutes(
-                    1 / Painters
-                        .Where(p => p.IsAvailable)
-                        .Select(p => 1 / p.EstimateDuration(squareMeters).TotalMinutes)
-                        .Sum());
-            timeForEntireWork = TimeSpan.FromMinutes(Math.Round(timeForEntireWork.TotalMinutes, MidpointRounding.AwayFromZero));
-            return timeForEntireWork;
+            return EstimateDurationFunc(Painters, squareMeters);
         }
 
         public int EstimateCosts(int squareMeters)

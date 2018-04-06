@@ -58,12 +58,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CompositePainterFactory.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\EnumerableExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\LogicalOperations\LogicalOperation.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\IPainter.cs" />
-    <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\PaintingGroup.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CompositePainter.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\ProportionalPainter.cs" />
     <Compile Include="Source\ObjectOrientedTraining\StatePattern\Account.cs" />
     <Compile Include="Source\ObjectOrientedTraining\StatePattern\Active.cs" />
@@ -78,8 +79,9 @@
     <Compile Include="Source\ObjectOrientedTraining\SumCounter\OddNumbersSelector.cs" />
     <Compile Include="Tests\LogicalOperations\UnitTests.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\Painters.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\CompositePainterFactoryTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\PaintersTests.cs" />
-    <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\PaintingGroupTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\CompositePainterTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\ProportionalPainterTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\StatePattern\AccountIntegrationTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\StatePattern\AccountUnitTests.cs" />
