@@ -119,7 +119,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         }
 
         [Test]
-        public void CreateGroup_EstimateDuration_Simple()
+        public void CreateGroup_EstimateDuration_Easy()
         {
             int squareMeters = 10;
             IList<ProportionalPainter> sequenceOfPainters = new List<ProportionalPainter>
@@ -161,7 +161,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         }
 
         [Test]
-        public void CreateGroup_NotAvailable_WhenNoOnePainterIsAvailable()
+        public void CreateGroup_NoOnePainterIsAvailable_NotAvailable()
         {
             IList<ProportionalPainter> sequenceOfPainters = new List<ProportionalPainter>
                                                             {
@@ -174,7 +174,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
         }
 
         [Test]
-        public void CreateGroup_Available_WhenOnePainterIsAvailable()
+        public void CreateGroup_OnePainterIsAvailable_Available()
         {
             IList<ProportionalPainter> sequenceOfPainters = new List<ProportionalPainter>
                                                             {

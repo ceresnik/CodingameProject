@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using KGood.Source;
 using NUnit.Framework;
 
@@ -266,6 +267,29 @@ namespace KGood.Tests
                 .ToList()
                 .ForEach(Console.WriteLine);
             Assert.That(string.Join(", ", result), Is.EqualTo(expected));
+        }
+
+        /// <summary>
+        /// Number is happy if sum of its digits squares is 1.
+        /// </summary>
+        /// <example>86=8*8 + 6*6=100=1*1+0*0+0*0=1 => HAPPY</example>
+        /// <param name="input"></param>
+        /// <param name="expected"></param>
+        [TestCase(86, "HAPPY")]
+        [TestCase(404, "HAPPY")]
+        [TestCase(12, "UNHAPPY")]
+        [TestCase(9999999999, "UNHAPPY")]
+        [Test]
+        public void Test_HappyNumber(long input, string expected)
+        {
+            int query;
+            do
+            {
+                query = input.ToString().Select(x => int.Parse(x.ToString())).Sum(x => x*x);
+                input = query;
+            } while (query > 9);
+            string result = query == 1 ? "HAPPY":"UNHAPPY";
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }
