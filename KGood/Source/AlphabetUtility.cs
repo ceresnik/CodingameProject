@@ -334,5 +334,10 @@ namespace KGood.Source
             }
             return result;
         }
+
+        public static IList<int> GetIndexOfLettersInAlphabet(string alphabet, string word)
+        {
+            return word.Select(c => alphabet.IndexOf(Char.ToLower(c))).ToList();
+        }
     }
 }

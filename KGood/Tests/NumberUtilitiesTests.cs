@@ -291,5 +291,18 @@ namespace KGood.Tests
             string result = query == 1 ? "HAPPY":"UNHAPPY";
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase(2004)]
+        [TestCase(2001)]
+        [TestCase(1996)]
+        [TestCase(100)]
+        [TestCase(1111)]
+        [TestCase(2100)]
+        [Test]
+        public void Test_IsLeapYear(int year)
+        {
+            var result = NumberUtilities.IsLeapYear(year);
+            Assert.That(result, Is.EqualTo(DateTime.IsLeapYear(year)));
+        }
     }
 }

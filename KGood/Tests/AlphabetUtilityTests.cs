@@ -156,5 +156,18 @@ namespace KGood.Tests
             }
             Assert.That(maxCount, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void Test_GetIndexOfLetterInAlphabet()
+        {
+            string alphabet = "abcdefghijklmnopqrstuvwxyz";
+            string input = "DAbE";
+            var indexes = AlphabetUtility.GetIndexOfLettersInAlphabet(alphabet, input);
+            CollectionAssert.Contains(indexes, 3);
+            CollectionAssert.Contains(indexes, 0);
+            CollectionAssert.Contains(indexes, 1);
+            CollectionAssert.Contains(indexes, 4);
+            Assert.That(indexes.Count, Is.EqualTo(4));
+        }
     }
 }
