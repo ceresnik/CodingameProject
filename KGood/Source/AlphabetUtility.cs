@@ -337,7 +337,17 @@ namespace KGood.Source
 
         public static IList<int> GetIndexOfLettersInAlphabet(string alphabet, string word)
         {
-            return word.Select(c => alphabet.IndexOf(Char.ToLower(c))).ToList();
+            return word.Select(c => alphabet.IndexOf(char.ToLower(c))).ToList();
+        }
+
+        /// <summary>
+        /// Gets count of distinct letters in string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static int GetCountOfLetters(string input)
+        {
+            return input.Select(char.ToLower).Distinct().Count();
         }
     }
 }

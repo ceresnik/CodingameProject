@@ -1,4 +1,7 @@
-﻿using KGood.Source;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using KGood.Source;
 using NUnit.Framework;
 
 namespace KGood.Tests
@@ -168,6 +171,17 @@ namespace KGood.Tests
             CollectionAssert.Contains(indexes, 1);
             CollectionAssert.Contains(indexes, 4);
             Assert.That(indexes.Count, Is.EqualTo(4));
+        }
+
+        [TestCase("abc", 3)]
+        [TestCase("abbc", 3)]
+        [TestCase("aBcdEfGH", 8)]
+        [TestCase("abBcdEfGH", 8)]
+        [Test]
+        public void Test_GetCountOfLetters(string input, int expected)
+        {
+            var result = AlphabetUtility.GetCountOfLetters(input);
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }
