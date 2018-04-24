@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using KGood.Source;
 using NUnit.Framework;
@@ -181,6 +180,15 @@ namespace KGood.Tests
         public void Test_GetCountOfLetters(string input, int expected)
         {
             var result = AlphabetUtility.GetCountOfLetters(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase("HELLO WORLD", "URYYB JBEYQ")]
+        [TestCase("URYYB JBEYQ", "HELLO WORLD")]
+        [Test]
+        public void Test_ROT13Cipher(string expected, string input)
+        {
+            var result = AlphabetUtility.Encode_Rot13Cipher(input);
             Assert.That(result, Is.EqualTo(expected));
         }
     }

@@ -304,5 +304,15 @@ namespace KGood.Tests
             var result = NumberUtilities.IsLeapYear(year);
             Assert.That(result, Is.EqualTo(DateTime.IsLeapYear(year)));
         }
+
+        [TestCase("127.0.0.1", 11)]
+        [TestCase("227.0.0.1", 24)]
+        [Test]
+        public void Test_GetPortNumberFromIpAddress(string input, int expected)
+        {
+            string p = input;
+            int r = p.Where(char.IsNumber).Sum(c => c - '0') * (p[0] - '0');
+            Assert.That(r, Is.EqualTo(expected));
+        }
     }
 }

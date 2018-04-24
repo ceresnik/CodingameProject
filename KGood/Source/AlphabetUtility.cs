@@ -337,7 +337,7 @@ namespace KGood.Source
 
         public static IList<int> GetIndexOfLettersInAlphabet(string alphabet, string word)
         {
-            return word.Select(c => alphabet.IndexOf(char.ToLower(c))).ToList();
+            return word.Select(c => alphabet.IndexOf(Char.ToLower(c))).ToList();
         }
 
         /// <summary>
@@ -347,7 +347,12 @@ namespace KGood.Source
         /// <returns></returns>
         public static int GetCountOfLetters(string input)
         {
-            return input.Select(char.ToLower).Distinct().Count();
+            return input.Select(Char.ToLower).Distinct().Count();
+        }
+
+        public static IEnumerable<char> Encode_Rot13Cipher(string input)
+        {
+            return input.Select(x => (char)(x >= 65 && x <= 90 ? (x + 13 > 90 ? x - 13 : x + 13) : x));
         }
     }
 }
