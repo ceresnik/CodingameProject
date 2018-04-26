@@ -191,5 +191,81 @@ namespace KGood.Tests
             var result = AlphabetUtility.Encode_Rot13Cipher(input);
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase(0, "0")]
+        [TestCase(45, "P/4")]
+        [TestCase(90, "P/2")]
+        [TestCase(180, "P")]
+        [TestCase(225, "5*P/4")]
+        [TestCase(270, "3*P/2")]
+        [TestCase(360, "2*P")]
+        [TestCase(-90, "3*P/2")]
+        [TestCase(-135, "5*P/4")]
+        [Test]
+        public void Test_ConvertAngleInDegreesToRadians(int angleInDegrees, string expected)
+        {
+            int num1 = 0;
+            int num2 = 0;
+            if (angleInDegrees < 0)
+            {
+                angleInDegrees += 360;
+            }
+            GetBasicValues(angleInDegrees, ref num1, ref num2);
+            FindBiggestCommonDivisor(ref num1, ref num2);
+            string result = FormatValues(num1, num2);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        private static void FindBiggestCommonDivisor(ref int num1, ref int num2)
+        {
+            int smaller = num1 < num2 ? num1 : num2;
+            for (int i = smaller; i > 1; i--)
+            {
+                if (num1 % i == 0 && num2 % i == 0)
+                {
+                    num1 /= i;
+                    num2 /= i;
+                }
+            }
+        }
+
+        private static string FormatValues(int num1, int num2)
+        {
+            string result = "";
+            if (num1 > 1)
+            {
+                result = num1 + "*";
+            }
+            if (num1 >= 1 || num2 >= 1)
+            {
+                result += "P";
+            }
+            else
+            {
+                result = "0";
+            }
+            if (num2 > 1)
+            {
+                result = result + "/" + num2;
+            }
+            return result;
+        }
+
+        private static void GetBasicValues(int angleInDegrees, ref int num1, ref int num2)
+        {
+            if (angleInDegrees > 0 && angleInDegrees % 45 == 0)
+            {
+                num1 = angleInDegrees / 45;
+                num2 = 4;
+            }
+            else
+            {
+                if (angleInDegrees > 0 && angleInDegrees % 90 == 0)
+                {
+                    num1 = angleInDegrees / 90;
+                    num2 = 2;
+                }
+            }
+        }
     }
 }
