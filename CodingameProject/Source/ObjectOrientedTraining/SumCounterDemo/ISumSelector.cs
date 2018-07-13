@@ -1,4 +1,4 @@
-﻿namespace CodingameProject.Source.SumCounter
+﻿namespace CodingameProject.Source.ObjectOrientedTraining.SumCounterDemo
 {
     public interface ISumSelector
     {

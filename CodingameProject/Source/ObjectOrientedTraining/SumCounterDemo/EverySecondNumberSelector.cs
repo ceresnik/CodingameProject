@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CodingameProject.Source.SumCounter
+namespace CodingameProject.Source.ObjectOrientedTraining.SumCounterDemo
 {
     public class EverySecondNumberSelector : ISumSelector
     {

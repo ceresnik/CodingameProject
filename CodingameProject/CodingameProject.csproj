@@ -72,11 +72,11 @@
     <Compile Include="Source\ObjectOrientedTraining\StatePattern\Frozen.cs" />
     <Compile Include="Source\ObjectOrientedTraining\StatePattern\IAccountState.cs" />
     <Compile Include="Source\ObjectOrientedTraining\StatePattern\NotVerified.cs" />
-    <Compile Include="Source\ObjectOrientedTraining\SumCounter\EvenNumbersSelector.cs" />
-    <Compile Include="Source\ObjectOrientedTraining\SumCounter\EverySecondNumberSelector.cs" />
-    <Compile Include="Source\ObjectOrientedTraining\SumCounter\ISumSelector.cs" />
-    <Compile Include="Source\ObjectOrientedTraining\SumCounter\Numbers.cs" />
-    <Compile Include="Source\ObjectOrientedTraining\SumCounter\OddNumbersSelector.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\EvenNumbersSelector.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\EverySecondNumberSelector.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\ISumSelector.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\SumCounter.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\OddNumbersSelector.cs" />
     <Compile Include="Tests\LogicalOperations\UnitTests.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\Painters.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CombiningPainter.cs" />
@@ -95,7 +95,10 @@
     <Compile Include="Tests\ObjectOrientedTraining\StatePattern\ClosedTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\StatePattern\FrozenTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\StatePattern\NotVerifiedTests.cs" />
-    <Compile Include="Tests\ObjectOrientedTraining\SumCounter\SumCounterTests.cs" />
+    <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\EachNumberSelector.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\SumCounterDemo\EvenNumbersSelectorTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\SumCounterDemo\OddNumbersSelectorTests.cs" />
+    <Compile Include="Tests\ObjectOrientedTraining\SumCounterDemo\SumCounterTests.cs" />
     <Compile Include="Tests\SumOfDigitsCounter\NumberRepresentationTests.cs" />
   </ItemGroup>
   <ItemGroup>
