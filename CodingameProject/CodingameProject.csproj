@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\MathematicalCorner\ArithmeticSeriesCounter.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CompositePainterFactory.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\EnumerableExtensions.cs" />
     <Compile Include="Program.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Tests\LogicalOperations\UnitTests.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\Painters.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CombiningPainter.cs" />
+    <Compile Include="Tests\MathematicalCorner\ArithmeticSeriesCounterTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\CombiningPainterTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\CompositePainterFactoryTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\PaintersTests.cs" />
