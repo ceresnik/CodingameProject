@@ -4,9 +4,9 @@ namespace KGood.Source.Sudoku
 {
     public class LengthRule : ISudokuLineRule
     {
-        public void Validate(string line)
+        public void Validate(string input)
         {
-            if (line.Length != 9)
+            if (input.Length != 9)
             {
                 throw new ArgumentException("Line must contain exactly 9 characters.");
             }

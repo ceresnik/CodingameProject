@@ -2,6 +2,6 @@
 {
     interface ISudokuLineRule
     {
-        void Validate(string line);
+        void Validate(string input);
     }
 }

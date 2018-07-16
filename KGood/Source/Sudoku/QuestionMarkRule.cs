@@ -4,9 +4,9 @@ namespace KGood.Source.Sudoku
 {
     public class QuestionMarkRule : ISudokuLineRule
     {
-        public void Validate(string line)
+        public void Validate(string input)
         {
-            if (line.Contains("?") == false)
+            if (input.Contains("?") == false)
             {
                 throw new ArgumentException("Line must contain question mark.");
             }

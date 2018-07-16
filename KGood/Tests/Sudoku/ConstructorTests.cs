@@ -15,22 +15,22 @@ namespace KGood.Tests.Sudoku
         [Test]
         public void Constructor_LineLengthDoesNotEqualNine_ExceptionIsThrown()
         {
-            string line = "1234";
-            Assert.Throws<ArgumentException>(() => new OneLineSudoku(line));
+            string inputLine = "1234";
+            Assert.Throws<ArgumentException>(() => new OneLineSudoku(inputLine));
         }
 
         [Test]
         public void Constructor_LineDoesNotContainQuestionMark_ExceptionIsThrown()
         {
-            string line = "123456789";
-            Assert.Throws<ArgumentException>(() => new OneLineSudoku(line));
+            string inputLine = "123456789";
+            Assert.Throws<ArgumentException>(() => new OneLineSudoku(inputLine));
         }
 
         [Test]
         public void Constructor_LineDoesNotContainEightNumbers_ExceptionIsThrown()
         {
-            string line = "1?34?6789";
-            Assert.Throws<ArgumentException>(() => new OneLineSudoku(line));
+            string inputLine = "1?34?6789";
+            Assert.Throws<ArgumentException>(() => new OneLineSudoku(inputLine));
         }
     }
 }

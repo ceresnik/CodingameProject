@@ -4,20 +4,19 @@ namespace KGood.Source.Sudoku
 {
     public class CountOfNumbersRule : ISudokuLineRule
     {
-        public void Validate(string line)
+        public void Validate(string input)
         {
             int countOfNumbers = 0;
-            foreach (char c in line)
+            foreach (char c in input)
             {
-                bool result = Int32.TryParse(c.ToString(), out int number);
-                if (result)
+                if (Int32.TryParse(c.ToString(), out int _))
                 {
                     countOfNumbers++;
                 }
             }
             if (countOfNumbers != 8)
             {
-                throw new ArgumentException("Line contain 8 numbers.");
+                throw new ArgumentException("Line does not contain 8 numbers.");
             }
         }
     }

@@ -5,35 +5,42 @@ namespace KGood.Source.Sudoku
 {
     public class OneLineSudoku
     {
-        private readonly IList<int> givenNumbers;
+        private IList<int> givenNumbers;
+        private readonly string inputLine;
+        private readonly IList<ISudokuLineRule> rules;
 
-        public OneLineSudoku(string line)
+        public OneLineSudoku(string inputLine)
         {
-            IList<ISudokuLineRule> sudokuLineRules = new List<ISudokuLineRule>
-                                                     {
-                                                         new NullOrEmptyRule(),
-                                                         new LengthRule(),
-                                                         new QuestionMarkRule(),
-                                                         new CountOfNumbersRule()
-                                                     };
-            foreach (var sudokuLineRule in sudokuLineRules)
-            {
-                sudokuLineRule.Validate(line);
-            }
-            givenNumbers = Parse(line);
+            rules = new List<ISudokuLineRule>
+                    {
+                        new NullOrEmptyRule(),
+                        new LengthRule(),
+                        new QuestionMarkRule(),
+                        new CountOfNumbersRule()
+                    };
+            this.inputLine = inputLine;
+            ValidateInputLine();
+            Parse();
         }
 
-        private static List<int> Parse(string line)
+        private void ValidateInputLine()
         {
-            var numbers = new List<int>();
-            foreach (char c in line)
+            foreach (var sudokuLineRule in rules)
+            {
+                sudokuLineRule.Validate(inputLine);
+            }
+        }
+
+        private void Parse()
+        {
+            givenNumbers = new List<int>();
+            foreach (char c in inputLine)
             {
                 if (Int32.TryParse(c.ToString(), out int number))
                 {
-                    numbers.Add(number);
+                    givenNumbers.Add(number);
                 }
             }
-            return numbers;
         }
 
         public int GetSolution()
