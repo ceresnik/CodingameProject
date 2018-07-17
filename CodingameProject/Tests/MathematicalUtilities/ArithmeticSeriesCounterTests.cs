@@ -1,7 +1,7 @@
-﻿using CodingameProject.Source.MathematicalCorner;
+﻿using CodingameProject.Source.MathematicalUtilities;
 using NUnit.Framework;
 
-namespace CodingameProject.Tests.MathematicalCorner
+namespace CodingameProject.Tests.MathematicalUtilities
 {
     [TestFixture]
     public class ArithmeticSeriesCounterTests

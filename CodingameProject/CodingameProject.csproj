@@ -58,7 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\MathematicalCorner\ArithmeticSeriesCounter.cs" />
+    <Compile Include="Source\AlphabetUtilities\SameLettersRepeater.cs" />
+    <Compile Include="Source\AlphabetUtilities\StringConverter.cs" />
+    <Compile Include="Source\MathematicalUtilities\ArithmeticSeriesCounter.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CompositePainterFactory.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\EnumerableExtensions.cs" />
     <Compile Include="Program.cs" />
@@ -78,10 +80,11 @@
     <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\ISumSelector.cs" />
     <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\SumCounter.cs" />
     <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\OddNumbersSelector.cs" />
+    <Compile Include="Tests\AlphabetUtilities\SameLettersRepeaterTests.cs" />
     <Compile Include="Tests\LogicalOperations\UnitTests.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\Painters.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CombiningPainter.cs" />
-    <Compile Include="Tests\MathematicalCorner\ArithmeticSeriesCounterTests.cs" />
+    <Compile Include="Tests\MathematicalUtilities\ArithmeticSeriesCounterTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\CombiningPainterTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\CompositePainterFactoryTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\PaintersTests.cs" />

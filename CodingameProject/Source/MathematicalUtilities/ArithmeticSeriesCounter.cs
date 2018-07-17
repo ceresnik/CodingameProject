@@ -1,4 +1,4 @@
-﻿namespace CodingameProject.Source.MathematicalCorner
+﻿namespace CodingameProject.Source.MathematicalUtilities
 {
     /// <summary>
     /// Arithmetic series is sum of all members of Arithmetic progression.

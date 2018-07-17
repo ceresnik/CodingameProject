@@ -79,8 +79,6 @@
     <Compile Include="Source\AverageOfTwoIntegers.cs" />
     <Compile Include="Tests\AsciiArtTests.cs" />
     <Compile Include="Tests\AverageOfTwoIntegersTests.cs" />
-    <Compile Include="Source\Bonobo.cs" />
-    <Compile Include="Tests\BonoboTests.cs" />
     <Compile Include="Source\AsciiArt.cs" />
     <Compile Include="Source\ChocolateBarSplitter.cs" />
     <Compile Include="Tests\ChocolateBarSplitterTests.cs" />
