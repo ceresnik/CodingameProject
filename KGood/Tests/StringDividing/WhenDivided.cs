@@ -119,14 +119,14 @@ namespace KGood.Tests.StringDividing
         public void ContentOfItems_1()
         {
             StringDivider sut = new StringDivider("a", 1);
-            Assert.That(sut.Divide()[0], Is.EqualTo("a"));
+            Assert.That(sut.Divide()[0], Is.EqualTo(new MaybeString("a")));
         }
 
         [Test]
         public void ContentOfItems_2()
         {
             StringDivider sut = new StringDivider("aa", 1);
-            Assert.That(sut.Divide()[0], Is.EqualTo("aa"));
+            Assert.That(sut.Divide()[0], Is.EqualTo(new MaybeString("aa")));
         }
 
         [Test]
@@ -134,20 +134,20 @@ namespace KGood.Tests.StringDividing
         {
             StringDivider sut = new StringDivider("aab", 1);
             var result = sut.Divide();
-            Assert.That(result[0], Is.EqualTo("aa"));
-            Assert.That(result[1], Is.EqualTo("b"));
+            Assert.That(result[0], Is.EqualTo(new MaybeString("aa")));
+            Assert.That(result[1], Is.EqualTo(new MaybeString("b")));
         }
 
         [Test]
         public void ContentOfItems_4()
         {
-            Source.StringDividing.StringDivider sut = new StringDivider("aabbccdef", 2);
+            var sut = new StringDivider("aabbccdef", 2);
             var result = sut.Divide();
-            Assert.That(result[0], Is.EqualTo("aabb"));
-            Assert.That(result[1], Is.EqualTo("bbcc"));
-            Assert.That(result[2], Is.EqualTo("ccd"));
-            Assert.That(result[3], Is.EqualTo("de"));
-            Assert.That(result[4], Is.EqualTo("ef"));
+            Assert.That(result[0], Is.EqualTo(new MaybeString("aabb")));
+            Assert.That(result[1], Is.EqualTo(new MaybeString("bbcc")));
+            Assert.That(result[2], Is.EqualTo(new MaybeString("ccd")));
+            Assert.That(result[3], Is.EqualTo(new MaybeString("de")));
+            Assert.That(result[4], Is.EqualTo(new MaybeString("ef")));
         }
 
         [Test]
@@ -155,8 +155,8 @@ namespace KGood.Tests.StringDividing
         {
             StringDivider sut = new StringDivider("aabbccdef", 5);
             var result = sut.Divide();
-            Assert.That(result[0], Is.EqualTo("aabbccde"));
-            Assert.That(result[1], Is.EqualTo("bbccdef"));
+            Assert.That(result[0], Is.EqualTo(new MaybeString("aabbccde")));
+            Assert.That(result[1], Is.EqualTo(new MaybeString("bbccdef")));
         }
     }
 }

@@ -69,6 +69,8 @@
     <Compile Include="Source\HofstadterConwaySequence\HofstadterConwaySequenceGenerator.cs" />
     <Compile Include="Source\LongestSubstringFinder\LongestSubstringFinder.cs" />
     <Compile Include="Source\LongestSubstringFinder\WordRepresentation.cs" />
+    <Compile Include="Source\StringDividing\MaybeString.cs" />
+    <Compile Include="Source\StringDividing\WordRepresentation.cs" />
     <Compile Include="Source\Sudoku\CountOfNumbersRule.cs" />
     <Compile Include="Source\Sudoku\ISudokuLineRule.cs" />
     <Compile Include="Source\Sudoku\LengthRule.cs" />

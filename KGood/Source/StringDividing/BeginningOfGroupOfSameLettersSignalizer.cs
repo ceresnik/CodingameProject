@@ -1,23 +1,20 @@
-/* -------------------------------------------------------------------------------------------------
-   Restricted - Copyright (C) Siemens Healthcare GmbH/Siemens Medical Solutions USA, Inc., 2017. All rights reserved
-   ------------------------------------------------------------------------------------------------- */
-
 using System;
 
 namespace KGood.Source.StringDividing
 {
     public class BeginningOfGroupOfSameLettersSignalizer
     {
-        public BeginningOfGroupOfSameLettersSignalizer(string word)
+        public BeginningOfGroupOfSameLettersSignalizer(string inputWord)
+        :this(new MaybeString(inputWord))
         {
-            if (string.IsNullOrEmpty(word))
-            {
-                throw new ArgumentNullException("word");
-            }
-            Word = word;
         }
 
-        public string Word { get; private set; }
+        public BeginningOfGroupOfSameLettersSignalizer(MaybeString inputWord)
+        {
+            Word = inputWord;
+        }
+
+        private MaybeString Word { get; }
 
         public bool Signalize(int index)
         {
@@ -29,7 +26,7 @@ namespace KGood.Source.StringDividing
             {
                 return true;
             }
-            if (Word[index] == Word[index - 1])
+            if (Word.LetterAtIndex(index) == Word.LetterAtIndex(index - 1))
             {
                 return false;
             }

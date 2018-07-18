@@ -1,8 +1,4 @@
-﻿/* -------------------------------------------------------------------------------------------------
-   Restricted - Copyright (C) Siemens Healthcare GmbH/Siemens Medical Solutions USA, Inc., 2017. All rights reserved
-   ------------------------------------------------------------------------------------------------- */
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,63 +6,43 @@ namespace KGood.Source.StringDividing
 {
     public class StringDivider
     {
-        public string Word { get; }
-        public int Cardinality { get; }
+        private WordRepresentation wordRepresentation;
+        private int CountOfDifferentLettersOfResult { get; }
 
-        public StringDivider(string word, int cardinality)
-        {
-            if (string.IsNullOrEmpty(word))
-            {
-                throw new ArgumentException(word);
-            }
-            var countOfUniqueLetters = GetCountOfUniqueLetters(word);
-            if (countOfUniqueLetters < cardinality)
-            {
-                throw new ArgumentException("Cardinality must be less or equal to count of unique letters!");
-            }
-            Word = word;
-            Cardinality = cardinality;
+        public StringDivider(string word, int countOfDifferentLettersOfResult)
+        :this(new MaybeString(word), countOfDifferentLettersOfResult){
         }
 
-        public IList<string> Divide()
+        public StringDivider(MaybeString inputWord, int countOfDifferentLettersOfResult)
         {
-            string wordToProcess = Word;
-            int countOfUniqueLetters = GetCountOfUniqueLetters(wordToProcess);
-            if (countOfUniqueLetters == Cardinality)
+            wordRepresentation = new WordRepresentation(inputWord);
+            if (wordRepresentation.Word.GetCountOfUniqueLetters() < countOfDifferentLettersOfResult)
             {
-                return new List<string>{Word};
+                throw new ArgumentException("Count of different letters must be less or equal to " +
+                                            "count of unique letters in given word!");
             }
-            var result = new List<string>();
-            int countOfGroupsOfSameLetter = GetCountOfLetterGroups(wordToProcess);
-            int countOfCycles = countOfGroupsOfSameLetter - Cardinality + 1;
+            CountOfDifferentLettersOfResult = countOfDifferentLettersOfResult;
+        }
+
+        public IList<MaybeString> Divide()
+        {
+            if (wordRepresentation.Word.GetCountOfUniqueLetters() == CountOfDifferentLettersOfResult)
+            {
+                return new List<MaybeString> { wordRepresentation.Word };
+            }
+            var result = new List<MaybeString>();
+            int countOfGroupsOfSameLetter = wordRepresentation.GetCountOfLetterGroups();
+            int countOfCycles = countOfGroupsOfSameLetter - CountOfDifferentLettersOfResult + 1;
             for (int i = 0; i < countOfCycles; i++)
             {
-                if (wordToProcess.Length >= Cardinality)
+                if (wordRepresentation.Length >= CountOfDifferentLettersOfResult)
                 {
-                    var foundSubstring = GetCardinalitySubstring(wordToProcess);
-                    if (foundSubstring == null)
-                    {
-                        break;
-                    }
+                    var foundSubstring = wordRepresentation.GetCardinalitySubstring(CountOfDifferentLettersOfResult);
                     result.Add(foundSubstring);
-                    wordToProcess = CutOffBeginningLetters(wordToProcess);
+                    wordRepresentation = new WordRepresentation(wordRepresentation.Word.CutOffBeginningLetters());
                 }
             }
             return result;
-        }
-
-        private int GetCountOfLetterGroups(string word)
-        {
-            var beginningOfGroupOfSameLettersSignalizer = new BeginningOfGroupOfSameLettersSignalizer(word);
-            int countOfGroups = 0;
-            for (var i = 0; i < word.Length; i++)
-            {
-                if (beginningOfGroupOfSameLettersSignalizer.Signalize(i))
-                {
-                    countOfGroups++;
-                }
-            }
-            return countOfGroups;
         }
 
         public long GetLengthOfLongestSubstring()
@@ -74,46 +50,9 @@ namespace KGood.Source.StringDividing
             return DivideAndOrder().First().Length;
         }
 
-        public IOrderedEnumerable<string> DivideAndOrder()
+        public IOrderedEnumerable<MaybeString> DivideAndOrder()
         {
             return Divide().OrderByDescending(x => x.Length);
-        }
-
-        private static int GetCountOfUniqueLetters(string word)
-        {
-            var uniqueLetters = new HashSet<char>();
-            foreach (char c in word)
-            {
-                uniqueLetters.Add(c);
-            }
-            return uniqueLetters.Count;
-        }
-
-        private static string CutOffBeginningLetters(string word)
-        {
-            char firstLetter = word[0];
-            do
-            {
-                word = word.Remove(0, 1);                
-            } while (word.Length > 0 && word[0] == firstLetter);
-            return word;
-        }
-
-        private string GetCardinalitySubstring(string word)
-        {
-            var processedLetters = new HashSet<char>();
-            int lengthOfSubstring = word.Length;
-            for (var i = 0; i < word.Length; i++)
-            {
-                processedLetters.Add(word[i]);
-                if (processedLetters.Count > Cardinality)
-                {
-                    lengthOfSubstring = i;
-                    break;
-                }
-            }
-            var result = word.Substring(0, lengthOfSubstring);
-            return GetCountOfUniqueLetters(result) == Cardinality ? result : null;
         }
     }
 }

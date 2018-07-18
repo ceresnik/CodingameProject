@@ -1,8 +1,4 @@
-﻿/* -------------------------------------------------------------------------------------------------
-   Restricted - Copyright (C) Siemens Healthcare GmbH/Siemens Medical Solutions USA, Inc., 2017. All rights reserved
-   ------------------------------------------------------------------------------------------------- */
-   
-using System;
+﻿using System;
 using KGood.Source.StringDividing;
 using NUnit.Framework;
 
@@ -11,23 +7,15 @@ namespace KGood.Tests.StringDividing
     internal class BeginningOfGroupOfSameLettersSignalizerTests
     {
         [Test]
-        public void Constructor_WordIsNull_ExceptionIsThrown()
+        public void Constructor_WordIsNull_NoExceptionIsThrown()
         {
-            Assert.Throws<ArgumentNullException>(() => new BeginningOfGroupOfSameLettersSignalizer(null));
+            new BeginningOfGroupOfSameLettersSignalizer((string)null);
         }
 
         [Test]
-        public void Constructor_WordIsEmpty_ExceptionIsThrown()
+        public void Constructor_WordIsEmpty_NoExceptionIsThrown()
         {
-            Assert.Throws<ArgumentNullException>(() => new BeginningOfGroupOfSameLettersSignalizer(""));
-        }
-
-        [Test]
-        public void Constructor_Word_Equals()
-        {
-            string word = "TestWord";
-            var sut = new BeginningOfGroupOfSameLettersSignalizer(word);
-            Assert.That(sut.Word, Is.EqualTo(word));
+            new BeginningOfGroupOfSameLettersSignalizer("");
         }
 
         [Test]
