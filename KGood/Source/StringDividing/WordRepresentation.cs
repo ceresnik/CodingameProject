@@ -4,6 +4,8 @@ namespace KGood.Source.StringDividing
 {
     public class WordRepresentation
     {
+        private readonly ChainOfSameLettersDistinguisher chainOfSameLettersDistinguisher;
+
         public WordRepresentation(string word)
         :this(new MaybeString(word))
         {
@@ -12,42 +14,57 @@ namespace KGood.Source.StringDividing
         public WordRepresentation(MaybeString inputWord)
         {
             Word = inputWord;
+            chainOfSameLettersDistinguisher = new ChainOfSameLettersDistinguisher(Word);
         }
 
         public MaybeString Word { get; }
 
         public int Length => Word.Length;
 
-        public int GetCountOfLetterGroups()
+        public int CountOfUniqueLetters => Word.CountOfUniqueLetters;
+
+        public int CountOfLetterGroups
         {
-            var beginningOfGroupOfSameLettersSignalizer = new BeginningOfGroupOfSameLettersSignalizer(Word);
-            int countOfGroups = 0;
-            for (var i = 0; i < Word.Length; i++)
+            get
             {
-                if (beginningOfGroupOfSameLettersSignalizer.Signalize(i))
+                int countOfGroups = 0;
+                for (var i = 0; i < Word.Length; i++)
                 {
-                    countOfGroups++;
+                    if (chainOfSameLettersDistinguisher.LetterChanged(i))
+                    {
+                        countOfGroups++;
+                    }
                 }
+                return countOfGroups;
             }
-            return countOfGroups;
         }
 
-        public MaybeString GetCardinalitySubstring(int countOfDifferentLettersOfResult)
+        public MaybeString GetBeginningLetters(int count)
         {
-            var alreadyProcessedLetters = new HashSet<char>();
+            var stopIndex = FindOutWhereToStop(count);
+            return GetBeginningLettersUntilStop(count, stopIndex);
+        }
+
+        private MaybeString GetBeginningLettersUntilStop(int count, int stopIndex)
+        {
+            var beginningLetters = Word.GetBeginningLettersUntil(stopIndex);
+            return beginningLetters.CountOfUniqueLetters == count ? beginningLetters : new MaybeString(null);
+        }
+
+        private int FindOutWhereToStop(int countOfDifferentLetters)
+        {
             int endIndexOfFoundGroup = Word.Length;
+            var alreadyProcessedLetters = new HashSet<char>();
             for (var i = 0; i < Word.Length; i++)
             {
-                alreadyProcessedLetters.Add(Word.LetterAtIndex(i));
-                if (alreadyProcessedLetters.Count > countOfDifferentLettersOfResult)
+                alreadyProcessedLetters.Add(Word[i]);
+                if (alreadyProcessedLetters.Count > countOfDifferentLetters)
                 {
                     endIndexOfFoundGroup = i;
                     break;
                 }
             }
-            var resultLetterGroup = new WordRepresentation(Word.Substring(0, endIndexOfFoundGroup));
-            return resultLetterGroup.Word.GetCountOfUniqueLetters() == countOfDifferentLettersOfResult ? 
-                resultLetterGroup.Word : new MaybeString(null);
+            return endIndexOfFoundGroup;
         }
     }
 }

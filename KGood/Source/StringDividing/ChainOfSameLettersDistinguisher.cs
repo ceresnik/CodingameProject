@@ -2,21 +2,21 @@ using System;
 
 namespace KGood.Source.StringDividing
 {
-    public class BeginningOfGroupOfSameLettersSignalizer
+    public class ChainOfSameLettersDistinguisher
     {
-        public BeginningOfGroupOfSameLettersSignalizer(string inputWord)
+        public ChainOfSameLettersDistinguisher(string inputWord)
         :this(new MaybeString(inputWord))
         {
         }
 
-        public BeginningOfGroupOfSameLettersSignalizer(MaybeString inputWord)
+        public ChainOfSameLettersDistinguisher(MaybeString inputWord)
         {
             Word = inputWord;
         }
 
         private MaybeString Word { get; }
 
-        public bool Signalize(int index)
+        public bool LetterChanged(int index)
         {
             if (index >= Word.Length)
             {
@@ -26,7 +26,7 @@ namespace KGood.Source.StringDividing
             {
                 return true;
             }
-            if (Word.LetterAtIndex(index) == Word.LetterAtIndex(index - 1))
+            if (Word[index] == Word[index - 1])
             {
                 return false;
             }

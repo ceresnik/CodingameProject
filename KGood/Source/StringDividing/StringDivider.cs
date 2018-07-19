@@ -16,7 +16,7 @@ namespace KGood.Source.StringDividing
         public StringDivider(MaybeString inputWord, int countOfDifferentLettersOfResult)
         {
             wordRepresentation = new WordRepresentation(inputWord);
-            if (wordRepresentation.Word.GetCountOfUniqueLetters() < countOfDifferentLettersOfResult)
+            if (wordRepresentation.Word.CountOfUniqueLetters < countOfDifferentLettersOfResult)
             {
                 throw new ArgumentException("Count of different letters must be less or equal to " +
                                             "count of unique letters in given word!");
@@ -26,23 +26,27 @@ namespace KGood.Source.StringDividing
 
         public IList<MaybeString> Divide()
         {
-            if (wordRepresentation.Word.GetCountOfUniqueLetters() == CountOfDifferentLettersOfResult)
+            if (wordRepresentation.CountOfUniqueLetters == CountOfDifferentLettersOfResult)
             {
                 return new List<MaybeString> { wordRepresentation.Word };
             }
             var result = new List<MaybeString>();
-            int countOfGroupsOfSameLetter = wordRepresentation.GetCountOfLetterGroups();
-            int countOfCycles = countOfGroupsOfSameLetter - CountOfDifferentLettersOfResult + 1;
+            int countOfCycles = GetCountOfCycles();
             for (int i = 0; i < countOfCycles; i++)
             {
                 if (wordRepresentation.Length >= CountOfDifferentLettersOfResult)
                 {
-                    var foundSubstring = wordRepresentation.GetCardinalitySubstring(CountOfDifferentLettersOfResult);
+                    var foundSubstring = wordRepresentation.GetBeginningLetters(CountOfDifferentLettersOfResult);
                     result.Add(foundSubstring);
                     wordRepresentation = new WordRepresentation(wordRepresentation.Word.CutOffBeginningLetters());
                 }
             }
             return result;
+        }
+
+        private int GetCountOfCycles()
+        {
+            return wordRepresentation.CountOfLetterGroups - CountOfDifferentLettersOfResult + 1;
         }
 
         public long GetLengthOfLongestSubstring()

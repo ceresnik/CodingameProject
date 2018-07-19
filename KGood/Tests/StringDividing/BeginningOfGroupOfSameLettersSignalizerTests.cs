@@ -9,21 +9,21 @@ namespace KGood.Tests.StringDividing
         [Test]
         public void Constructor_WordIsNull_NoExceptionIsThrown()
         {
-            new BeginningOfGroupOfSameLettersSignalizer((string)null);
+            new ChainOfSameLettersDistinguisher((string)null);
         }
 
         [Test]
         public void Constructor_WordIsEmpty_NoExceptionIsThrown()
         {
-            new BeginningOfGroupOfSameLettersSignalizer("");
+            new ChainOfSameLettersDistinguisher("");
         }
 
         [Test]
         public void Signalize_FirstLetterOfWord_True()
         {
             string word = "aax";
-            var sut = new BeginningOfGroupOfSameLettersSignalizer(word);
-            bool result = sut.Signalize(0);
+            var sut = new ChainOfSameLettersDistinguisher(word);
+            bool result = sut.LetterChanged(0);
             Assert.That(result, Is.True);
         }
 
@@ -31,24 +31,24 @@ namespace KGood.Tests.StringDividing
         public void Signalize_IndexIsEqualAsLength_ExceptionIsThrown()
         {
             string word = "aax";
-            var sut = new BeginningOfGroupOfSameLettersSignalizer(word);
-            Assert.Throws<ArgumentException>(() => sut.Signalize(3));
+            var sut = new ChainOfSameLettersDistinguisher(word);
+            Assert.Throws<ArgumentException>(() => sut.LetterChanged(3));
         }
 
         [Test]
         public void Signalize_IndexIsGreaterThanLength_ExceptionIsThrown()
         {
             string word = "aax";
-            var sut = new BeginningOfGroupOfSameLettersSignalizer(word);
-            Assert.Throws<ArgumentException>(() => sut.Signalize(4));
+            var sut = new ChainOfSameLettersDistinguisher(word);
+            Assert.Throws<ArgumentException>(() => sut.LetterChanged(4));
         }
 
         [Test]
         public void Signalize_LastLetterOfGroup_False()
         {
             string word = "aax";
-            var sut = new BeginningOfGroupOfSameLettersSignalizer(word);
-            bool result = sut.Signalize(1);
+            var sut = new ChainOfSameLettersDistinguisher(word);
+            bool result = sut.LetterChanged(1);
             Assert.That(result, Is.False);
         }
 
@@ -56,8 +56,8 @@ namespace KGood.Tests.StringDividing
         public void Signalize_FirstLetterOfGroup_True()
         {
             string word = "aabx";
-            var sut = new BeginningOfGroupOfSameLettersSignalizer(word);
-            bool result = sut.Signalize(2);
+            var sut = new ChainOfSameLettersDistinguisher(word);
+            bool result = sut.LetterChanged(2);
             Assert.That(result, Is.True);
         }
     }

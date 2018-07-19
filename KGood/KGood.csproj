@@ -93,7 +93,7 @@
     <Compile Include="Tests\LongestSerieOfSameNumbersFinderTests.cs" />
     <Compile Include="Tests\LongestSubstringFinder\LongestSubstringFinderUnitTests.cs" />
     <Compile Include="Source\StringDividing\StringDivider.cs" />
-    <Compile Include="Source\StringDividing\BeginningOfGroupOfSameLettersSignalizer.cs" />
+    <Compile Include="Source\StringDividing\ChainOfSameLettersDistinguisher.cs" />
     <Compile Include="Source\Sudoku\OneLineSudoku.cs" />
     <Compile Include="Source\NumberUtilities.cs" />
     <Compile Include="Tests\NumberUtilitiesTests.cs" />

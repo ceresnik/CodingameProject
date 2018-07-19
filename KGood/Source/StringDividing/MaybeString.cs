@@ -11,16 +11,14 @@ namespace KGood.Source.StringDividing
         }
 
         private string Word { get; }
+
         public int Length => Word.Length;
 
-        public char LetterAtIndex(int index)
-        {
-            return Word[index];
-        }
+        public char this[int index] => Word[index];
 
-        public string Substring(int startIndex, int length)
+        public MaybeString GetBeginningLettersUntil(int endIndex)
         {
-            return Word.Substring(startIndex, length);
+            return new MaybeString(Word.Substring(0, endIndex));
         }
 
         public MaybeString CutOffBeginningLetters()
@@ -34,14 +32,17 @@ namespace KGood.Source.StringDividing
             return new MaybeString(word);
         }
 
-        public int GetCountOfUniqueLetters()
+        public int CountOfUniqueLetters
         {
-            var uniqueLetters = new HashSet<char>();
-            foreach (char c in Word)
+            get
             {
-                uniqueLetters.Add(c);
+                var uniqueLetters = new HashSet<char>();
+                foreach (char c in Word)
+                {
+                    uniqueLetters.Add(c);
+                }
+                return uniqueLetters.Count;
             }
-            return uniqueLetters.Count;
         }
 
         protected bool Equals(MaybeString other)
@@ -59,7 +60,7 @@ namespace KGood.Source.StringDividing
 
         public override int GetHashCode()
         {
-            return (Word != null ? Word.GetHashCode() : 0);
+            return Word != null ? Word.GetHashCode() : 0;
         }
     }
 }
