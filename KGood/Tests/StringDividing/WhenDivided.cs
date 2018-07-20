@@ -1,8 +1,4 @@
-﻿/* -------------------------------------------------------------------------------------------------
-   Restricted - Copyright (C) Siemens Healthcare GmbH/Siemens Medical Solutions USA, Inc., 2017. All rights reserved
-   ------------------------------------------------------------------------------------------------- */
-
-using KGood.Source.StringDividing;
+﻿using KGood.Source.StringDividing;
 using NUnit.Framework;
 
 namespace KGood.Tests.StringDividing
@@ -110,6 +106,13 @@ namespace KGood.Tests.StringDividing
 
         [Test]
         public void CountOfItems_Test15()
+        {
+            StringDivider sut = new StringDivider("aabbaaaaa", 2);
+            Assert.That(sut.Divide().Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void CountOfItems_Test16()
         {
             StringDivider sut = new StringDivider("aabbababaabbbab", 2);
             Assert.That(sut.Divide().Count, Is.EqualTo(1));

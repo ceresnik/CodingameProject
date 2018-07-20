@@ -70,7 +70,9 @@
     <Compile Include="Source\LongestSubstringFinder\LongestSubstringFinder.cs" />
     <Compile Include="Source\LongestSubstringFinder\WordRepresentation.cs" />
     <Compile Include="Source\StringDividing\MaybeString.cs" />
+    <Compile Include="Source\StringDividing\WordParts.cs" />
     <Compile Include="Source\StringDividing\WordRepresentation.cs" />
+    <Compile Include="Source\StringDividing\WordSplitter.cs" />
     <Compile Include="Source\Sudoku\CountOfNumbersRule.cs" />
     <Compile Include="Source\Sudoku\ISudokuLineRule.cs" />
     <Compile Include="Source\Sudoku\LengthRule.cs" />
@@ -98,7 +100,7 @@
     <Compile Include="Source\NumberUtilities.cs" />
     <Compile Include="Tests\NumberUtilitiesTests.cs" />
     <Compile Include="Tests\StringDividing\AcceptanceTests.cs" />
-    <Compile Include="Tests\StringDividing\BeginningOfGroupOfSameLettersSignalizerTests.cs" />
+    <Compile Include="Tests\StringDividing\ChainOfSameLettersDistinguisherTests.cs" />
     <Compile Include="Tests\StringDividing\WhenCreated.cs" />
     <Compile Include="Tests\StringDividing\WhenDivided.cs" />
     <Compile Include="Tests\StringDividing\WhenDividedAndOrdered.cs" />

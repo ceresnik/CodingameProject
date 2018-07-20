@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace KGood.Tests.StringDividing
 {
-    internal class BeginningOfGroupOfSameLettersSignalizerTests
+    internal class ChainOfSameLettersDistinguisherTests
     {
         [Test]
         public void Constructor_WordIsNull_NoExceptionIsThrown()
@@ -19,7 +19,7 @@ namespace KGood.Tests.StringDividing
         }
 
         [Test]
-        public void Signalize_FirstLetterOfWord_True()
+        public void LetterChanged_FirstLetterOfWord_True()
         {
             string word = "aax";
             var sut = new ChainOfSameLettersDistinguisher(word);
@@ -28,7 +28,7 @@ namespace KGood.Tests.StringDividing
         }
 
         [Test]
-        public void Signalize_IndexIsEqualAsLength_ExceptionIsThrown()
+        public void LetterChanged_IndexIsEqualAsLength_ExceptionIsThrown()
         {
             string word = "aax";
             var sut = new ChainOfSameLettersDistinguisher(word);
@@ -36,7 +36,7 @@ namespace KGood.Tests.StringDividing
         }
 
         [Test]
-        public void Signalize_IndexIsGreaterThanLength_ExceptionIsThrown()
+        public void LetterChanged_IndexIsGreaterThanLength_ExceptionIsThrown()
         {
             string word = "aax";
             var sut = new ChainOfSameLettersDistinguisher(word);
@@ -44,7 +44,7 @@ namespace KGood.Tests.StringDividing
         }
 
         [Test]
-        public void Signalize_LastLetterOfGroup_False()
+        public void LetterChanged_LastLetterOfGroup_False()
         {
             string word = "aax";
             var sut = new ChainOfSameLettersDistinguisher(word);
@@ -53,7 +53,7 @@ namespace KGood.Tests.StringDividing
         }
 
         [Test]
-        public void Signalize_FirstLetterOfGroup_True()
+        public void LetterChanged_FirstLetterOfGroup_True()
         {
             string word = "aabx";
             var sut = new ChainOfSameLettersDistinguisher(word);

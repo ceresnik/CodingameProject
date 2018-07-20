@@ -12,9 +12,22 @@ namespace KGood.Source.StringDividing
 
         private string Word { get; }
 
+        public char this[int index] => Word[index];
+
         public int Length => Word.Length;
 
-        public char this[int index] => Word[index];
+        public int CountOfUniqueLetters
+        {
+            get
+            {
+                var uniqueLetters = new HashSet<char>();
+                foreach (char c in Word)
+                {
+                    uniqueLetters.Add(c);
+                }
+                return uniqueLetters.Count;
+            }
+        }
 
         public MaybeString GetBeginningLettersUntil(int endIndex)
         {
@@ -30,19 +43,6 @@ namespace KGood.Source.StringDividing
                 word = word.Remove(0, 1);
             } while (word.Length > 0 && word[0] == firstLetter);
             return new MaybeString(word);
-        }
-
-        public int CountOfUniqueLetters
-        {
-            get
-            {
-                var uniqueLetters = new HashSet<char>();
-                foreach (char c in Word)
-                {
-                    uniqueLetters.Add(c);
-                }
-                return uniqueLetters.Count;
-            }
         }
 
         protected bool Equals(MaybeString other)
