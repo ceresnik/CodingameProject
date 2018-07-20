@@ -1,8 +1,4 @@
-﻿/* -------------------------------------------------------------------------------------------------
-   Restricted - Copyright (C) Siemens Healthcare GmbH/Siemens Medical Solutions USA, Inc., 2017. All rights reserved
-   ------------------------------------------------------------------------------------------------- */
-
-using KGood.Source.StringDividing;
+﻿using KGood.Source.StringDividing;
 using NUnit.Framework;
 
 namespace KGood.Tests.StringDividing

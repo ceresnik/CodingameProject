@@ -1,8 +1,4 @@
-﻿/* -------------------------------------------------------------------------------------------------
-   Restricted - Copyright (C) Siemens Healthcare GmbH/Siemens Medical Solutions USA, Inc., 2018. All rights reserved
-   ------------------------------------------------------------------------------------------------- */
-
-using CodingameProject.Source.AlphabetUtilities;
+﻿using CodingameProject.Source.AlphabetUtilities;
 using NUnit.Framework;
 
 namespace CodingameProject.Tests.AlphabetUtilities
