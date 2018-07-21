@@ -40,7 +40,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             Assert.That(cheapestPainter, Is.EqualTo(new ProportionalPainter(TimeSpan.FromMinutes(6), 1, false)));
         }
 
-        [Ignore]
+        [Ignore("Not implemented")]
         [Test]
         public void FindCheapestPainter_NoPainter_Null()
         {
@@ -49,7 +49,7 @@ namespace CodingameProject.Tests.ObjectOrientedTraining.IteratorDemo
             Assert.That(result, Is.EqualTo(null));
         }
 
-        [Ignore]
+        [Ignore("Not implemented")]
         [Test]
         public void FindCheapestPainter_NoneIsAvailable_Null()
         {

@@ -64,7 +64,7 @@ namespace KGood.Tests.LongestSubstringFinder
             Assert.That(result, Is.EqualTo("aabbc"));
         }
 
-        [Ignore]
+        [Ignore("Not implemented")]
         [Test]
         public void FindString_AABBCCC2_ReturnsBBCCC()
         {
