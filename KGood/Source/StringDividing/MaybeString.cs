@@ -12,8 +12,6 @@ namespace KGood.Source.StringDividing
             this.word = String.IsNullOrEmpty(word) ? "" : word;
         }
 
-        public char this[int index] => word[index];
-
         public int Length => word.Length;
 
         public int CountOfUniqueLetters
@@ -48,6 +46,11 @@ namespace KGood.Source.StringDividing
             return new MaybeString(wordWithoutBeginningLetters);
         }
 
+        public bool IsLetterSameAsPrevious(int index)
+        {
+            return word[index] == word[index - 1];
+        }
+
         protected bool Equals(MaybeString other)
         {
             return string.Equals(word, other.word);
@@ -64,6 +67,11 @@ namespace KGood.Source.StringDividing
         public override int GetHashCode()
         {
             return word != null ? word.GetHashCode() : 0;
+        }
+
+        public char LetterAt(int index)
+        {
+            return word[index];
         }
     }
 }

@@ -61,7 +61,7 @@ namespace KGood.Source.StringDividing
             var alreadyProcessedLetters = new HashSet<char>();
             for (var i = 0; i < word.Length; i++)
             {
-                alreadyProcessedLetters.Add(word[i]);
+                alreadyProcessedLetters.Add(word.LetterAt(i));
                 if (alreadyProcessedLetters.Count > countOfDifferentLetters)
                 {
                     endIndexOfFoundGroup = i;

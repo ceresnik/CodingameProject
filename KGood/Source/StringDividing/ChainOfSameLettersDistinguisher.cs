@@ -26,7 +26,7 @@ namespace KGood.Source.StringDividing
             {
                 return true;
             }
-            if (Word[index] == Word[index - 1])
+            if (Word.IsLetterSameAsPrevious(index))
             {
                 return false;
             }
