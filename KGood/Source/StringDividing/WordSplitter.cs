@@ -13,19 +13,10 @@
             wordParts = new WordParts();
         }
 
-        private bool IsWordLongEnough => wordRepresentation.Length >= countOfUniqueLetters;
+        private bool IsWordLongEnough => wordRepresentation.CountOfLetterGroups >= countOfUniqueLetters;
 
         public WordParts SplitToParts()
         {
-            //int countOfCycles = GetCountOfCycles();
-            //for (int i = 0; i < countOfCycles; i++)
-            //{
-            //    if (IsWordLongEnough)
-            //    {
-            //        AddBeginningLettersToWordParts();
-            //        RemoveBeginningLettersFromWordRepresentation();
-            //    }
-            //}
             while (IsWordLongEnough)
             {
                 AddBeginningLettersToWordParts();
@@ -42,11 +33,6 @@
         private void RemoveBeginningLettersFromWordRepresentation()
         {
             wordRepresentation = new WordRepresentation(wordRepresentation.Word.CutOffBeginningLetters());
-        }
-
-        private int GetCountOfCycles()
-        {
-            return wordRepresentation.CountOfLetterGroups - countOfUniqueLetters + 1;
         }
     }
 }
