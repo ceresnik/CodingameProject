@@ -17,7 +17,7 @@ namespace KGood.Source.StringDividing
             chainOfSameLettersDistinguisher = new ChainOfSameLettersDistinguisher(Word);
         }
 
-        public MaybeString Word { get; }
+        private MaybeString Word { get; }
 
         public int Length => Word.Length;
 
@@ -65,6 +65,11 @@ namespace KGood.Source.StringDividing
                 }
             }
             return endIndexOfFoundGroup;
+        }
+
+        public MaybeString CutOffBeginningLetters()
+        {
+            return Word.CutOffBeginningLetters();
         }
     }
 }

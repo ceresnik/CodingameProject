@@ -32,7 +32,7 @@
 
         private void RemoveBeginningLettersFromWordRepresentation()
         {
-            wordRepresentation = new WordRepresentation(wordRepresentation.Word.CutOffBeginningLetters());
+            wordRepresentation = new WordRepresentation(wordRepresentation.CutOffBeginningLetters());
         }
     }
 }

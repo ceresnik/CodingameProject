@@ -26,10 +26,6 @@ namespace KGood.Source.StringDividing
 
         public IList<MaybeString> Divide()
         {
-            if (wordRepresentation.CountOfUniqueLetters == InputCountOfUniqueLetters)
-            {
-                return new List<MaybeString> { wordRepresentation.Word };
-            }
             var wordSplitter = new WordSplitter(wordRepresentation, InputCountOfUniqueLetters);
             return wordSplitter.SplitToParts().ToListOfMaybeStrings();
         }

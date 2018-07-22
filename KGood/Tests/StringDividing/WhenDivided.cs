@@ -108,14 +108,14 @@ namespace KGood.Tests.StringDividing
         public void CountOfItems_Test15()
         {
             StringDivider sut = new StringDivider("aabbaaaaa", 2);
-            Assert.That(sut.Divide().Count, Is.EqualTo(1));
+            Assert.That(sut.Divide().Count, Is.EqualTo(2));
         }
 
         [Test]
         public void CountOfItems_Test16()
         {
             StringDivider sut = new StringDivider("aabbababaabbbab", 2);
-            Assert.That(sut.Divide().Count, Is.EqualTo(1));
+            Assert.That(sut.Divide().Count, Is.EqualTo(9));
         }
 
         [Test]
