@@ -5,23 +5,23 @@ namespace KGood.Source.StringDividing
 {
     public class MaybeString
     {
+        private readonly string word;
+
         public MaybeString(string word)
         {
-            Word = String.IsNullOrEmpty(word) ? "" : word;
+            this.word = String.IsNullOrEmpty(word) ? "" : word;
         }
 
-        private string Word { get; }
+        public char this[int index] => word[index];
 
-        public char this[int index] => Word[index];
-
-        public int Length => Word.Length;
+        public int Length => word.Length;
 
         public int CountOfUniqueLetters
         {
             get
             {
                 var uniqueLetters = new HashSet<char>();
-                foreach (char c in Word)
+                foreach (char c in word)
                 {
                     uniqueLetters.Add(c);
                 }
@@ -31,12 +31,12 @@ namespace KGood.Source.StringDividing
 
         public MaybeString GetBeginningLettersUntil(int endIndex)
         {
-            return new MaybeString(Word.Substring(0, endIndex));
+            return new MaybeString(word.Substring(0, endIndex));
         }
 
         public MaybeString CutOffBeginningLetters()
         {
-            string word = Word;
+            string word = this.word;
             char firstLetter = word[0];
             do
             {
@@ -47,7 +47,7 @@ namespace KGood.Source.StringDividing
 
         protected bool Equals(MaybeString other)
         {
-            return string.Equals(Word, other.Word);
+            return string.Equals(word, other.word);
         }
 
         public override bool Equals(object obj)
@@ -60,7 +60,7 @@ namespace KGood.Source.StringDividing
 
         public override int GetHashCode()
         {
-            return Word != null ? Word.GetHashCode() : 0;
+            return word != null ? word.GetHashCode() : 0;
         }
     }
 }

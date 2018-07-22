@@ -27,7 +27,7 @@ namespace KGood.Source.StringDividing
         public IList<MaybeString> Divide()
         {
             var wordSplitter = new WordSplitter(wordRepresentation, InputCountOfUniqueLetters);
-            return wordSplitter.SplitToParts().ToListOfMaybeStrings();
+            return wordSplitter.SplitToParts();
         }
 
         public long GetLengthOfLongestSubstring()

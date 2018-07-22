@@ -1,4 +1,6 @@
-﻿namespace KGood.Source.StringDividing
+﻿using System.Collections.Generic;
+
+namespace KGood.Source.StringDividing
 {
     internal class WordSplitter
     {
@@ -15,14 +17,14 @@
 
         private bool IsWordLongEnough => wordRepresentation.CountOfLetterGroups >= countOfUniqueLetters;
 
-        public WordParts SplitToParts()
+        public IList<MaybeString> SplitToParts()
         {
             while (IsWordLongEnough)
             {
                 AddBeginningLettersToWordParts();
                 RemoveBeginningLettersFromWordRepresentation();
             }
-            return wordParts;
+            return wordParts.ToListOfMaybeStrings();
         }
 
         private void AddBeginningLettersToWordParts()

@@ -5,6 +5,7 @@ namespace KGood.Source.StringDividing
     public class WordRepresentation
     {
         private readonly ChainOfSameLettersDistinguisher chainOfSameLettersDistinguisher;
+        private readonly MaybeString word;
 
         public WordRepresentation(string word)
         :this(new MaybeString(word))
@@ -13,22 +14,20 @@ namespace KGood.Source.StringDividing
 
         public WordRepresentation(MaybeString inputWord)
         {
-            Word = inputWord;
-            chainOfSameLettersDistinguisher = new ChainOfSameLettersDistinguisher(Word);
+            word = inputWord;
+            chainOfSameLettersDistinguisher = new ChainOfSameLettersDistinguisher(word);
         }
 
-        private MaybeString Word { get; }
+        public int Length => word.Length;
 
-        public int Length => Word.Length;
-
-        public int CountOfUniqueLetters => Word.CountOfUniqueLetters;
+        public int CountOfUniqueLetters => word.CountOfUniqueLetters;
 
         public int CountOfLetterGroups
         {
             get
             {
                 int countOfGroups = 0;
-                for (var i = 0; i < Word.Length; i++)
+                for (var i = 0; i < word.Length; i++)
                 {
                     if (chainOfSameLettersDistinguisher.LetterChanged(i))
                     {
@@ -45,19 +44,24 @@ namespace KGood.Source.StringDividing
             return GetBeginningLettersUntilStop(count, stopIndex);
         }
 
+        public MaybeString CutOffBeginningLetters()
+        {
+            return word.CutOffBeginningLetters();
+        }
+
         private MaybeString GetBeginningLettersUntilStop(int count, int stopIndex)
         {
-            var beginningLetters = Word.GetBeginningLettersUntil(stopIndex);
+            var beginningLetters = word.GetBeginningLettersUntil(stopIndex);
             return beginningLetters.CountOfUniqueLetters == count ? beginningLetters : new MaybeString(null);
         }
 
         private int FindOutWhereToStop(int countOfDifferentLetters)
         {
-            int endIndexOfFoundGroup = Word.Length;
+            int endIndexOfFoundGroup = word.Length;
             var alreadyProcessedLetters = new HashSet<char>();
-            for (var i = 0; i < Word.Length; i++)
+            for (var i = 0; i < word.Length; i++)
             {
-                alreadyProcessedLetters.Add(Word[i]);
+                alreadyProcessedLetters.Add(word[i]);
                 if (alreadyProcessedLetters.Count > countOfDifferentLetters)
                 {
                     endIndexOfFoundGroup = i;
@@ -65,11 +69,6 @@ namespace KGood.Source.StringDividing
                 }
             }
             return endIndexOfFoundGroup;
-        }
-
-        public MaybeString CutOffBeginningLetters()
-        {
-            return Word.CutOffBeginningLetters();
         }
     }
 }
