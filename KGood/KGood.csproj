@@ -107,6 +107,7 @@
     <Compile Include="Tests\StringDividing\WhenCreated.cs" />
     <Compile Include="Tests\StringDividing\WhenDivided.cs" />
     <Compile Include="Tests\StringDividing\WhenDividedAndOrdered.cs" />
+    <Compile Include="Tests\StringDividing\WordSplitterTests.cs" />
     <Compile Include="Tests\Sudoku\ConstructorTests.cs" />
     <Compile Include="Tests\Sudoku\AcceptanceTests.cs" />
     <Compile Include="Tests\ConvertTimeToMinutesTests.cs" />

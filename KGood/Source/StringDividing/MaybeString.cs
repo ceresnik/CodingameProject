@@ -29,6 +29,8 @@ namespace KGood.Source.StringDividing
             }
         }
 
+        public bool IsEmpty => word.Equals("");
+
         public MaybeString GetBeginningLettersUntil(int endIndex)
         {
             return new MaybeString(word.Substring(0, endIndex));
@@ -36,13 +38,14 @@ namespace KGood.Source.StringDividing
 
         public MaybeString CutOffBeginningLetters()
         {
-            string word = this.word;
-            char firstLetter = word[0];
+            string wordWithoutBeginningLetters = this.word;
+            char firstLetter = wordWithoutBeginningLetters[0];
             do
             {
-                word = word.Remove(0, 1);
-            } while (word.Length > 0 && word[0] == firstLetter);
-            return new MaybeString(word);
+                wordWithoutBeginningLetters = wordWithoutBeginningLetters.Remove(0, 1);
+            } while (wordWithoutBeginningLetters.Length > 0 && wordWithoutBeginningLetters[0] == firstLetter);
+            //TODO: is it ok to create here a new instance of myself?
+            return new MaybeString(wordWithoutBeginningLetters);
         }
 
         protected bool Equals(MaybeString other)

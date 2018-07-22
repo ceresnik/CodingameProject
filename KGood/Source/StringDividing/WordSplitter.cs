@@ -29,11 +29,16 @@ namespace KGood.Source.StringDividing
 
         private void AddBeginningLettersToWordParts()
         {
-            wordParts.Add(wordRepresentation.GetBeginningLetters(countOfUniqueLetters));
+            var beginningLetters = wordRepresentation.GetBeginningLetters(countOfUniqueLetters);
+            if (beginningLetters.IsEmpty == false)
+            {
+                wordParts.Add(beginningLetters);
+            }
         }
 
         private void RemoveBeginningLettersFromWordRepresentation()
         {
+            //TODO: is it ok to overwrite here my own field?
             wordRepresentation = new WordRepresentation(wordRepresentation.CutOffBeginningLetters());
         }
     }
