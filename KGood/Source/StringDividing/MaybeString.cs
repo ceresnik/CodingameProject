@@ -51,6 +51,11 @@ namespace KGood.Source.StringDividing
             return word[index] == word[index - 1];
         }
 
+        public char LetterAt(int index)
+        {
+            return word[index];
+        }
+
         protected bool Equals(MaybeString other)
         {
             return string.Equals(word, other.word);
@@ -67,11 +72,6 @@ namespace KGood.Source.StringDividing
         public override int GetHashCode()
         {
             return word != null ? word.GetHashCode() : 0;
-        }
-
-        public char LetterAt(int index)
-        {
-            return word[index];
         }
     }
 }

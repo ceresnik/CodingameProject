@@ -10,7 +10,7 @@ namespace KGood.Tests.StringDividing
         [Test]
         public void LongestItemIsFirst()
         {
-            StringDivider sut = new StringDivider("aabbbccccdd", 2);
+            var sut = new LongestPartFinder("aabbbccccdd", 2);
             var result = sut.DivideAndOrder();
             Assert.That(result.First(), Is.EqualTo(new MaybeString("bbbcccc")));
         }

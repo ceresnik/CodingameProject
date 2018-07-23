@@ -9,28 +9,28 @@ namespace KGood.Tests.StringDividing
         [Test]
         public void Test_1()
         {
-            StringDivider sut = new StringDivider("abcdef", 3);
+            var sut = new LongestPartFinder("abcdef", 3);
             Assert.That(sut.GetLengthOfLongestSubstring(), Is.EqualTo(3));
         }
 
         [Test]
         public void Test_2()
         {
-            StringDivider sut = new StringDivider("aaaaaaaabc", 3);
+            var sut = new LongestPartFinder("aaaaaaaabc", 3);
             Assert.That(sut.GetLengthOfLongestSubstring(), Is.EqualTo(10));
         }
 
         [Test]
         public void Test_3()
         {
-            StringDivider sut = new StringDivider("phcaiodkhycinmbakdsjfplekgwaxkgqbhbhmvtlvwrmrvkqxeepjhvfdmjjewhthnhilkrxanxrelqajavubjfiaxebsjmjgsbfmxganqffrmlcydcsvxpnawskrhmutgpnkpwopudobptikjrfogdeairwyglcrqepnybcpinrybrjudcjalxumwedvngnkvoportnqeshafaodwxwjxvonaumvdtmtkotppuisubxhwcmunbdxcatppdswnsmjnygnrikvienvpysfuxrlikbkndeyxxj", 23);
+            var sut = new LongestPartFinder("phcaiodkhycinmbakdsjfplekgwaxkgqbhbhmvtlvwrmrvkqxeepjhvfdmjjewhthnhilkrxanxrelqajavubjfiaxebsjmjgsbfmxganqffrmlcydcsvxpnawskrhmutgpnkpwopudobptikjrfogdeairwyglcrqepnybcpinrybrjudcjalxumwedvngnkvoportnqeshafaodwxwjxvonaumvdtmtkotppuisubxhwcmunbdxcatppdswnsmjnygnrikvienvpysfuxrlikbkndeyxxj", 23);
             Assert.That(sut.GetLengthOfLongestSubstring(), Is.EqualTo(102));
         }
 
         [Test]
         public void Test_4()
         {
-            StringDivider sut = new StringDivider("tfxaiakmlmdslooqykfmemxouisgkcxctbbvwypytslqotpfkqapjoqsyjauxolwsigsbkwyekchquoyocfkywvwwcofutasegmwodmmripixjjeltiugqarrmhgywviwgbixxhsbulhgpaylctsjcssqvidcbvwmdciuiknmsnbadlayretgprnsjwwfbrccucogpxmxeutcrkhibmudbinkilrkwdjqsdrpnghaoxilnghdokpallikfxdripqkkymrhdcttticwhkiowsypqoamxxbyiqaepwtf", 18);
+            var sut = new LongestPartFinder("tfxaiakmlmdslooqykfmemxouisgkcxctbbvwypytslqotpfkqapjoqsyjauxolwsigsbkwyekchquoyocfkywvwwcofutasegmwodmmripixjjeltiugqarrmhgywviwgbixxhsbulhgpaylctsjcssqvidcbvwmdciuiknmsnbadlayretgprnsjwwfbrccucogpxmxeutcrkhibmudbinkilrkwdjqsdrpnghaoxilnghdokpallikfxdripqkkymrhdcttticwhkiowsypqoamxxbyiqaepwtf", 18);
             Assert.That(sut.GetLengthOfLongestSubstring(), Is.EqualTo(46));
         }
     }

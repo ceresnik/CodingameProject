@@ -72,6 +72,7 @@
     <Compile Include="Source\HofstadterConwaySequence\HofstadterConwaySequenceGenerator.cs" />
     <Compile Include="Source\LongestSubstringFinder\LongestSubstringFinder.cs" />
     <Compile Include="Source\LongestSubstringFinder\WordRepresentation.cs" />
+    <Compile Include="Source\StringDividing\LongestPartFinder.cs" />
     <Compile Include="Source\StringDividing\MaybeString.cs" />
     <Compile Include="Source\StringDividing\WordParts.cs" />
     <Compile Include="Source\StringDividing\WordRepresentation.cs" />

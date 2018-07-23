@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace KGood.Source.StringDividing
 {
     public class StringDivider
     {
         private readonly WordRepresentation wordRepresentation;
-        private int InputCountOfUniqueLetters { get; }
+        private readonly int inputCountOfUniqueLetters;
 
         public StringDivider(string inputWord, int inputCountOfUniqueLetters)
-        :this(new WordRepresentation(new MaybeString(inputWord)), inputCountOfUniqueLetters){
+        :this(new WordRepresentation(new MaybeString(inputWord)), inputCountOfUniqueLetters)
+        {
         }
 
         private StringDivider(WordRepresentation inputWord, int inputCountOfUniqueLetters)
@@ -21,23 +21,13 @@ namespace KGood.Source.StringDividing
                 throw new ArgumentException("Count of different letters can not be greater than " +
                                             "count of unique letters in given word!");
             }
-            InputCountOfUniqueLetters = inputCountOfUniqueLetters;
+            this.inputCountOfUniqueLetters = inputCountOfUniqueLetters;
         }
 
         public IList<MaybeString> Divide()
         {
-            var wordSplitter = new WordSplitter(wordRepresentation, InputCountOfUniqueLetters);
+            var wordSplitter = new WordSplitter(wordRepresentation, inputCountOfUniqueLetters);
             return wordSplitter.SplitToParts();
-        }
-
-        public long GetLengthOfLongestSubstring()
-        {
-            return DivideAndOrder().First().Length;
-        }
-
-        public IOrderedEnumerable<MaybeString> DivideAndOrder()
-        {
-            return Divide().OrderByDescending(x => x.Length);
         }
     }
 }
