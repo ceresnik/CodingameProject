@@ -21,18 +21,18 @@ namespace KGood.Source.StringDividing
         {
             while (IsWordLongEnough)
             {
-                AddBeginningLettersToWordParts();
+                CreateWordPart();
                 RemoveBeginningLettersFromWordRepresentation();
             }
             return wordParts.ToListOfMaybeStrings();
         }
 
-        private void AddBeginningLettersToWordParts()
+        private void CreateWordPart()
         {
-            var beginningLetters = wordRepresentation.GetBeginningLetters(countOfUniqueLetters);
-            if (beginningLetters.IsEmpty == false)
+            var wordPart = wordRepresentation.GetBeginningLetters(countOfUniqueLetters);
+            if (wordPart.IsEmpty == false)
             {
-                wordParts.Add(beginningLetters);
+                wordParts.Add(wordPart);
             }
         }
 

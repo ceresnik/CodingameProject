@@ -8,7 +8,7 @@ namespace KGood.Source.StringDividing
 
         public LongestPartFinder(string word, int countOfUniqueLetters)
         {
-            this.stringDivider = new StringDivider(word, countOfUniqueLetters);
+            stringDivider = new StringDivider(word, countOfUniqueLetters);
         }
 
         public long GetLengthOfLongestSubstring()
