@@ -72,6 +72,7 @@
     <Compile Include="Source\HofstadterConwaySequence\HofstadterConwaySequenceGenerator.cs" />
     <Compile Include="Source\LongestSubstringFinder\LongestSubstringFinder.cs" />
     <Compile Include="Source\LongestSubstringFinder\WordRepresentation.cs" />
+    <Compile Include="Source\PrimesGeneration\PrimesGeneratorRefactored.cs" />
     <Compile Include="Source\StringDividing\LongestPartFinder.cs" />
     <Compile Include="Source\StringDividing\MaybeString.cs" />
     <Compile Include="Source\StringDividing\WordParts.cs" />
@@ -103,8 +104,11 @@
     <Compile Include="Source\Sudoku\OneLineSudoku.cs" />
     <Compile Include="Source\NumberUtilities.cs" />
     <Compile Include="Tests\NumberUtilitiesTests.cs" />
+    <Compile Include="Tests\PrimesGeneration\PrimesGenerationTests.cs" />
     <Compile Include="Tests\StringDividing\AcceptanceTests.cs" />
     <Compile Include="Tests\StringDividing\ChainOfSameLettersDistinguisherTests.cs" />
+    <Compile Include="Source\PrimesGeneration\GeneratePrimesOld.cs" />
+    <Compile Include="Source\PrimesGeneration\PrimesGenerator.cs" />
     <Compile Include="Tests\StringDividing\WhenCreated.cs" />
     <Compile Include="Tests\StringDividing\WhenDivided.cs" />
     <Compile Include="Tests\StringDividing\WhenDividedAndOrdered.cs" />
@@ -123,6 +127,7 @@
   <ItemGroup>
     <Content Include="test.library.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
