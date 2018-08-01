@@ -81,6 +81,15 @@ namespace KGood.Tests
             Assert.That(output, Is.EqualTo(expected));
         }
 
+        [TestCase("Hlole", "Hello")]
+        [TestCase("SuzetIeiq", "SquizeeIt")]
+        [Test]
+        public void Test_DecodeMessageAlternatelyFromLeftRight(string input, string expected)
+        {
+            var result = AlphabetUtility.DecodeMessageAlternatelyFromLeftRight(input);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
         [TestCase("Hello world.", "Ook ook.")]
         [TestCase("You need more time; and you probably always will.", "Eek ook ook ook; eek eek ook eek ook.")]
         [Test]

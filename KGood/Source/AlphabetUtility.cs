@@ -2,27 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using KGood.Source.Extensions;
 
 namespace KGood.Source
 {
-    public class RobberyData
-    {
-        public RobberyData(int timeNeededByPolice, int wordsPerMinute, int timeAfterSentence, int timeAfterAllSentences, string inputSentence)
-        {
-            TimeNeededByPolice = timeNeededByPolice;
-            WordsPerMinute = wordsPerMinute;
-            TimeAfterSentence = timeAfterSentence;
-            TimeAfterAllSentences = timeAfterAllSentences;
-            InputSentence = inputSentence;
-        }
-
-        public int TimeNeededByPolice { get; }
-        public int WordsPerMinute { get; }
-        public int TimeAfterSentence { get; }
-        public int TimeAfterAllSentences { get; }
-        public string InputSentence { get; }
-    }
-
     public class AlphabetUtility
     {
         private readonly string word;
@@ -174,17 +157,18 @@ namespace KGood.Source
         /// <returns></returns>
         public static string EncodeMessage(string input)
         {
-            int firstHalfLength = (input.Length + 1) / 2;
-            string output = "";
-            for (int i = 0; i < firstHalfLength; i++)
+            int midPoint = (input.Length + 1) / 2;
+            StringBuilder output = new StringBuilder();;
+            for (int i = 0; i < midPoint; i++)
             {
-                output += input[i];
-                if (i + firstHalfLength < input.Length)
+                output.Append(input[i]);
+                int secondIndex = i + midPoint;
+                if (secondIndex.IsWithin(input))
                 {
-                    output += input[i + firstHalfLength];
+                    output.Append(input[secondIndex]);
                 }
             }
-            return output;
+            return output.ToString();
         }
 
         /// <summary>
@@ -353,6 +337,28 @@ namespace KGood.Source
         public static IEnumerable<char> Encode_Rot13Cipher(string input)
         {
             return input.Select(x => (char)(x >= 65 && x <= 90 ? (x + 13 > 90 ? x - 13 : x + 13) : x));
+        }
+
+        public static string DecodeMessageAlternatelyFromLeftRight(string input)
+        {
+            StringBuilder result = new StringBuilder();
+            string currentWord = input;
+            bool fromLeft = true;
+            while (currentWord.Any())
+            {
+                if (fromLeft)
+                {
+                    result.Append(currentWord.First());
+                    currentWord = currentWord.Substring(1, currentWord.Length - 1);
+                }
+                else
+                {
+                    result.Append(currentWord.Last());
+                    currentWord = currentWord.Substring(0, currentWord.Length - 1);
+                }
+                fromLeft = !fromLeft;
+            }
+            return result.ToString();
         }
     }
 }
