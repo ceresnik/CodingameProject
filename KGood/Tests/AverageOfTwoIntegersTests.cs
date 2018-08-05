@@ -1,4 +1,5 @@
-﻿using KGood.Source;
+﻿using System.Globalization;
+using KGood.Source;
 using NUnit.Framework;
 
 namespace KGood.Tests
@@ -17,21 +18,21 @@ namespace KGood.Tests
         [Test]
         public void FirstAverageIsDouble()
         {
-            var result = $"{sut.CountAverage(2, 3)} {sut.CountAverage(4, 2)}";
+            var result = $"{sut.CountAverage(2, 3).ToString(CultureInfo.InvariantCulture)} {sut.CountAverage(4, 2)}";
             Assert.That(result, Is.EqualTo("2.5 3"));
         }
 
         [Test]
         public void SecondAverageIsDouble()
         {
-            var result = $"{sut.CountAverage(1, 3)} {sut.CountAverage(5, 2)}";
+            var result = $"{sut.CountAverage(1, 3)} {sut.CountAverage(5, 2).ToString(CultureInfo.InvariantCulture)}";
             Assert.That(result, Is.EqualTo("2 3.5"));
         }
 
         [Test]
         public void BothAveragesAreDouble()
         {
-            var result = $"{sut.CountAverage(2, 3)} {sut.CountAverage(1, 2)}";
+            var result = $"{sut.CountAverage(2, 3).ToString(CultureInfo.InvariantCulture)} {sut.CountAverage(1, 2).ToString(CultureInfo.InvariantCulture)}";
             Assert.That(result, Is.EqualTo("2.5 1.5"));
         }
     }
