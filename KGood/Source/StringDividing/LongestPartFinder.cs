@@ -6,19 +6,19 @@ namespace KGood.Source.StringDividing
     {
         private readonly StringDivider stringDivider;
 
-        public LongestPartFinder(string word, int countOfUniqueLetters)
+        public LongestPartFinder()
         {
-            stringDivider = new StringDivider(word, countOfUniqueLetters);
+            stringDivider = new StringDivider();
         }
 
-        public long GetLengthOfLongestSubstring()
+        internal long GetLengthOfLongestSubstring(string word, int countOfUniqueLetters)
         {
-            return DivideAndOrder().First().Length;
+            return DivideAndOrder(word, countOfUniqueLetters).First().Length;
         }
 
-        public IOrderedEnumerable<MaybeString> DivideAndOrder()
+        public IOrderedEnumerable<MaybeString> DivideAndOrder(string word, int countOfUniqueLetters)
         {
-            return stringDivider.Divide().OrderByDescending(x => x.Length);
+            return stringDivider.Divide(word, countOfUniqueLetters).OrderByDescending(x => x.Length);
         }
     }
 }
