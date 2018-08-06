@@ -7,11 +7,10 @@ namespace KGood.Tests.StringDividing
     [TestFixture]
     internal class WhenCreated
     {
-
         [Test]
         public void StringToDivideIsNull_NoException()
         {
-            new StringDivider((string)null, 0);
+            new StringDivider(null, 0);
         }
 
         [Test]

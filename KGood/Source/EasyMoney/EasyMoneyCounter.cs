@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace KGood.Source.EasyMoney
@@ -20,7 +21,7 @@ namespace KGood.Source.EasyMoney
                 int howManyTimes = (int)(amountOfMoney / bankNote);
                 if (howManyTimes > 0)
                 {
-                    sb.Append($"{howManyTimes} x {bankNote}, ");
+                    sb.Append($"{howManyTimes} x {bankNote.ToString(CultureInfo.InvariantCulture)}, ");
                     amountOfMoney -= howManyTimes * bankNote;
                     amountOfMoney = Math.Round(amountOfMoney, 3);
                 }
