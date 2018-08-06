@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using KGood.Source;
+﻿using KGood.Source;
 using NUnit.Framework;
 
 namespace KGood.Tests
@@ -19,7 +17,9 @@ namespace KGood.Tests
         }
 
         [TestCase("111 108 108 101 72 32 101 114 101 104 116 32 41 58", "Hello there :)")]
-        [TestCase("126 125 124 123 122 121 120 119 118 117 116 115 114 113 112 111 110 109 108 107 106 105 104 103 102 101 100 99 98 97 96 95 94 93 92 91 90 89 88 87 86 85 84 83 82 81 80 79 78 77 76 75 74 73 72 71 70 69 68 67 66 65 64 63 62 61 60 59 58 57 56 55 54 53 52 51 50 49 48 47 46 45 44 43 42 41 40 39 38 37 36 35 34 33", "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~")]
+        [TestCase(
+            "126 125 124 123 122 121 120 119 118 117 116 115 114 113 112 111 110 109 108 107 106 105 104 103 102 101 100 99 98 97 96 95 94 93 92 91 90 89 88 87 86 85 84 83 82 81 80 79 78 77 76 75 74 73 72 71 70 69 68 67 66 65 64 63 62 61 60 59 58 57 56 55 54 53 52 51 50 49 48 47 46 45 44 43 42 41 40 39 38 37 36 35 34 33",
+            "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~")]
         [Test]
         public void Test_DecodeMessage(string encodedMessage, string decodedMessage)
         {
@@ -59,9 +59,12 @@ namespace KGood.Tests
 
         [TestCase("XP", "XP\r\nPX\r\nXP")]
         [TestCase("AAAAAAA", "AAAAAAA\r\nAAAAAAA")]
-        [TestCase("Codingame", "Codingame\r\neCodingam\r\nmeCodinga\r\nameCoding\r\ngameCodin\r\nngameCodi\r\ningameCod\r\ndingameCo\r\nodingameC\r\nCodingame")]
-        [TestCase("TheQuickBrownFoxJumped", "TheQuickBrownFoxJumped\r\ndTheQuickBrownFoxJumpe\r\nedTheQuickBrownFoxJump\r\npedTheQuickBrownFoxJum\r\nmpedTheQuickBrownFoxJu\r\numpedTheQuickBrownFoxJ\r\nJumpedTheQuickBrownFox\r\nxJumpedTheQuickBrownFo\r\noxJumpedTheQuickBrownF\r\nFoxJumpedTheQuickBrown\r\nnFoxJumpedTheQuickBrow\r\nwnFoxJumpedTheQuickBro\r\nownFoxJumpedTheQuickBr\r\nrownFoxJumpedTheQuickB\r\nBrownFoxJumpedTheQuick\r\nkBrownFoxJumpedTheQuic\r\nckBrownFoxJumpedTheQui\r\nickBrownFoxJumpedTheQu\r\nuickBrownFoxJumpedTheQ\r\nQuickBrownFoxJumpedThe\r\neQuickBrownFoxJumpedTh\r\nheQuickBrownFoxJumpedT\r\nTheQuickBrownFoxJumped")]
-        [TestCase("Arturia Pendragon", "Arturia Pendragon\r\nnArturia Pendrago\r\nonArturia Pendrag\r\ngonArturia Pendra\r\nagonArturia Pendr\r\nragonArturia Pend\r\ndragonArturia Pen\r\nndragonArturia Pe\r\nendragonArturia P\r\nPendragonArturia \r\n PendragonArturia\r\na PendragonArturi\r\nia PendragonArtur\r\nria PendragonArtu\r\nuria PendragonArt\r\nturia PendragonAr\r\nrturia PendragonA\r\nArturia Pendragon")]
+        [TestCase("Codingame",
+            "Codingame\r\neCodingam\r\nmeCodinga\r\nameCoding\r\ngameCodin\r\nngameCodi\r\ningameCod\r\ndingameCo\r\nodingameC\r\nCodingame")]
+        [TestCase("TheQuickBrownFoxJumped",
+            "TheQuickBrownFoxJumped\r\ndTheQuickBrownFoxJumpe\r\nedTheQuickBrownFoxJump\r\npedTheQuickBrownFoxJum\r\nmpedTheQuickBrownFoxJu\r\numpedTheQuickBrownFoxJ\r\nJumpedTheQuickBrownFox\r\nxJumpedTheQuickBrownFo\r\noxJumpedTheQuickBrownF\r\nFoxJumpedTheQuickBrown\r\nnFoxJumpedTheQuickBrow\r\nwnFoxJumpedTheQuickBro\r\nownFoxJumpedTheQuickBr\r\nrownFoxJumpedTheQuickB\r\nBrownFoxJumpedTheQuick\r\nkBrownFoxJumpedTheQuic\r\nckBrownFoxJumpedTheQui\r\nickBrownFoxJumpedTheQu\r\nuickBrownFoxJumpedTheQ\r\nQuickBrownFoxJumpedThe\r\neQuickBrownFoxJumpedTh\r\nheQuickBrownFoxJumpedT\r\nTheQuickBrownFoxJumped")]
+        [TestCase("Arturia Pendragon",
+            "Arturia Pendragon\r\nnArturia Pendrago\r\nonArturia Pendrag\r\ngonArturia Pendra\r\nagonArturia Pendr\r\nragonArturia Pend\r\ndragonArturia Pen\r\nndragonArturia Pe\r\nendragonArturia P\r\nPendragonArturia \r\n PendragonArturia\r\na PendragonArturi\r\nia PendragonArtur\r\nria PendragonArtu\r\nuria PendragonArt\r\nturia PendragonAr\r\nrturia PendragonA\r\nArturia Pendragon")]
         [Test]
         public void Test_CycleLetters(string input, string expectedResult)
         {
@@ -98,14 +101,20 @@ namespace KGood.Tests
             string result = AlphabetUtility.EncodeOrang_utan(input);
             Assert.That(result, Is.EqualTo(expected));
         }
-        
-        [TestCase(180, 155, 1, 120, "Am I the only one who thinks it is HOT in here? Sorry, small talk was never my thing. Ehm, hi, my name is Ron. Darn, I was not supposed to say that! Anyway, I have come to free you from this capitalistic world. Just kidding, guys, stop looking at me like that. It WAS a good joke though, right? No? Anyone? Fine, here we go. Geronimo!", "SUCCESS")]
+
+        [TestCase(180, 155, 1, 120,
+            "Am I the only one who thinks it is HOT in here? Sorry, small talk was never my thing. Ehm, hi, my name is Ron. Darn, I was not supposed to say that! Anyway, I have come to free you from this capitalistic world. Just kidding, guys, stop looking at me like that. It WAS a good joke though, right? No? Anyone? Fine, here we go. Geronimo!",
+            "SUCCESS")]
         [TestCase(214, 130, 1, 213, "Hi!", "BUSTED")]
-        [TestCase(140, 100, 0, 200, "I am not doing this because I want to, alright, you all? Someone gave me money to break into this bank. Wait a second! This does not make sense. It would be more profitable just to keep the money. Wait for another second. I do not even have to do this. I am out of this. What? That is not an option? Excuse you, sir, but I do not live in the matrix, alright! Wait, I do? This is not free will? Whaaat? No, I will prove it to you! Remember how I said I would not steal anything? Well, guess what!", "BUSTED")]
+        [TestCase(140, 100, 0, 200,
+            "I am not doing this because I want to, alright, you all? Someone gave me money to break into this bank. Wait a second! This does not make sense. It would be more profitable just to keep the money. Wait for another second. I do not even have to do this. I am out of this. What? That is not an option? Excuse you, sir, but I do not live in the matrix, alright! Wait, I do? This is not free will? Whaaat? No, I will prove it to you! Remember how I said I would not steal anything? Well, guess what!",
+            "BUSTED")]
         [Test]
-        public void Test_CalculateBankThief(int timeNeededByPolice, int wordsPerMinute, int timeAfterSentence, int timeAfterAllSentences, string inputSentence, string expected)
+        public void Test_CalculateBankThief(int timeNeededByPolice, int wordsPerMinute, int timeAfterSentence,
+            int timeAfterAllSentences, string inputSentence, string expected)
         {
-            var robberyData = new RobberyData(timeNeededByPolice, wordsPerMinute, timeAfterSentence, timeAfterAllSentences, inputSentence);
+            var robberyData = new RobberyData(timeNeededByPolice, wordsPerMinute, timeAfterSentence,
+                timeAfterAllSentences, inputSentence);
             var result = AlphabetUtility.CalculateBankThief(robberyData);
             Assert.That(result, Is.EqualTo(expected));
         }
@@ -199,82 +208,6 @@ namespace KGood.Tests
         {
             var result = AlphabetUtility.Encode_Rot13Cipher(input);
             Assert.That(result, Is.EqualTo(expected));
-        }
-
-        [TestCase(0, "0")]
-        [TestCase(45, "P/4")]
-        [TestCase(90, "P/2")]
-        [TestCase(180, "P")]
-        [TestCase(225, "5*P/4")]
-        [TestCase(270, "3*P/2")]
-        [TestCase(360, "2*P")]
-        [TestCase(-90, "3*P/2")]
-        [TestCase(-135, "5*P/4")]
-        [Test]
-        public void Test_ConvertAngleInDegreesToRadians(int angleInDegrees, string expected)
-        {
-            int num1 = 0;
-            int num2 = 0;
-            if (angleInDegrees < 0)
-            {
-                angleInDegrees += 360;
-            }
-            GetBasicValues(angleInDegrees, ref num1, ref num2);
-            FindBiggestCommonDivisor(ref num1, ref num2);
-            string result = FormatValues(num1, num2);
-            Assert.That(result, Is.EqualTo(expected));
-        }
-
-        private static void FindBiggestCommonDivisor(ref int num1, ref int num2)
-        {
-            int smaller = num1 < num2 ? num1 : num2;
-            for (int i = smaller; i > 1; i--)
-            {
-                if (num1 % i == 0 && num2 % i == 0)
-                {
-                    num1 /= i;
-                    num2 /= i;
-                }
-            }
-        }
-
-        private static string FormatValues(int num1, int num2)
-        {
-            string result = "";
-            if (num1 > 1)
-            {
-                result = num1 + "*";
-            }
-            if (num1 >= 1 || num2 >= 1)
-            {
-                result += "P";
-            }
-            else
-            {
-                result = "0";
-            }
-            if (num2 > 1)
-            {
-                result = result + "/" + num2;
-            }
-            return result;
-        }
-
-        private static void GetBasicValues(int angleInDegrees, ref int num1, ref int num2)
-        {
-            if (angleInDegrees > 0 && angleInDegrees % 45 == 0)
-            {
-                num1 = angleInDegrees / 45;
-                num2 = 4;
-            }
-            else
-            {
-                if (angleInDegrees > 0 && angleInDegrees % 90 == 0)
-                {
-                    num1 = angleInDegrees / 90;
-                    num2 = 2;
-                }
-            }
         }
     }
 }

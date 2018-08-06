@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using KGood.Source;
 using NUnit.Framework;
 
@@ -16,7 +15,7 @@ namespace KGood.Tests
         {
             int[] inputs = { -38, 190, 180, 170, 160, 150, 140, 130, 120, 110 };
             int[] output = NumberUtilities.SortArray(inputs);
-            var result = string.Join(" ", output);
+            var result = String.Join(" ", output);
             Console.Write(result);
             Assert.That(result, Is.EqualTo("-38 110 120 130 140 150 160 170 180 190"));
         }
@@ -26,7 +25,7 @@ namespace KGood.Tests
         {
             int[] inputs = { -38, 190, 180, 170, 160, 150, 140, 130, 120, 110 };
             int[] output = NumberUtilities.SortArray(inputs);
-            string result = string.Join(" ", output);
+            string result = String.Join(" ", output);
             Trace.Write("'" + result + "'");
             Assert.That(result, Is.EqualTo("-38 110 120 130 140 150 160 170 180 190"));
         }
@@ -182,7 +181,7 @@ namespace KGood.Tests
                 s = s.Insert(0, ((char)(startingLetter - 32)).ToString());
                 results.Add(s);
             }
-            string result = string.Join(" ", results);
+            string result = String.Join(" ", results);
             Assert.That(result, Is.EqualTo(expected));
         }
 
@@ -211,7 +210,7 @@ namespace KGood.Tests
 
             var query = input
                 .Split(' ')
-                .Select(int.Parse)
+                .Select(Int32.Parse)
                 .GroupBy(s => s)
                 .OrderBy(s => s.Count())
                 .Select(x => new
@@ -266,7 +265,7 @@ namespace KGood.Tests
                 .Where(x => x % 2 == 1)
                 .ToList()
                 .ForEach(Console.WriteLine);
-            Assert.That(string.Join(", ", result), Is.EqualTo(expected));
+            Assert.That(String.Join(", ", result), Is.EqualTo(expected));
         }
 
         /// <summary>
@@ -285,7 +284,7 @@ namespace KGood.Tests
             int query;
             do
             {
-                query = input.ToString().Select(x => int.Parse(x.ToString())).Sum(x => x*x);
+                query = input.ToString().Select(x => Int32.Parse(x.ToString())).Sum(x => x*x);
                 input = query;
             } while (query > 9);
             string result = query == 1 ? "HAPPY":"UNHAPPY";
@@ -311,8 +310,24 @@ namespace KGood.Tests
         public void Test_GetPortNumberFromIpAddress(string input, int expected)
         {
             string p = input;
-            int r = p.Where(char.IsNumber).Sum(c => c - '0') * (p[0] - '0');
+            int r = p.Where(Char.IsNumber).Sum(c => c - '0') * (p[0] - '0');
             Assert.That(r, Is.EqualTo(expected));
+        }
+
+        [TestCase(0, "0")]
+        [TestCase(45, "P/4")]
+        [TestCase(90, "P/2")]
+        [TestCase(180, "P")]
+        [TestCase(225, "5*P/4")]
+        [TestCase(270, "3*P/2")]
+        [TestCase(360, "2*P")]
+        [TestCase(-90, "3*P/2")]
+        [TestCase(-135, "5*P/4")]
+        [Test]
+        public void Test_ConvertAngleInDegreesToRadians(int angleInDegrees, string expected)
+        {
+            var result = NumberUtilities.ConvertAngleInDegreesToRadians(angleInDegrees);
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }
