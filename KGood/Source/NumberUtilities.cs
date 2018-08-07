@@ -319,6 +319,23 @@ namespace KGood.Source
             return result;
         }
 
+        private static void GetBasicValues(int angleInDegrees, ref int num1, ref int num2)
+        {
+            if (angleInDegrees > 0 && angleInDegrees % 45 == 0)
+            {
+                num1 = angleInDegrees / 45;
+                num2 = 4;
+            }
+            else
+            {
+                if (angleInDegrees > 0 && angleInDegrees % 90 == 0)
+                {
+                    num1 = angleInDegrees / 90;
+                    num2 = 2;
+                }
+            }
+        }
+
         private static void FindBiggestCommonDivisor(ref int num1, ref int num2)
         {
             int smaller = num1 < num2 ? num1 : num2;
@@ -352,23 +369,6 @@ namespace KGood.Source
                 result = result + "/" + num2;
             }
             return result;
-        }
-
-        private static void GetBasicValues(int angleInDegrees, ref int num1, ref int num2)
-        {
-            if (angleInDegrees > 0 && angleInDegrees % 45 == 0)
-            {
-                num1 = angleInDegrees / 45;
-                num2 = 4;
-            }
-            else
-            {
-                if (angleInDegrees > 0 && angleInDegrees % 90 == 0)
-                {
-                    num1 = angleInDegrees / 90;
-                    num2 = 2;
-                }
-            }
         }
     }
 }
