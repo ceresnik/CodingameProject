@@ -4,8 +4,9 @@
     {
         public string Convert(int angle)
         {
-            var angleInDegrees = new AngleInDegrees(angle);
-            return angleInDegrees.ConvertToRadians();
+            var angleInRadians = new AngleInRadians(new QuarterCounter().GetCountOfQuarters(angle));
+            return angleInRadians.GetStringRepresentation();
+
         }
     }
 }

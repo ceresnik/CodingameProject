@@ -2,44 +2,48 @@ namespace KGood.Source.DegreesToRadians
 {
     public class AngleInRadians
     {
-        private readonly int numerator;
-        private readonly int denominator;
-        private string fractionSeparator = "/";
-        private string piSign = "P";
+        private readonly int countOfQuarters;
+        private readonly string piSign = "P";
+        private readonly string fractionSeparator = "/";
+        private string strNumerator;
+        private string strDenominator;
 
-        public AngleInRadians(int numerator, int denominator)
+        public AngleInRadians(int countOfQuarters)
         {
-            this.numerator = numerator;
-            this.denominator = denominator;
+            this.countOfQuarters = countOfQuarters;
         }
 
-        public string ToBasicShape()
+        public string GetStringRepresentation()
         {
-            if (numerator == 0 && denominator == 1)
+            int numerator = countOfQuarters;
+            int denominator = countOfQuarters > 0 ? 4 : 0;
+            ConvertNumeratorAndDenominatorToStringRepresentation(numerator, denominator);
+            return ComposeResult(numerator);
+        }
+
+        private void ConvertNumeratorAndDenominatorToStringRepresentation(int numerator, int denominator)
+        {
+            strNumerator = countOfQuarters > 1 ? numerator.ToString() : "";
+            strDenominator = denominator > 1 ? denominator.ToString() : "";
+        }
+
+        private string ComposeResult(int numerator)
+        {
+            string result = strNumerator;
+            if (numerator > 0)
             {
-                return "0";
+                result += piSign;
             }
-            var basicShapeOfDenominator = CountBasicShapeOfDenominator();
-            var result = CountBasicShapeOfNumerator() + piSign;
-            if (basicShapeOfDenominator > 1)
+            else
             {
-                result += fractionSeparator + basicShapeOfDenominator;
+                result = "0";
             }
+            if (string.IsNullOrEmpty(strDenominator) == false)
+            {
+                result += fractionSeparator;
+            }
+            result += strDenominator;
             return result;
-        }
-
-        private string CountBasicShapeOfNumerator()
-        {
-            if (numerator == 1)
-            {
-                return "";
-            }
-            return "";
-        }
-
-        private int CountBasicShapeOfDenominator()
-        {
-            return denominator;
         }
     }
 }

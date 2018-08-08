@@ -8,8 +8,9 @@ namespace KGood.Tests.DegreesToRadians
     {
         [TestCase(0, "0")]
         [TestCase(45, "P/4")]
-        [TestCase(90, "P/2")]
-        [TestCase(180, "P")]
+        //[TestCase(90, "P/2")]
+        //[TestCase(135, "3P/4")]
+        //[TestCase(180, "P")]
         [Test]
         public void Test_DegreesToRadiansConvertor(int angleInDegrees, string expected)
         {
