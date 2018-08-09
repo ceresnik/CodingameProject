@@ -6,7 +6,6 @@
         {
             var angleInRadians = new AngleInRadians(new QuarterCounter().GetCountOfQuarters(angle));
             return angleInRadians.GetStringRepresentation();
-
         }
     }
 }

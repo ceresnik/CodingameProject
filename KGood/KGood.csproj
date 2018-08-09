@@ -71,7 +71,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\DegreesToRadians\QuarterCounter.cs" />
     <Compile Include="Source\DegreesToRadians\AngleInRadians.cs" />
-    <Compile Include="Source\DegreesToRadians\AngleInRadians_Deprecated.cs" />
     <Compile Include="Source\DegreesToRadians\DegreesToRadiansConvertor.cs" />
     <Compile Include="Source\HofstadterConwaySequence\HofstadterConwaySequenceGenerator.cs" />
     <Compile Include="Source\Extensions\IntegerExtensions.cs" />
