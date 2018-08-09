@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace KGood.Source.StringDividing
 {
@@ -10,6 +11,11 @@ namespace KGood.Source.StringDividing
 
         public WordSplitter(WordRepresentation wordRepresentation, int countOfUniqueLetters)
         {
+            if (countOfUniqueLetters == 0)
+            {
+                
+                throw new ArgumentException("Must be greater than zero.", nameof(countOfUniqueLetters));
+            }
             this.wordRepresentation = wordRepresentation;
             this.countOfUniqueLetters = countOfUniqueLetters;
             wordParts = new WordParts();

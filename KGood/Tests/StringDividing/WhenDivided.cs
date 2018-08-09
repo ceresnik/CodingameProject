@@ -164,14 +164,6 @@ namespace KGood.Tests.StringDividing
         }
 
         [Test]
-        public void StringToDivideIsNull_NoException()
-        {
-            var sut = new StringDivider();
-            var result = sut.Divide(null, 0);
-            Assert.That(result.Count, Is.EqualTo(0));
-        }
-
-        [Test]
         public void AndCardinalityIsGreaterThanCountOfDistinctLetters_ExceptionIsThrown()
         {
             Assert.Throws<ArgumentException>(() =>

@@ -36,6 +36,10 @@ namespace KGood.Source.StringDividing
 
         public MaybeString CutOffBeginningLetters()
         {
+            if (this.word == "")
+            {
+                return this;
+            }
             string wordWithoutBeginningLetters = this.word;
             char firstLetter = wordWithoutBeginningLetters[0];
             do
