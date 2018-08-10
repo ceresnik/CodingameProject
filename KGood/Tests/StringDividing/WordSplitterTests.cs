@@ -10,15 +10,19 @@ namespace KGood.Tests.StringDividing
         [Test]
         public void NoEmptyWordPartsInResult()
         {
-            var sut = new WordSplitter(new WordRepresentation("abcdefaabbccddeedff"), 4);
-            var result = sut.SplitToParts().Count;
+            var sut = new WordSplitter();
+            var result = sut.SplitToParts(new Word("abcdefaabbccddeedff"), 4).Count;
             Assert.That(result, Is.EqualTo(9));
         }
 
         [Test]
         public void CountOfUniqueLettersIsZero_ExceptionIsThrown()
         {
-            Assert.Throws<ArgumentException> (() => new WordSplitter(new WordRepresentation("abc"), 0));
+            Assert.Throws<ArgumentException> (() =>
+            {
+                var sut = new WordSplitter();
+                sut.SplitToParts(new Word("abc"), 0);
+            });
         }
     }
 }

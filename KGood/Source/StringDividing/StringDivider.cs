@@ -5,46 +5,30 @@ namespace KGood.Source.StringDividing
 {
     public class StringDivider
     {
-        private WordRepresentation wordRepresentation;
+        private readonly IWordFactory wordFactory;
+        private Word word;
         private int inputCountOfUniqueLetters;
 
-        public StringDivider(string inputWord, int inputCountOfUniqueLetters)
-        :this(new WordRepresentation(new MaybeString(inputWord)), inputCountOfUniqueLetters)
-        {
-        }
-
-        private StringDivider(WordRepresentation inputWord, int inputCountOfUniqueLetters)
-        {
-            wordRepresentation = inputWord;
-            if (wordRepresentation.CountOfUniqueLetters < inputCountOfUniqueLetters)
-            {
-                throw new ArgumentException("Count of different letters can not be greater than " +
-                                            "count of unique letters in given word!");
-            }
-            this.inputCountOfUniqueLetters = inputCountOfUniqueLetters;
-        }
-
         public StringDivider()
+        : this(new WordFactory()){
+            
+        }
+        public StringDivider(IWordFactory wordFactory)
         {
+            this.wordFactory = wordFactory;
         }
 
-        internal IList<MaybeString> Divide(string word, int countOfUniqueLetters)
+        internal IList<MaybeString> Divide(string inputWord, int countOfUniqueLetters)
         {
-            wordRepresentation = new WordRepresentation(new MaybeString(word));
-            if (wordRepresentation.CountOfUniqueLetters < countOfUniqueLetters)
+            word = wordFactory.Create(inputWord);
+            if (word.CountOfUniqueLetters < countOfUniqueLetters)
             {
-                throw new ArgumentException("Count of different letters can not be greater than " +
-                                            "count of unique letters in given word!");
+                throw new ArgumentException("Requested count of unique letters can not be greater than " +
+                                            "count of unique letters given word consists of!");
             }
             inputCountOfUniqueLetters = countOfUniqueLetters;
-            var wordSplitter = new WordSplitter(wordRepresentation, inputCountOfUniqueLetters);
-            return wordSplitter.SplitToParts();
-        }
-
-        public IList<MaybeString> Divide()
-        {
-            var wordSplitter = new WordSplitter(wordRepresentation, inputCountOfUniqueLetters);
-            return wordSplitter.SplitToParts();
+            var wordSplitter = new WordSplitter();
+            return wordSplitter.SplitToParts(word, inputCountOfUniqueLetters);
         }
     }
 }

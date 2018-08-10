@@ -2,17 +2,17 @@
 
 namespace KGood.Source.StringDividing
 {
-    public class WordRepresentation
+    public class Word
     {
         private readonly ChainOfSameLettersDistinguisher chainOfSameLettersDistinguisher;
         private readonly MaybeString word;
 
-        public WordRepresentation(string word)
+        public Word(string word)
         :this(new MaybeString(word))
         {
         }
 
-        public WordRepresentation(MaybeString inputWord)
+        public Word(MaybeString inputWord)
         {
             word = inputWord;
             chainOfSameLettersDistinguisher = new ChainOfSameLettersDistinguisher(word);
