@@ -6,29 +6,27 @@ namespace KGood.Source.StringDividing
     public class StringDivider
     {
         private readonly IWordFactory wordFactory;
-        private Word word;
-        private int inputCountOfUniqueLetters;
+        private readonly WordSplitter wordSplitter;
 
         public StringDivider()
-        : this(new WordFactory()){
+        : this(new WordFactory(), new WordSplitter()){
             
         }
-        public StringDivider(IWordFactory wordFactory)
+        public StringDivider(IWordFactory wordFactory, WordSplitter wordSplitter)
         {
             this.wordFactory = wordFactory;
+            this.wordSplitter = wordSplitter;
         }
 
         internal IList<MaybeString> Divide(string inputWord, int countOfUniqueLetters)
         {
-            word = wordFactory.Create(inputWord);
-            if (word.CountOfUniqueLetters < countOfUniqueLetters)
+            var word = wordFactory.Create(inputWord);
+            if (word.HasEnoughUniqueLetters(countOfUniqueLetters) == false)
             {
                 throw new ArgumentException("Requested count of unique letters can not be greater than " +
                                             "count of unique letters given word consists of!");
             }
-            inputCountOfUniqueLetters = countOfUniqueLetters;
-            var wordSplitter = new WordSplitter();
-            return wordSplitter.SplitToParts(word, inputCountOfUniqueLetters);
+            return wordSplitter.SplitToParts(word, countOfUniqueLetters);
         }
     }
 }

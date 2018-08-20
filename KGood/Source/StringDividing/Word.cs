@@ -5,29 +5,27 @@ namespace KGood.Source.StringDividing
     public class Word
     {
         private readonly ChainOfSameLettersDistinguisher chainOfSameLettersDistinguisher;
-        private readonly MaybeString word;
+        private readonly MaybeString maybeString;
 
         public Word(string word)
         :this(new MaybeString(word))
         {
         }
 
-        public Word(MaybeString inputWord)
+        public Word(MaybeString inputMaybeString)
         {
-            word = inputWord;
-            chainOfSameLettersDistinguisher = new ChainOfSameLettersDistinguisher(word);
+            maybeString = inputMaybeString;
+            chainOfSameLettersDistinguisher = new ChainOfSameLettersDistinguisher(maybeString);
         }
 
-        public int Length => word.Length;
-
-        public int CountOfUniqueLetters => word.CountOfUniqueLetters;
+        public int Length => maybeString.Length;
 
         public int CountOfLetterGroups
         {
             get
             {
                 int countOfGroups = 0;
-                for (var i = 0; i < word.Length; i++)
+                for (var i = 0; i < maybeString.Length; i++)
                 {
                     if (chainOfSameLettersDistinguisher.LetterChanged(i))
                     {
@@ -46,22 +44,27 @@ namespace KGood.Source.StringDividing
 
         public MaybeString CutOffBeginningLetters()
         {
-            return word.CutOffBeginningLetters();
+            return maybeString.CutOffBeginningLetters();
+        }
+
+        public bool HasEnoughUniqueLetters(int countOfUniqueLetters)
+        {
+            return maybeString.CountOfUniqueLetters >= countOfUniqueLetters;
         }
 
         private MaybeString GetBeginningLettersUntilStop(int count, int stopIndex)
         {
-            var beginningLetters = word.GetBeginningLettersUntil(stopIndex);
+            var beginningLetters = maybeString.GetBeginningLettersUntil(stopIndex);
             return beginningLetters.CountOfUniqueLetters == count ? beginningLetters : new MaybeString(null);
         }
 
         private int FindOutWhereToStop(int countOfDifferentLetters)
         {
-            int endIndexOfFoundGroup = word.Length;
+            int endIndexOfFoundGroup = maybeString.Length;
             var alreadyProcessedLetters = new HashSet<char>();
-            for (var i = 0; i < word.Length; i++)
+            for (var i = 0; i < maybeString.Length; i++)
             {
-                alreadyProcessedLetters.Add(word.LetterAt(i));
+                alreadyProcessedLetters.Add(maybeString.LetterAt(i));
                 if (alreadyProcessedLetters.Count > countOfDifferentLetters)
                 {
                     endIndexOfFoundGroup = i;

@@ -13,10 +13,9 @@ namespace KGood.Tests.StringDividing
         {
             var mWordFactory = new Mock<IWordFactory>();
             string inputWord = "aab";
-            mWordFactory.Setup(
-                x => x.Create(inputWord))
+            mWordFactory.Setup(x => x.Create(inputWord))
                 .Returns(new Word(new MaybeString(inputWord)));
-            var sut = new StringDivider(mWordFactory.Object);
+            var sut = new StringDivider(mWordFactory.Object, new WordSplitter());
             var result = sut.Divide(inputWord, 2);
 
         }

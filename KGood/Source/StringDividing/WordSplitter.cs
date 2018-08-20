@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace KGood.Source.StringDividing
 {
-    internal class WordSplitter
+    public class WordSplitter
     {
         private Word word;
         private int countOfUniqueLetters;
@@ -15,16 +15,6 @@ namespace KGood.Source.StringDividing
         }
 
         private bool IsWordLongEnough => word.CountOfLetterGroups >= countOfUniqueLetters;
-
-        public IList<MaybeString> SplitToParts()
-        {
-            while (IsWordLongEnough)
-            {
-                CreateWordPart();
-                RemoveBeginningLettersFromWordRepresentation();
-            }
-            return wordParts.ToListOfMaybeStrings();
-        }
 
         public IList<MaybeString> SplitToParts(Word word1, int inputCountOfUniqueLetters)
         {
@@ -38,6 +28,16 @@ namespace KGood.Source.StringDividing
             return SplitToParts();
         }
 
+        private IList<MaybeString> SplitToParts()
+        {
+            while (IsWordLongEnough)
+            {
+                CreateWordPart();
+                RemoveBeginningLetters();
+            }
+            return wordParts.ToListOfMaybeStrings();
+        }
+
         private void CreateWordPart()
         {
             var wordPart = word.GetBeginningLetters(countOfUniqueLetters);
@@ -47,7 +47,7 @@ namespace KGood.Source.StringDividing
             }
         }
 
-        private void RemoveBeginningLettersFromWordRepresentation()
+        private void RemoveBeginningLetters()
         {
             //TODO: is it ok to overwrite here my own field?
             word = new Word(word.CutOffBeginningLetters());
