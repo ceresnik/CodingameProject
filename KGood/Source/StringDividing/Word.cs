@@ -20,20 +20,17 @@ namespace KGood.Source.StringDividing
 
         public int Length => maybeString.Length;
 
-        public int CountOfLetterGroups
+        public int GetCountOfLetterGroups()
         {
-            get
+            int countOfGroups = 0;
+            for (var i = 0; i < maybeString.Length; i++)
             {
-                int countOfGroups = 0;
-                for (var i = 0; i < maybeString.Length; i++)
+                if (chainOfSameLettersDistinguisher.LetterChanged(i))
                 {
-                    if (chainOfSameLettersDistinguisher.LetterChanged(i))
-                    {
-                        countOfGroups++;
-                    }
+                    countOfGroups++;
                 }
-                return countOfGroups;
             }
+            return countOfGroups;
         }
 
         public MaybeString GetBeginningLetters(int count)

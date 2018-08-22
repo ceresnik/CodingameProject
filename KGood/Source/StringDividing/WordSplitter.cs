@@ -14,7 +14,7 @@ namespace KGood.Source.StringDividing
             wordParts = new WordParts();
         }
 
-        private bool IsWordLongEnough => word.CountOfLetterGroups >= countOfUniqueLetters;
+        private bool IsWordLongEnough => word.GetCountOfLetterGroups() >= countOfUniqueLetters;
 
         public IList<MaybeString> SplitToParts(Word word1, int inputCountOfUniqueLetters)
         {

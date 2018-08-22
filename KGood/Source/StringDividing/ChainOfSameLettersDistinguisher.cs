@@ -4,6 +4,8 @@ namespace KGood.Source.StringDividing
 {
     public class ChainOfSameLettersDistinguisher
     {
+        private readonly MaybeString maybeString;
+
         public ChainOfSameLettersDistinguisher(string inputWord)
         :this(new MaybeString(inputWord))
         {
@@ -11,14 +13,12 @@ namespace KGood.Source.StringDividing
 
         public ChainOfSameLettersDistinguisher(MaybeString inputWord)
         {
-            Word = inputWord;
+            maybeString = inputWord;
         }
-
-        private MaybeString Word { get; }
 
         public bool LetterChanged(int index)
         {
-            if (index >= Word.Length)
+            if (index >= maybeString.Length)
             {
                 throw new ArgumentException("index");
             }
@@ -26,7 +26,7 @@ namespace KGood.Source.StringDividing
             {
                 return true;
             }
-            if (Word.IsLetterSameAsPrevious(index))
+            if (maybeString.IsLetterSameAsPrevious(index))
             {
                 return false;
             }
