@@ -9,8 +9,8 @@ namespace KGood.Tests.Sudoku
         public void AcceptanceTest1()
         {
             string inputLine = "8372?9514";
-            var sut = new OneLineSudoku(inputLine);
-            var result = sut.GetSolution();
+            var sut = new OneLineSudoku();
+            var result = sut.GetSolution(inputLine);
             Assert.That(result, Is.EqualTo(6));
         }
 
@@ -18,8 +18,8 @@ namespace KGood.Tests.Sudoku
         public void AcceptanceTest2()
         {
             string inputLine = "981453?67";
-            var sut = new OneLineSudoku(inputLine);
-            var result = sut.GetSolution();
+            var sut = new OneLineSudoku();
+            var result = sut.GetSolution(inputLine);
             Assert.That(result, Is.EqualTo(2));
         }
 
@@ -27,8 +27,8 @@ namespace KGood.Tests.Sudoku
         public void AcceptanceTest3()
         {
             string inputLine = "318?92657";
-            var sut = new OneLineSudoku(inputLine);
-            var result = sut.GetSolution();
+            var sut = new OneLineSudoku();
+            var result = sut.GetSolution(inputLine);
             Assert.That(result, Is.EqualTo(4));
         }
 
@@ -36,9 +36,21 @@ namespace KGood.Tests.Sudoku
         public void AcceptanceTest4()
         {
             string inputLine = "1234?6789";
-            var sut = new OneLineSudoku(inputLine);
-            var result = sut.GetSolution();
+            var sut = new OneLineSudoku();
+            var result = sut.GetSolution(inputLine);
             Assert.That(result, Is.EqualTo(5));
+        }
+
+        [Test]
+        public void AcceptanceTest5()
+        {
+            string inputLine1 = "1234?6789";
+            string inputLine2 = "318?92657";
+            var sut = new OneLineSudoku();
+            var result = sut.GetSolution(inputLine1);
+            Assert.That(result, Is.EqualTo(5));
+            result = sut.GetSolution(inputLine2);
+            Assert.That(result, Is.EqualTo(4));
         }
     }
 }

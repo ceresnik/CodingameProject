@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KGood.Source.Sudoku
 {
     public class OneLineSudoku
     {
         private IList<int> givenNumbers;
-        private readonly string inputLine;
         private readonly IList<ISudokuLineRule> rules;
 
-        public OneLineSudoku(string inputLine)
+        public OneLineSudoku()
         {
             rules = new List<ISudokuLineRule>
                     {
@@ -18,34 +18,19 @@ namespace KGood.Source.Sudoku
                         new QuestionMarkRule(),
                         new CountOfNumbersRule()
                     };
-            this.inputLine = inputLine;
-            ValidateInputLine();
-            Parse();
         }
 
-        private void ValidateInputLine()
+        public int GetSolution(string input)
         {
-            foreach (var sudokuLineRule in rules)
-            {
-                sudokuLineRule.Validate(inputLine);
-            }
+            Validate(input);
+            Parse(input);
+            var result = UncheckGivenNumbers();
+            return result[0];
         }
 
-        private void Parse()
+        private List<int> UncheckGivenNumbers()
         {
-            givenNumbers = new List<int>();
-            foreach (char c in inputLine)
-            {
-                if (Int32.TryParse(c.ToString(), out int number))
-                {
-                    givenNumbers.Add(number);
-                }
-            }
-        }
-
-        public int GetSolution()
-        {
-            IList<int> allNumbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var allNumbers = Enumerable.Range(1, 9).ToList();
             for (var i = 1; i <= 9; i++)
             {
                 if (givenNumbers.Contains(i))
@@ -53,7 +38,27 @@ namespace KGood.Source.Sudoku
                     allNumbers.Remove(i);
                 }
             }
-            return allNumbers[0];
+            return allNumbers;
+        }
+
+        private void Validate(string input)
+        {
+            foreach (var rule in rules)
+            {
+                rule.Validate(input);
+            }
+        }
+
+        private void Parse(string input)
+        {
+            givenNumbers = new List<int>();
+            foreach (char c in input)
+            {
+                if (Int32.TryParse(c.ToString(), out int number))
+                {
+                    givenNumbers.Add(number);
+                }
+            }
         }
     }
 }
