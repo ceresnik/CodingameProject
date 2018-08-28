@@ -12,7 +12,7 @@ namespace KGood.Tests.Sudoku
             Assert.Throws<ArgumentException>(() =>
             {
                 var sut = new OneLineSudoku();
-                sut.GetSolution(null);
+                sut.GetSolutionFor(null);
             });
         }
 
@@ -23,7 +23,7 @@ namespace KGood.Tests.Sudoku
             Assert.Throws<ArgumentException>(() =>
             {
                 var sut = new OneLineSudoku();
-                sut.GetSolution(inputLine);
+                sut.GetSolutionFor(inputLine);
             });
         }
 
@@ -34,7 +34,7 @@ namespace KGood.Tests.Sudoku
             Assert.Throws<ArgumentException>(() =>
             {
                 var sut = new OneLineSudoku();
-                sut.GetSolution(inputLine);
+                sut.GetSolutionFor(inputLine);
             });
         }
 
@@ -45,7 +45,7 @@ namespace KGood.Tests.Sudoku
             Assert.Throws<ArgumentException>(() =>
             {
                 var sut = new OneLineSudoku();
-                sut.GetSolution(inputLine);
+                sut.GetSolutionFor(inputLine);
             });
         }
     }

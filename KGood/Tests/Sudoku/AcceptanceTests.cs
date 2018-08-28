@@ -10,7 +10,7 @@ namespace KGood.Tests.Sudoku
         {
             string inputLine = "8372?9514";
             var sut = new OneLineSudoku();
-            var result = sut.GetSolution(inputLine);
+            var result = sut.GetSolutionFor(inputLine);
             Assert.That(result, Is.EqualTo(6));
         }
 
@@ -19,7 +19,7 @@ namespace KGood.Tests.Sudoku
         {
             string inputLine = "981453?67";
             var sut = new OneLineSudoku();
-            var result = sut.GetSolution(inputLine);
+            var result = sut.GetSolutionFor(inputLine);
             Assert.That(result, Is.EqualTo(2));
         }
 
@@ -28,7 +28,7 @@ namespace KGood.Tests.Sudoku
         {
             string inputLine = "318?92657";
             var sut = new OneLineSudoku();
-            var result = sut.GetSolution(inputLine);
+            var result = sut.GetSolutionFor(inputLine);
             Assert.That(result, Is.EqualTo(4));
         }
 
@@ -37,7 +37,7 @@ namespace KGood.Tests.Sudoku
         {
             string inputLine = "1234?6789";
             var sut = new OneLineSudoku();
-            var result = sut.GetSolution(inputLine);
+            var result = sut.GetSolutionFor(inputLine);
             Assert.That(result, Is.EqualTo(5));
         }
 
@@ -47,9 +47,9 @@ namespace KGood.Tests.Sudoku
             string inputLine1 = "1234?6789";
             string inputLine2 = "318?92657";
             var sut = new OneLineSudoku();
-            var result = sut.GetSolution(inputLine1);
+            var result = sut.GetSolutionFor(inputLine1);
             Assert.That(result, Is.EqualTo(5));
-            result = sut.GetSolution(inputLine2);
+            result = sut.GetSolutionFor(inputLine2);
             Assert.That(result, Is.EqualTo(4));
         }
     }

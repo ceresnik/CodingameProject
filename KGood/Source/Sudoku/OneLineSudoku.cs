@@ -20,7 +20,7 @@ namespace KGood.Source.Sudoku
                     };
         }
 
-        public int GetSolution(string input)
+        public int GetSolutionFor(string input)
         {
             Validate(input);
             Parse(input);
