@@ -90,6 +90,8 @@
     <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\SumCounter.cs" />
     <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\OddNumbersSelector.cs" />
     <Compile Include="Tests\AlphabetUtilities\SameLettersRepeaterTests.cs" />
+    <Compile Include="Source\AlphabetUtilities\StringFormatter.cs" />
+    <Compile Include="Tests\AlphabetUtilities\StringFormatterTests.cs" />
     <Compile Include="Tests\LogicalOperations\UnitTests.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\Painters.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CombiningPainter.cs" />
