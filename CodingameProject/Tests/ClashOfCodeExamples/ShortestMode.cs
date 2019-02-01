@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using NUnit.Framework;
 
 namespace CodingameProject.Tests.ClashOfCodeExamples
@@ -24,6 +27,18 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
             int y = year;
             int r = DateTime.DaysInMonth(y, m);
             Assert.That(r, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void OrderAndFormatNumbers()
+        {
+            var inputList1 = new List<int> { 1, 9, 5 }.OrderBy(x => x).ToList();
+            var inputList2 = new List<int> { 2, 1, 6 }.OrderBy(x => x).ToList();
+
+            var pairs = inputList1.Select((x, y) => "(" + x + ", " + inputList2[y] + ")").ToList();
+            var result = string.Join(", ", pairs);
+            Console.WriteLine(result);
+            Assert.That(result, Is.EqualTo("(1, 1), (5, 2), (9, 6)"));
         }
     }
 }
