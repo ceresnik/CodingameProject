@@ -92,6 +92,7 @@
     <Compile Include="Tests\AlphabetUtilities\SameLettersRepeaterTests.cs" />
     <Compile Include="Source\AlphabetUtilities\StringFormatter.cs" />
     <Compile Include="Tests\AlphabetUtilities\StringFormatterTests.cs" />
+    <Compile Include="Tests\ClashOfCodeExamples\ShortestMode.cs" />
     <Compile Include="Tests\LogicalOperations\UnitTests.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\Painters.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CombiningPainter.cs" />
@@ -129,6 +130,7 @@
   <ItemGroup>
     <Content Include="test.library.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
