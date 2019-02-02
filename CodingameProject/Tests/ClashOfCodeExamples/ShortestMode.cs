@@ -51,42 +51,40 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
         [Test]
         public void CountWordsHavingNeitherTwoSuccessiveVowelsNorConsonants(string input, int expected)
         {
-            string[] inputWords = input.Split(' ');
-            var vowels = new List<char> { 'a', 'e', 'i', 'o', 'u'};
-            int result = 0;
-            foreach (string word in inputWords)
-            {
-                bool currentWordIsOk = true;
-                for (var i = 0; i < word.Length - 1; i++)
-                {
-                    char currentLowerCaseLetter = char.ToLower(word[i]);
-                    bool isVowel = vowels.Contains(currentLowerCaseLetter);
-                    char nextLetter = char.ToLower(word[i + 1]);
-                    bool nextLetterIsVowel = vowels.Contains(nextLetter);
-                    if (isVowel)
-                    {
-                        if (nextLetterIsVowel)
-                        {
-                            currentWordIsOk = false;
-                            break;
-                        }
-                    }
-                    else
-                    {
-                        if (nextLetterIsVowel == false)
-                        {
-                            currentWordIsOk = false;
-                            break;
-                        }
-                    }
-                }
-                if (currentWordIsOk)
-                {
-                    result++;
-                }
-            }
+            var inputWords = input.Split(' ').ToList();
+            int result = inputWords.Count(myCountingFunc);
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        private readonly Func<string, bool> myCountingFunc = word =>
+        {
+            var vowels = new List<char> { 'a', 'e', 'i', 'o', 'u' };
+            bool currentWordIsOk = true;
+            for (var i = 0; i < word.Length - 1; i++)
+            {
+                char currentLowerCaseLetter = char.ToLower(word[i]);
+                bool isVowel = vowels.Contains(currentLowerCaseLetter);
+                char nextLetter = char.ToLower(word[i + 1]);
+                bool nextLetterIsVowel = vowels.Contains(nextLetter);
+                if (isVowel)
+                {
+                    if (nextLetterIsVowel)
+                    {
+                        currentWordIsOk = false;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (nextLetterIsVowel == false)
+                    {
+                        currentWordIsOk = false;
+                        break;
+                    }
+                }
+            }
+            return currentWordIsOk;
+        };
 
         /// <summary>
         /// Return the output of the Ackermann function.
