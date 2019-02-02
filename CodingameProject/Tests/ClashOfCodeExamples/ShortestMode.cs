@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using NUnit.Framework.Internal.Execution;
 
 namespace CodingameProject.Tests.ClashOfCodeExamples
 {
@@ -87,6 +86,44 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
                 }
             }
             Assert.That(result, Is.EqualTo(expected));
+        }
+
+        /// <summary>
+        /// Return the output of the Ackermann function.
+        /// If at least one of the numbers given is impossible to compute (M=3 is possible to compute, but won't be computed), return -1.
+        /// Ackermann function:
+        /// if M = 0: return n + 1 
+        /// if N = 0: return Ackermann function of M - 1, 1
+        /// Default: return Ackermann function of (M - 1, Ackermann function of(M, N - 1))
+        /// </summary>
+        /// <param name="m"></param>
+        /// <param name="n"></param>
+        /// <param name="expected"></param>
+        [TestCase(0, 99, 100)]
+        [TestCase(1, 0, 2)]
+        [TestCase(5, -1, -1)]
+        [TestCase(2, 55, 113)]
+        [TestCase(2, 97, 197)]
+        [Test]
+        public void AckermannFunctionTest(int m, int n, int expected)
+        {
+            int result = -1;
+            if (m >= 0 & m < 3 && n >= 0 && n <= 100)
+                result = CountAckermannFunction(m, n);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        private int CountAckermannFunction(int m, int n)
+        {
+            if (m == 0)
+            {
+                return n + 1;
+            }
+            if (n == 0)
+            {
+                return CountAckermannFunction(m - 1, 1);
+            }
+            return CountAckermannFunction(m - 1, CountAckermannFunction(m, n - 1));
         }
     }
 }
