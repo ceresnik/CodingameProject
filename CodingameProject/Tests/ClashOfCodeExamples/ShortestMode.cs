@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 
 namespace CodingameProject.Tests.ClashOfCodeExamples
@@ -39,6 +38,55 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
             var result = string.Join(", ", pairs);
             Console.WriteLine(result);
             Assert.That(result, Is.EqualTo("(1, 1), (5, 2), (9, 6)"));
+        }
+
+        [TestCase("Coding game", 1)]
+        [TestCase("Codingame", 0)]
+        [TestCase("This is the test", 1)]
+        [TestCase("This is the basic test", 2)]
+        [TestCase("Game is over", 3)]
+        [TestCase("Not enough time to finish this clash at all", 4)]
+        [TestCase("Katarina Lukas Peter Tomas Lubo Laco Milan Marek Erik Simon", 10)]
+        [TestCase("Michal Ladislav Brigita Jasmin Lucia Hanna Kristina", 0)]
+        [Test]
+        public void CountWordsHavingNeitherTwoSuccessiveVowelsNorConsonants(string input, int expected)
+        {
+            string[] inputWords = input.Split(' ');
+            var vowels = new List<char> { 'a', 'e', 'i', 'o', 'u'};
+            int result = 0;
+            foreach (string word in inputWords)
+            {
+                bool currentWordIsOk = true;
+                for (var index = 0; index < word.Length - 1; index++)
+                {
+                    char c = word[index];
+                    char currentLowerCaseLetter = char.ToLower(c);
+                    bool isVowel = vowels.Contains(currentLowerCaseLetter);
+                    char nextLetter = char.ToLower(word[index + 1]);
+                    bool nextLetterIsVowel = vowels.Contains(nextLetter);
+                    if (isVowel)
+                    {
+                        if (nextLetterIsVowel)
+                        {
+                            currentWordIsOk = false;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (nextLetterIsVowel == false)
+                        {
+                            currentWordIsOk = false;
+                            break;
+                        }
+                    }
+                }
+                if (currentWordIsOk)
+                {
+                    result++;
+                }
+            }
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }
