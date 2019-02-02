@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
+using NUnit.Framework.Internal.Execution;
 
 namespace CodingameProject.Tests.ClashOfCodeExamples
 {
@@ -29,7 +30,7 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
         }
 
         [Test]
-        public void OrderAndFormatNumbers()
+        public void OrderAndFormatNumbersToString()
         {
             var inputList1 = new List<int> { 1, 9, 5 }.OrderBy(x => x).ToList();
             var inputList2 = new List<int> { 2, 1, 6 }.OrderBy(x => x).ToList();
@@ -57,12 +58,11 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
             foreach (string word in inputWords)
             {
                 bool currentWordIsOk = true;
-                for (var index = 0; index < word.Length - 1; index++)
+                for (var i = 0; i < word.Length - 1; i++)
                 {
-                    char c = word[index];
-                    char currentLowerCaseLetter = char.ToLower(c);
+                    char currentLowerCaseLetter = char.ToLower(word[i]);
                     bool isVowel = vowels.Contains(currentLowerCaseLetter);
-                    char nextLetter = char.ToLower(word[index + 1]);
+                    char nextLetter = char.ToLower(word[i + 1]);
                     bool nextLetterIsVowel = vowels.Contains(nextLetter);
                     if (isVowel)
                     {
