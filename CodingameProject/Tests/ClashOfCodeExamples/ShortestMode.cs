@@ -123,5 +123,19 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
             }
             return CountAckermannFunction(m - 1, CountAckermannFunction(m, n - 1));
         }
+
+        [Test]
+        public void CountPeopleInCityWhatMatchesCityPattern()
+        {
+            var input = new Dictionary<string, int> {{"London", 8}, {"Maribor", 5}, {"Marseille", 12}};
+            string searchPattern = "Mar";
+            var query = (from item in input
+                where item.Key.Contains(searchPattern)
+                select item.Value).Sum();
+            Assert.That(query, Is.EqualTo(17));
+
+            var result = input.Where(x => x.Key.Contains(searchPattern)).Sum(x => x.Value);
+            Assert.That(result, Is.EqualTo(17));
+        }
     }
 }
