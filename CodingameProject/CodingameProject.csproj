@@ -70,6 +70,7 @@
     <Compile Include="Source\AlphabetUtilities\SameLettersRepeater.cs" />
     <Compile Include="Source\AlphabetUtilities\StringConverter.cs" />
     <Compile Include="Source\MathematicalUtilities\ArithmeticSeriesCounter.cs" />
+    <Compile Include="Source\MathematicalUtilities\LinqExamples.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CompositePainterFactory.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\EnumerableExtensions.cs" />
     <Compile Include="Program.cs" />
