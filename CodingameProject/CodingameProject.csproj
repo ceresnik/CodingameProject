@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Source\AlphabetUtilities\SameLettersRepeater.cs" />
     <Compile Include="Source\AlphabetUtilities\StringConverter.cs" />
+    <Compile Include="Source\AlphabetUtilities\StringRotater.cs" />
     <Compile Include="Source\MathematicalUtilities\ArithmeticSeriesCounter.cs" />
     <Compile Include="Source\MathematicalUtilities\LinqExamples.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CompositePainterFactory.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Tests\AlphabetUtilities\SameLettersRepeaterTests.cs" />
     <Compile Include="Source\AlphabetUtilities\StringFormatter.cs" />
     <Compile Include="Tests\AlphabetUtilities\StringFormatterTests.cs" />
+    <Compile Include="Tests\AlphabetUtilities\StringRotaterTests.cs" />
     <Compile Include="Tests\ClashOfCodeExamples\FastestMode.cs" />
     <Compile Include="Tests\ClashOfCodeExamples\ShortestMode.cs" />
     <Compile Include="Tests\LogicalOperations\UnitTests.cs" />
@@ -122,6 +124,7 @@
     <Compile Include="Tests\ObjectOrientedTraining\SumCounterDemo\EvenNumbersSelectorTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\SumCounterDemo\OddNumbersSelectorTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\SumCounterDemo\SumCounterTests.cs" />
+    <Compile Include="Tests\PresidentElection\PresidentElectionEvaluationTests.cs" />
     <Compile Include="Tests\SumOfDigitsCounter\NumberRepresentationTests.cs" />
   </ItemGroup>
   <ItemGroup>
