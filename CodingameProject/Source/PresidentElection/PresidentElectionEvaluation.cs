@@ -18,18 +18,13 @@ namespace CodingameProject.Source.PresidentElection
             using (StreamReader r = new StreamReader(jsonInputFile))
             {
                 var input = r.ReadToEnd();
-                var electionResults = JsonConvert.DeserializeObject<List<ElectionResults>>(input);
+                var electionResults = JsonConvert.DeserializeObject<List<ElectionResult>>(input);
                 foreach (var result in electionResults)
                 {
-                    Console.WriteLine($"{result.name} : {result.result}");
+                    Console.WriteLine($"{result.CandidateName} : {result.ResultInPercent}");
                 }
             }
         }
 
-        class ElectionResults
-        {
-            public string name;
-            public double result;
-        }
     }
 }

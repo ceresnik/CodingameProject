@@ -3,8 +3,7 @@
 namespace CodingameProject.Tests.PresidentElection
 {
     [TestFixture]
-    public class 
-        PresidentElectionEvaluationTests
+    public class PresidentElectionEvaluationTests
     {
     }
 }
