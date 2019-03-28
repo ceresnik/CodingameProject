@@ -10,9 +10,19 @@ namespace CodingameProject.Tests.PresidentElection
         [Test]
         public void ElectionResultsReaderObject_InitializedCorrectly()
         {
+            //prepare
             var testResultsFileName = "TestResults.json";
-            var sut = new ElectionResultsReader(testResultsFileName);
-            Assert.That(sut.InputFileName, Is.EqualTo(testResultsFileName));
+            string baseDirectory = AppContext.BaseDirectory;
+            string twoLevelsUp = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\"));
+            string directoryWithResultsFile = Path.Combine(twoLevelsUp, @"Tests\PresidentElection");
+            string inputFileNameWithFullPath = Path.GetFullPath(Path.Combine(directoryWithResultsFile, testResultsFileName));
+            
+            //act
+            var sut = new ElectionResultsReader(inputFileNameWithFullPath);
+            Console.WriteLine($"Full file name: {sut.InputFileName}");
+            
+            //assert
+            Assert.That(sut.InputFileName, Is.EqualTo(inputFileNameWithFullPath));
         }
 
         [Test]
@@ -20,24 +30,6 @@ namespace CodingameProject.Tests.PresidentElection
         {
             var notExistingFile = "NotExistingFile.json";
             Assert.Throws<FileNotFoundException>(() => { new ElectionResultsReader(notExistingFile); });
-        }
-    }
-
-    public class ElectionResultsReader
-    {
-        public string InputFileName { get; }
-
-        public ElectionResultsReader(string inputFileName)
-        {
-            if (File.Exists(inputFileName) == false)
-            {
-                var fileInfo = new FileInfo(inputFileName);
-                var currentDirectory = Directory.GetCurrentDirectory();
-                Console.Error.WriteLine($"Current directory is {currentDirectory}");
-                throw new FileNotFoundException(
-                    $"File {inputFileName} in directory {fileInfo.DirectoryName} does not exist.");
-            }
-            InputFileName = inputFileName;
         }
     }
 }

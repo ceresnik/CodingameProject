@@ -125,6 +125,7 @@
     <Compile Include="Tests\ObjectOrientedTraining\SumCounterDemo\EvenNumbersSelectorTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\SumCounterDemo\OddNumbersSelectorTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\SumCounterDemo\SumCounterTests.cs" />
+    <Compile Include="Tests\PresidentElection\ElectionResultsReader.cs" />
     <Compile Include="Tests\PresidentElection\ElectionResultsReaderTests.cs" />
     <Compile Include="Tests\PresidentElection\ElectionResultTests.cs" />
     <Compile Include="Tests\PresidentElection\PresidentElectionEvaluationTests.cs" />
