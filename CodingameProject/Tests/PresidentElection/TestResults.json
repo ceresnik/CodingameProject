@@ -1,7 +1,7 @@
 {
 	"foos":
 	[
-		{ "CandidateName": "TestCandidate1", "ResultInPercent": 14.9 },
-		{ "CandidateName": "TestCandidate2", "ResultInPercent": 22.3 }
+		{ "CandidateName": "TestCandidate1", "ResultInPercent": 14 },
+		{ "CandidateName": "TestCandidate2", "ResultInPercent": 22 }
 	]
 }
