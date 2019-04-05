@@ -10,6 +10,7 @@ namespace CodingameProject.Source.PresidentElection
         {
             Results = new List<ElectionResult>();
         }
+
         public int Count()
         {
             return Results.Count;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using CodingameProject.Source.PresidentElection;
 using NUnit.Framework;
 
@@ -29,7 +28,6 @@ namespace CodingameProject.Tests.PresidentElection
             Assert.Throws<FileNotFoundException>(() => { new ElectionResultsReader(notExistingFile); });
         }
 
-        [Ignore("There is another red one.")]
         [Test]
         public void Read_ReturnsElectionResultsObject()
         {
@@ -38,25 +36,10 @@ namespace CodingameProject.Tests.PresidentElection
             var sut = new ElectionResultsReader(inputFileNameFullPath);
 
             //act
-            //ElectionResults electionResults = sut.Read();
+            ElectionResults electionResults = sut.Read();
 
             //assert
-            //Assert.That(electionResults, Is.TypeOf<ElectionResults>());
-        }
-
-        [Ignore("There is another red one.")]
-        [Test]
-        public void Read_ReturnedElectionResultsContainsTwoObjects()
-        {
-            //prepare
-            var inputFileNameFullPath = ProvidePathToTestFile("TestResults.json");
-            var sut = new ElectionResultsReader(inputFileNameFullPath);
-
-            //act
-            //ElectionResults electionResults = sut.Read();
-
-            ////assert
-            //Assert.That(electionResults.Count(), Is.EqualTo(2));
+            Assert.That(electionResults, Is.TypeOf<ElectionResults>());
         }
 
         [Test]

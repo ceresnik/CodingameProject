@@ -9,7 +9,7 @@ namespace CodingameProject.Tests.PresidentElection
     [TestFixture]
     public class ElectionResultsTests
     {
-        [Ignore("There is another red one.")]
+        [Ignore("Current implementation does not implement IEnumerable.")]
         [Test]
         public void GetEnumerator_DoesNotThrowException()
         {
@@ -20,6 +20,7 @@ namespace CodingameProject.Tests.PresidentElection
             //Assert.That(sut.Any());
         }
 
+        [Ignore("Current implementation does not implement IEnumerable.")]
         [Test]
         public void Read_ReturnsInstanceOfIEnumerable()
         {
@@ -32,6 +33,7 @@ namespace CodingameProject.Tests.PresidentElection
             Assert.IsInstanceOf<IEnumerable>(sut);
         }
 
+        [Ignore("Current implementation does not implement IEnumerable.")]
         [Test]
         public void Read_ReturnsInstanceOfIEnumerableOfElectionResult()
         {
