@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using CodingameProject.Source.PresidentElection;
 using NUnit.Framework;
 
 namespace CodingameProject.Tests.PresidentElection
@@ -11,18 +13,13 @@ namespace CodingameProject.Tests.PresidentElection
         public void ElectionResultsReaderObject_InitializedCorrectly()
         {
             //prepare
-            var testResultsFileName = "TestResults.json";
-            string baseDirectory = AppContext.BaseDirectory;
-            string twoLevelsUp = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\"));
-            string directoryWithResultsFile = Path.Combine(twoLevelsUp, @"Tests\PresidentElection");
-            string inputFileNameWithFullPath = Path.GetFullPath(Path.Combine(directoryWithResultsFile, testResultsFileName));
-            
+            var inputFileNameFullPath = ProvidePathToTestFile("TestResults.json");
             //act
-            var sut = new ElectionResultsReader(inputFileNameWithFullPath);
+            var sut = new ElectionResultsReader(inputFileNameFullPath);
             Console.WriteLine($"Full file name: {sut.InputFileName}");
             
             //assert
-            Assert.That(sut.InputFileName, Is.EqualTo(inputFileNameWithFullPath));
+            Assert.That(sut.InputFileName, Is.EqualTo(inputFileNameFullPath));
         }
 
         [Test]
@@ -30,6 +27,74 @@ namespace CodingameProject.Tests.PresidentElection
         {
             var notExistingFile = "NotExistingFile.json";
             Assert.Throws<FileNotFoundException>(() => { new ElectionResultsReader(notExistingFile); });
+        }
+
+        [Ignore("There is another red one.")]
+        [Test]
+        public void Read_ReturnsElectionResultsObject()
+        {
+            //prepare
+            var inputFileNameFullPath = ProvidePathToTestFile("TestResults.json");
+            var sut = new ElectionResultsReader(inputFileNameFullPath);
+
+            //act
+            ElectionResults electionResults = sut.Read();
+
+            //assert
+            Assert.That(electionResults, Is.TypeOf<ElectionResults>());
+        }
+
+        [Ignore("There is another red one.")]
+        [Test]
+        public void Read_ReturnedElectionResultsContainsTwoObjects()
+        {
+            //prepare
+            var inputFileNameFullPath = ProvidePathToTestFile("TestResults.json");
+            var sut = new ElectionResultsReader(inputFileNameFullPath);
+
+            //act
+            ElectionResults electionResults = sut.Read();
+
+            //assert
+            Assert.That(electionResults.Count(), Is.EqualTo(2));
+        }
+
+        [Test]
+        public void Read_ReturnedElectionResultsContainsThreeObjects()
+        {
+            //prepare
+            var inputFileNameFullPath = ProvidePathToTestFile("TestResults.json");
+            var sut = new ElectionResultsReader(inputFileNameFullPath);
+
+            //act
+            ElectionResults electionResults = sut.Read();
+
+            //assert
+            Assert.That(electionResults.Count(), Is.EqualTo(3));
+        }
+
+        [Test]
+        public void ReadOneResult()
+        {
+            //prepare
+            var inputFileNameFullPath = ProvidePathToTestFile("TestResult.json");
+            var sut = new ElectionResultsReader(inputFileNameFullPath);
+
+            //act
+            ElectionResult electionResult = sut.ReadOneResult();
+
+            //assert
+            Assert.That(electionResult, Is.Not.Null);
+        }
+
+        private static string ProvidePathToTestFile(string resultsFileName)
+        {
+            var testResultsFileName = resultsFileName;
+            string baseDirectory = AppContext.BaseDirectory;
+            string twoLevelsUp = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\"));
+            string directoryWithResultsFile = Path.Combine(twoLevelsUp, @"Tests\PresidentElection");
+            string fileNameFullPath = Path.GetFullPath(Path.Combine(directoryWithResultsFile, testResultsFileName));
+            return fileNameFullPath;
         }
     }
 }

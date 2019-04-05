@@ -1,11 +1,11 @@
 ﻿namespace CodingameProject.Source.PresidentElection
 {
-    internal class ElectionResult
+    public class ElectionResult
     {
         public string CandidateName { get; }
-        public double ResultInPercent { get; }
+        public string ResultInPercent { get; }
 
-        public ElectionResult(string candidateName, double resultInPercent)
+        public ElectionResult(string candidateName, string resultInPercent)
         {
             CandidateName = candidateName;
             ResultInPercent = resultInPercent;
