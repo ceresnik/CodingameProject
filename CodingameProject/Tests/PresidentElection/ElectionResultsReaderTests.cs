@@ -51,6 +51,11 @@ namespace CodingameProject.Tests.PresidentElection
 
             //act
             ElectionResults electionResults = sut.Read();
+            foreach (var electionResult in electionResults.Results)
+            {
+                Console.Error.WriteLine($"candidate name: {electionResult.CandidateName}");
+                Console.Error.WriteLine($"result in percent : {electionResult.ResultInPercent}");
+            }
 
             //assert
             Assert.That(electionResults.Count(), Is.EqualTo(3));

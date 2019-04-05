@@ -4,7 +4,17 @@ namespace CodingameProject.Source.PresidentElection
 {
     public class ElectionResults
     {
-        public IList<ElectionResult> Results { get; set; }
+        public IList<ElectionResult> Results { get; }
+
+        public ElectionResults(ElectionResult electionResult) : this()
+        {
+            Results.Add(electionResult);
+        }
+
+        public ElectionResults()
+        {
+            Results = new List<ElectionResult>();
+        }
 
         public int Count()
         {
