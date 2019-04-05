@@ -1,30 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace CodingameProject.Source.PresidentElection
 {
-    public class ElectionResults : IEnumerable<ElectionResult>
+    public class ElectionResults
     {
-        public IList<ElectionResult> Results;
+        public IList<ElectionResult> Results { get; set; }
 
         public ElectionResults()
         {
             Results = new List<ElectionResult>();
         }
-
-        public IEnumerator<ElectionResult> GetEnumerator()
+        public int Count()
         {
-            return Results.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        public void Add(ElectionResult electionResult)
-        {
-            Results.Add(electionResult);
+            return Results.Count;
         }
     }
 }

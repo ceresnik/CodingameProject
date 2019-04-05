@@ -22,16 +22,7 @@ namespace CodingameProject.Source.PresidentElection
             using (StreamReader r = new StreamReader(InputFileName))
             {
                 var input = r.ReadToEnd();
-                //var electionResult = JsonConvert.DeserializeObject<ElectionResult>(input);
                 var electionResults = JsonConvert.DeserializeObject<ElectionResults>(input);
-                //foreach (var result in electionResults)
-                //{
-                //    Console.WriteLine($"{result.CandidateName} : {result.ResultInPercent}");
-                //}
-                //Console.WriteLine($"Name: {electionResult.CandidateName}, percent: {electionResult.ResultInPercent}");
-
-                //var electionResults = new ElectionResults();
-                //electionResults.Add(electionResult);
                 return electionResults;
             }
         }
