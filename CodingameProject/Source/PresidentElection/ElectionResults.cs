@@ -6,11 +6,6 @@ namespace CodingameProject.Source.PresidentElection
     {
         public IList<ElectionResult> Results { get; }
 
-        public ElectionResults(ElectionResult electionResult) : this()
-        {
-            Results.Add(electionResult);
-        }
-
         public ElectionResults()
         {
             Results = new List<ElectionResult>();
