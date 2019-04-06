@@ -2,7 +2,7 @@
 
 namespace CodingameProject.Source.PresidentElection
 {
-    public class ElectionResults : List<ElectionResult>
+    public class CandidateNameElectionGainPairs : List<CandidateNameElectionGainPair>
     {
     }
 }

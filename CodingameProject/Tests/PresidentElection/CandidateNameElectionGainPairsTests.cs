@@ -7,23 +7,23 @@ using NUnit.Framework;
 namespace CodingameProject.Tests.PresidentElection
 {
     [TestFixture]
-    public class ElectionResultsTests
+    public class CandidateNameElectionGainPairsTests
     {
         [Test]
         public void GetEnumerator_DoesNotThrowException()
         {
             //prepare
-            var sut = new ElectionResults();
+            var sut = new CandidateNameElectionGainPairs();
 
             //assert
             Assert.IsFalse(sut.Any());
         }
 
         [Test]
-        public void Read_ReturnsInstanceOfIList()
+        public void ReturnsInstanceOfIList()
         {
             //prepare
-            var sut = new ElectionResults();
+            var sut = new CandidateNameElectionGainPairs();
 
             //assert
             Assert.That(sut, Is.InstanceOf(typeof(IList)));
@@ -32,15 +32,15 @@ namespace CodingameProject.Tests.PresidentElection
         }
 
         [Test]
-        public void Read_ReturnsInstanceOfListOfElectionResult()
+        public void ReturnsInstanceOfListOfElectionResult()
         {
             //prepare
-            var sut = new ElectionResults();
+            var sut = new CandidateNameElectionGainPairs();
 
             //assert
-            Assert.That(sut, Is.InstanceOf(typeof(List<ElectionResult>)));
-            Assert.That(sut, Is.InstanceOf<List<ElectionResult>>());
-            Assert.IsInstanceOf<List<ElectionResult>>(sut);
+            Assert.That(sut, Is.InstanceOf(typeof(List<CandidateNameElectionGainPair>)));
+            Assert.That(sut, Is.InstanceOf<List<CandidateNameElectionGainPair>>());
+            Assert.IsInstanceOf<List<CandidateNameElectionGainPair>>(sut);
         }
     }
 }

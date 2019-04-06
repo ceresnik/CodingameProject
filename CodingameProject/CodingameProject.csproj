@@ -94,7 +94,7 @@
     <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\ISumSelector.cs" />
     <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\SumCounter.cs" />
     <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\OddNumbersSelector.cs" />
-    <Compile Include="Source\PresidentElection\ElectionResult.cs" />
+    <Compile Include="Source\PresidentElection\CandidateNameElectionGainPair.cs" />
     <Compile Include="Source\PresidentElection\PresidentElectionEvaluation.cs" />
     <Compile Include="Source\PresidentElection\ProvidedTip.cs" />
     <Compile Include="Tests\AlphabetUtilities\SameLettersRepeaterTests.cs" />
@@ -126,11 +126,11 @@
     <Compile Include="Tests\ObjectOrientedTraining\SumCounterDemo\EvenNumbersSelectorTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\SumCounterDemo\OddNumbersSelectorTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\SumCounterDemo\SumCounterTests.cs" />
-    <Compile Include="Source\PresidentElection\ElectionResults.cs" />
+    <Compile Include="Source\PresidentElection\CandidateNameElectionGainPairs.cs" />
     <Compile Include="Source\PresidentElection\ElectionResultsReader.cs" />
     <Compile Include="Tests\PresidentElection\ElectionResultsReaderTests.cs" />
-    <Compile Include="Tests\PresidentElection\ElectionResultsTests.cs" />
-    <Compile Include="Tests\PresidentElection\ElectionResultTests.cs" />
+    <Compile Include="Tests\PresidentElection\CandidateNameElectionGainPairsTests.cs" />
+    <Compile Include="Tests\PresidentElection\CandidateNameElectionGainPairTests.cs" />
     <Compile Include="Tests\PresidentElection\PresidentElectionEvaluationTests.cs" />
     <Compile Include="Tests\PresidentElection\ProvidedTipTests.cs" />
     <Compile Include="Tests\SumOfDigitsCounter\NumberRepresentationTests.cs" />

@@ -1,6 +1,5 @@
 ﻿using CodingameProject.Source.PresidentElection;
 using NUnit.Framework;
-using NUnit.Framework.Constraints;
 
 namespace CodingameProject.Tests.PresidentElection
 {
@@ -11,11 +10,11 @@ namespace CodingameProject.Tests.PresidentElection
         public void ProvidedTipObject_InitializedCorrectly()
         {
             //prepare
-
-            //act
             var tipperName = "TipperName1";
             var candidateOnFirstPosition = "CandidateOnFirstPosition";
             var candidateOnFirstPositionPercent = 9.5;
+
+            //act
             var sut = new ProvidedTip(tipperName, candidateOnFirstPosition, candidateOnFirstPositionPercent);
 
             //assert

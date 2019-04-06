@@ -17,12 +17,12 @@ namespace CodingameProject.Source.PresidentElection
             InputFileName = fullPath;
         }
 
-        public ElectionResults Read()
+        public CandidateNameElectionGainPairs Read()
         {
             using (StreamReader r = new StreamReader(InputFileName))
             {
                 var input = r.ReadToEnd();
-                var electionResults = JsonConvert.DeserializeObject<ElectionResults>(input);
+                var electionResults = JsonConvert.DeserializeObject<CandidateNameElectionGainPairs>(input);
                 return electionResults;
             }
         }
