@@ -58,6 +58,20 @@ namespace CodingameProject.Tests.PresidentElection
         }
 
         [Test]
+        public void NoTipsProvided_CandidateOnFirstPositionNameIsEmptyString()
+        {
+            //prepare
+            var tips = new CandidateNameElectionGainPairs();
+
+            //act
+            var sut = new ProvidedTip(tipperName, tips);
+
+            //assert
+            Assert.That(sut.CandidateOnFirstPosition, Is.EqualTo(string.Empty),
+                "When no tip is provided, candidate name on first position must be empty string.");
+        }
+
+        [Test]
         public void JustOneTipProvided_CandidateOnSecondPositionNameIsEmptyString()
         {
             //prepare
@@ -69,6 +83,62 @@ namespace CodingameProject.Tests.PresidentElection
             //assert
             Assert.That(sut.CandidateOnSecondPosition, Is.EqualTo(string.Empty), 
                 "When just one tip is provided, candidate name on second position must be empty string.");
+        }
+
+        [Test]
+        public void JustTwoTipsProvided_CandidateOnThirdPositionNameIsEmptyString()
+        {
+            //prepare
+            var tips = new CandidateNameElectionGainPairs { theFirstPlaceTip, theSecondPlaceTip };
+
+            //act
+            var sut = new ProvidedTip(tipperName, tips);
+
+            //assert
+            Assert.That(sut.CandidateOnThirdPosition, Is.EqualTo(string.Empty),
+                "When just two tips are provided, candidate name on third position must be empty string.");
+        }
+
+        [Test]
+        public void NoTipProvided_CandidateOnFirstPositionPercentIsZero()
+        {
+            //prepare
+            var tips = new CandidateNameElectionGainPairs();
+
+            //act
+            var sut = new ProvidedTip(tipperName, tips);
+
+            //assert
+            Assert.That(sut.CandidateOnFirstPositionPercent, Is.EqualTo(0),
+                "When no tip is provided, candidate on first position percent must be 0.");
+        }
+
+        [Test]
+        public void JustOneTipProvided_CandidateOnSecondPositionPercentIsZero()
+        {
+            //prepare
+            var tips = new CandidateNameElectionGainPairs { theFirstPlaceTip };
+
+            //act
+            var sut = new ProvidedTip(tipperName, tips);
+
+            //assert
+            Assert.That(sut.CandidateOnSecondPositionPercent, Is.EqualTo(0),
+                "When just one tip is provided, candidate on second position percent must be 0.");
+        }
+
+        [Test]
+        public void JustTwoTipsProvided_CandidateOnThirdPositionPercentIsZero()
+        {
+            //prepare
+            var tips = new CandidateNameElectionGainPairs { theFirstPlaceTip, theSecondPlaceTip };
+
+            //act
+            var sut = new ProvidedTip(tipperName, tips);
+
+            //assert
+            Assert.That(sut.CandidateOnThirdPositionPercent, Is.EqualTo(0),
+                "When just two tips are provided, candidate on third position percent must be 0.");
         }
     }
 }
