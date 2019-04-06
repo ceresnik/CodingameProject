@@ -5,14 +5,23 @@ namespace CodingameProject.Source.PresidentElection
     public class ProvidedTip
     {
         private readonly CandidateNameElectionGainPairs tips;
+        private readonly string defaultCandidateName = string.Empty;
+        private const double DefaultElectionGain = 0;
+
+
+        public ProvidedTip(string tipperName, CandidateNameElectionGainPairs tips)
+        {
+            TipperName = tipperName;
+            this.tips = tips;
+        }
 
         public readonly string TipperName;
 
         public string CandidateOnFirstPosition
         {
             get
-            {
-                string result = string.Empty;
+            {                
+                string result = defaultCandidateName;
                 if (tips.Any())
                 {
                     result = tips[0].CandidateName;
@@ -25,7 +34,7 @@ namespace CodingameProject.Source.PresidentElection
         {
             get
             {
-                string result = string.Empty;
+                string result = defaultCandidateName;
                 if (tips.Count > 1)
                 {
                     result = tips[1].CandidateName;
@@ -38,7 +47,7 @@ namespace CodingameProject.Source.PresidentElection
         {
             get
             {
-                string result = string.Empty;
+                string result = defaultCandidateName;
                 if (tips.Count > 2)
                 {
                     result = tips[2].CandidateName;
@@ -51,7 +60,7 @@ namespace CodingameProject.Source.PresidentElection
         {
             get
             {
-                double result = 0;
+                double result = DefaultElectionGain;
                 if (tips.Any())
                 {
                     result = tips[0].ElectionGainInPercent;
@@ -64,7 +73,7 @@ namespace CodingameProject.Source.PresidentElection
         {
             get
             {
-                double result = 0;
+                double result = DefaultElectionGain;
                 if (tips.Count > 1)
                 {
                     result = tips[1].ElectionGainInPercent;
@@ -77,19 +86,13 @@ namespace CodingameProject.Source.PresidentElection
         {
             get
             {
-                double result = 0;
+                double result = DefaultElectionGain;
                 if (tips.Count > 2)
                 {
                     result = tips[2].ElectionGainInPercent;
                 }
                 return result;
             }
-        }
-
-        public ProvidedTip(string tipperName, CandidateNameElectionGainPairs tips)
-        {
-            TipperName = tipperName;
-            this.tips = tips;
         }
     }
 }
