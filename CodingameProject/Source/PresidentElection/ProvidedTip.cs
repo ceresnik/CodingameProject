@@ -2,15 +2,15 @@
 {
     public class ProvidedTip
     {
+        private readonly CandidateNameElectionGainPairs tips;
         public readonly string TipperName;
-        public readonly string CandidateOnFirstPosition;
-        public readonly double CandidateOnFirstPositionPercent;
+        public string CandidateOnFirstPosition => tips[0].CandidateName;
+        public double CandidateOnFirstPositionPercent => tips[0].ElectionGainInPercent;
 
-        public ProvidedTip(string tipperName, string candidateOnFirstPosition, double candidateOnFirstPositionPercent)
+        public ProvidedTip(string tipperName, CandidateNameElectionGainPairs tips)
         {
             TipperName = tipperName;
-            CandidateOnFirstPosition = candidateOnFirstPosition;
-            CandidateOnFirstPositionPercent = candidateOnFirstPositionPercent;
+            this.tips = tips;
         }
     }
 }

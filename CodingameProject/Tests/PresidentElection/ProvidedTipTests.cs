@@ -11,11 +11,19 @@ namespace CodingameProject.Tests.PresidentElection
         {
             //prepare
             var tipperName = "TipperName1";
-            var candidateOnFirstPosition = "CandidateOnFirstPosition";
-            var candidateOnFirstPositionPercent = 9.5;
+            var candidateOnFirstPosition = "name1";
+            var candidateOnFirstPositionPercent = 11;
 
             //act
-            var sut = new ProvidedTip(tipperName, candidateOnFirstPosition, candidateOnFirstPositionPercent);
+            CandidateNameElectionGainPairs tips = new CandidateNameElectionGainPairs();
+            CandidateNameElectionGainPair theFirstPlaceTip = new CandidateNameElectionGainPair(
+                candidateOnFirstPosition, candidateOnFirstPositionPercent);
+            CandidateNameElectionGainPair theSecondPlaceTip = new CandidateNameElectionGainPair("name2", 12);
+            CandidateNameElectionGainPair theThirdPlaceTip = new CandidateNameElectionGainPair("name3", 13);
+            tips.Add(theFirstPlaceTip);
+            tips.Add(theSecondPlaceTip);
+            tips.Add(theThirdPlaceTip);
+            var sut = new ProvidedTip(tipperName, tips);
 
             //assert
             Assert.That(sut.TipperName, Is.EqualTo(tipperName), "Tipper name is not as expected.");
