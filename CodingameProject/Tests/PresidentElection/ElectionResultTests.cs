@@ -9,7 +9,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void ElectionResultObject_InitializedCorrectly()
         {
             string candidateName = "TestCandidateName";
-            string resultInPercent = "10.5";
+            double resultInPercent = 10.5;
             var sut = new ElectionResult(candidateName, resultInPercent);
             Assert.That(sut.CandidateName, Is.EqualTo(candidateName), 
                 "Candidate name is not as expected.");
