@@ -51,31 +51,16 @@ namespace CodingameProject.Tests.PresidentElection
 
             //act
             ElectionResults electionResults = sut.Read();
-            foreach (var electionResult in electionResults.Results)
+            foreach (var electionResult in electionResults)
             {
                 Console.Error.WriteLine($"candidate name: {electionResult.CandidateName}");
                 Console.Error.WriteLine($"result in percent : {electionResult.ResultInPercent}");
             }
 
             //assert
-            Assert.That(electionResults.Count(), Is.EqualTo(3));
+            Assert.That(electionResults.Count, Is.EqualTo(3));
         }
 
-        [Test]
-        public void ReadOneResult()
-        {
-            //prepare
-            var inputFileNameFullPath = ProvidePathToTestFile("TestResult.json");
-            var sut = new ElectionResultsReader(inputFileNameFullPath);
-
-            //act
-            ElectionResult electionResult = sut.ReadOneResult();
-            Console.Error.WriteLine($"candidate name: {electionResult.CandidateName}");
-            Console.Error.WriteLine($"result in percent : {electionResult.ResultInPercent}");
-
-            //assert
-            Assert.That(electionResult, Is.Not.Null);
-        }
 
         private static string ProvidePathToTestFile(string resultsFileName)
         {

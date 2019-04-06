@@ -26,15 +26,5 @@ namespace CodingameProject.Source.PresidentElection
                 return electionResults;
             }
         }
-
-        public ElectionResult ReadOneResult()
-        {
-            using (StreamReader r = new StreamReader(InputFileName))
-            {
-                var input = r.ReadToEnd();
-                var electionResult = JsonConvert.DeserializeObject<ElectionResult>(input);
-                return electionResult;
-            }
-        }
     }
 }

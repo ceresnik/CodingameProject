@@ -139,7 +139,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Source\PresidentElection\ElectionResults.json" />
-    <None Include="Tests\PresidentElection\TestResult.json" />
     <None Include="Tests\PresidentElection\TestResults.json" />
   </ItemGroup>
   <ItemGroup>

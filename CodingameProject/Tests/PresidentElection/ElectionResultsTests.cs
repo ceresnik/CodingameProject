@@ -9,7 +9,6 @@ namespace CodingameProject.Tests.PresidentElection
     [TestFixture]
     public class ElectionResultsTests
     {
-        [Ignore("Current implementation does not implement IEnumerable.")]
         [Test]
         public void GetEnumerator_DoesNotThrowException()
         {
@@ -17,33 +16,31 @@ namespace CodingameProject.Tests.PresidentElection
             var sut = new ElectionResults();
 
             //assert
-            //Assert.That(sut.Any());
+            Assert.IsFalse(sut.Any());
         }
 
-        [Ignore("Current implementation does not implement IEnumerable.")]
         [Test]
-        public void Read_ReturnsInstanceOfIEnumerable()
+        public void Read_ReturnsInstanceOfIList()
         {
             //prepare
             var sut = new ElectionResults();
 
             //assert
-            Assert.That(sut, Is.InstanceOf(typeof(IEnumerable)));
-            Assert.That(sut, Is.InstanceOf<IEnumerable>());
-            Assert.IsInstanceOf<IEnumerable>(sut);
+            Assert.That(sut, Is.InstanceOf(typeof(IList)));
+            Assert.That(sut, Is.InstanceOf<IList>());
+            Assert.IsInstanceOf<IList>(sut);
         }
 
-        [Ignore("Current implementation does not implement IEnumerable.")]
         [Test]
-        public void Read_ReturnsInstanceOfIEnumerableOfElectionResult()
+        public void Read_ReturnsInstanceOfListOfElectionResult()
         {
             //prepare
             var sut = new ElectionResults();
 
             //assert
-            Assert.That(sut, Is.InstanceOf(typeof(IEnumerable<ElectionResult>)));
-            Assert.That(sut, Is.InstanceOf<IEnumerable<ElectionResult>>());
-            Assert.IsInstanceOf<IEnumerable<ElectionResult>>(sut);
+            Assert.That(sut, Is.InstanceOf(typeof(List<ElectionResult>)));
+            Assert.That(sut, Is.InstanceOf<List<ElectionResult>>());
+            Assert.IsInstanceOf<List<ElectionResult>>(sut);
         }
     }
 }

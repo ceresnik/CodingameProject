@@ -1,5 +1,5 @@
-{
-  "Bugar": 4,
-  "Caputova": 40,
-  "Miklosko" : 5 
-}
+[
+	{ "CandidateName": "Bugar", "ResultInPercent": 4 },
+	{ "CandidateName": "Caputova", "ResultInPercent": 40 },
+	{ "CandidateName": "Miklosko", "ResultInPercent": 5 }
+]
