@@ -12,7 +12,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void ElectionResultsReaderObject_InitializedCorrectly()
         {
             //prepare
-            var inputFileNameFullPath = ProvidePathToTestFile("TestResults.json");
+            var inputFileNameFullPath = ProvideFullPathToFile("TestResults.json");
 
             //act
             var sut = new ElectionResultsReader(inputFileNameFullPath);
@@ -33,7 +33,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void Read_ReturnsElectionResultsObject()
         {
             //prepare
-            var inputFileNameFullPath = ProvidePathToTestFile("TestResults.json");
+            var inputFileNameFullPath = ProvideFullPathToFile("TestResults.json");
             var sut = new ElectionResultsReader(inputFileNameFullPath);
 
             //act
@@ -47,7 +47,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void Read_ReturnedElectionResultsContainsThreeObjects()
         {
             //prepare
-            var inputFileNameFullPath = ProvidePathToTestFile("TestResults.json");
+            var inputFileNameFullPath = ProvideFullPathToFile("TestResults.json");
             var sut = new ElectionResultsReader(inputFileNameFullPath);
 
             //act
@@ -66,7 +66,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void Read_ReadOutValuesFitWithValuesInFile()
         {
             //prepare
-            var inputFileNameFullPath = ProvidePathToTestFile("TestResults.json");
+            var inputFileNameFullPath = ProvideFullPathToFile("TestResults.json");
             var sut = new ElectionResultsReader(inputFileNameFullPath);
 
             //act
@@ -81,14 +81,13 @@ namespace CodingameProject.Tests.PresidentElection
             Assert.That(candidateNameElectionGainPairs[2].ElectionGainInPercent, Is.EqualTo(23.33));
         }
 
-        private static string ProvidePathToTestFile(string resultsFileName)
+        //TODO: extract to separate utility/helper
+        private static string ProvideFullPathToFile(string fileName)
         {
-            var testResultsFileName = resultsFileName;
             string baseDirectory = AppContext.BaseDirectory;
             string twoLevelsUp = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\"));
-            string directoryWithResultsFile = Path.Combine(twoLevelsUp, @"Tests\PresidentElection");
-            string fileNameFullPath = Path.GetFullPath(Path.Combine(directoryWithResultsFile, testResultsFileName));
-            return fileNameFullPath;
+            string destinationDirectory = Path.Combine(twoLevelsUp, @"Tests\PresidentElection");
+            return Path.GetFullPath(Path.Combine(destinationDirectory, fileName));
         }
     }
 }

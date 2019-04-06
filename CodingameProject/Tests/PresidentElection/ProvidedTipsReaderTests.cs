@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using CodingameProject.Source.PresidentElection;
 using NUnit.Framework;
 
@@ -11,7 +12,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void ProvidedTipsReaderObject_InitializedCorrectly()
         {
             //prepare
-            string inputFileName = "TestTips.json";
+            string inputFileName = ProvideFullPathToFile("TestTips.json");
 
             //act
             var sut = new ProvidedTipsReader(inputFileName);
@@ -21,12 +22,28 @@ namespace CodingameProject.Tests.PresidentElection
             Assert.That(sut.InputFileName, Is.EqualTo(inputFileName));
         }
 
+        [Test]
+        public void InputFileDoesNotExist_ExceptionIsThrown()
+        {
+            var notExistingFile = "NotExistingFile.json";
+            Assert.Throws<FileNotFoundException>(() => { new ProvidedTipsReader(notExistingFile); });
+        }
+
         [Ignore("Not implemented.")]
         [Test]
         public void Read()
         {
             var sut = new ProvidedTipsReader("TestTips.json");
             ProvidedTips providedTips = sut.Read();
+        }
+
+        //TODO: extract to separate utility/helper
+        private static string ProvideFullPathToFile(string fileName)
+        {
+            string baseDirectory = AppContext.BaseDirectory;
+            string twoLevelsUp = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\"));
+            string destinationDirectory = Path.Combine(twoLevelsUp, @"Tests\PresidentElection");
+            return Path.GetFullPath(Path.Combine(destinationDirectory, fileName));
         }
     }
 

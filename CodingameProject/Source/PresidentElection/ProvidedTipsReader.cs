@@ -1,4 +1,5 @@
-﻿using CodingameProject.Tests.PresidentElection;
+﻿using System.IO;
+using CodingameProject.Tests.PresidentElection;
 
 namespace CodingameProject.Source.PresidentElection
 {
@@ -8,6 +9,11 @@ namespace CodingameProject.Source.PresidentElection
 
         public ProvidedTipsReader(string inputFileName)
         {
+            var fullPath = Path.GetFullPath(inputFileName);
+            if (File.Exists(fullPath) == false)
+            {
+                throw new FileNotFoundException($"File {fullPath} does not exist.");
+            }
             InputFileName = inputFileName;
         }
 
