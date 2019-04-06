@@ -61,6 +61,24 @@ namespace CodingameProject.Tests.PresidentElection
             Assert.That(electionResults.Count, Is.EqualTo(3));
         }
 
+        [Test]
+        public void Read_ReadOutValuesFitWithValuesInFile()
+        {
+            //prepare
+            var inputFileNameFullPath = ProvidePathToTestFile("TestResults.json");
+            var sut = new ElectionResultsReader(inputFileNameFullPath);
+
+            //act
+            ElectionResults electionResults = sut.Read();
+
+            //assert
+            Assert.That(electionResults[0].CandidateName, Is.EqualTo("TestCandidate1"));
+            Assert.That(electionResults[1].CandidateName, Is.EqualTo("TestCandidate2"));
+            Assert.That(electionResults[2].CandidateName, Is.EqualTo("TestCandidate3"));
+            Assert.That(electionResults[0].ResultInPercent, Is.EqualTo(21.11));
+            Assert.That(electionResults[1].ResultInPercent, Is.EqualTo(22.22));
+            Assert.That(electionResults[2].ResultInPercent, Is.EqualTo(23.33));
+        }
 
         private static string ProvidePathToTestFile(string resultsFileName)
         {
