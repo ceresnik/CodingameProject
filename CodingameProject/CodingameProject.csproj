@@ -96,6 +96,7 @@
     <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\OddNumbersSelector.cs" />
     <Compile Include="Source\PresidentElection\ElectionResult.cs" />
     <Compile Include="Source\PresidentElection\PresidentElectionEvaluation.cs" />
+    <Compile Include="Source\PresidentElection\ProvidedTip.cs" />
     <Compile Include="Tests\AlphabetUtilities\SameLettersRepeaterTests.cs" />
     <Compile Include="Source\AlphabetUtilities\StringFormatter.cs" />
     <Compile Include="Tests\AlphabetUtilities\StringFormatterTests.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Tests\PresidentElection\ElectionResultsTests.cs" />
     <Compile Include="Tests\PresidentElection\ElectionResultTests.cs" />
     <Compile Include="Tests\PresidentElection\PresidentElectionEvaluationTests.cs" />
+    <Compile Include="Tests\PresidentElection\ProvidedTipTests.cs" />
     <Compile Include="Tests\SumOfDigitsCounter\NumberRepresentationTests.cs" />
   </ItemGroup>
   <ItemGroup>
