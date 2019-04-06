@@ -13,6 +13,7 @@ namespace CodingameProject.Tests.PresidentElection
         {
             //prepare
             var inputFileNameFullPath = ProvidePathToTestFile("TestResults.json");
+
             //act
             var sut = new ElectionResultsReader(inputFileNameFullPath);
             Console.WriteLine($"Full file name: {sut.InputFileName}");

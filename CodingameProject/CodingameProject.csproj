@@ -97,6 +97,7 @@
     <Compile Include="Source\PresidentElection\CandidateNameElectionGainPair.cs" />
     <Compile Include="Source\PresidentElection\PresidentElectionEvaluation.cs" />
     <Compile Include="Source\PresidentElection\ProvidedTip.cs" />
+    <Compile Include="Source\PresidentElection\ProvidedTipsReader.cs" />
     <Compile Include="Tests\AlphabetUtilities\SameLettersRepeaterTests.cs" />
     <Compile Include="Source\AlphabetUtilities\StringFormatter.cs" />
     <Compile Include="Tests\AlphabetUtilities\StringFormatterTests.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="Tests\PresidentElection\CandidateNameElectionGainPairsTests.cs" />
     <Compile Include="Tests\PresidentElection\CandidateNameElectionGainPairTests.cs" />
     <Compile Include="Tests\PresidentElection\PresidentElectionEvaluationTests.cs" />
+    <Compile Include="Tests\PresidentElection\ProvidedTipsReaderTests.cs" />
     <Compile Include="Tests\PresidentElection\ProvidedTipTests.cs" />
     <Compile Include="Tests\SumOfDigitsCounter\NumberRepresentationTests.cs" />
   </ItemGroup>
