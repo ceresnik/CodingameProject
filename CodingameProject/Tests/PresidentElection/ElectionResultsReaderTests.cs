@@ -30,7 +30,7 @@ namespace CodingameProject.Tests.PresidentElection
         }
 
         [Test]
-        public void Read_ReturnsElectionResultsObject()
+        public void Read_ReturnsCandidateNameElectionGainPairsObject()
         {
             //prepare
             var inputFileNameFullPath = ProvideFullPathToFile("TestResults.json");
@@ -44,7 +44,7 @@ namespace CodingameProject.Tests.PresidentElection
         }
 
         [Test]
-        public void Read_ReturnedElectionResultsContainsThreeObjects()
+        public void Read_ReturnedThreeCandidateNameElectionGainPairs()
         {
             //prepare
             var inputFileNameFullPath = ProvideFullPathToFile("TestResults.json");
@@ -52,10 +52,10 @@ namespace CodingameProject.Tests.PresidentElection
 
             //act
             CandidateNameElectionGainPairs candidateNameElectionGainPairs = sut.Read();
-            foreach (var electionResult in candidateNameElectionGainPairs)
+            foreach (var candidateNameElectionGainPair in candidateNameElectionGainPairs)
             {
-                Console.Error.WriteLine($"candidate name: {electionResult.CandidateName}");
-                Console.Error.WriteLine($"result in percent : {electionResult.ElectionGainInPercent}");
+                Console.Error.WriteLine($"candidate name: {candidateNameElectionGainPair.CandidateName}");
+                Console.Error.WriteLine($"result in percent : {candidateNameElectionGainPair.ElectionGainInPercent}");
             }
 
             //assert
