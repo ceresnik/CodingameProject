@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using CodingameProject.Tests.PresidentElection;
+using Newtonsoft.Json;
 
 namespace CodingameProject.Source.PresidentElection
 {
@@ -19,7 +20,12 @@ namespace CodingameProject.Source.PresidentElection
 
         public ProvidedTips Read()
         {
-            throw new System.NotImplementedException();
+            using (var r = new StreamReader(InputFileName))
+            {
+                var input = r.ReadToEnd();
+                ProvidedTips providedTips = JsonConvert.DeserializeObject<ProvidedTips>(input);
+                return providedTips;
+            }
         }
     }
 }
