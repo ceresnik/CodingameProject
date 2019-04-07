@@ -12,7 +12,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void ProvidedTipsReaderObject_InitializedCorrectly()
         {
             //prepare
-            string inputFileName = ProvideFullPathToFile("TestTips.json");
+            string inputFileName = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection");
 
             //act
             var sut = new ProvidedTipsReader(inputFileName);
@@ -32,7 +32,7 @@ namespace CodingameProject.Tests.PresidentElection
         [Test]
         public void Read_ReturnsProvidedTipsObject()
         {
-            string inputFileName = ProvideFullPathToFile("TestTips.json");
+            string inputFileName = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection");
             var sut = new ProvidedTipsReader(inputFileName);
             ProvidedTips providedTips = sut.Read();
 
@@ -42,7 +42,7 @@ namespace CodingameProject.Tests.PresidentElection
         [Test]
         public void Read_ReturnedTwoProvidedTips()
         {
-            string inputFileName = ProvideFullPathToFile("TestTips.json");
+            string inputFileName = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection");
             var sut = new ProvidedTipsReader(inputFileName);
             ProvidedTips providedTips = sut.Read();
 
@@ -52,7 +52,7 @@ namespace CodingameProject.Tests.PresidentElection
         [Test]
         public void Read_ReadoutValuesFitWithValuesInFile_Tip1()
         {
-            string inputFileName = ProvideFullPathToFile("TestTips.json");
+            string inputFileName = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection");
             var sut = new ProvidedTipsReader(inputFileName);
             ProvidedTips providedTips = sut.Read();
 
@@ -68,7 +68,7 @@ namespace CodingameProject.Tests.PresidentElection
         [Test]
         public void Read_ReadoutValuesFitWithValuesInFile_Tip2()
         {
-            string inputFileName = ProvideFullPathToFile("TestTips.json");
+            string inputFileName = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection");
             var sut = new ProvidedTipsReader(inputFileName);
             ProvidedTips providedTips = sut.Read();
 
@@ -79,15 +79,6 @@ namespace CodingameProject.Tests.PresidentElection
             Assert.That(providedTips[1].CandidateOnSecondPositionPercent, Is.EqualTo(42.44));
             Assert.That(providedTips[1].CandidateOnThirdPosition, Is.EqualTo("MisosCandidate3"));
             Assert.That(providedTips[1].CandidateOnThirdPositionPercent, Is.EqualTo(43.44));
-        }
-
-        //TODO: extract to separate utility/helper
-        private static string ProvideFullPathToFile(string fileName)
-        {
-            string baseDirectory = AppContext.BaseDirectory;
-            string twoLevelsUp = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\"));
-            string destinationDirectory = Path.Combine(twoLevelsUp, @"Tests\PresidentElection");
-            return Path.GetFullPath(Path.Combine(destinationDirectory, fileName));
         }
     }
 }

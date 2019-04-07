@@ -95,6 +95,7 @@
     <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\SumCounter.cs" />
     <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\OddNumbersSelector.cs" />
     <Compile Include="Source\PresidentElection\CandidateNameElectionGainPair.cs" />
+    <Compile Include="Source\PresidentElection\FilePathProvider.cs" />
     <Compile Include="Source\PresidentElection\PresidentElectionEvaluation.cs" />
     <Compile Include="Source\PresidentElection\ProvidedTip.cs" />
     <Compile Include="Source\PresidentElection\ProvidedTips.cs" />

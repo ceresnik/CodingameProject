@@ -12,7 +12,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void ElectionResultsReaderObject_InitializedCorrectly()
         {
             //prepare
-            var inputFileNameFullPath = ProvideFullPathToFile("TestResults.json");
+            var inputFileNameFullPath = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
 
             //act
             var sut = new ElectionResultsReader(inputFileNameFullPath);
@@ -33,7 +33,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void Read_ReturnsCandidateNameElectionGainPairsObject()
         {
             //prepare
-            var inputFileNameFullPath = ProvideFullPathToFile("TestResults.json");
+            var inputFileNameFullPath = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
             var sut = new ElectionResultsReader(inputFileNameFullPath);
 
             //act
@@ -47,7 +47,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void Read_ReturnedThreeCandidateNameElectionGainPairs()
         {
             //prepare
-            var inputFileNameFullPath = ProvideFullPathToFile("TestResults.json");
+            var inputFileNameFullPath = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
             var sut = new ElectionResultsReader(inputFileNameFullPath);
 
             //act
@@ -66,7 +66,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void Read_ReadOutValuesFitWithValuesInFile()
         {
             //prepare
-            var inputFileNameFullPath = ProvideFullPathToFile("TestResults.json");
+            var inputFileNameFullPath = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
             var sut = new ElectionResultsReader(inputFileNameFullPath);
 
             //act
@@ -79,15 +79,6 @@ namespace CodingameProject.Tests.PresidentElection
             Assert.That(candidateNameElectionGainPairs[0].ElectionGainInPercent, Is.EqualTo(21.11));
             Assert.That(candidateNameElectionGainPairs[1].ElectionGainInPercent, Is.EqualTo(22.22));
             Assert.That(candidateNameElectionGainPairs[2].ElectionGainInPercent, Is.EqualTo(23.33));
-        }
-
-        //TODO: extract to separate utility/helper
-        private static string ProvideFullPathToFile(string fileName)
-        {
-            string baseDirectory = AppContext.BaseDirectory;
-            string twoLevelsUp = Path.GetFullPath(Path.Combine(baseDirectory, @"..\..\"));
-            string destinationDirectory = Path.Combine(twoLevelsUp, @"Tests\PresidentElection");
-            return Path.GetFullPath(Path.Combine(destinationDirectory, fileName));
         }
     }
 }
