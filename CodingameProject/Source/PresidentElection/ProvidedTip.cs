@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace CodingameProject.Source.PresidentElection
 {
@@ -12,6 +13,10 @@ namespace CodingameProject.Source.PresidentElection
         public ProvidedTip(string tipperName, CandidateNameElectionGainPairs tips)
         {
             TipperName = tipperName;
+            if (tips.Count > 3)
+            {
+                throw new ArgumentException("Maximum three tips are allowed.", nameof(tips));
+            }
             this.tips = tips;
         }
 

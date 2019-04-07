@@ -1,4 +1,5 @@
-﻿using CodingameProject.Source.PresidentElection;
+﻿using System;
+using CodingameProject.Source.PresidentElection;
 using NUnit.Framework;
 
 namespace CodingameProject.Tests.PresidentElection
@@ -139,6 +140,22 @@ namespace CodingameProject.Tests.PresidentElection
             //assert
             Assert.That(sut.CandidateOnThirdPositionPercent, Is.EqualTo(0),
                 "When just two tips are provided, candidate on third position percent must be 0.");
+        }
+
+        [Test]
+        public void MaximumThreeTipsAllowed()
+        {
+            //prepare
+            var tips = new CandidateNameElectionGainPairs
+            {
+                theFirstPlaceTip,
+                theSecondPlaceTip,
+                theThirdPlaceTip,
+                new CandidateNameElectionGainPair("FourthCandidate", 10.0)
+            };
+
+            //act
+            Assert.Throws<ArgumentException>(() => new ProvidedTip(tipperName, tips));
         }
     }
 }
