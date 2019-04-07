@@ -1,30 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Newtonsoft.Json;
+﻿using System.Collections.Generic;
 
 namespace CodingameProject.Source.PresidentElection
 {
     public class PresidentElectionEvaluation
     {
-        void Evaluate()
+        public string ElectionResultsFile { get; }
+        public string ProvidedTipsFile { get; }
+
+        public PresidentElectionEvaluation(string electionResultsFile, string providedTipsFile)
         {
-            
+            ElectionResultsFile = electionResultsFile;
+            ProvidedTipsFile = providedTipsFile;
         }
 
-        void ReadoutElectionResults()
+        public EvaluatedTips CountScore()
         {
-            string jsonInputFile = "ElectionResults.json";
-            using (StreamReader r = new StreamReader(jsonInputFile))
-            {
-                var input = r.ReadToEnd();
-                var electionResults = JsonConvert.DeserializeObject<List<CandidateNameElectionGainPair>>(input);
-                foreach (var result in electionResults)
-                {
-                    Console.WriteLine($"{result.CandidateName} : {result.ElectionGainInPercent}");
-                }
-            }
+            return new EvaluatedTips();
         }
+    }
 
+    public class EvaluatedTips : List<EvaluatedTip>
+    {
+    }
+
+    public class EvaluatedTip
+    {
     }
 }
