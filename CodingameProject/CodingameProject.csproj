@@ -95,6 +95,8 @@
     <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\SumCounter.cs" />
     <Compile Include="Source\ObjectOrientedTraining\SumCounterDemo\OddNumbersSelector.cs" />
     <Compile Include="Source\PresidentElection\CandidateNameElectionGainPair.cs" />
+    <Compile Include="Source\PresidentElection\EvaluatedTip.cs" />
+    <Compile Include="Source\PresidentElection\EvaluatedTips.cs" />
     <Compile Include="Source\PresidentElection\FilePathProvider.cs" />
     <Compile Include="Source\PresidentElection\PresidentElectionEvaluation.cs" />
     <Compile Include="Source\PresidentElection\ProvidedTip.cs" />
@@ -134,6 +136,7 @@
     <Compile Include="Tests\PresidentElection\ElectionResultsReaderTests.cs" />
     <Compile Include="Tests\PresidentElection\CandidateNameElectionGainPairsTests.cs" />
     <Compile Include="Tests\PresidentElection\CandidateNameElectionGainPairTests.cs" />
+    <Compile Include="Tests\PresidentElection\EvaluatedTipTests.cs" />
     <Compile Include="Tests\PresidentElection\PresidentElectionEvaluationTests.cs" />
     <Compile Include="Tests\PresidentElection\ProvidedTipsReaderTests.cs" />
     <Compile Include="Tests\PresidentElection\ProvidedTipTests.cs" />

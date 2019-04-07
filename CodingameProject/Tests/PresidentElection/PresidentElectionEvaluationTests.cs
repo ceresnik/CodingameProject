@@ -10,8 +10,8 @@ namespace CodingameProject.Tests.PresidentElection
         public void PresidentElectionEvaluationObject_InitializedCorrectly()
         {
             //prepare
-            string electionResultsFile = FilePathProvider.ProvideFullPathToFile("TestResults", @"Tests\PresidentElection");
-            string providedTipsFile = FilePathProvider.ProvideFullPathToFile("TestTips", @"Tests\PresidentElection");
+            string electionResultsFile = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
+            string providedTipsFile = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection");
 
             //act
             var sut = new PresidentElectionEvaluation(electionResultsFile, providedTipsFile);
@@ -25,8 +25,8 @@ namespace CodingameProject.Tests.PresidentElection
         public void CountScore_ReturnsTypeOfEvaluatedTips()
         {
             //prepare
-            string electionResultsFile = FilePathProvider.ProvideFullPathToFile("TestResults", @"Tests\PresidentElection");
-            string providedTipsFile = FilePathProvider.ProvideFullPathToFile("TestTips", @"Tests\PresidentElection");
+            string electionResultsFile = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
+            string providedTipsFile = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection");
             var sut = new PresidentElectionEvaluation(electionResultsFile, providedTipsFile);
 
             //act
@@ -40,8 +40,8 @@ namespace CodingameProject.Tests.PresidentElection
         public void CountScore_CountOfEvaluatedTips()
         {
             //prepare
-            string electionResultsFile = FilePathProvider.ProvideFullPathToFile("TestResults", @"Tests\PresidentElection");
-            string providedTipsFile = FilePathProvider.ProvideFullPathToFile("TestTips", @"Tests\PresidentElection");
+            string electionResultsFile = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
+            string providedTipsFile = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection");
             var sut = new PresidentElectionEvaluation(electionResultsFile, providedTipsFile);
 
             //act

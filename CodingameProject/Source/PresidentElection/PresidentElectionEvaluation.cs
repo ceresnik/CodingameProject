@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace CodingameProject.Source.PresidentElection
+﻿namespace CodingameProject.Source.PresidentElection
 {
     public class PresidentElectionEvaluation
     {
@@ -15,15 +13,13 @@ namespace CodingameProject.Source.PresidentElection
 
         public EvaluatedTips CountScore()
         {
-            return new EvaluatedTips();
+            int countOfProvidedTips = new ProvidedTipsReader(ProvidedTipsFile).Read().Count;
+            var evaluatedTips = new EvaluatedTips();
+            for (int i = 0; i < countOfProvidedTips; i++)
+            {
+                evaluatedTips.Add(new EvaluatedTip("TipperName", 3.45));
+            }
+            return evaluatedTips;
         }
-    }
-
-    public class EvaluatedTips : List<EvaluatedTip>
-    {
-    }
-
-    public class EvaluatedTip
-    {
     }
 }
