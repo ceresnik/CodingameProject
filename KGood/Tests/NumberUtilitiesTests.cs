@@ -314,6 +314,32 @@ namespace KGood.Tests
             Assert.That(r, Is.EqualTo(expected));
         }
 
+        [TestCase("up right up right down left", "^>^>V<")]
+        [TestCase("up up up", "3^^^")]
+        [Test]
+        public void TestTuple(string input, string expected)
+        {
+            List<Tuple<string, char>> a = new List<Tuple<string, char>>();
+            a.Add(new Tuple<string, char>("up", '^'));
+            a.Add(new Tuple<string, char>("down", 'V'));
+            a.Add(new Tuple<string, char>("right", '>'));
+            a.Add(new Tuple<string, char>("left", '<'));
+            string[] c = input.Split(' ');
+            List<char> result = new List<char>();
+            foreach (string b in c)
+            {
+                char res = 'a';
+                foreach (var d in a)
+                {
+                    if (d.Item1 == b)
+                        res = d.Item2;
+                }
+                result.Add(res);
+            }
+            Console.Write(result);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
         [TestCase(0, "0")]
         [TestCase(45, "P/4")]
         [TestCase(90, "P/2")]
@@ -328,6 +354,36 @@ namespace KGood.Tests
         {
             var result = NumberUtilities.ConvertAngleInDegreesToRadians(angleInDegrees);
             Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase("1 4 9 16 25 36 49 64 81 100 121 144 169 196 225", 2)]
+        [Test]
+        public void Test_PolynomialDegree(string inputStrings, int expectedResult)
+        {
+            string[] inputString = inputStrings.Split(' ');
+            var input = new List<long>();
+            for (int i = 0; i < 15; i++)
+            {
+                long x = long.Parse(inputString[i]);
+                input.Add(x);
+            }
+
+            int result = 0;
+            int degreeOfPolynomial = 0;
+            var actualValues = new List<long>();
+            do
+            {
+                for (int i = 1; i < input.Count; i++)
+                {
+                    actualValues.Add(input[i] - input[i - 1]);
+                }
+                degreeOfPolynomial++;
+                input = actualValues;
+            }
+            while (input[0] == 0);
+
+            Console.WriteLine(degreeOfPolynomial);
+            Assert.That(degreeOfPolynomial, Is.EqualTo(expectedResult));
         }
     }
 }
