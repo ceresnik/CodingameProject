@@ -1,0 +1,16 @@
+﻿[
+	{"TipperName": "Lubo", "Tips": 
+		[
+			{ "CandidateName": "LubosCandidate1", "ElectionGainInPercent": 31.33 },
+			{ "CandidateName": "LubosCandidate2", "ElectionGainInPercent": 32.33 },
+			{ "CandidateName": "LubosCandidate3", "ElectionGainInPercent": 33.33 }
+		]
+	},
+	{"TipperName": "Miso", "Tips": 
+		[
+			{ "CandidateName": "MisosCandidate1", "ElectionGainInPercent": 41.44 },
+			{ "CandidateName": "MisosCandidate2", "ElectionGainInPercent": 42.44 },
+			{ "CandidateName": "MisosCandidate3", "ElectionGainInPercent": 43.44 }
+		]
+	}
+]

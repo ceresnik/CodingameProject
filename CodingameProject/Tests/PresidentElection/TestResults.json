@@ -1,0 +1,5 @@
+[
+	{ "CandidateName": "TestCandidate1", "ElectionGainInPercent": 21.11 },
+	{ "CandidateName": "TestCandidate2", "ElectionGainInPercent": 22.22 },
+	{ "CandidateName": "TestCandidate3", "ElectionGainInPercent": 23.33 }
+]
