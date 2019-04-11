@@ -354,6 +354,37 @@ namespace KGood.Tests
             Assert.That(res, Is.EqualTo(expected));
         }
 
+        [Test]
+        public void Test_SpaghettiStrings()
+        {
+            int N = 4;
+            var input = new List<string> { "A------X", "*-+-+-+-+-+-+-#", "X====*", "#_____Z" };
+            var list = new List<string>();
+            var dictOfStarting = new Dictionary<char, string>();
+            var dictOfEnding = new Dictionary<char, string>();
+            for (int i = 0; i < N; i++)
+            {
+                string spaghettiPart = input[i];
+                list.Add(spaghettiPart);
+                dictOfStarting.Add(spaghettiPart[0], spaghettiPart);
+                dictOfEnding.Add(spaghettiPart[spaghettiPart.Length - 1], spaghettiPart);
+            }
+            string startingPart = dictOfStarting['A'];
+            string result = startingPart;
+            char endCharacter = startingPart[startingPart.Length - 1];
+            foreach (var part in list)
+            {
+                if (dictOfStarting.ContainsKey(endCharacter)){
+                    string currentPart = dictOfStarting[endCharacter];
+                    result += currentPart.Substring(1, currentPart.Length - 1);
+                    endCharacter = currentPart[currentPart.Length - 1];
+                }
+            }
+            Console.WriteLine(result);
+            string expected = "A------X====*-+-+-+-+-+-+-#_____Z";
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
         [TestCase(0, "0")]
         [TestCase(45, "P/4")]
         [TestCase(90, "P/2")]
