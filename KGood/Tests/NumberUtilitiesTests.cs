@@ -316,42 +316,83 @@ namespace KGood.Tests
 
         [TestCase("up right up right down left", "^>^>V<")]
         [TestCase("up up up", "3^")]
+        [TestCase("up up up down down", "3^2V")]
         [Test]
         public void Test_Tuple(string input, string expected)
         {
-            List<Tuple<string, char>> conversionTable = new List<Tuple<string, char>>();
-            conversionTable.Add(new Tuple<string, char>("up", '^'));
-            conversionTable.Add(new Tuple<string, char>("down", 'V'));
-            conversionTable.Add(new Tuple<string, char>("right", '>'));
-            conversionTable.Add(new Tuple<string, char>("left", '<'));
-            string[] listOfInputs = input.Split(' ');
-            List<char> result = new List<char>();
-            foreach (string inputToConvert in listOfInputs)
+            List<Tuple<string, char>> conversionTable = new List<Tuple<string, char>>
+                                                        {
+                                                            new Tuple<string, char>("up", '^'),
+                                                            new Tuple<string, char>("down", 'V'),
+                                                            new Tuple<string, char>("right", '>'),
+                                                            new Tuple<string, char>("left", '<')
+                                                        };
+            var listOfInputs = input.Split(' ');
+            var result = new List<char>();
+            foreach (var inputToConvert in listOfInputs)
             {
-                char c = 'a';
-                foreach (var tuple in conversionTable)
+                var c = 'a';
+                foreach (var conversionLine in conversionTable)
                 {
-                    if (tuple.Item1 == inputToConvert) { 
-                        c = tuple.Item2;
-                        break;
-                    }
+                    if (conversionLine.Item1 != inputToConvert) continue;
+                    c = conversionLine.Item2;
+                    break;
                 }
                 result.Add(c);
             }
-            var query = result
-                .GroupBy(s => s)
-                .Select(x => new
-                {
-                    Character = x.Key,
-                    RepetitionCount = x.Count()
-                });
-            string res = "";
-            foreach (var item in query)
+
+            var tuple = new List<Tuple<char, int>>();
+            char prevChar = result[0];
+            int counter = 0;
+            for (var index = 0; index < result.Count; index++)
             {
-                res += $"{item.RepetitionCount}{item.Character}";
-                Console.Write(res);
+                char c = result[index];
+                if (prevChar != c)
+                {
+                    tuple.Add(new Tuple<char, int>(prevChar, counter));
+                }
+                else
+                {
+                    counter++;
+                }
+                prevChar = c;
+                if (index == result.Count - 1)
+                {
+                    tuple.Add(new Tuple<char, int>(prevChar, counter));
+                }
             }
-            Assert.That(res, Is.EqualTo(expected));
+
+            string res1 = "";
+            for (var index = 0; index < tuple.Count; index++)
+            {
+                var t = tuple[index];
+                if (t.Item2 > 1)
+                {
+                    res1 += t.Item2;
+                }
+                res1 += t.Item1.ToString();
+                if (index == tuple.Count - 1)
+                {
+                    
+                }
+            }
+
+            Assert.That(res1, Is.EqualTo(expected));
+            //var query = result
+            //    .GroupBy(s => s)
+            //    .Select(x => new
+            //    {
+            //        Character = x.Key,
+            //        RepetitionCount = x.Count()
+            //    });
+            //string res = "";
+            //foreach (var item in query)
+            //{
+            //    res += $"{item.RepetitionCount}{item.Character}";
+            //    Console.Write(res);
+            //}
+            //Assert.That(res, Is.EqualTo(expected));
+            //Assert.That(result, Is.EqualTo(expected));
         }
 
         [Test]
