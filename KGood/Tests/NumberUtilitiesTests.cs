@@ -8,6 +8,7 @@ using NUnit.Framework;
 
 namespace KGood.Tests
 {
+    [TestFixture]
     public class NumberUtilitiesTests
     {
         [Test]
@@ -429,6 +430,33 @@ namespace KGood.Tests
 
             Console.WriteLine(degreeOfPolynomial);
             Assert.That(degreeOfPolynomial, Is.EqualTo(expectedResult));
+        }
+
+        [Test]
+        public void Test_ComputePattern()
+        {
+            string M = "20 40 60 80 100";
+            string W = "0 1 2 3 4";
+            string H = "1 0";
+
+            List<int> mList = M.Split().ToList().Select(x => int.Parse(x)).ToList();
+            List<int> wList = W.Split().ToList().Select(x => int.Parse(x)).ToList();
+            List<int> hList = H.Split().ToList().Select(x => int.Parse(x)).ToList();
+            var xList = new List<int> { 500, 1000, 1500, 2000, 2500 };
+
+            int sum = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                int num1 = (int)(0.3 * xList[i]);
+                Console.WriteLine($"num1 : {num1}");
+                int num2 = (1 - mList[i] / 250) * xList[i] - 50 * wList[i];
+                Console.WriteLine($"num2 : {num2}");
+                sum += Math.Max(num1, num2);
+                Console.WriteLine($"sum : {sum}");
+            }
+            Console.WriteLine(sum);
+
+            Assert.That(sum, Is.EqualTo(4900));
         }
     }
 }
