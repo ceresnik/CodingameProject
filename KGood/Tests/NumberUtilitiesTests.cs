@@ -318,9 +318,9 @@ namespace KGood.Tests
         [TestCase("up up up", "3^")]
         [TestCase("up up up down down", "3^2V")]
         [Test]
-        public void Test_Tuple(string input, string expected)
+        public void Test_Conversion(string input, string expected)
         {
-            List<Tuple<string, char>> conversionTable = new List<Tuple<string, char>>
+            var conversionTable = new List<Tuple<string, char>>
                                                         {
                                                             new Tuple<string, char>("up", '^'),
                                                             new Tuple<string, char>("down", 'V'),
@@ -328,70 +328,73 @@ namespace KGood.Tests
                                                             new Tuple<string, char>("left", '<')
                                                         };
             var listOfInputs = input.Split(' ');
-            var result = new List<char>();
+            var res = new List<char>();
             foreach (var inputToConvert in listOfInputs)
             {
                 var c = 'a';
                 foreach (var conversionLine in conversionTable)
                 {
-                    if (conversionLine.Item1 != inputToConvert) continue;
+                    if (conversionLine.Item1 != inputToConvert)
+                    {
+                        continue;
+                    }
                     c = conversionLine.Item2;
                     break;
                 }
-                result.Add(c);
+                res.Add(c);
             }
-
-            var tuple = new List<Tuple<char, int>>();
-            char prevChar = result[0];
-            int counter = 0;
-            for (var index = 0; index < result.Count; index++)
+            var query = res
+                .GroupBy(s => s)
+                .Select(x => new
+                             {
+                                 Character = x.Key,
+                                 RepetitionCount = x.Count()
+                             });
+            string result = "";
+            foreach (var item in query)
             {
-                char c = result[index];
-                if (prevChar != c)
-                {
-                    tuple.Add(new Tuple<char, int>(prevChar, counter));
-                }
-                else
-                {
-                    counter++;
-                }
-                prevChar = c;
-                if (index == result.Count - 1)
-                {
-                    tuple.Add(new Tuple<char, int>(prevChar, counter));
-                }
+                result += $"{item.RepetitionCount}{item.Character}";
+                Console.Write(result);
             }
+            Assert.That(result, Is.EqualTo(expected));
 
-            string res1 = "";
-            for (var index = 0; index < tuple.Count; index++)
-            {
-                var t = tuple[index];
-                if (t.Item2 > 1)
-                {
-                    res1 += t.Item2;
-                }
-                res1 += t.Item1.ToString();
-                if (index == tuple.Count - 1)
-                {
-                    
-                }
-            }
-
-            Assert.That(res1, Is.EqualTo(expected));
-            //var query = result
-            //    .GroupBy(s => s)
-            //    .Select(x => new
-            //    {
-            //        Character = x.Key,
-            //        RepetitionCount = x.Count()
-            //    });
-            //string res = "";
-            //foreach (var item in query)
+            //var tuple = new List<Tuple<char, int>>();
+            //char prevChar = result[0];
+            //int counter = 0;
+            //for (var index = 0; index < result.Count; index++)
             //{
-            //    res += $"{item.RepetitionCount}{item.Character}";
-            //    Console.Write(res);
+            //    char c = result[index];
+            //    if (prevChar != c)
+            //    {
+            //        tuple.Add(new Tuple<char, int>(prevChar, counter));
+            //    }
+            //    else
+            //    {
+            //        counter++;
+            //    }
+            //    prevChar = c;
+            //    if (index == result.Count - 1)
+            //    {
+            //        tuple.Add(new Tuple<char, int>(prevChar, counter));
+            //    }
             //}
-            //Assert.That(res, Is.EqualTo(expected));
+
+            //string res1 = "";
+            //for (var index = 0; index < tuple.Count; index++)
+            //{
+            //    var t = tuple[index];
+            //    if (t.Item2 > 1)
+            //    {
+            //        res1 += t.Item2;
+            //    }
+            //    res1 += t.Item1.ToString();
+            //    if (index == tuple.Count - 1)
+            //    {
+
+            //    }
+            //}
+
+            //Assert.That(res1, Is.EqualTo(expected));
             //Assert.That(result, Is.EqualTo(expected));
         }
 
