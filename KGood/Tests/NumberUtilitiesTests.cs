@@ -323,21 +323,13 @@ namespace KGood.Tests
         [Test]
         public void Test_Tuple(string input, string expected)
         {
-
+            string result = "";
             var listOfInputs = input.Split(' ');
-            var listOfWordsConvertedToCharacters = new List<char>();
+            char prevChar = ConvertWordToCharacter(listOfInputs[0]);
+            int howManyTimes = 0;
             foreach (var inputToConvert in listOfInputs)
             {
-                var character = GetWordConvertedToCharacter(inputToConvert);
-                listOfWordsConvertedToCharacters.Add(character);
-            }
-
-            string result = "";
-            char prevChar = listOfWordsConvertedToCharacters[0];
-            int howManyTimes = 0;
-            for (var index = 0; index < listOfWordsConvertedToCharacters.Count; index++)
-            {
-                char actualChar = listOfWordsConvertedToCharacters[index];
+                var actualChar = ConvertWordToCharacter(inputToConvert);
                 if (prevChar != actualChar)
                 {
                     result += GetComponent(howManyTimes, prevChar);
@@ -347,14 +339,11 @@ namespace KGood.Tests
                 {
                     howManyTimes++;
                 }
-                if (index == listOfWordsConvertedToCharacters.Count - 1)
-                {
-                    result += GetComponent(howManyTimes, actualChar);
-                }
                 prevChar = actualChar;
             }
-
+            result += GetComponent(howManyTimes, prevChar);
             Assert.That(result, Is.EqualTo(expected));
+
             //var query = result
             //    .GroupBy(s => s)
             //    .Select(x => new
@@ -372,7 +361,7 @@ namespace KGood.Tests
             //Assert.That(result, Is.EqualTo(expected));
         }
 
-        private static char GetWordConvertedToCharacter(string inputToConvert)
+        private static char ConvertWordToCharacter(string word)
         {
             var conversionTable = new List<(string WordToConvert, char ConvertedCharacted)>
             {
@@ -384,15 +373,12 @@ namespace KGood.Tests
             char character = '\0';
             foreach (var conversionLine in conversionTable)
             {
-                if (conversionLine.WordToConvert != inputToConvert)
+                if (word != conversionLine.WordToConvert)
                 {
                     continue;
                 }
-
-                character = conversionLine.ConvertedCharacted;
-                break;
+                return conversionLine.ConvertedCharacted;
             }
-
             return character;
         }
 
