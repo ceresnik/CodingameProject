@@ -318,67 +318,32 @@ namespace KGood.Tests
         [TestCase("up right up right down left", "^>^>V<")]
         [TestCase("up up up", "3^")]
         [TestCase("up up up down down", "3^2V")]
+        [TestCase("up up down up up left", "2^V2^<")]
+        [TestCase("up down left right", "^V<>")]
         [Test]
         public void Test_Tuple(string input, string expected)
         {
-            List<Tuple<string, char>> conversionTable = new List<Tuple<string, char>>
-                                                        {
-                                                            new Tuple<string, char>("up", '^'),
-                                                            new Tuple<string, char>("down", 'V'),
-                                                            new Tuple<string, char>("right", '>'),
-                                                            new Tuple<string, char>("left", '<')
-                                                        };
+            string result = "";
             var listOfInputs = input.Split(' ');
-            var result = new List<char>();
+            char prevChar = ConvertWordToCharacter(listOfInputs[0]);
+            int howManyTimes = 0;
             foreach (var inputToConvert in listOfInputs)
             {
-                var c = 'a';
-                foreach (var conversionLine in conversionTable)
+                var actualChar = ConvertWordToCharacter(inputToConvert);
+                if (prevChar != actualChar)
                 {
-                    if (conversionLine.Item1 != inputToConvert) continue;
-                    c = conversionLine.Item2;
-                    break;
-                }
-                result.Add(c);
-            }
-
-            var tuple = new List<Tuple<char, int>>();
-            char prevChar = result[0];
-            int counter = 0;
-            for (var index = 0; index < result.Count; index++)
-            {
-                char c = result[index];
-                if (prevChar != c)
-                {
-                    tuple.Add(new Tuple<char, int>(prevChar, counter));
+                    result += GetComponent(howManyTimes, prevChar);
+                    howManyTimes = 1;
                 }
                 else
                 {
-                    counter++;
+                    howManyTimes++;
                 }
-                prevChar = c;
-                if (index == result.Count - 1)
-                {
-                    tuple.Add(new Tuple<char, int>(prevChar, counter));
-                }
+                prevChar = actualChar;
             }
+            result += GetComponent(howManyTimes, prevChar);
+            Assert.That(result, Is.EqualTo(expected));
 
-            string res1 = "";
-            for (var index = 0; index < tuple.Count; index++)
-            {
-                var t = tuple[index];
-                if (t.Item2 > 1)
-                {
-                    res1 += t.Item2;
-                }
-                res1 += t.Item1.ToString();
-                if (index == tuple.Count - 1)
-                {
-                    
-                }
-            }
-
-            Assert.That(res1, Is.EqualTo(expected));
             //var query = result
             //    .GroupBy(s => s)
             //    .Select(x => new
@@ -394,6 +359,38 @@ namespace KGood.Tests
             //}
             //Assert.That(res, Is.EqualTo(expected));
             //Assert.That(result, Is.EqualTo(expected));
+        }
+
+        private static char ConvertWordToCharacter(string word)
+        {
+            var conversionTable = new List<(string WordToConvert, char ConvertedCharacted)>
+            {
+                ("up", '^'),
+                ("down", 'V'),
+                ("right", '>'),
+                ("left", '<')
+            };
+            char character = '\0';
+            foreach (var conversionLine in conversionTable)
+            {
+                if (word != conversionLine.WordToConvert)
+                {
+                    continue;
+                }
+                return conversionLine.ConvertedCharacted;
+            }
+            return character;
+        }
+
+        private static string GetComponent(int count, char character)
+        {
+            string result = "";
+            if (count > 1)
+            {
+                result += count;
+            }
+            result += character.ToString();
+            return result;
         }
 
         [Test]
