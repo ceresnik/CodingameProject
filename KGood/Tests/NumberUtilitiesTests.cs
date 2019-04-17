@@ -499,5 +499,36 @@ namespace KGood.Tests
 
             Assert.That(sum, Is.EqualTo(4900));
         }
+
+        [Test]
+        public void Test_GoldSilverBronze()
+        {
+            string[] money = Console.ReadLine().Split();
+            string[] price = Console.ReadLine().Split();
+            var moneys = new List<int>();
+            foreach (string s in money)
+            {
+                int value = int.Parse(s.Remove(s.Length - 1));
+                moneys.Add(value);
+            }
+            var prices = new List<int>();
+            foreach (string s in price)
+            {
+                int value = int.Parse(s.Remove(s.Length - 1));
+                prices.Add(value);
+            }
+
+            int moneyInB = moneys[0] + moneys[1] * 100 + moneys[2] * 10000;
+            int priceInB = prices[0] + prices[1] * 100 + prices[2] * 10000;
+            int diff = moneyInB - priceInB;
+
+            int G = diff / 10000;
+            int variable = diff % 10000;
+            int S = variable / 100;
+            int B = variable % 100;
+            string result = $"{G}G {S}S {B}B";
+            Console.WriteLine(result);
+            Assert.That(result, Is.EqualTo("0G 1S 10B"));
+        }
     }
 }
