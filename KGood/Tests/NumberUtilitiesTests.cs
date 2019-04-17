@@ -324,24 +324,21 @@ namespace KGood.Tests
         public void Test_Tuple(string input, string expected)
         {
             string result = "";
-            var listOfInputs = input.Split(' ');
-            char prevChar = ConvertWordToCharacter(listOfInputs[0]);
+            var listOfInputs = input.Split();
+            char previousChar = ConvertWordToCharacter(listOfInputs[0]);
             int howManyTimes = 0;
             foreach (var inputToConvert in listOfInputs)
             {
-                var actualChar = ConvertWordToCharacter(inputToConvert);
-                if (prevChar != actualChar)
+                char convertedWordToCharacter = ConvertWordToCharacter(inputToConvert);
+                if (AreCharactersSame(previousChar, convertedWordToCharacter) == false)
                 {
-                    result += GetComponent(howManyTimes, prevChar);
-                    howManyTimes = 1;
+                    result += GetComponent(howManyTimes, previousChar);
+                    howManyTimes = 0;
                 }
-                else
-                {
-                    howManyTimes++;
-                }
-                prevChar = actualChar;
+                howManyTimes++;
+                previousChar = convertedWordToCharacter;
             }
-            result += GetComponent(howManyTimes, prevChar);
+            result += GetComponent(howManyTimes, previousChar);
             Assert.That(result, Is.EqualTo(expected));
 
             //var query = result
@@ -359,6 +356,11 @@ namespace KGood.Tests
             //}
             //Assert.That(res, Is.EqualTo(expected));
             //Assert.That(result, Is.EqualTo(expected));
+        }
+
+        private static bool AreCharactersSame(char previousChar, char convertedWordToCharacter)
+        {
+            return previousChar == convertedWordToCharacter;
         }
 
         private static char ConvertWordToCharacter(string word)
