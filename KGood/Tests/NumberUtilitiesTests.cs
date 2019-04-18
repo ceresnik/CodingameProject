@@ -8,6 +8,7 @@ using NUnit.Framework;
 
 namespace KGood.Tests
 {
+    [TestFixture]
     public class NumberUtilitiesTests
     {
         [Test]
@@ -317,78 +318,35 @@ namespace KGood.Tests
         [TestCase("up right up right down left", "^>^>V<")]
         [TestCase("up up up", "3^")]
         [TestCase("up up up down down", "3^2V")]
+        [TestCase("up up down up up left", "2^V2^<")]
+        [TestCase("up down left right", "^V<>")]
         [Test]
         public void Test_Conversion(string input, string expected)
         {
-            var conversionTable = new List<Tuple<string, char>>
-                                                        {
-                                                            new Tuple<string, char>("up", '^'),
-                                                            new Tuple<string, char>("down", 'V'),
-                                                            new Tuple<string, char>("right", '>'),
-                                                            new Tuple<string, char>("left", '<')
-                                                        };
+            string result = "";
             var listOfInputs = input.Split(' ');
-            var res = new List<char>();
+            char prevChar = ConvertWordToCharacter(listOfInputs[0]);
+            int howManyTimes = 0;
             foreach (var inputToConvert in listOfInputs)
             {
-                var c = 'a';
-                foreach (var conversionLine in conversionTable)
+                var actualChar = ConvertWordToCharacter(inputToConvert);
+                if (prevChar != actualChar)
                 {
-                    if (conversionLine.Item1 != inputToConvert)
-                    {
-                        continue;
-                    }
-                    c = conversionLine.Item2;
-                    break;
+                    result += GetComponent(howManyTimes, prevChar);
+                    howManyTimes = 1;
                 }
-                res.Add(c);
+                else
+                {
+                    howManyTimes++;
+                }
+                prevChar = actualChar;
             }
-            var query = res
-                .GroupBy(s => s)
-                .Select(x => new
-                             {
-                                 Character = x.Key,
-                                 RepetitionCount = x.Count()
-                             });
-            string result = "";
-            foreach (var item in query)
-            {
-                result += $"{item.RepetitionCount}{item.Character}";
-                Console.Write(result);
-            }
+            result += GetComponent(howManyTimes, prevChar);
             Assert.That(result, Is.EqualTo(expected));
 
-            //var tuple = new List<Tuple<char, int>>();
-            //char prevChar = result[0];
-            //int counter = 0;
-            //for (var index = 0; index < result.Count; index++)
-            //{
-            //    char c = result[index];
-            //    if (prevChar != c)
-            //    {
-            //        tuple.Add(new Tuple<char, int>(prevChar, counter));
-            //    }
-            //    else
-            //    {
-            //        counter++;
-            //    }
-            //    prevChar = c;
-            //    if (index == result.Count - 1)
-            //    {
-            //        tuple.Add(new Tuple<char, int>(prevChar, counter));
-            //    }
-            //}
-
-            //string res1 = "";
-            //for (var index = 0; index < tuple.Count; index++)
-            //{
-            //    var t = tuple[index];
-            //    if (t.Item2 > 1)
-            //    {
-            //        res1 += t.Item2;
-            //    }
-            //    res1 += t.Item1.ToString();
-            //    if (index == tuple.Count - 1)
+            //var query = result
+            //    .GroupBy(s => s)
+            //    .Select(x => new
             //    {
 
             //    }
@@ -396,6 +354,38 @@ namespace KGood.Tests
 
             //Assert.That(res1, Is.EqualTo(expected));
             //Assert.That(result, Is.EqualTo(expected));
+        }
+
+        private static char ConvertWordToCharacter(string word)
+        {
+            var conversionTable = new List<(string WordToConvert, char ConvertedCharacted)>
+            {
+                ("up", '^'),
+                ("down", 'V'),
+                ("right", '>'),
+                ("left", '<')
+            };
+            char character = '\0';
+            foreach (var conversionLine in conversionTable)
+            {
+                if (word != conversionLine.WordToConvert)
+                {
+                    continue;
+                }
+                return conversionLine.ConvertedCharacted;
+            }
+            return character;
+        }
+
+        private static string GetComponent(int count, char character)
+        {
+            string result = "";
+            if (count > 1)
+            {
+                result += count;
+            }
+            result += character.ToString();
+            return result;
         }
 
         [Test]
@@ -473,6 +463,33 @@ namespace KGood.Tests
 
             Console.WriteLine(degreeOfPolynomial);
             Assert.That(degreeOfPolynomial, Is.EqualTo(expectedResult));
+        }
+
+        [Test]
+        public void Test_ComputePattern()
+        {
+            string M = "20 40 60 80 100";
+            string W = "0 1 2 3 4";
+            string H = "1 0";
+
+            List<int> mList = M.Split().ToList().Select(x => int.Parse(x)).ToList();
+            List<int> wList = W.Split().ToList().Select(x => int.Parse(x)).ToList();
+            List<int> hList = H.Split().ToList().Select(x => int.Parse(x)).ToList();
+            var xList = new List<int> { 500, 1000, 1500, 2000, 2500 };
+
+            int sum = 0;
+            for (int i = 0; i < 5; i++)
+            {
+                int num1 = (int)(0.3 * xList[i]);
+                Console.WriteLine($"num1 : {num1}");
+                int num2 = (1 - mList[i] / 250) * xList[i] - 50 * wList[i];
+                Console.WriteLine($"num2 : {num2}");
+                sum += Math.Max(num1, num2);
+                Console.WriteLine($"sum : {sum}");
+            }
+            Console.WriteLine(sum);
+
+            Assert.That(sum, Is.EqualTo(4900));
         }
     }
 }
