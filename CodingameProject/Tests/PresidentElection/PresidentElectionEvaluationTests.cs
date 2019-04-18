@@ -6,15 +6,28 @@ namespace CodingameProject.Tests.PresidentElection
     [TestFixture]
     public class PresidentElectionEvaluationTests
     {
+        private string electionResultsFile;
+        private string providedTipsFile;
+
+        [SetUp]
+        public void SetUp()
+        {
+            electionResultsFile = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
+            providedTipsFile = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection");
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            electionResultsFile = null;
+            providedTipsFile = null;
+        }
+
         [Test]
         public void PresidentElectionEvaluationObject_InitializedCorrectly()
         {
-            //prepare
-            string electionResultsFile = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
-            string providedTipsFile = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection");
-
             //act
-            var sut = new PresidentElectionEvaluation(electionResultsFile, providedTipsFile);
+            var sut = new ContestEvaluation(electionResultsFile, providedTipsFile);
 
             //verify
             Assert.That(sut.ElectionResultsFile, Is.EqualTo(electionResultsFile));
@@ -25,9 +38,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void CountScore_ReturnsTypeOfEvaluatedTips()
         {
             //prepare
-            string electionResultsFile = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
-            string providedTipsFile = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection");
-            var sut = new PresidentElectionEvaluation(electionResultsFile, providedTipsFile);
+            var sut = new ContestEvaluation(electionResultsFile, providedTipsFile);
 
             //act
             var result = sut.CountScore();
@@ -40,9 +51,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void CountScore_CountOfEvaluatedTips()
         {
             //prepare
-            string electionResultsFile = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
-            string providedTipsFile = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection");
-            var sut = new PresidentElectionEvaluation(electionResultsFile, providedTipsFile);
+            var sut = new ContestEvaluation(electionResultsFile, providedTipsFile);
 
             //act
             var result = sut.CountScore();

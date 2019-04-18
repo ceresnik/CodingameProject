@@ -98,7 +98,7 @@
     <Compile Include="Source\PresidentElection\EvaluatedTip.cs" />
     <Compile Include="Source\PresidentElection\EvaluatedTips.cs" />
     <Compile Include="Source\PresidentElection\FilePathProvider.cs" />
-    <Compile Include="Source\PresidentElection\PresidentElectionEvaluation.cs" />
+    <Compile Include="Source\PresidentElection\ContestEvaluation.cs" />
     <Compile Include="Source\PresidentElection\ProvidedTip.cs" />
     <Compile Include="Source\PresidentElection\ProvidedTips.cs" />
     <Compile Include="Source\PresidentElection\ProvidedTipsReader.cs" />
