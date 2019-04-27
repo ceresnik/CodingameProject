@@ -321,7 +321,7 @@ namespace KGood.Tests
         [TestCase("up up down up up left", "2^V2^<")]
         [TestCase("up down left right", "^V<>")]
         [Test]
-        public void Test_Tuple(string input, string expected)
+        public void Test_Conversion(string input, string expected)
         {
             string result = "";
             var listOfInputs = input.Split();
@@ -345,16 +345,11 @@ namespace KGood.Tests
             //    .GroupBy(s => s)
             //    .Select(x => new
             //    {
-            //        Character = x.Key,
-            //        RepetitionCount = x.Count()
-            //    });
-            //string res = "";
-            //foreach (var item in query)
-            //{
-            //    res += $"{item.RepetitionCount}{item.Character}";
-            //    Console.Write(res);
+
+            //    }
             //}
-            //Assert.That(res, Is.EqualTo(expected));
+
+            //Assert.That(res1, Is.EqualTo(expected));
             //Assert.That(result, Is.EqualTo(expected));
         }
 
