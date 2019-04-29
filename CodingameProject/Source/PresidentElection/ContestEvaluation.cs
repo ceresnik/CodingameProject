@@ -1,11 +1,11 @@
 ﻿namespace CodingameProject.Source.PresidentElection
 {
-    public class PresidentElectionEvaluation
+    public class ContestEvaluation
     {
         public string ElectionResultsFile { get; }
         public string ProvidedTipsFile { get; }
 
-        public PresidentElectionEvaluation(string electionResultsFile, string providedTipsFile)
+        public ContestEvaluation(string electionResultsFile, string providedTipsFile)
         {
             ElectionResultsFile = electionResultsFile;
             ProvidedTipsFile = providedTipsFile;
