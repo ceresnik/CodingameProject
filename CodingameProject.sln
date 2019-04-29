@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingameProject", "Codinga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KGood", "KGood\KGood.csproj", "{E4FE1972-9B62-4449-9BEA-277336F61E49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TanksAI.Miso", "TanksAI.Miso\TanksAI.Miso.csproj", "{5DA466DE-46F3-467B-8561-517E812A0E17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,18 @@ Global
 		{E4FE1972-9B62-4449-9BEA-277336F61E49}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E4FE1972-9B62-4449-9BEA-277336F61E49}.Release|x64.ActiveCfg = Release|x64
 		{E4FE1972-9B62-4449-9BEA-277336F61E49}.Release|x64.Build.0 = Release|x64
+		{5DA466DE-46F3-467B-8561-517E812A0E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DA466DE-46F3-467B-8561-517E812A0E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DA466DE-46F3-467B-8561-517E812A0E17}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5DA466DE-46F3-467B-8561-517E812A0E17}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5DA466DE-46F3-467B-8561-517E812A0E17}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5DA466DE-46F3-467B-8561-517E812A0E17}.Debug|x64.Build.0 = Debug|Any CPU
+		{5DA466DE-46F3-467B-8561-517E812A0E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DA466DE-46F3-467B-8561-517E812A0E17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DA466DE-46F3-467B-8561-517E812A0E17}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5DA466DE-46F3-467B-8561-517E812A0E17}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5DA466DE-46F3-467B-8561-517E812A0E17}.Release|x64.ActiveCfg = Release|Any CPU
+		{5DA466DE-46F3-467B-8561-517E812A0E17}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
