@@ -449,7 +449,6 @@ namespace KGood.Tests
                 input.Add(x);
             }
 
-            int result = 0;
             int degreeOfPolynomial = 0;
             var actualValues = new List<long>();
             do
@@ -523,6 +522,25 @@ namespace KGood.Tests
             string result = $"{G}G {S}S {B}B";
             Console.WriteLine(result);
             Assert.That(result, Is.EqualTo("0G 1S 10B"));
+        }
+
+        [Test]
+        public void FibonacciFourNumbers()
+        {
+            int n = 5;
+            var list = new List<long>{0, 0, 0, 1};
+            var workingList = new List<long>{0, 0, 0, 1};
+            for (int i = 5; i <= n; i++){
+                long newNumber = workingList.Sum();
+                list.Add(newNumber);
+                workingList.Add(newNumber);
+                workingList.RemoveAt(0);
+                Console.Error.WriteLine(list.Sum());
+            }
+
+            long result = list.Sum();
+            Console.WriteLine(result);
+            Assert.That(result, Is.EqualTo(2));
         }
     }
 }
