@@ -16,9 +16,12 @@
             var providedTips = new ProvidedTipsReader(ProvidedTipsFileName).Read();
             int countOfProvidedTips = providedTips.Count;
             var evaluatedTips = new EvaluatedTips();
+            CandidateNameElectionGainPairs electionResults = new ElectionResultsReader(ElectionResultsFileName).Read();
+            ScoreCounter scoreCounter = new ScoreCounter(electionResults);
             for (int i = 0; i < countOfProvidedTips; i++)
             {
-                evaluatedTips.Add(new EvaluatedTip(providedTips[i].TipperName, 3.45));
+                double score = scoreCounter.Count(providedTips[i]);
+                evaluatedTips.Add(new EvaluatedTip(providedTips[i].TipperName, score));
             }
             return evaluatedTips;
         }

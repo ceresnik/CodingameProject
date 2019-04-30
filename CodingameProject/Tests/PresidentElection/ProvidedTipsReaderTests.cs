@@ -57,12 +57,12 @@ namespace CodingameProject.Tests.PresidentElection
             ProvidedTips providedTips = sut.Read();
 
             Assert.That(providedTips[0].TipperName, Is.EqualTo("Lubo"));
-            Assert.That(providedTips[0].CandidateOnFirstPosition, Is.EqualTo("LubosCandidate1"));
-            Assert.That(providedTips[0].CandidateOnFirstPositionPercent, Is.EqualTo(31.33));
-            Assert.That(providedTips[0].CandidateOnSecondPosition, Is.EqualTo("LubosCandidate2"));
-            Assert.That(providedTips[0].CandidateOnSecondPositionPercent, Is.EqualTo(32.33));
-            Assert.That(providedTips[0].CandidateOnThirdPosition, Is.EqualTo("LubosCandidate3"));
-            Assert.That(providedTips[0].CandidateOnThirdPositionPercent, Is.EqualTo(33.33));
+            Assert.That(providedTips[0].CandidateOnFirstPosition, Is.EqualTo("TestCandidate1"));
+            Assert.That(providedTips[0].CandidateOnFirstPositionPercent, Is.EqualTo(25));
+            Assert.That(providedTips[0].CandidateOnSecondPosition, Is.EqualTo("TestCandidate2"));
+            Assert.That(providedTips[0].CandidateOnSecondPositionPercent, Is.EqualTo(20));
+            Assert.That(providedTips[0].CandidateOnThirdPosition, Is.EqualTo("TestCandidate3"));
+            Assert.That(providedTips[0].CandidateOnThirdPositionPercent, Is.EqualTo(15));
         }
 
         [Test]
@@ -73,12 +73,12 @@ namespace CodingameProject.Tests.PresidentElection
             ProvidedTips providedTips = sut.Read();
 
             Assert.That(providedTips[1].TipperName, Is.EqualTo("Miso"));
-            Assert.That(providedTips[1].CandidateOnFirstPosition, Is.EqualTo("MisosCandidate1"));
-            Assert.That(providedTips[1].CandidateOnFirstPositionPercent, Is.EqualTo(41.44));
-            Assert.That(providedTips[1].CandidateOnSecondPosition, Is.EqualTo("MisosCandidate2"));
-            Assert.That(providedTips[1].CandidateOnSecondPositionPercent, Is.EqualTo(42.44));
-            Assert.That(providedTips[1].CandidateOnThirdPosition, Is.EqualTo("MisosCandidate3"));
-            Assert.That(providedTips[1].CandidateOnThirdPositionPercent, Is.EqualTo(43.44));
+            Assert.That(providedTips[1].CandidateOnFirstPosition, Is.EqualTo("TestCandidate1"));
+            Assert.That(providedTips[1].CandidateOnFirstPositionPercent, Is.EqualTo(40));
+            Assert.That(providedTips[1].CandidateOnSecondPosition, Is.EqualTo("TestCandidate2"));
+            Assert.That(providedTips[1].CandidateOnSecondPositionPercent, Is.EqualTo(25));
+            Assert.That(providedTips[1].CandidateOnThirdPosition, Is.EqualTo("TestCandidate3"));
+            Assert.That(providedTips[1].CandidateOnThirdPositionPercent, Is.EqualTo(20));
         }
     }
 }

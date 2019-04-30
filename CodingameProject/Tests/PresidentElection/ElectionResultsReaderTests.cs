@@ -76,9 +76,9 @@ namespace CodingameProject.Tests.PresidentElection
             Assert.That(candidateNameElectionGainPairs[0].CandidateName, Is.EqualTo("TestCandidate1"));
             Assert.That(candidateNameElectionGainPairs[1].CandidateName, Is.EqualTo("TestCandidate2"));
             Assert.That(candidateNameElectionGainPairs[2].CandidateName, Is.EqualTo("TestCandidate3"));
-            Assert.That(candidateNameElectionGainPairs[0].ElectionGainInPercent, Is.EqualTo(21.11));
-            Assert.That(candidateNameElectionGainPairs[1].ElectionGainInPercent, Is.EqualTo(22.22));
-            Assert.That(candidateNameElectionGainPairs[2].ElectionGainInPercent, Is.EqualTo(23.33));
+            Assert.That(candidateNameElectionGainPairs[0].ElectionGainInPercent, Is.EqualTo(40));
+            Assert.That(candidateNameElectionGainPairs[1].ElectionGainInPercent, Is.EqualTo(30));
+            Assert.That(candidateNameElectionGainPairs[2].ElectionGainInPercent, Is.EqualTo(20));
         }
     }
 }

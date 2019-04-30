@@ -102,6 +102,7 @@
     <Compile Include="Source\PresidentElection\ProvidedTip.cs" />
     <Compile Include="Source\PresidentElection\ProvidedTips.cs" />
     <Compile Include="Source\PresidentElection\ProvidedTipsReader.cs" />
+    <Compile Include="Source\PresidentElection\ScoreCounter.cs" />
     <Compile Include="Tests\AlphabetUtilities\SameLettersRepeaterTests.cs" />
     <Compile Include="Source\AlphabetUtilities\StringFormatter.cs" />
     <Compile Include="Tests\AlphabetUtilities\StringFormatterTests.cs" />

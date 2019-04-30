@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Castle.Components.DictionaryAdapter.Xml;
 using CodingameProject.Source.PresidentElection;
 using NUnit.Framework;
 
@@ -63,7 +62,7 @@ namespace CodingameProject.Tests.PresidentElection
         }
 
         [Test]
-        public void CountScore_NameOfTipperFits()
+        public void CountScore_ResultContainsNameOfTipper()
         {
             //prepare
             var sut = new ContestEvaluation(electionResultsFile, providedTipsFile);
@@ -78,9 +77,37 @@ namespace CodingameProject.Tests.PresidentElection
             string expectedTipperNameTwo = "Miso";
             Assert.IsTrue(result.Any(x => x.TipperName.Equals(expectedTipperNameTwo)), 
                 $"Evaluated tips must contain a tip with TipperName {expectedTipperNameTwo}.");
+        }
+
+        [Test]
+        public void CountScore_ResultDoesNotContainNotExistingTipperName()
+        {
+            //prepare
+            var sut = new ContestEvaluation(electionResultsFile, providedTipsFile);
+
+            //act
+            var result = sut.CountScore();
+
+            //verify
             string notExistingTipperName = "NoSuchTipper";
-            Assert.IsFalse(result.Any(x => x.TipperName.Equals(notExistingTipperName)), 
+            Assert.IsFalse(result.Any(x => x.TipperName.Equals(notExistingTipperName)),
                 $"Evaluated tips must NOT contain a tip with TipperName {notExistingTipperName}.");
+        }
+
+        [Test]
+        public void CountScore_ScoreIsCountedCorrectly()
+        {
+            //prepare
+            var sut = new ContestEvaluation(electionResultsFile, providedTipsFile);
+
+            //act
+            var result = sut.CountScore();
+
+            //verify
+            Assert.That(result[0].Score, Is.EqualTo(15), 
+                $"Score for tipper '{result[0].TipperName}' not counted correctly.");
+            Assert.That(result[1].Score, Is.EqualTo(-10),
+                $"Score for tipper '{result[1].TipperName}' not counted correctly.");
         }
     }
 }
