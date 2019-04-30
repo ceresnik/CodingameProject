@@ -2,22 +2,23 @@
 {
     public class ContestEvaluation
     {
-        public string ElectionResultsFile { get; }
-        public string ProvidedTipsFile { get; }
+        public string ElectionResultsFileName { get; }
+        public string ProvidedTipsFileName { get; }
 
-        public ContestEvaluation(string electionResultsFile, string providedTipsFile)
+        public ContestEvaluation(string electionResultsFileName, string providedTipsFileName)
         {
-            ElectionResultsFile = electionResultsFile;
-            ProvidedTipsFile = providedTipsFile;
+            ElectionResultsFileName = electionResultsFileName;
+            ProvidedTipsFileName = providedTipsFileName;
         }
 
         public EvaluatedTips CountScore()
         {
-            int countOfProvidedTips = new ProvidedTipsReader(ProvidedTipsFile).Read().Count;
+            var providedTips = new ProvidedTipsReader(ProvidedTipsFileName).Read();
+            int countOfProvidedTips = providedTips.Count;
             var evaluatedTips = new EvaluatedTips();
             for (int i = 0; i < countOfProvidedTips; i++)
             {
-                evaluatedTips.Add(new EvaluatedTip("TipperName", 3.45));
+                evaluatedTips.Add(new EvaluatedTip(providedTips[i].TipperName, 3.45));
             }
             return evaluatedTips;
         }

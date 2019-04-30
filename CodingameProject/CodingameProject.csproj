@@ -137,7 +137,7 @@
     <Compile Include="Tests\PresidentElection\CandidateNameElectionGainPairsTests.cs" />
     <Compile Include="Tests\PresidentElection\CandidateNameElectionGainPairTests.cs" />
     <Compile Include="Tests\PresidentElection\EvaluatedTipTests.cs" />
-    <Compile Include="Tests\PresidentElection\PresidentElectionEvaluationTests.cs" />
+    <Compile Include="Tests\PresidentElection\ContestEvaluationTests.cs" />
     <Compile Include="Tests\PresidentElection\ProvidedTipsReaderTests.cs" />
     <Compile Include="Tests\PresidentElection\ProvidedTipTests.cs" />
     <Compile Include="Tests\SumOfDigitsCounter\NumberRepresentationTests.cs" />
