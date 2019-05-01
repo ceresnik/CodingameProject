@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using CodingameProject.Source.PresidentElection;
 using NUnit.Framework;
 
@@ -108,6 +109,41 @@ namespace CodingameProject.Tests.PresidentElection
                 $"Score for tipper '{result[0].TipperName}' not counted correctly.");
             Assert.That(result[1].Score, Is.EqualTo(-10),
                 $"Score for tipper '{result[1].TipperName}' not counted correctly.");
+        }
+
+        [Test]
+        public void CountScore_ResultsAreOrderedFromBestScore()
+        {
+            //prepare
+            var sut = new ContestEvaluation(electionResultsFile, providedTipsFile);
+
+            //act
+            var result = sut.CountScore().OrderBy(x => x.Score).ToList();
+
+            //verify
+            Assert.That(result[0].Score, Is.EqualTo(-10),
+                $"On first position must be tipper with best score.");
+            Assert.That(result[1].Score, Is.EqualTo(15),
+                $"On second position must be tipper with second best score.");
+        }
+
+        [Test]
+        public void RealResults()
+        {
+            //prepare
+            var realElectionResultsFile = FilePathProvider.ProvideFullPathToFile("ElectionResults.json", @"Source\PresidentElection");
+            var realTipsFile = FilePathProvider.ProvideFullPathToFile("ElectionTips.json", @"Source\PresidentElection");
+            var sut = new ContestEvaluation(realElectionResultsFile, realTipsFile);
+
+            //act
+            var result = sut.CountScore().OrderBy(x => x.Score).ToList();
+            int i = 0;
+            Console.WriteLine("{0} {1,5} {2,6}", "Place", "Name", "Score");
+            Console.WriteLine("-------------------");
+            foreach (var evaluatedTip in result)
+            {
+                Console.WriteLine($"{++i,3}. {evaluatedTip.TipperName,6} {evaluatedTip.Score, 6}");
+            }
         }
     }
 }

@@ -1,0 +1,86 @@
+﻿[
+	{"TipperName": "Laco", "Tips": 
+		[
+			{ "CandidateName": "Caputova", "ElectionGainInPercent": 38 },
+			{ "CandidateName": "Miklosko", "ElectionGainInPercent": 25 },
+			{ "CandidateName": "Sefcovic", "ElectionGainInPercent": 21 }
+		]
+	},
+	{"TipperName": "Mino", "Tips": 
+		[
+			{ "CandidateName": "Sefcovic", "ElectionGainInPercent": 31 },
+			{ "CandidateName": "Caputova", "ElectionGainInPercent": 27 },
+			{ "CandidateName": "Harabin", "ElectionGainInPercent": 10 }
+		]
+	},
+	{"TipperName": "Filo", "Tips": 
+		[
+			{ "CandidateName": "Caputova", "ElectionGainInPercent": 24 },
+			{ "CandidateName": "Sefcovic", "ElectionGainInPercent": 21 },
+			{ "CandidateName": "Harabin", "ElectionGainInPercent": 7 }
+		]
+	},
+	{"TipperName": "Toso", "Tips": 
+		[
+			{ "CandidateName": "Caputova", "ElectionGainInPercent": 23 },
+			{ "CandidateName": "Harabin", "ElectionGainInPercent": 17 },
+			{ "CandidateName": "Sefcovic", "ElectionGainInPercent": 16 }
+		]
+	},
+	{"TipperName": "Miso W", "Tips": 
+		[
+			{ "CandidateName": "Sefcovic", "ElectionGainInPercent": 21 },
+			{ "CandidateName": "Caputova", "ElectionGainInPercent": 12 },
+			{ "CandidateName": "Kotleba", "ElectionGainInPercent": 8 }
+		]
+	},
+	{"TipperName": "Miso C", "Tips": 
+		[
+			{ "CandidateName": "Caputova", "ElectionGainInPercent": 25 },
+			{ "CandidateName": "Sefcovic", "ElectionGainInPercent": 20 },
+			{ "CandidateName": "Harabin", "ElectionGainInPercent": 18 }
+		]
+	},
+	{"TipperName": "Marc", "Tips": 
+		[
+			{ "CandidateName": "Caputova", "ElectionGainInPercent": 38 },
+			{ "CandidateName": "Sefcovic", "ElectionGainInPercent": 24 },
+			{ "CandidateName": "Harabin", "ElectionGainInPercent": 11 }
+		]
+	},
+	{"TipperName": "Imro", "Tips": 
+		[
+			{ "CandidateName": "Caputova", "ElectionGainInPercent": 26 },
+			{ "CandidateName": "Sefcovic", "ElectionGainInPercent": 21 },
+			{ "CandidateName": "Harabin", "ElectionGainInPercent": 8 }
+		]
+	},
+	{"TipperName": "Reprak", "Tips": 
+		[
+			{ "CandidateName": "Caputova", "ElectionGainInPercent": 32 },
+			{ "CandidateName": "Harabin", "ElectionGainInPercent": 15 },
+			{ "CandidateName": "Sefcovic", "ElectionGainInPercent": 14 }
+		]
+	},
+	{"TipperName": "Sysa", "Tips": 
+		[
+			{ "CandidateName": "Caputova", "ElectionGainInPercent": 20 },
+			{ "CandidateName": "Sefcovic", "ElectionGainInPercent": 19 },
+			{ "CandidateName": "Harabin", "ElectionGainInPercent": 10 }
+		]
+	},
+	{"TipperName": "Marek", "Tips": 
+		[
+			{ "CandidateName": "Caputova", "ElectionGainInPercent": 30 },
+			{ "CandidateName": "Sefcovic", "ElectionGainInPercent": 28 },
+			{ "CandidateName": "Harabin", "ElectionGainInPercent": 20 }
+		]
+	},
+	{"TipperName": "Lubo", "Tips": 
+		[
+			{ "CandidateName": "Caputova", "ElectionGainInPercent": 44 },
+			{ "CandidateName": "Sefcovic", "ElectionGainInPercent": 18 },
+			{ "CandidateName": "Harabin", "ElectionGainInPercent": 11 }
+		]
+	}
+]

@@ -1,0 +1,14 @@
+Place  Name  Score
+-------------------
+  1.   Lubo   -7,5
+  2.   Marc   -3,5
+  3. Miso C    5,5
+  4.   Imro    8,5
+  5. Reprak    8,5
+  6.   Sysa   10,5
+  7.  Marek   10,5
+  8.   Filo   11,5
+  9.   Toso   17,5
+ 10.   Laco   19,5
+ 11.   Mino   25,5
+ 12. Miso W   33,5

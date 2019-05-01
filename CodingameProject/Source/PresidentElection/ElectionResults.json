@@ -1,5 +1,7 @@
 [
-	{ "CandidateName": "Bugar", "ResultInPercent": 4 },
-	{ "CandidateName": "Caputova", "ResultInPercent": 40 },
-	{ "CandidateName": "Miklosko", "ResultInPercent": 5 }
+	{ "CandidateName": "Caputova", "ElectionGainInPercent": 40.5 },
+	{ "CandidateName": "Sefcovic", "ElectionGainInPercent": 18.5 },
+	{ "CandidateName": "Harabin", "ElectionGainInPercent": 14.5 },
+	{ "CandidateName": "Kotleba", "ElectionGainInPercent": 10.5 },
+	{ "CandidateName": "Miklosko", "ElectionGainInPercent": 5.5 }
 ]
