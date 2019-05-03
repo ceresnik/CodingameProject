@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingameProject", "Codinga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KGood", "KGood\KGood.csproj", "{E4FE1972-9B62-4449-9BEA-277336F61E49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TanksAI.Miso", "TanksAI.Miso\TanksAI.Miso.csproj", "{5DA466DE-46F3-467B-8561-517E812A0E17}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotAI.Miso", "TanksAI.Miso\BotAI.Miso.csproj", "{5DA466DE-46F3-467B-8561-517E812A0E17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
