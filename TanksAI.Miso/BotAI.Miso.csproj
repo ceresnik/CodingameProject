@@ -7,8 +7,8 @@
     <ProjectGuid>{5DA466DE-46F3-467B-8561-517E812A0E17}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TanksAI.Miso</RootNamespace>
-    <AssemblyName>TanksAI.Miso</AssemblyName>
+    <RootNamespace>BotAI.Miso</RootNamespace>
+    <AssemblyName>BotAI.Miso</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

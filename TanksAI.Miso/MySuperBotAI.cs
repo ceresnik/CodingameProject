@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CodingArena.AI;
 
-namespace TanksAI.Miso
+namespace BotAI.Miso
 {
     public class MySuperBotAI : IBotAI
     {
