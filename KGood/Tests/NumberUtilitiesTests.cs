@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using KGood.Source;
 using NUnit.Framework;
 
@@ -541,6 +542,30 @@ namespace KGood.Tests
             long result = list.Sum();
             Console.WriteLine(result);
             Assert.That(result, Is.EqualTo(2));
+        }
+
+        [TestCase(5, 2, 1)]
+        [TestCase(5, 1, 7)]
+        [TestCase(5, 0, 4)]
+        [TestCase(4, 0, 5)]
+        [TestCase(4, 1, 6)]
+        [TestCase(4, 2, 0)]
+        [Test]
+        public void Test_ToggleBinaryNumber(int input, int togglePosition, int expected)
+        {
+            String binary = Convert.ToString(input, 2);
+            int index = binary.Length - togglePosition - 1;
+            char originalNum = binary[index];
+            char newNum = '1';
+            if (originalNum == '1')
+                newNum = '0';
+            var aStringBuilder = new StringBuilder(binary);
+            aStringBuilder.Remove(index, 1);
+            aStringBuilder.Insert(index, newNum);
+            binary = aStringBuilder.ToString();
+            int output = Convert.ToInt32(Convert.ToString(Convert.ToInt32(binary, 2), 10));
+            Console.WriteLine(output);
+            Assert.That(output, Is.EqualTo(expected));
         }
     }
 }
