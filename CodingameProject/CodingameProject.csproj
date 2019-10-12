@@ -75,6 +75,7 @@
     <Compile Include="Source\AlphabetUtilities\StringRotater.cs" />
     <Compile Include="Source\MathematicalUtilities\ArithmeticSeriesCounter.cs" />
     <Compile Include="Source\MathematicalUtilities\LinqExamples.cs" />
+    <Compile Include="Source\MathematicalUtilities\UnaryEncoder.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CompositePainterFactory.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\EnumerableExtensions.cs" />
     <Compile Include="Program.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\Painters.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CombiningPainter.cs" />
     <Compile Include="Tests\MathematicalUtilities\ArithmeticSeriesCounterTests.cs" />
+    <Compile Include="Tests\MathematicalUtilities\UnaryEncoderTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\CombiningPainterTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\CompositePainterFactoryTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\PaintersTests.cs" />
