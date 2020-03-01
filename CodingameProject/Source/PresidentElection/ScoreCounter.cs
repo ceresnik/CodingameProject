@@ -7,6 +7,7 @@ namespace CodingameProject.Source.PresidentElection
     {
         private readonly CandidateNameElectionGainPairs electionResults;
         private readonly int bonusForCorrectPlaceTip;
+        private const double BadScore = 100;
 
         public ScoreCounter(CandidateNameElectionGainPairs electionResults, int bonusForCorrectPlace)
         {
@@ -14,14 +15,15 @@ namespace CodingameProject.Source.PresidentElection
             this.bonusForCorrectPlaceTip = bonusForCorrectPlace;
         }
 
-        public double Count(ProvidedTip providedTip)
+        public double Count(ProvidedTip providedTip, int countOfTippedPlaces)
         {
-            double result = GetScoreOfOneTip(providedTip.Tips[0].CandidateName,
-                providedTip.Tips[0].ElectionGainInPercent);
-            result += GetScoreOfOneTip(providedTip.Tips[1].CandidateName,
-                providedTip.Tips[1].ElectionGainInPercent);
-            result += GetScoreOfOneTip(providedTip.Tips[2].CandidateName,
-                providedTip.Tips[2].ElectionGainInPercent);
+            double result = 0;
+            for (int i = 0; i < countOfTippedPlaces; i++)
+            {
+                result += GetScoreOfOneTip(providedTip.Tips[i].CandidateName,
+                    providedTip.Tips[i].ElectionGainInPercent);
+
+            }
             result -= GetBonusForCorrectPlace(providedTip);
             return result;
         }
@@ -46,7 +48,17 @@ namespace CodingameProject.Source.PresidentElection
 
         private double GetScoreOfOneTip(string tippedName, double tippedPercent)
         {
-            return Math.Abs(electionResults.First(x => x.CandidateName == tippedName).ElectionGainInPercent - tippedPercent);
+            CandidateNameElectionGainPair foundCandidate;
+            try
+            {
+                foundCandidate = electionResults.First(x => x.CandidateName == tippedName);
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine($"Candidate with name {tippedName} not found in election results.");
+                return BadScore;
+            }
+            return Math.Abs(foundCandidate.ElectionGainInPercent - tippedPercent);
         }
     }
 }

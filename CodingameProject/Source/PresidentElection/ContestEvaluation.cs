@@ -11,7 +11,7 @@
             ProvidedTipsFileName = providedTipsFileName;
         }
 
-        public EvaluatedTips CountScore(int bonusForCorrectPlace)
+        public EvaluatedTips CountScore(int bonusForCorrectPlace, int countOfTippedPlaces)
         {
             var providedTips = new ProvidedTipsReader(ProvidedTipsFileName).Read();
             int countOfProvidedTips = providedTips.Count;
@@ -20,7 +20,7 @@
             ScoreCounter scoreCounter = new ScoreCounter(electionResults, bonusForCorrectPlace);
             for (int i = 0; i < countOfProvidedTips; i++)
             {
-                double score = scoreCounter.Count(providedTips[i]);
+                double score = scoreCounter.Count(providedTips[i], countOfTippedPlaces);
                 evaluatedTips.Add(new EvaluatedTip(providedTips[i].TipperName, score));
             }
             return evaluatedTips;

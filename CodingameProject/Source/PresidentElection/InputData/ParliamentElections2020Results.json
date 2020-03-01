@@ -1,9 +1,9 @@
 [
 	{ "CandidateName": "Olano", "ElectionGainInPercent": 25 },
 	{ "CandidateName": "Smer", "ElectionGainInPercent": 18.2 },
-	{ "CandidateName": "Sme rodina", "ElectionGainInPercent": 8.2 },
+	{ "CandidateName": "SmeRodina", "ElectionGainInPercent": 8.2 },
 	{ "CandidateName": "Lsns", "ElectionGainInPercent": 7.9 },
 	{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 6.9 },
 	{ "CandidateName": "Sas", "ElectionGainInPercent": 6.2 },
-	{ "CandidateName": "ZaLudi", "ElectionGainInPercent": 5.7 }
+	{ "CandidateName": "Za-Ludi", "ElectionGainInPercent": 5.7 }
 ]
