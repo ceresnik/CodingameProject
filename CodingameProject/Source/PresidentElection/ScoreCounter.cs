@@ -16,12 +16,12 @@ namespace CodingameProject.Source.PresidentElection
 
         public double Count(ProvidedTip providedTip)
         {
-            double result = GetScoreOfOneTip(providedTip.CandidateOnFirstPosition,
-                providedTip.CandidateOnFirstPositionPercent);
-            result += GetScoreOfOneTip(providedTip.CandidateOnSecondPosition,
-                providedTip.CandidateOnSecondPositionPercent);
-            result += GetScoreOfOneTip(providedTip.CandidateOnThirdPosition,
-                providedTip.CandidateOnThirdPositionPercent);
+            double result = GetScoreOfOneTip(providedTip.Tips[0].CandidateName,
+                providedTip.Tips[0].ElectionGainInPercent);
+            result += GetScoreOfOneTip(providedTip.Tips[1].CandidateName,
+                providedTip.Tips[1].ElectionGainInPercent);
+            result += GetScoreOfOneTip(providedTip.Tips[2].CandidateName,
+                providedTip.Tips[2].ElectionGainInPercent);
             result -= GetBonusForCorrectPlace(providedTip);
             return result;
         }
@@ -29,15 +29,15 @@ namespace CodingameProject.Source.PresidentElection
         private int GetBonusForCorrectPlace(ProvidedTip providedTip)
         {
             int result = 0;
-            if (providedTip.CandidateOnFirstPosition == electionResults[0].CandidateName)
+            if (providedTip.Tips[0].CandidateName == electionResults[0].CandidateName)
             {
                 result = bonusForCorrectPlaceTip;
             }
-            if (providedTip.CandidateOnSecondPosition == electionResults[1].CandidateName)
+            if (providedTip.Tips[1].CandidateName == electionResults[1].CandidateName)
             {
                 result += bonusForCorrectPlaceTip;
             }
-            if (providedTip.CandidateOnThirdPosition == electionResults[2].CandidateName)
+            if (providedTip.Tips[2].CandidateName == electionResults[2].CandidateName)
             {
                 result += bonusForCorrectPlaceTip;
             }
