@@ -6,11 +6,12 @@ namespace CodingameProject.Source.PresidentElection
     public class ScoreCounter
     {
         private readonly CandidateNameElectionGainPairs electionResults;
-        private const int BonusForCorrectPlaceTip = 5;
+        private readonly int bonusForCorrectPlaceTip;
 
-        public ScoreCounter(CandidateNameElectionGainPairs electionResults)
+        public ScoreCounter(CandidateNameElectionGainPairs electionResults, int bonusForCorrectPlace)
         {
             this.electionResults = electionResults;
+            this.bonusForCorrectPlaceTip = bonusForCorrectPlace;
         }
 
         public double Count(ProvidedTip providedTip)
@@ -30,15 +31,15 @@ namespace CodingameProject.Source.PresidentElection
             int result = 0;
             if (providedTip.CandidateOnFirstPosition == electionResults[0].CandidateName)
             {
-                result = BonusForCorrectPlaceTip;
+                result = bonusForCorrectPlaceTip;
             }
             if (providedTip.CandidateOnSecondPosition == electionResults[1].CandidateName)
             {
-                result += BonusForCorrectPlaceTip;
+                result += bonusForCorrectPlaceTip;
             }
             if (providedTip.CandidateOnThirdPosition == electionResults[2].CandidateName)
             {
-                result += BonusForCorrectPlaceTip;
+                result += bonusForCorrectPlaceTip;
             }
             return result;
         }

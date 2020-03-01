@@ -43,7 +43,7 @@ namespace CodingameProject.Tests.PresidentElection
             var sut = new ContestEvaluation(electionResultsFile, providedTipsFile);
 
             //act
-            var result = sut.CountScore();
+            var result = sut.CountScore(5);
 
             //verify
             Assert.That(result, Is.TypeOf<EvaluatedTips>());
@@ -56,7 +56,7 @@ namespace CodingameProject.Tests.PresidentElection
             var sut = new ContestEvaluation(electionResultsFile, providedTipsFile);
 
             //act
-            var result = sut.CountScore();
+            var result = sut.CountScore(5);
 
             //verify
             Assert.That(result.Count, Is.EqualTo(2), "Count of evaluated tips must fit the count of provided tips.");
@@ -69,7 +69,7 @@ namespace CodingameProject.Tests.PresidentElection
             var sut = new ContestEvaluation(electionResultsFile, providedTipsFile);
 
             //act
-            var result = sut.CountScore();
+            var result = sut.CountScore(5);
 
             //verify
             string expectedTipperNameOne = "Lubo";
@@ -87,7 +87,7 @@ namespace CodingameProject.Tests.PresidentElection
             var sut = new ContestEvaluation(electionResultsFile, providedTipsFile);
 
             //act
-            var result = sut.CountScore();
+            var result = sut.CountScore(5);
 
             //verify
             string notExistingTipperName = "NoSuchTipper";
@@ -102,7 +102,7 @@ namespace CodingameProject.Tests.PresidentElection
             var sut = new ContestEvaluation(electionResultsFile, providedTipsFile);
 
             //act
-            var result = sut.CountScore();
+            var result = sut.CountScore(5);
 
             //verify
             Assert.That(result[0].Score, Is.EqualTo(15), 
@@ -118,7 +118,7 @@ namespace CodingameProject.Tests.PresidentElection
             var sut = new ContestEvaluation(electionResultsFile, providedTipsFile);
 
             //act
-            var result = sut.CountScore().OrderBy(x => x.Score).ToList();
+            var result = sut.CountScore(5).OrderBy(x => x.Score).ToList();
 
             //verify
             Assert.That(result[0].Score, Is.EqualTo(-10),
@@ -136,7 +136,7 @@ namespace CodingameProject.Tests.PresidentElection
             var sut = new ContestEvaluation(realElectionResultsFile, realTipsFile);
 
             //act
-            var result = sut.CountScore().OrderBy(x => x.Score).ToList();
+            var result = sut.CountScore(5).OrderBy(x => x.Score).ToList();
             int i = 0;
             Console.WriteLine("{0} {1,5} {2,6}", "Place", "Name", "Score");
             Console.WriteLine("-------------------");
@@ -155,7 +155,7 @@ namespace CodingameProject.Tests.PresidentElection
             var sut = new ContestEvaluation(realElectionResultsFile, realTipsFile);
 
             //act
-            var result = sut.CountScore().OrderBy(x => x.Score).ToList();
+            var result = sut.CountScore(0).OrderBy(x => x.Score).ToList();
             int i = 0;
             Console.WriteLine("{0} {1,6} {2,7}", "Place", "Name", "Score");
             Console.WriteLine("--------------------");

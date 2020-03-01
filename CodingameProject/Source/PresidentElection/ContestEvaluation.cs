@@ -11,13 +11,13 @@
             ProvidedTipsFileName = providedTipsFileName;
         }
 
-        public EvaluatedTips CountScore()
+        public EvaluatedTips CountScore(int bonusForCorrectPlace)
         {
             var providedTips = new ProvidedTipsReader(ProvidedTipsFileName).Read();
             int countOfProvidedTips = providedTips.Count;
             var evaluatedTips = new EvaluatedTips();
             CandidateNameElectionGainPairs electionResults = new ElectionResultsReader(ElectionResultsFileName).Read();
-            ScoreCounter scoreCounter = new ScoreCounter(electionResults);
+            ScoreCounter scoreCounter = new ScoreCounter(electionResults, bonusForCorrectPlace);
             for (int i = 0; i < countOfProvidedTips; i++)
             {
                 double score = scoreCounter.Count(providedTips[i]);
