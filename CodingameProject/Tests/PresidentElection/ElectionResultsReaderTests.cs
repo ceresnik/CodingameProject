@@ -8,11 +8,13 @@ namespace CodingameProject.Tests.PresidentElection
     [TestFixture]
     public class ElectionResultsReaderTests
     {
+        private string inputDataDirectoryName = @"Tests\PresidentElection\InputData";
+
         [Test]
         public void ElectionResultsReaderObject_InitializedCorrectly()
         {
             //prepare
-            var inputFileNameFullPath = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
+            var inputFileNameFullPath = FilePathProvider.ProvideFullPathToFile("TestResults.json", inputDataDirectoryName);
 
             //act
             var sut = new ElectionResultsReader(inputFileNameFullPath);
@@ -33,7 +35,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void Read_ReturnsCandidateNameElectionGainPairsObject()
         {
             //prepare
-            var inputFileNameFullPath = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
+            var inputFileNameFullPath = FilePathProvider.ProvideFullPathToFile("TestResults.json", inputDataDirectoryName);
             var sut = new ElectionResultsReader(inputFileNameFullPath);
 
             //act
@@ -47,7 +49,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void Read_ReturnedThreeCandidateNameElectionGainPairs()
         {
             //prepare
-            var inputFileNameFullPath = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
+            var inputFileNameFullPath = FilePathProvider.ProvideFullPathToFile("TestResults.json", inputDataDirectoryName);
             var sut = new ElectionResultsReader(inputFileNameFullPath);
 
             //act
@@ -66,7 +68,7 @@ namespace CodingameProject.Tests.PresidentElection
         public void Read_ReadOutValuesFitWithValuesInFile()
         {
             //prepare
-            var inputFileNameFullPath = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
+            var inputFileNameFullPath = FilePathProvider.ProvideFullPathToFile("TestResults.json", inputDataDirectoryName);
             var sut = new ElectionResultsReader(inputFileNameFullPath);
 
             //act

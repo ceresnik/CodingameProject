@@ -14,8 +14,8 @@ namespace CodingameProject.Tests.PresidentElection
         [SetUp]
         public void SetUp()
         {
-            electionResultsFile = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection");
-            providedTipsFile = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection");
+            electionResultsFile = FilePathProvider.ProvideFullPathToFile("TestResults.json", @"Tests\PresidentElection\InputData");
+            providedTipsFile = FilePathProvider.ProvideFullPathToFile("TestTips.json", @"Tests\PresidentElection\InputData");
         }
 
         [TearDown]
@@ -131,8 +131,8 @@ namespace CodingameProject.Tests.PresidentElection
         public void Count_RealResults_ForPresidentElection()
         {
             //prepare
-            var realElectionResultsFile = FilePathProvider.ProvideFullPathToFile("ElectionResults.json", @"Source\PresidentElection");
-            var realTipsFile = FilePathProvider.ProvideFullPathToFile("ElectionTips.json", @"Source\PresidentElection");
+            var realElectionResultsFile = FilePathProvider.ProvideFullPathToFile("ElectionResults.json", @"Source\PresidentElection\InputData");
+            var realTipsFile = FilePathProvider.ProvideFullPathToFile("ElectionTips.json", @"Source\PresidentElection\InputData");
             var sut = new ContestEvaluation(realElectionResultsFile, realTipsFile);
 
             //act
@@ -150,8 +150,8 @@ namespace CodingameProject.Tests.PresidentElection
         public void Count_RealResults_ForParliamentElections2020()
         {
             //prepare
-            var realElectionResultsFile = FilePathProvider.ProvideFullPathToFile("ParliamentElections2020Results.json", @"Source\PresidentElection");
-            var realTipsFile = FilePathProvider.ProvideFullPathToFile("ParliamentElections2020Tips.json", @"Source\PresidentElection");
+            var realElectionResultsFile = FilePathProvider.ProvideFullPathToFile("ParliamentElections2020Results.json", @"Source\PresidentElection\InputData");
+            var realTipsFile = FilePathProvider.ProvideFullPathToFile("ParliamentElections2020Tips.json", @"Source\PresidentElection\InputData");
             var sut = new ContestEvaluation(realElectionResultsFile, realTipsFile);
 
             //act

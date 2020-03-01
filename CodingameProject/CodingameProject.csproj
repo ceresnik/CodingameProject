@@ -151,14 +151,14 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Source\PresidentElection\ContestParliamentElections2020Results.txt" />
-    <Content Include="Source\PresidentElection\ContestPresidentElectionResults.txt" />
-    <None Include="Source\PresidentElection\ParliamentElections2020Results.json" />
-    <None Include="Source\PresidentElection\ElectionResults.json" />
-    <None Include="Source\PresidentElection\ParliamentElections2020Tips.json" />
-    <None Include="Source\PresidentElection\ElectionTips.json" />
-    <None Include="Tests\PresidentElection\TestResults.json" />
-    <None Include="Tests\PresidentElection\TestTips.json" />
+    <Content Include="Source\PresidentElection\OutputData\ContestParliamentElections2020Results.txt" />
+    <Content Include="Source\PresidentElection\OutputData\ContestPresidentElectionResults.txt" />
+    <None Include="Source\PresidentElection\InputData\ParliamentElections2020Results.json" />
+    <None Include="Source\PresidentElection\InputData\ElectionResults.json" />
+    <None Include="Source\PresidentElection\InputData\ParliamentElections2020Tips.json" />
+    <None Include="Source\PresidentElection\InputData\ElectionTips.json" />
+    <None Include="Tests\PresidentElection\InputData\TestResults.json" />
+    <None Include="Tests\PresidentElection\InputData\TestTips.json" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

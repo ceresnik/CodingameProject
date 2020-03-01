@@ -21,7 +21,7 @@ namespace CodingameProject.Source.PresidentElection
                 providedTip.CandidateOnSecondPositionPercent);
             result += GetScoreOfOneTip(providedTip.CandidateOnThirdPosition,
                 providedTip.CandidateOnThirdPositionPercent);
-            //result -= GetBonusForCorrectPlace(providedTip);
+            result -= GetBonusForCorrectPlace(providedTip);
             return result;
         }
 
