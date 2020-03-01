@@ -157,11 +157,11 @@ namespace CodingameProject.Tests.PresidentElection
             //act
             var result = sut.CountScore().OrderBy(x => x.Score).ToList();
             int i = 0;
-            Console.WriteLine("{0} {1,5} {2,6}", "Place", "Name", "Score");
-            Console.WriteLine("-------------------");
+            Console.WriteLine("{0} {1,6} {2,7}", "Place", "Name", "Score");
+            Console.WriteLine("--------------------");
             foreach (var evaluatedTip in result)
             {
-                Console.WriteLine($"{++i,3}. {evaluatedTip.TipperName,6} {evaluatedTip.Score,6}");
+                Console.WriteLine($"{++i,3}. {evaluatedTip.TipperName,7} {evaluatedTip.Score,7}");
             }
         }
     }

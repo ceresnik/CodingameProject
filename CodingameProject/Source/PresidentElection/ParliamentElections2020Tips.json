@@ -37,11 +37,11 @@
 	},
 	{"TipperName": "Sylvia", "Tips": 
 		[
-			{ "CandidateName": "Olano", "ElectionGainInPercent": 18.4 },
-			{ "CandidateName": "Smer", "ElectionGainInPercent": 13.4 },
-			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 10.3 },
-			{ "CandidateName": "Lsns", "ElectionGainInPercent": 9.2 },
-			{ "CandidateName": "Za-Ludi", "ElectionGainInPercent": 5.2 }
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 16.5 },
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 15.8 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 10.9 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 8.5 },
+			{ "CandidateName": "SmeRodina", "ElectionGainInPercent": 8.1 }
 		]
 	},
 	{"TipperName": "Juraj", "Tips": 
