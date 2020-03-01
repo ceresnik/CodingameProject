@@ -128,7 +128,7 @@ namespace CodingameProject.Tests.PresidentElection
         }
 
         [Test]
-        public void RealResults()
+        public void Count_RealResults_ForPresidentElection()
         {
             //prepare
             var realElectionResultsFile = FilePathProvider.ProvideFullPathToFile("ElectionResults.json", @"Source\PresidentElection");
@@ -143,6 +143,25 @@ namespace CodingameProject.Tests.PresidentElection
             foreach (var evaluatedTip in result)
             {
                 Console.WriteLine($"{++i,3}. {evaluatedTip.TipperName,6} {evaluatedTip.Score, 6}");
+            }
+        }
+
+        [Test]
+        public void Count_RealResults_ForParliamentElections2020()
+        {
+            //prepare
+            var realElectionResultsFile = FilePathProvider.ProvideFullPathToFile("ParliamentElections2020Results.json", @"Source\PresidentElection");
+            var realTipsFile = FilePathProvider.ProvideFullPathToFile("ParliamentElections2020Tips.json", @"Source\PresidentElection");
+            var sut = new ContestEvaluation(realElectionResultsFile, realTipsFile);
+
+            //act
+            var result = sut.CountScore().OrderBy(x => x.Score).ToList();
+            int i = 0;
+            Console.WriteLine("{0} {1,5} {2,6}", "Place", "Name", "Score");
+            Console.WriteLine("-------------------");
+            foreach (var evaluatedTip in result)
+            {
+                Console.WriteLine($"{++i,3}. {evaluatedTip.TipperName,6} {evaluatedTip.Score,6}");
             }
         }
     }

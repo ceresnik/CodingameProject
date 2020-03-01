@@ -151,8 +151,11 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Source\PresidentElection\ContestResults.txt" />
+    <Content Include="Source\PresidentElection\ContestParliamentElections2020Results.txt" />
+    <Content Include="Source\PresidentElection\ContestPresidentElectionResults.txt" />
+    <None Include="Source\PresidentElection\ParliamentElections2020Results.json" />
     <None Include="Source\PresidentElection\ElectionResults.json" />
+    <None Include="Source\PresidentElection\ParliamentElections2020Tips.json" />
     <None Include="Source\PresidentElection\ElectionTips.json" />
     <None Include="Tests\PresidentElection\TestResults.json" />
     <None Include="Tests\PresidentElection\TestTips.json" />

@@ -17,6 +17,8 @@ namespace CodingameProject.Tests.PresidentElection
         private CandidateNameElectionGainPair theFirstPlaceTip;
         private CandidateNameElectionGainPair theSecondPlaceTip;
         private CandidateNameElectionGainPair theThirdPlaceTip;
+        private CandidateNameElectionGainPair theFourthPlaceTip;
+        private CandidateNameElectionGainPair theFifthPlaceTip;
 
         [SetUp]
         public void SetUp()
@@ -143,7 +145,7 @@ namespace CodingameProject.Tests.PresidentElection
         }
 
         [Test]
-        public void MaximumThreeTipsAllowed()
+        public void MaximumFiveTipsAllowed()
         {
             //prepare
             var tips = new CandidateNameElectionGainPairs
@@ -151,6 +153,8 @@ namespace CodingameProject.Tests.PresidentElection
                 theFirstPlaceTip,
                 theSecondPlaceTip,
                 theThirdPlaceTip,
+                theFourthPlaceTip,
+                theFifthPlaceTip,
                 new CandidateNameElectionGainPair("FourthCandidate", 10.0)
             };
 

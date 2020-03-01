@@ -1,0 +1,128 @@
+﻿[
+	{"TipperName": "Marc", "Tips": 
+		[
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 18.4 },
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 13.4 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 10.3 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 9.2 },
+			{ "CandidateName": "Za-Ludi", "ElectionGainInPercent": 5.2 }
+		]
+	},
+	{"TipperName": "LuboG", "Tips": 
+		[
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 22.3 },
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 13.8 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 12.5 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 9.1 },
+			{ "CandidateName": "SmeRodina", "ElectionGainInPercent": 7.8 }
+		]
+	},
+	{"TipperName": "Marek", "Tips": 
+		[
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 17.4 },
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 15.2 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 13 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 9 },
+			{ "CandidateName": "SmeRodina", "ElectionGainInPercent": 7.5 }
+		]
+	},
+	{"TipperName": "Reprak", "Tips": 
+		[
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 18.7 },
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 15.4 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 11.6 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 10.8 },
+			{ "CandidateName": "Za-Ludi", "ElectionGainInPercent": 8.7 }
+		]
+	},
+	{"TipperName": "Sylvia", "Tips": 
+		[
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 18.4 },
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 13.4 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 10.3 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 9.2 },
+			{ "CandidateName": "Za-Ludi", "ElectionGainInPercent": 5.2 }
+		]
+	},
+	{"TipperName": "Juraj", "Tips": 
+		[
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 16.3 },
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 14.8 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 9.2 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 8.7 },
+			{ "CandidateName": "Sas", "ElectionGainInPercent": 7.2 }
+		]
+	},
+	{"TipperName": "MisoW", "Tips": 
+		[
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 18 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 12 },
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 10 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 7 },
+			{ "CandidateName": "SmeRodina", "ElectionGainInPercent": 6 }
+		]
+	},
+	{"TipperName": "LuboS", "Tips": 
+		[
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 24.5 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 13.5 },
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 10.2 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 8.2 },
+			{ "CandidateName": "Za-Ludi", "ElectionGainInPercent": 7.2 }
+		]
+	},
+	{"TipperName": "Dominik", "Tips": 
+		[
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 21.2 },
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 14.8 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 9.8 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 9.4 },
+			{ "CandidateName": "SmeRodina", "ElectionGainInPercent": 7.1 }
+		]
+	},
+	{"TipperName": "Jozef", "Tips": 
+		[
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 22.7 },
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 12.7 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 9.5 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 9.2 },
+			{ "CandidateName": "Sas", "ElectionGainInPercent": 7.5 }
+		]
+	},
+	{"TipperName": "MisoC", "Tips": 
+		[
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 16 },
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 15.5 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 12.5 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 12 },
+			{ "CandidateName": "SmeRodina", "ElectionGainInPercent": 6.5 }
+		]
+	},
+	{"TipperName": "Filo", "Tips": 
+		[
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 16.4 },
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 16 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 9 },
+			{ "CandidateName": "SmeRodina", "ElectionGainInPercent": 8 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 7.5 }
+		]
+	},
+	{"TipperName": "Milan", "Tips": 
+		[
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 17.5 },
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 13.8 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 11.2 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 9.9 },
+			{ "CandidateName": "SmeRodina", "ElectionGainInPercent": 9.2 }
+		]
+	},
+	{"TipperName": "Toso", "Tips": 
+		[
+			{ "CandidateName": "Smer", "ElectionGainInPercent": 16.6 },
+			{ "CandidateName": "Olano", "ElectionGainInPercent": 14.2 },
+			{ "CandidateName": "Lsns", "ElectionGainInPercent": 11 },
+			{ "CandidateName": "PsSpolu", "ElectionGainInPercent": 10.2 },
+			{ "CandidateName": "SmeRodina", "ElectionGainInPercent": 8.6 }
+		]
+	}
+]

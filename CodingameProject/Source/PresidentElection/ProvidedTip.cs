@@ -7,15 +7,15 @@ namespace CodingameProject.Source.PresidentElection
     {
         private readonly CandidateNameElectionGainPairs tips;
         private readonly string defaultCandidateName = string.Empty;
-        private const double DefaultElectionGain = 0;
-
+        private const double DefaultElectionGain = 0;            
+        private const int MaximumCountOfTips = 5;
 
         public ProvidedTip(string tipperName, CandidateNameElectionGainPairs tips)
         {
             TipperName = tipperName;
-            if (tips.Count > 3)
+            if (tips.Count > MaximumCountOfTips)
             {
-                throw new ArgumentException("Maximum three tips are allowed.", nameof(tips));
+                throw new ArgumentException($"Maximum {MaximumCountOfTips} tips are allowed.", nameof(tips));
             }
             this.tips = tips;
         }
