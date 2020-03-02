@@ -5,7 +5,7 @@ namespace CodingameProject.Source.PresidentElection
     public class ProvidedTip
     {
         public readonly CandidateNameElectionGainPairs Tips;
-        private const int MaximumCountOfTippedPlaces = 5;
+        private const int MaximumCountOfTippedPlaces = 6;
 
         public ProvidedTip(string tipperName, CandidateNameElectionGainPairs tips)
         {

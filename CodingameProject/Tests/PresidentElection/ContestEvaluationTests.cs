@@ -155,7 +155,7 @@ namespace CodingameProject.Tests.PresidentElection
             var sut = new ContestEvaluation(realElectionResultsFile, realTipsFile);
 
             //act
-            var result = sut.CountScore(1, 5).OrderBy(x => x.Score).ToList();
+            var result = sut.CountScore(1, 6).OrderBy(x => x.Score).ToList();
             int i = 0;
             Console.WriteLine("{0} {1,6} {2,7}", "Place", "Name", "Score");
             Console.WriteLine("--------------------");

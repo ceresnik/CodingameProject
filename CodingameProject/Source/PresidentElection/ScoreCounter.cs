@@ -43,6 +43,14 @@ namespace CodingameProject.Source.PresidentElection
             {
                 result += bonusForCorrectPlaceTip;
             }
+            if (providedTip.Tips[3].CandidateName == electionResults[3].CandidateName)
+            {
+                result += bonusForCorrectPlaceTip;
+            }
+            if (providedTip.Tips[4].CandidateName == electionResults[4].CandidateName)
+            {
+                result += bonusForCorrectPlaceTip;
+            }
             return result;
         }
 

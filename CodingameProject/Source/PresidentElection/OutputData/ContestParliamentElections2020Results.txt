@@ -1,35 +1,36 @@
-1) Without bonus for correct placement and without overal participation
+1) Without bonus for correct placement and with overal participation
 Place   Name   Score
 --------------------
-  1. Dominik    12,7
-  2.    Filo    12,7
-  3.   Jozef      13
-  4.   LuboG    14,3
-  5.  Sylvia    15,6
-  6.   Juraj    16,2
-  7.    Marc    16,6
-  8.   LuboS    16,9
-  9.   Marek    18,5
- 10.   Milan    19,2
- 11.    Toso    19,2
- 12.  Reprak    19,7
- 13.   MisoW    21,6
- 14.   MisoC    23,1
+  1.    Filo    11.9
+  2.   Jozef    15.6
+  3. Dominik    17.3
+  4.   Juraj    18.4
+  5.  Reprak    20.9
+  6.   Marek    21.3
+  7.   LuboG    23.5
+  8.    Toso    23.9
+  9.  Sylvia    24.8
+ 10.    Marc    24.8
+ 11.   MisoW    25.4
+ 12.   Milan    26.2
+ 13.   MisoC    27.3
+ 14.   LuboS    31.1
 
-2) With bonus (-1 point) for correct placement and without overal participation 
+
+2) With bonus (-1 point) for correct placement 
 Place   Name   Score
 --------------------
-  1. Dominik    10,7
-  2.   Jozef      11
-  3.   LuboG    12,3
-  4.    Filo    12,7
-  5.  Sylvia    13,6
-  6.   Juraj    14,2
-  7.    Marc    14,6
-  8.   LuboS    15,9
-  9.   Milan    17,2
- 10.  Reprak    17,7
- 11.   Marek    18,5
- 12.    Toso    19,2
- 13.   MisoC    21,1
- 14.   MisoW    21,6
+  1.    Filo     8.9
+  2.   Jozef    13.6
+  3. Dominik    14.3
+  4.   Juraj    15.4
+  5.  Reprak    18.9
+  6.   LuboG    20.5
+  7.   Marek    21.3
+  8.    Marc    21.8
+  9.  Sylvia    22.8
+ 10.   Milan    23.2
+ 11.    Toso    23.9
+ 12.   MisoC    25.3
+ 13.   MisoW    25.4
+ 14.   LuboS    29.1

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 using NUnit.Framework;
@@ -26,6 +27,15 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
         public void RemoveSpecialCharacters(string input, string expected)
         {
             string result = new string(input.Where(x => x >= '0' && x <= '9').ToArray());
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase("1,399", 1399)]
+        [Test]
+        public void TestInvariantCulture(string input, int expected)
+        {
+            string convertedToInvariantCulture = input.ToString(CultureInfo.InvariantCulture);
+            int result = Convert.ToInt32(convertedToInvariantCulture, CultureInfo.InvariantCulture);
             Assert.That(result, Is.EqualTo(expected));
         }
     }
