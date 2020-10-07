@@ -116,6 +116,7 @@
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\CombiningPainter.cs" />
     <Compile Include="Tests\MathematicalUtilities\ArithmeticSeriesCounterTests.cs" />
     <Compile Include="Tests\MathematicalUtilities\UnaryEncoderTests.cs" />
+    <Compile Include="Source\MissingSocks\MissingSocksFinder.cs" />
     <Compile Include="Tests\MissingSocks\MissingSocksFinderTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\CombiningPainterTests.cs" />
     <Compile Include="Tests\ObjectOrientedTraining\IteratorDemo\CompositePainterFactoryTests.cs" />
