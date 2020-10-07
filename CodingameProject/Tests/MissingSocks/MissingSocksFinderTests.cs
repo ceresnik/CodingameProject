@@ -76,25 +76,8 @@ namespace CodingameProject.Tests.MissingSocks
 
     class MissingSocksFinderTests
     {
-        private static IEnumerable<TestCaseData> GetTest7Input()
-        {
-            return new[]
-            {
-                new TestCaseData(
-                    "9 purple",
-                    new[]
-                {
-                    ("sock", 15, "blue"),
-                    ("sock", 9, "purple"),
-                    ("sock", 15, "blue"),
-                    ("pants", 40, "green"),
-                    ("t-shirt", 15, "orange")
-                })
-            };
-        }
-
-        [Test, TestCaseSource(nameof(GetTest7Input))]
-        public void Test7(string exp, IEnumerable<(string, int, string)> inputClothes)
+        [Test, TestCaseSource(nameof(GetTest1Input))]
+        public void Test1(string expected, IEnumerable<(string, int, string)> inputClothes)
         {
             var socksWithoutPair = MissingSocksFinder.FindSocksWithoutPair(inputClothes);
             Console.WriteLine(socksWithoutPair.Count);
@@ -102,8 +85,57 @@ namespace CodingameProject.Tests.MissingSocks
             {
                 string output = string.Join(" ", sockWithoutPair.Item2, sockWithoutPair.Item3);
                 Console.WriteLine(output);
-                Assert.That(output, Is.EqualTo(exp));
+                Assert.That(output, Is.EqualTo(expected));
             }
+        }
+
+        [Test, TestCaseSource(nameof(GetTest7Input))]
+        public void Test7(string expected, IEnumerable<(string, int, string)> inputClothes)
+        {
+            var socksWithoutPair = MissingSocksFinder.FindSocksWithoutPair(inputClothes);
+            Console.WriteLine(socksWithoutPair.Count);
+            foreach (var sockWithoutPair in socksWithoutPair)
+            {
+                string output = string.Join(" ", sockWithoutPair.Item2, sockWithoutPair.Item3);
+                Console.WriteLine(output);
+                Assert.That(output, Is.EqualTo(expected));
+            }
+        }
+
+        private static IEnumerable<TestCaseData> GetTest1Input()
+        {
+            return new[]
+            {
+                new TestCaseData(
+                    "43 blue-striped-red",
+                    new[]
+                    {
+                        ("sock", 43, "blue-striped-red"),
+                        ("sweater", 4, "orange"),
+                        ("sock", 43, "purple"),
+                        ("pants", 10, "blue"),
+                        ("t-shirt", 5, "white"),
+                        ("sock", 43, "purple"),
+                        ("bra", 95, "yellow"),
+                    })
+            };
+        }
+
+        private static IEnumerable<TestCaseData> GetTest7Input()
+        {
+            return new[]
+            {
+                new TestCaseData(
+                    "9 purple",
+                    new[]
+                    {
+                        ("sock", 15, "blue"),
+                        ("sock", 9, "purple"),
+                        ("sock", 15, "blue"),
+                        ("pants", 40, "green"),
+                        ("t-shirt", 15, "orange")
+                    })
+            };
         }
     }
 }
