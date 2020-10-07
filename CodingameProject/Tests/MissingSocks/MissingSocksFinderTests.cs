@@ -104,49 +104,53 @@ namespace CodingameProject.Tests.MissingSocks
         1
         9 purple
      */
+
     class MissingSocksFinderTests
     {
-        [Test]
-        public void Test7()
+        private static IEnumerable<TestCaseData> GetTest7Input()
         {
-            //int n = int.Parse(Console.ReadLine());
-            var input = new List<(string, int, string)>{
-                ("sock", 15, "blue"), 
-                ("sock", 9, "purple"), 
-                ("sock", 15, "blue"), 
-                ("pants", 40, "green"), 
-                ("t-shirt", 15, "orange")};
-                
-            var socks = new List<(string, int, string)>();
-            foreach (var item in input)
+            return new[]
             {
-                if (item.Item1.Equals("sock"))
+                new TestCaseData(
+                    "9 purple",
+                    new[]
                 {
-                    socks.Add(item);
-                }
-            }
+                    ("sock", 15, "blue"),
+                    ("sock", 9, "purple"),
+                    ("sock", 15, "blue"),
+                    ("pants", 40, "green"),
+                    ("t-shirt", 15, "orange")
+                })
+            };
+        }
 
-            var socksWithoutPair = new List<(string, int, string)>();
-            foreach (var sock in socks)
-            {
-                if (socks.Count(x => x.Item2 == sock.Item2 &&  x.Item3 == sock.Item3) == 1)
-                {
-                    socksWithoutPair.Add(sock);
-                }
-            }
+        [Test, TestCaseSource(nameof(GetTest7Input))]
+        public void Test7(string exp, IEnumerable<(string, int, string)> inputClothes)
+        {
+            var socksWithoutPair = FindSocksWithoutPair(inputClothes);
             Console.WriteLine(socksWithoutPair.Count);
             foreach (var sockWithoutPair in socksWithoutPair)
             {
                 string output = string.Join(" ", sockWithoutPair.Item2, sockWithoutPair.Item3);
                 Console.WriteLine(output);
+                Assert.That(output, Is.EqualTo(exp));
             }
-            //for (int i = 0; i < n; i++)
-            //{
-            //    string[] inputs = Console.ReadLine().Split(' ');
-            //    string clothesType = inputs[0];
-            //    int clothesSize = int.Parse(inputs[1]);
-            //    string clothesColor = inputs[2];
-            //}
+        }
+
+        private static List<(string, int, string)> FindSocksWithoutPair(IEnumerable<(string, int, string)> input)
+        {
+            var socks = input.Where(item => item.Item1.Equals("sock")).ToList();
+
+            var socksWithoutPair = new List<(string, int, string)>();
+            foreach (var sock in socks)
+            {
+                if (socks.Count(x => x.Item2 == sock.Item2 && x.Item3 == sock.Item3) == 1)
+                {
+                    socksWithoutPair.Add(sock);
+                }
+            }
+
+            return socksWithoutPair;
         }
     }
 }
