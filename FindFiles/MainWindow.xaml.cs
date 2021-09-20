@@ -32,8 +32,26 @@ namespace FindFiles
 
         private async void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            await SearchFreezingWay(this.lblChoosedDirectory.Content.ToString());
+            //await SearchFreezingWay(this.lblChoosedDirectory.Content.ToString());
+            await SearchNotFreezingWayAsync(this.lblChoosedDirectory.Content.ToString());
             System.Windows.Forms.MessageBox.Show(@"After copy.");
+        }
+
+        private static async Task SearchNotFreezingWayAsync(string directory)
+        {
+            await Task.Run(() =>
+            {
+                var files = Directory.GetFiles(directory);
+                foreach (string fileName in files)
+                {
+                    var fileContent = File.ReadAllText(fileName);
+                    var path = Path.Combine(@"C:\CopyFilesHere", Path.GetFileName(fileName));
+                    using (var streamWriter = new StreamWriter(path))
+                    {
+                        streamWriter.Write(fileContent);
+                    }
+                }
+            });
         }
 
         private static async Task SearchFreezingWay(string directory)
