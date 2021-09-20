@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 
@@ -29,29 +30,24 @@ namespace FindFiles
             }
         }
 
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        private async void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            SearchFreezingWay(this.lblChoosedDirectory.Content.ToString());
+            await SearchFreezingWay(this.lblChoosedDirectory.Content.ToString());
             System.Windows.Forms.MessageBox.Show(@"After copy.");
         }
 
-        private void SearchFreezingWay(string directory)
+        private static async Task SearchFreezingWay(string directory)
         {
             var files = Directory.GetFiles(directory);
-            //List<string> fileNames = new List<string>();
             foreach (string fileName in files)
             {
-                //fileNames.Add(fileName);
                 var fileContent = File.ReadAllText(fileName);
                 var path = Path.Combine(@"C:\CopyFilesHere", Path.GetFileName(fileName));
                 using (var streamWriter = new StreamWriter(path))
                 {
-                    streamWriter.Write(fileContent);
+                    await streamWriter.WriteAsync(fileContent);
                 }
             }
-
-            //string fileNamesWithNewLine = string.Join(Environment.NewLine, fileNames);
-            //System.Windows.Forms.MessageBox.Show(fileNamesWithNewLine);
         }
     }
 }
