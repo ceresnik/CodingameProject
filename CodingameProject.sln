@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2047
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingameProject", "CodingameProject\CodingameProject.csproj", "{0A5E0B4E-CF46-4A2C-A35A-AF2DF6F0911D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KGood", "KGood\KGood.csproj", "{E4FE1972-9B62-4449-9BEA-277336F61E49}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotAI.Miso", "BotAI\BotAI.Miso.csproj", "{CFBE68F4-39A2-4987-88BD-17C24D9C2262}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindFiles", "FindFiles\FindFiles.csproj", "{E209A8BF-28F8-49FA-B74A-3A9F27F64634}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +56,18 @@ Global
 		{CFBE68F4-39A2-4987-88BD-17C24D9C2262}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CFBE68F4-39A2-4987-88BD-17C24D9C2262}.Release|x64.ActiveCfg = Release|Any CPU
 		{CFBE68F4-39A2-4987-88BD-17C24D9C2262}.Release|x64.Build.0 = Release|Any CPU
+		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Debug|x64.Build.0 = Debug|Any CPU
+		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Release|x64.ActiveCfg = Release|Any CPU
+		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

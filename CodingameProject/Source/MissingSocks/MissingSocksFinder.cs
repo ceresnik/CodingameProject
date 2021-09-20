@@ -43,7 +43,7 @@ namespace CodingameProject.Source.MissingSocks
             var socksWithoutPair = new List<(string, int, string)>();
             foreach (var sock in socks)
             {
-                if (socks.Count(x => x.Item2 == sock.Item2 && x.Item3 == sock.Item3) == 1)
+                if (socks.Count(x => x.Item2 == sock.Item2 && x.Item3 == sock.Item3) % 2 != 0)
                 {
                     socksWithoutPair.Add(sock);
                 }

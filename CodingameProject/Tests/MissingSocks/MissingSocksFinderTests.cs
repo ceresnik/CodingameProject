@@ -88,6 +88,47 @@ namespace CodingameProject.Tests.MissingSocks
                 Assert.That(output, Is.EqualTo(expected));
             }
         }
+            
+        [Test, TestCaseSource(nameof(GetTest3Input))]
+        public void Test3(string expected, IEnumerable<(string, int, string)> inputClothes)
+        {
+            var socksWithoutPair = MissingSocksFinder.FindSocksWithoutPair(inputClothes);
+            Console.WriteLine(socksWithoutPair.Count);
+            foreach (var sockWithoutPair in socksWithoutPair)
+            {
+                string output = string.Join(" ", sockWithoutPair.Item2, sockWithoutPair.Item3);
+                Console.WriteLine(output);
+                Assert.That(output, Is.EqualTo(expected));
+            }
+        }
+
+        [Test, TestCaseSource(nameof(GetTest4Input))]
+        public void Test4(string expected, IEnumerable<(string, int, string)> inputClothes)
+        {
+            var socksWithoutPair = MissingSocksFinder.FindSocksWithoutPair(inputClothes);
+            Console.WriteLine(socksWithoutPair.Count);
+            foreach (var sockWithoutPair in socksWithoutPair)
+            {
+                string output = string.Join(" ", sockWithoutPair.Item2, sockWithoutPair.Item3);
+                Console.WriteLine(output);
+                Assert.That(output, Is.EqualTo(expected));
+            }
+        }
+
+        [Test, TestCaseSource(nameof(GetTest6Input))]
+        public void Test6(IEnumerable<string> expected, IEnumerable<(string, int, string)> inputClothes)
+        {
+            var socksWithoutPair = MissingSocksFinder.FindSocksWithoutPair(inputClothes);
+            Console.WriteLine(socksWithoutPair.Count);
+            var foundSocksWithoutPair = new List<string>();
+            foreach (var sockWithoutPair in socksWithoutPair)
+            {
+                string output = string.Join(" ", sockWithoutPair.Item2, sockWithoutPair.Item3);
+                Console.WriteLine(output);
+                foundSocksWithoutPair.Add(output);
+            }
+            CollectionAssert.AreEqual(expected , string.Join(", ", foundSocksWithoutPair));
+        }
 
         [Test, TestCaseSource(nameof(GetTest7Input))]
         public void Test7(string expected, IEnumerable<(string, int, string)> inputClothes)
@@ -117,6 +158,61 @@ namespace CodingameProject.Tests.MissingSocks
                         ("t-shirt", 5, "white"),
                         ("sock", 43, "purple"),
                         ("bra", 95, "yellow"),
+                    })
+            };
+        }
+
+        private static IEnumerable<TestCaseData> GetTest3Input()
+        {
+            return new[]
+            {
+                new TestCaseData(
+                    "",
+                    new[]
+                    {
+                        ("sweat", 8, "red"),
+                        ("t-shirt", 5, "ugly-purple"),
+                        ("underpants", 5, "white"),
+                        ("cap", 0, "blue"),
+                        ("underpants", 5, "white")
+                    })
+            };
+        }
+
+        private static IEnumerable<TestCaseData> GetTest4Input()
+        {
+            return new[]
+            {
+                new TestCaseData(
+                    "",
+                    new[]
+                    {
+                        ("sock", 38, "blue"),
+                        ("sock", 43, "green-and-blue-stripped-yellow"),
+                        ("short", 7, "orange"),
+                        ("sock", 43, "green-and-blue-stripped-yellow"),
+                        ("pants", 40, "pink"),
+                        ("sock", 38, "blue")
+                    })
+            };
+        }
+
+        private static IEnumerable<TestCaseData> GetTest6Input()
+        {
+            return new[]
+            {
+                new TestCaseData(
+                    new[]
+                    {
+                        "42 red",
+                        "43 blue"
+                    },
+                    new[]
+                    {
+                        ("sock", 42, "red"),
+                        ("sock", 43, "blue"),
+                        ("sock", 42, "red"),
+                        ("sock", 42, "red")
                     })
             };
         }
