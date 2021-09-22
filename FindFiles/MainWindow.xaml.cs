@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Forms;
+
 
 namespace FindFiles
 {
@@ -16,24 +14,11 @@ namespace FindFiles
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        
+        private async void btnCopyAsynchronous_Click(object sender, RoutedEventArgs e)
         {
-            using (var fbd = new FolderBrowserDialog())
-            {
-                if (string.IsNullOrWhiteSpace(fbd.SelectedPath) == false)
-                {
-                    string[] files = Directory.GetFiles(fbd.SelectedPath);
-                    lblChoosedDirectory.Content = fbd.SelectedPath;
-                    System.Windows.Forms.MessageBox.Show($@"Files found: " + files.Length, "Message");
-                }
-            }
-        }
-
-        private async void btnSearch_Click(object sender, RoutedEventArgs e)
-        {
-            //await SearchFreezingWay(this.lblChoosedDirectory.Content.ToString());
-            await SearchNotFreezingWayAsync(this.lblChoosedDirectory.Content.ToString());
+            await SearchFreezingWayAsync(this.lblChoosedDirectory.Content.ToString());
+            //await SearchNotFreezingWayAsync(this.lblChoosedDirectory.Content.ToString());
             System.Windows.Forms.MessageBox.Show(@"After copy.");
         }
 
@@ -54,7 +39,7 @@ namespace FindFiles
             });
         }
 
-        private static async Task SearchFreezingWay(string directory)
+        private static async Task SearchFreezingWayAsync(string directory)
         {
             var files = Directory.GetFiles(directory);
             foreach (string fileName in files)
@@ -67,5 +52,26 @@ namespace FindFiles
                 }
             }
         }
+
+        private void btnCopySynchronous_Click(object sender, RoutedEventArgs e)
+        {
+            SearchFreezingWay(this.lblChoosedDirectory.Content.ToString());
+            System.Windows.Forms.MessageBox.Show(@"After copy.");
+        }
+
+        private static void SearchFreezingWay(string directory)
+        {
+            var files = Directory.GetFiles(directory);
+            foreach (string fileName in files)
+            {
+                var fileContent = File.ReadAllText(fileName);
+                var path = Path.Combine(@"C:\CopyFilesHere", Path.GetFileName(fileName));
+                using (var streamWriter = new StreamWriter(path))
+                {
+                    streamWriter.Write(fileContent);
+                }
+            }
+        }
+
     }
 }

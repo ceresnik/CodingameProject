@@ -3,13 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FindFiles"
         mc:Ignorable="d"
         Title="MainWindow" Height="250" Width="400">
     <Grid>
-        <Label Content="Selected directory :" HorizontalAlignment="Left" Height="29" Margin="30,39,0,0" VerticalAlignment="Top" Width="110" Name="lblSelectedDirectory"/>
-        <Button Content="Copy" HorizontalAlignment="Left" Height="25" Margin="95,73,0,0" VerticalAlignment="Top" Width="90" Name="btnSearch" Click="btnSearch_Click" RenderTransformOrigin="0.642,-0.918"/>
-        <Label Content="d:\CopyFilesFromHere" HorizontalAlignment="Left" Height="29" Margin="145,39,0,0" VerticalAlignment="Top" Width="476" x:Name="lblChoosedDirectory"/>
+        <Label Name="lblSelectedDirectory" Content="Selected directory :" HorizontalAlignment="Left" Height="29" Margin="30,39,0,0" VerticalAlignment="Top"
+               Width="110" />
+        <Label Name="lblChoosedDirectory" Content="d:\CopyFilesFromHere" HorizontalAlignment="Left" Height="29" Margin="145,39,0,0" VerticalAlignment="Top"
+               Width="136" />
+        <Button Name="btnCopyAsynchronous" Content="Copy asynchronous" HorizontalAlignment="Left" Height="25" Margin="57,73,0,0" VerticalAlignment="Top" Width="128"
+                Click="btnCopyAsynchronous_Click" RenderTransformOrigin="0.642,-0.918"/>
+        <Button x:Name="btnCopySynchronous" Content="Copy synchronous" HorizontalAlignment="Left" Height="25" Margin="224,73,0,0" VerticalAlignment="Top" Width="128"
+            Click="btnCopySynchronous_Click" RenderTransformOrigin="0.642,-0.918"/>
 
     </Grid>
 </Window>
