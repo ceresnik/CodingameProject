@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotAI.Miso", "BotAI\BotAI.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindFiles", "FindFiles\FindFiles.csproj", "{E209A8BF-28F8-49FA-B74A-3A9F27F64634}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWCraftProject", "SWCraftProject\SWCraftProject.csproj", "{FE1205F1-8B8A-4071-8815-024D148FE0CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,18 @@ Global
 		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Release|x64.ActiveCfg = Release|Any CPU
 		{E209A8BF-28F8-49FA-B74A-3A9F27F64634}.Release|x64.Build.0 = Release|Any CPU
+		{FE1205F1-8B8A-4071-8815-024D148FE0CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE1205F1-8B8A-4071-8815-024D148FE0CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE1205F1-8B8A-4071-8815-024D148FE0CB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FE1205F1-8B8A-4071-8815-024D148FE0CB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FE1205F1-8B8A-4071-8815-024D148FE0CB}.Debug|x64.ActiveCfg = Debug|x64
+		{FE1205F1-8B8A-4071-8815-024D148FE0CB}.Debug|x64.Build.0 = Debug|x64
+		{FE1205F1-8B8A-4071-8815-024D148FE0CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE1205F1-8B8A-4071-8815-024D148FE0CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE1205F1-8B8A-4071-8815-024D148FE0CB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FE1205F1-8B8A-4071-8815-024D148FE0CB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FE1205F1-8B8A-4071-8815-024D148FE0CB}.Release|x64.ActiveCfg = Release|x64
+		{FE1205F1-8B8A-4071-8815-024D148FE0CB}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
