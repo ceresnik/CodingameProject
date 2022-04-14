@@ -38,5 +38,28 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
             int result = Convert.ToInt32(convertedToInvariantCulture, CultureInfo.InvariantCulture);
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void SplitTextToStanzas()
+        {
+            string input = @"*
+                           &
+                           Roses are red*Violets are blue&Here's a new stanza*Just for you";
+            var linesSeparator = input[0];
+            char stanzasSeparator = input[30];
+            var lines = input.Substring(60).Split(linesSeparator).ToList();
+
+            foreach (string line in lines)
+            {
+                string outputLine = line;
+                if (line.Contains(stanzasSeparator))
+                {
+                    string newStanza = Environment.NewLine + Environment.NewLine;
+                    outputLine = string.Join(newStanza, line.Split(stanzasSeparator));
+                }
+                Console.WriteLine(outputLine);
+            }
+        }
+
     }
 }
