@@ -1,10 +1,12 @@
 ﻿Nouns: 
-1) coffee machine
-2) boiler
-3) valve
-4) heater
-5) pot
-6) button (to turn on/off the machine)
+1) CoffeeMaker
+2) Boiler
+3) Valve
+4) WarmerPlate
+5) HeatingElement
+6) Button (to turn on/off the machine)
+7) Light
+8) Sensor
 
 Verbs:
 1) open valve
@@ -15,9 +17,21 @@ Verbs:
 6) start filling the pot
 7) stop filling the pot
 
+API:
+void setBoiler(bool);
+void setWarmer(bool);
+void setValve(bool);
+void setLight(bool);
+
+bool getBoiler();
+int getPlate();
+bool getButton();
+
+
 class CoffeeMachine {
 	void MakeCoffee() {
 		setBoiler(true);
+		setWarmer(true);
 		setValve(true);
 	}
 
