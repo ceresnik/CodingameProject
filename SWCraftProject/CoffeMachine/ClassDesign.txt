@@ -33,6 +33,14 @@ class CoffeeMachine {
 		setBoiler(true);
 		setWarmer(true);
 		setValve(true);
+		setLight(true);
+		while (getPlate() != 3){
+			//how to say keep making coffee?
+		}
+		setBoiler(false);
+		setWarmer(false);
+		setValve(false);
+		setLight(false);
 	}
 
 	void setBoiler(bool turnOn) {
