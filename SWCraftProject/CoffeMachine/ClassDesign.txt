@@ -1,0 +1,40 @@
+﻿Nouns: 
+1) coffee machine
+2) boiler
+3) valve
+4) heater
+5) pot
+6) button (to turn on/off the machine)
+
+Verbs:
+1) open valve
+2) close valve
+3) turn on boiler
+4) turn off boiler
+5) verify, pot is here
+6) start filling the pot
+7) stop filling the pot
+
+class CoffeeMachine {
+	void MakeCoffee() {
+		setBoiler(true);
+		setValve(true);
+	}
+
+	void setBoiler(bool turnOn) {
+		if (turnOn) {
+			myBoiler.turnOn();
+		}
+		else 
+			myBoiler.turnOff();
+	}
+}
+
+class Boiler {
+	void turnOn(){
+		myIsTurnedOn = true;
+	}
+	void turnOff(){
+		myIsTurnedOn = false;
+	}
+}
