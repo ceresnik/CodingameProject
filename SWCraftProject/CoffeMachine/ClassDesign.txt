@@ -11,11 +11,13 @@
 Verbs:
 1) open valve
 2) close valve
-3) turn on boiler
-4) turn off boiler
-5) verify, pot is here
-6) start filling the pot
-7) stop filling the pot
+3) turn on/off the boiler
+4) turn on/off the light
+5) turn on/off heating element
+6) verify, pot is here
+7) verify button is on/off
+8) get warmer plate status (1,2,3)
+9) turn on
 
 API:
 void setBoiler(bool);
