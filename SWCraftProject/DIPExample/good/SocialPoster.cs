@@ -8,9 +8,9 @@ namespace SWCraftProject.DIPExample.good
 {
     public class SocialPoster
     {
-        private readonly ISocialPoster mySocialMedia;
+        private readonly ISocialMedia mySocialMedia;
 
-        public SocialPoster(ISocialPoster socialMedia)
+        public SocialPoster(ISocialMedia socialMedia)
         {
             mySocialMedia = socialMedia;
         }
@@ -21,12 +21,12 @@ namespace SWCraftProject.DIPExample.good
         }
     }
 
-    public interface ISocialPoster
+    public interface ISocialMedia
     {
         void Post(Data data);
     }
 
-    public class Twitter : ISocialPoster
+    public class Twitter : ISocialMedia
     {
         public void Post(Data data)
         {
@@ -34,7 +34,7 @@ namespace SWCraftProject.DIPExample.good
         }
     }
 
-    public class Facebook : ISocialPoster
+    public class Facebook : ISocialMedia
     {
         public void Post(Data data)
         {
@@ -44,5 +44,11 @@ namespace SWCraftProject.DIPExample.good
 
     public class Data
     {
+        void abc()
+        {
+            var facebookPoster = new SocialPoster(new Facebook());
+            facebookPoster.Post(this);
+            var twitterPoster = new SocialPoster(new Twitter());
+        }
     }
 }
