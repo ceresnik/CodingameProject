@@ -2,21 +2,21 @@
    Restricted - Copyright (C) Siemens Healthcare GmbH, 2022. All rights reserved
    ------------------------------------------------------------------------------------------------- */
 
-using CodingameProject.Source.AlphabetUtilities;
+using CodingameProject.Source.CharacterUtilities;
 using NUnit.Framework;
 
-namespace CodingameProject.Tests.AlphabetUtilities
+namespace CodingameProject.Tests.CharacterUtilities
 {
     class SecondMostOccurredLetterTests
     {
         [Test]
-        public void EmptyWordReturnsMinusOne()
+        public void EmptyWordReturnsUndefinedCount()
         {
             Assert.AreEqual(new UndefinedCount(), SecondMostOccurredCharacter.Get(string.Empty));
         }
 
         [Test]
-        public void WordWhichIsNullReturnsMinusOne()
+        public void WordWhichIsNullReturnsUndefinedCount()
         {
             Assert.AreEqual(new UndefinedCount(), SecondMostOccurredCharacter.Get(null));
         }
@@ -25,7 +25,7 @@ namespace CodingameProject.Tests.AlphabetUtilities
         [TestCase("a")]
         [TestCase("1")]
         [Test]
-        public void WordWithOneCharacterReturnsMinusOne(string input)
+        public void WordWithOneCharacterReturnsUndefinedCount(string input)
         {
             var result = SecondMostOccurredCharacter.Get(input);
             Assert.AreEqual(new UndefinedCount(), result);
@@ -35,7 +35,7 @@ namespace CodingameProject.Tests.AlphabetUtilities
         [TestCase("aa")]
         [TestCase("11")]
         [Test]
-        public void WordWithTwoSameCharactersReturnsMinusOne(string input)
+        public void WordWithTwoSameCharactersReturnsUndefinedCount(string input)
         {
             var result = SecondMostOccurredCharacter.Get(input);
             Assert.AreEqual(new UndefinedCount(), result);
@@ -47,7 +47,7 @@ namespace CodingameProject.Tests.AlphabetUtilities
         [TestCase("aaaBBBccc")]
         [TestCase("ipOHLeTtdfDcJhAKgbaobeOHoJLKcApTidDgtfhadocJDtLHfbeaigpOhTAKdKhoDaiAbHegpJtOfLcTiTbpOacKtofdLDhHJgAe")]
         [Test]
-        public void WordWithDifferentCharactersWithSameCountReturnsMinusOne(string input)
+        public void WordWithDifferentCharactersWithSameCountReturnsUndefinedCount(string input)
         {
             var result = SecondMostOccurredCharacter.Get(input);
             Assert.AreEqual(new UndefinedCount(), result);
@@ -55,6 +55,7 @@ namespace CodingameProject.Tests.AlphabetUtilities
 
         [TestCase("aaabbc", 2)]
         [TestCase("abbccc", 2)]
+        [TestCase("abbbbbbbbbbbbbbbbbbbbbcccccc", 6)]
         [Test]
         public void WordWithThreeCharactersEachDifferentCountReturnsSecondFrequentCount(string input, int expected)
         {
@@ -64,6 +65,7 @@ namespace CodingameProject.Tests.AlphabetUtilities
 
         [TestCase("ababac", 2)]
         [TestCase("abaacadefghab", 2)]
+        [TestCase("abacadaeafagahaibbb", 4)]
         [Test]
         public void OrderOfCharactersDoesNotMatter(string input, int expected)
         {

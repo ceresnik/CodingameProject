@@ -71,9 +71,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Source\AlphabetUtilities\SameLettersRepeater.cs" />
-    <Compile Include="Source\AlphabetUtilities\SecondMostOccurredCharacter.cs" />
+    <Compile Include="Source\CharacterUtilities\AbstractCount.cs" />
+    <Compile Include="Source\CharacterUtilities\DefinedCount.cs" />
+    <Compile Include="Source\CharacterUtilities\ICount.cs" />
+    <Compile Include="Source\CharacterUtilities\SecondMostOccurredCharacter.cs" />
     <Compile Include="Source\AlphabetUtilities\StringConverter.cs" />
     <Compile Include="Source\AlphabetUtilities\StringRotater.cs" />
+    <Compile Include="Source\CharacterUtilities\UndefinedCount.cs" />
     <Compile Include="Source\MathematicalUtilities\ArithmeticSeriesCounter.cs" />
     <Compile Include="Source\MathematicalUtilities\LinqExamples.cs" />
     <Compile Include="Source\MathematicalUtilities\UnaryEncoder.cs" />
@@ -107,7 +111,7 @@
     <Compile Include="Source\PresidentElection\ScoreCounter.cs" />
     <Compile Include="Tests\AlphabetUtilities\SameLettersRepeaterTests.cs" />
     <Compile Include="Source\AlphabetUtilities\StringFormatter.cs" />
-    <Compile Include="Tests\AlphabetUtilities\SecondMostOccurredLetterTests.cs" />
+    <Compile Include="Tests\CharacterUtilities\SecondMostOccurredLetterTests.cs" />
     <Compile Include="Tests\AlphabetUtilities\StringFormatterTests.cs" />
     <Compile Include="Tests\AlphabetUtilities\StringRotaterTests.cs" />
     <Compile Include="Tests\ClashOfCodeExamples\ClashOfCodeTests.cs" />

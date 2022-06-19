@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CodingameProject.Source.AlphabetUtilities
+namespace CodingameProject.Source.CharacterUtilities
 {
     /// <summary>
     /// Returns frequency (how many times occurs) of the character, which is second-most occurred in the given string.
@@ -32,57 +32,6 @@ namespace CodingameProject.Source.AlphabetUtilities
                 }
             }
             return result;
-        }
-    }
-
-    interface ICount
-    {
-        int Count { get; }
-    }
-
-    class UndefinedCount : ICount
-    {
-        public int Count => -1;
-
-        public override bool Equals(object obj)
-        {
-            var item = obj as UndefinedCount;
-            if (item == null)
-            {
-                return false;
-            }
-
-            return this.Count == item.Count;
-        }
-
-        public override int GetHashCode()
-        {
-            return this.Count.GetHashCode();
-        }
-    }
-
-    class DefinedCount : ICount
-    {
-        public DefinedCount(int count)
-        {
-            Count = count;
-        }
-        public int Count { get; }
-
-        public override bool Equals(object obj)
-        {
-            var item = obj as DefinedCount;
-            if (item == null)
-            {
-                return false;
-            }
-
-            return this.Count == item.Count;
-        }
-
-        public override int GetHashCode()
-        {
-            return this.Count.GetHashCode();
         }
     }
 }
