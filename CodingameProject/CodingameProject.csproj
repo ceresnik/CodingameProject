@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Source\AlphabetUtilities\SameLettersRepeater.cs" />
+    <Compile Include="Source\AlphabetUtilities\SecondMostOccurredCharacter.cs" />
     <Compile Include="Source\AlphabetUtilities\StringConverter.cs" />
     <Compile Include="Source\AlphabetUtilities\StringRotater.cs" />
     <Compile Include="Source\MathematicalUtilities\ArithmeticSeriesCounter.cs" />
@@ -106,11 +107,11 @@
     <Compile Include="Source\PresidentElection\ScoreCounter.cs" />
     <Compile Include="Tests\AlphabetUtilities\SameLettersRepeaterTests.cs" />
     <Compile Include="Source\AlphabetUtilities\StringFormatter.cs" />
+    <Compile Include="Tests\AlphabetUtilities\SecondMostOccurredLetterTests.cs" />
     <Compile Include="Tests\AlphabetUtilities\StringFormatterTests.cs" />
     <Compile Include="Tests\AlphabetUtilities\StringRotaterTests.cs" />
     <Compile Include="Tests\ClashOfCodeExamples\ClashOfCodeTests.cs" />
     <Compile Include="Tests\ClashOfCodeExamples\FastestMode.cs" />
-    <Compile Include="Tests\ClashOfCodeExamples\SecondMostOccurredCharacter.cs" />
     <Compile Include="Tests\ClashOfCodeExamples\ShortestMode.cs" />
     <Compile Include="Tests\LogicalOperations\UnitTests.cs" />
     <Compile Include="Source\ObjectOrientedTraining\IteratorDemo\Painters.cs" />

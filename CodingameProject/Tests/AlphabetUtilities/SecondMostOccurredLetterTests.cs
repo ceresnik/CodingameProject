@@ -1,44 +1,12 @@
-using System.Collections.Generic;
-using System.Linq;
+/* -------------------------------------------------------------------------------------------------
+   Restricted - Copyright (C) Siemens Healthcare GmbH, 2022. All rights reserved
+   ------------------------------------------------------------------------------------------------- */
+
+using CodingameProject.Source.AlphabetUtilities;
 using NUnit.Framework;
 
-namespace CodingameProject.Tests.ClashOfCodeExamples
+namespace CodingameProject.Tests.AlphabetUtilities
 {
-    internal static class SecondMostOccurredCharacter
-    {
-        public static int Get(string input)
-        {
-            if (string.Empty == input)
-            {
-                return -1;
-            }
-            var countOfOccurrencesByLetter = new Dictionary<char, int>();
-            foreach (char c in input.Distinct())
-            {
-                countOfOccurrencesByLetter.Add(c, input.Count(x => x == c));
-            }
-
-            var sortedListOfOccurrences = countOfOccurrencesByLetter.OrderByDescending(x => x.Value).Select(y => y.Value).ToList();
-            int result;
-            if (sortedListOfOccurrences.Count > 1)
-            {
-                if (sortedListOfOccurrences[0] > sortedListOfOccurrences[1])
-                {
-                    result = sortedListOfOccurrences[1];
-                }
-                else
-                {
-                    result = -1;
-                }
-            }
-            else
-            {
-                result = sortedListOfOccurrences[0];
-            }
-            return result;
-        }
-    }
-
     class SecondMostOccurredLetterTests
     {
         [Test]
