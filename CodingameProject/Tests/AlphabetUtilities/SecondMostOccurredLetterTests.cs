@@ -12,45 +12,45 @@ namespace CodingameProject.Tests.AlphabetUtilities
         [Test]
         public void EmptyWordReturnsMinusOne()
         {
-            Assert.AreEqual(SecondMostOccurredCharacter.Get(string.Empty), -1);
+            Assert.AreEqual(new UndefinedCount(), SecondMostOccurredCharacter.Get(string.Empty));
         }
 
         [Test]
         public void WordWhichIsNullReturnsMinusOne()
         {
-            Assert.AreEqual(SecondMostOccurredCharacter.Get(null), -1);
+            Assert.AreEqual(new UndefinedCount(), SecondMostOccurredCharacter.Get(null));
         }
 
-        [TestCase("a", -1)]
-        [TestCase("a", -1)]
-        [TestCase("1", -1)]
+        [TestCase("a")]
+        [TestCase("a")]
+        [TestCase("1")]
         [Test]
-        public void WordWithOneCharacterReturnsMinusOne(string input, int expected)
+        public void WordWithOneCharacterReturnsMinusOne(string input)
         {
             var result = SecondMostOccurredCharacter.Get(input);
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(new UndefinedCount(), result);
         }
 
-        [TestCase("aa", -1)]
-        [TestCase("aa", -1)]
-        [TestCase("11", -1)]
+        [TestCase("aa")]
+        [TestCase("aa")]
+        [TestCase("11")]
         [Test]
-        public void WordWithTwoSameCharactersReturnsMinusOne(string input, int expected)
+        public void WordWithTwoSameCharactersReturnsMinusOne(string input)
         {
             var result = SecondMostOccurredCharacter.Get(input);
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(new UndefinedCount(), result);
         }
 
-        [TestCase("ab", -1)]
-        [TestCase("ddff", -1)]
-        [TestCase("1111122222", -1)]
-        [TestCase("aaaBBBccc", -1)]
-        [TestCase("ipOHLeTtdfDcJhAKgbaobeOHoJLKcApTidDgtfhadocJDtLHfbeaigpOhTAKdKhoDaiAbHegpJtOfLcTiTbpOacKtofdLDhHJgAe", -1)]
+        [TestCase("ab")]
+        [TestCase("ddff")]
+        [TestCase("1111122222")]
+        [TestCase("aaaBBBccc")]
+        [TestCase("ipOHLeTtdfDcJhAKgbaobeOHoJLKcApTidDgtfhadocJDtLHfbeaigpOhTAKdKhoDaiAbHegpJtOfLcTiTbpOacKtofdLDhHJgAe")]
         [Test]
-        public void WordWithDifferentCharactersWithSameCountReturnsMinusOne(string input, int expected)
+        public void WordWithDifferentCharactersWithSameCountReturnsMinusOne(string input)
         {
             var result = SecondMostOccurredCharacter.Get(input);
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(new UndefinedCount(), result);
         }
 
         [TestCase("aaabbc", 2)]
@@ -59,7 +59,7 @@ namespace CodingameProject.Tests.AlphabetUtilities
         public void WordWithThreeCharactersEachDifferentCountReturnsSecondFrequentCount(string input, int expected)
         {
             var result = SecondMostOccurredCharacter.Get(input);
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(new DefinedCount(expected), result);
         }
 
         [TestCase("ababac", 2)]
@@ -68,7 +68,14 @@ namespace CodingameProject.Tests.AlphabetUtilities
         public void OrderOfCharactersDoesNotMatter(string input, int expected)
         {
             var result = SecondMostOccurredCharacter.Get(input);
-            Assert.AreEqual(expected, result);
+            Assert.AreEqual(new DefinedCount(expected), result);
+        }
+
+        [Test]
+        public void InstanceOfICountInterface()
+        {
+            var result = SecondMostOccurredCharacter.Get("irrelevantInput");
+            Assert.IsTrue(typeof(ICount).IsInstanceOfType(result));
         }
     }
 }
