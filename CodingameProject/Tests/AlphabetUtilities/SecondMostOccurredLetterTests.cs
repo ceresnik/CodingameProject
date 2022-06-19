@@ -15,21 +15,27 @@ namespace CodingameProject.Tests.AlphabetUtilities
             Assert.AreEqual(SecondMostOccurredCharacter.Get(string.Empty), -1);
         }
 
-        [TestCase("a", 1)]
-        [TestCase("a", 1)]
-        [TestCase("1", 1)]
         [Test]
-        public void WordWithOneCharacterReturnsOne(string input, int expected)
+        public void WordWhichIsNullReturnsMinusOne()
+        {
+            Assert.AreEqual(SecondMostOccurredCharacter.Get(null), -1);
+        }
+
+        [TestCase("a", -1)]
+        [TestCase("a", -1)]
+        [TestCase("1", -1)]
+        [Test]
+        public void WordWithOneCharacterReturnsMinusOne(string input, int expected)
         {
             var result = SecondMostOccurredCharacter.Get(input);
             Assert.AreEqual(expected, result);
         }
 
-        [TestCase("aa", 2)]
-        [TestCase("aa", 2)]
-        [TestCase("11", 2)]
+        [TestCase("aa", -1)]
+        [TestCase("aa", -1)]
+        [TestCase("11", -1)]
         [Test]
-        public void WordWithTwoSameCharactersReturnsTwo(string input, int expected)
+        public void WordWithTwoSameCharactersReturnsMinusOne(string input, int expected)
         {
             var result = SecondMostOccurredCharacter.Get(input);
             Assert.AreEqual(expected, result);

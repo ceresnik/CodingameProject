@@ -10,7 +10,7 @@ namespace CodingameProject.Source.AlphabetUtilities
     {
         public static int Get(string input)
         {
-            if (string.Empty == input)
+            if (string.IsNullOrEmpty(input))
             {
                 return -1;
             }
@@ -21,21 +21,13 @@ namespace CodingameProject.Source.AlphabetUtilities
             }
 
             var sortedListOfOccurrences = countOfOccurrencesByLetter.OrderByDescending(x => x.Value).Select(y => y.Value).ToList();
-            int result;
+            int result = - 1;
             if (sortedListOfOccurrences.Count > 1)
             {
-                if (sortedListOfOccurrences[0] > sortedListOfOccurrences[1])
+                if (sortedListOfOccurrences[0] != sortedListOfOccurrences[1])
                 {
                     result = sortedListOfOccurrences[1];
                 }
-                else
-                {
-                    result = -1;
-                }
-            }
-            else
-            {
-                result = sortedListOfOccurrences[0];
             }
             return result;
         }
