@@ -8,9 +8,21 @@ namespace CodingameProject.Source.CharacterUtilities
     /// In case given string is not valid string or does not contain at least two different characters,
     /// returns <see cref="UndefinedCount"/>
     /// </summary>
-    internal static class SecondMostOccurredCharacter
+    internal class MostOccurredCharacterByRank
     {
-        public static ICount Get(string input)
+        private readonly int myRank;
+
+        public MostOccurredCharacterByRank()
+        : this(1)
+        {
+        }
+
+        internal MostOccurredCharacterByRank(int rank)
+        {
+            myRank = rank;
+        }
+
+        public ICount Get(string input)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -19,12 +31,11 @@ namespace CodingameProject.Source.CharacterUtilities
             var orderedFrequenciesByCharacter = OrderFrequenciesByCharacterDescending(input);
             var onlyFrequencies = GetFrequencies(orderedFrequenciesByCharacter);
             ICount result = new UndefinedCount();
-            const int index = 1;
-            if (onlyFrequencies.Count > index)
+            if (onlyFrequencies.Count > myRank)
             {
-                if (onlyFrequencies[0] != onlyFrequencies[index])
+                if (onlyFrequencies[0] != onlyFrequencies[myRank])
                 {
-                    result = new DefinedCount(onlyFrequencies[index]);
+                    result = new DefinedCount(onlyFrequencies[myRank]);
                 }
             }
             return result;

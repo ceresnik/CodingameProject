@@ -3,18 +3,18 @@ using NUnit.Framework;
 
 namespace CodingameProject.Tests.CharacterUtilities
 {
-    class SecondMostOccurredCharacterTests
+    class MostOccurredCharacterByRankTests
     {
         [Test]
         public void EmptyWordReturnsUndefinedCount()
         {
-            Assert.AreEqual(new UndefinedCount(), SecondMostOccurredCharacter.Get(string.Empty));
+            Assert.AreEqual(new UndefinedCount(), new MostOccurredCharacterByRank().Get(string.Empty));
         }
 
         [Test]
         public void WordWhichIsNullReturnsUndefinedCount()
         {
-            Assert.AreEqual(new UndefinedCount(), SecondMostOccurredCharacter.Get(null));
+            Assert.AreEqual(new UndefinedCount(), new MostOccurredCharacterByRank().Get(null));
         }
 
         [TestCase("a")]
@@ -23,7 +23,7 @@ namespace CodingameProject.Tests.CharacterUtilities
         [Test]
         public void WordWithOneCharacterReturnsUndefinedCount(string input)
         {
-            var result = SecondMostOccurredCharacter.Get(input);
+            var result = new MostOccurredCharacterByRank().Get(input);
             Assert.AreEqual(new UndefinedCount(), result);
         }
 
@@ -33,7 +33,7 @@ namespace CodingameProject.Tests.CharacterUtilities
         [Test]
         public void WordWithTwoSameCharactersReturnsUndefinedCount(string input)
         {
-            var result = SecondMostOccurredCharacter.Get(input);
+            var result = new MostOccurredCharacterByRank().Get(input);
             Assert.AreEqual(new UndefinedCount(), result);
         }
 
@@ -45,7 +45,7 @@ namespace CodingameProject.Tests.CharacterUtilities
         [Test]
         public void WordWithDifferentCharactersAllWithSameCountReturnsUndefinedCount(string input)
         {
-            var result = SecondMostOccurredCharacter.Get(input);
+            var result = new MostOccurredCharacterByRank().Get(input);
             Assert.AreEqual(new UndefinedCount(), result);
         }
 
@@ -55,7 +55,7 @@ namespace CodingameProject.Tests.CharacterUtilities
         [Test]
         public void WordWithThreeCharactersEachDifferentCountReturnsSecondFrequentCount(string input, int expected)
         {
-            var result = SecondMostOccurredCharacter.Get(input);
+            var result = new MostOccurredCharacterByRank().Get(input);
             Assert.AreEqual(new DefinedCount(expected), result);
         }
 
@@ -65,7 +65,7 @@ namespace CodingameProject.Tests.CharacterUtilities
         [Test]
         public void WordWithMoreCharactersWithSecondFrequencyReturnsSecondFrequentCount(string input, int expected)
         {
-            var result = SecondMostOccurredCharacter.Get(input);
+            var result = new MostOccurredCharacterByRank().Get(input);
             Assert.AreEqual(new DefinedCount(expected), result);
         }
 
@@ -75,14 +75,14 @@ namespace CodingameProject.Tests.CharacterUtilities
         [Test]
         public void OrderOfCharactersDoesNotMatter(string input, int expected)
         {
-            var result = SecondMostOccurredCharacter.Get(input);
+            var result = new MostOccurredCharacterByRank().Get(input);
             Assert.AreEqual(new DefinedCount(expected), result);
         }
 
         [Test]
         public void InstanceOfICountInterface()
         {
-            var result = SecondMostOccurredCharacter.Get("irrelevantInput");
+            var result = new MostOccurredCharacterByRank().Get("irrelevantInput");
             Assert.IsTrue(typeof(ICount).IsInstanceOfType(result));
         }
     }
