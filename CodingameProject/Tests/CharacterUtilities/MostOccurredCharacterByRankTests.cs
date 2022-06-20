@@ -85,5 +85,12 @@ namespace CodingameProject.Tests.CharacterUtilities
             var result = new MostOccurredCharacterByRank().Get("irrelevantInput");
             Assert.IsTrue(typeof(ICount).IsInstanceOfType(result));
         }
+
+        [Test]
+        public void ResultIsDeterminedByRank()
+        {
+            var result = new MostOccurredCharacterByRank(3).Get("abbccc");
+            Assert.AreEqual(new DefinedCount(1), result);
+        }
     }
 }

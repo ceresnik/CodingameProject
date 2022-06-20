@@ -4,16 +4,16 @@ using System.Linq;
 namespace CodingameProject.Source.CharacterUtilities
 {
     /// <summary>
-    /// Returns frequency (how many times occurs) of the character, which is second-most occurred in the given string.
+    /// Returns frequency (how many times occurs) of the character, which is rank-most occurred (one based index) in the given
+    /// string.
     /// In case given string is not valid string or does not contain at least two different characters,
-    /// returns <see cref="UndefinedCount"/>
+    /// returns <see cref="UndefinedCount"/>.
     /// </summary>
     internal class MostOccurredCharacterByRank
     {
         private readonly int myRank;
 
-        public MostOccurredCharacterByRank()
-        : this(1)
+        public MostOccurredCharacterByRank(): this(2)
         {
         }
 
@@ -29,16 +29,21 @@ namespace CodingameProject.Source.CharacterUtilities
                 return new UndefinedCount();
             }
             var orderedFrequenciesByCharacter = OrderFrequenciesByCharacterDescending(input);
-            var onlyFrequencies = GetFrequencies(orderedFrequenciesByCharacter);
+            var onlyOrderedFrequencies = GetFrequencies(orderedFrequenciesByCharacter);
             ICount result = new UndefinedCount();
-            if (onlyFrequencies.Count > myRank)
+            if (IsRankWithinRange(onlyOrderedFrequencies))
             {
-                if (onlyFrequencies[0] != onlyFrequencies[myRank])
+                if (onlyOrderedFrequencies[0] != onlyOrderedFrequencies[myRank - 1])
                 {
-                    result = new DefinedCount(onlyFrequencies[myRank]);
+                    result = new DefinedCount(onlyOrderedFrequencies[myRank - 1]);
                 }
             }
             return result;
+        }
+
+        private bool IsRankWithinRange(List<int> frequencies)
+        {
+            return frequencies.Count >= myRank;
         }
 
         private static IEnumerable<KeyValuePair<char, int>> OrderFrequenciesByCharacterDescending(string input)

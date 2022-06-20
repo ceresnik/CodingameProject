@@ -19,5 +19,10 @@ namespace CodingameProject.Source.CharacterUtilities
         {
             return this.Count.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + ", Count: " + Count;
+        }
     }
 }
