@@ -1,13 +1,9 @@
-/* -------------------------------------------------------------------------------------------------
-   Restricted - Copyright (C) Siemens Healthcare GmbH, 2022. All rights reserved
-   ------------------------------------------------------------------------------------------------- */
-
 using CodingameProject.Source.CharacterUtilities;
 using NUnit.Framework;
 
 namespace CodingameProject.Tests.CharacterUtilities
 {
-    class SecondMostOccurredLetterTests
+    class SecondMostOccurredCharacterTests
     {
         [Test]
         public void EmptyWordReturnsUndefinedCount()
@@ -47,7 +43,7 @@ namespace CodingameProject.Tests.CharacterUtilities
         [TestCase("aaaBBBccc")]
         [TestCase("ipOHLeTtdfDcJhAKgbaobeOHoJLKcApTidDgtfhadocJDtLHfbeaigpOhTAKdKhoDaiAbHegpJtOfLcTiTbpOacKtofdLDhHJgAe")]
         [Test]
-        public void WordWithDifferentCharactersWithSameCountReturnsUndefinedCount(string input)
+        public void WordWithDifferentCharactersAllWithSameCountReturnsUndefinedCount(string input)
         {
             var result = SecondMostOccurredCharacter.Get(input);
             Assert.AreEqual(new UndefinedCount(), result);
@@ -58,6 +54,16 @@ namespace CodingameProject.Tests.CharacterUtilities
         [TestCase("abbbbbbbbbbbbbbbbbbbbbcccccc", 6)]
         [Test]
         public void WordWithThreeCharactersEachDifferentCountReturnsSecondFrequentCount(string input, int expected)
+        {
+            var result = SecondMostOccurredCharacter.Get(input);
+            Assert.AreEqual(new DefinedCount(expected), result);
+        }
+
+        [TestCase("aaabbcc", 2)]
+        [TestCase("aabbccc", 2)]
+        [TestCase("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbcccccc", 6)]
+        [Test]
+        public void WordWithMoreCharactersWithSecondFrequencyReturnsSecondFrequentCount(string input, int expected)
         {
             var result = SecondMostOccurredCharacter.Get(input);
             Assert.AreEqual(new DefinedCount(expected), result);

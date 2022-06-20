@@ -111,7 +111,7 @@
     <Compile Include="Source\PresidentElection\ScoreCounter.cs" />
     <Compile Include="Tests\AlphabetUtilities\SameLettersRepeaterTests.cs" />
     <Compile Include="Source\AlphabetUtilities\StringFormatter.cs" />
-    <Compile Include="Tests\CharacterUtilities\SecondMostOccurredLetterTests.cs" />
+    <Compile Include="Tests\CharacterUtilities\SecondMostOccurredCharacterTests.cs" />
     <Compile Include="Tests\AlphabetUtilities\StringFormatterTests.cs" />
     <Compile Include="Tests\AlphabetUtilities\StringRotaterTests.cs" />
     <Compile Include="Tests\ClashOfCodeExamples\ClashOfCodeTests.cs" />

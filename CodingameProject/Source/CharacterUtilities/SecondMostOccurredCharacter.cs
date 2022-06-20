@@ -16,22 +16,34 @@ namespace CodingameProject.Source.CharacterUtilities
             {
                 return new UndefinedCount();
             }
-            var countOfOccurrencesByLetter = new Dictionary<char, int>();
-            foreach (char c in input.Distinct())
-            {
-                countOfOccurrencesByLetter.Add(c, input.Count(x => x == c));
-            }
-
-            var sortedListOfOccurrences = countOfOccurrencesByLetter.OrderByDescending(x => x.Value).Select(y => y.Value).ToList();
+            var orderedFrequenciesByCharacter = OrderFrequenciesByCharacterDescending(input);
+            var onlyFrequencies = GetFrequencies(orderedFrequenciesByCharacter);
             ICount result = new UndefinedCount();
-            if (sortedListOfOccurrences.Count > 1)
+            const int index = 1;
+            if (onlyFrequencies.Count > index)
             {
-                if (sortedListOfOccurrences[0] != sortedListOfOccurrences[1])
+                if (onlyFrequencies[0] != onlyFrequencies[index])
                 {
-                    result = new DefinedCount(sortedListOfOccurrences[1]);
+                    result = new DefinedCount(onlyFrequencies[index]);
                 }
             }
             return result;
+        }
+
+        private static IEnumerable<KeyValuePair<char, int>> OrderFrequenciesByCharacterDescending(string input)
+        {
+            var frequencyByCharacter = new Dictionary<char, int>();
+            foreach (char c in input.Distinct())
+            {
+                frequencyByCharacter.Add(c, input.Count(x => x == c));
+            }
+            return frequencyByCharacter.OrderByDescending(x => x.Value);
+        }
+
+        private static List<int> GetFrequencies(IEnumerable<KeyValuePair<char, int>> frequenciesOrderedDescending)
+        {
+            var charactersArrangedByFrequency = frequenciesOrderedDescending.Select(y => y.Value).ToList();
+            return charactersArrangedByFrequency;
         }
     }
 }
