@@ -37,11 +37,24 @@ namespace CodingameProject.Tests.CharacterUtilities
         [TestCase("abbccc", 3, 1)]
         [TestCase("aabcd", 4, -1)]
         [TestCase("abacadaeafagahaibbb", 1, 8)]
+        [TestCase("abacadaeafagahaibbb", 2, 4)]
+        [TestCase("abacadaeafagahaibbb", 3, 1)]
+        [TestCase("abacadaeafagahaibbb", 4, -1)]
         [Test]
         public void ResultIsDeterminedByRank(string input, int rank, int expected)
         {
             var result = new MostOccurredCharacterByRank(rank).Get(input);
             Assert.AreEqual(new DefinedCount(expected), result);
+        }
+
+        [TestCase("a", 2)]
+        [TestCase("aabb", 3)]
+        [TestCase("aaaaaaaaaaaabbbbbbbcccccccccddddddddd", 5)]
+        [Test]
+        public void WhenRankIsOutOfBoundsReturnsUndefinedCount(string input, int rank)
+        {
+            var result = new MostOccurredCharacterByRank(rank).Get(input);
+            Assert.AreEqual(new UndefinedCount(), result);
         }
     }
 }
