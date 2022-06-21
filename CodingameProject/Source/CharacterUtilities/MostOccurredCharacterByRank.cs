@@ -31,19 +31,17 @@ namespace CodingameProject.Source.CharacterUtilities
             var orderedFrequenciesByCharacter = OrderFrequenciesByCharacterDescending(input);
             var onlyOrderedFrequencies = GetFrequencies(orderedFrequenciesByCharacter);
             ICount result = new UndefinedCount();
-            if (IsRankWithinRange(onlyOrderedFrequencies))
+            if (IsRankInBoundsOfUniqueFrequencies(onlyOrderedFrequencies))
             {
-                if (onlyOrderedFrequencies[0] != onlyOrderedFrequencies[myRank - 1])
-                {
-                    result = new DefinedCount(onlyOrderedFrequencies[myRank - 1]);
-                }
+                result = new DefinedCount(onlyOrderedFrequencies[myRank - 1]);
             }
             return result;
         }
-
-        private bool IsRankWithinRange(List<int> frequencies)
+        
+        private bool IsRankInBoundsOfUniqueFrequencies(List<int> onlyOrderedFrequencies)
         {
-            return frequencies.Count >= myRank;
+            int countOfUniqueFrequencies = onlyOrderedFrequencies.Distinct().Count();
+            return myRank <= countOfUniqueFrequencies;
         }
 
         private static IEnumerable<KeyValuePair<char, int>> OrderFrequenciesByCharacterDescending(string input)

@@ -114,6 +114,7 @@
     <Compile Include="Tests\CharacterUtilities\MostOccurredCharacterByRankTests.cs" />
     <Compile Include="Tests\AlphabetUtilities\StringFormatterTests.cs" />
     <Compile Include="Tests\AlphabetUtilities\StringRotaterTests.cs" />
+    <Compile Include="Tests\CharacterUtilities\SecondMostOccurredCharacterTests.cs" />
     <Compile Include="Tests\ClashOfCodeExamples\ClashOfCodeTests.cs" />
     <Compile Include="Tests\ClashOfCodeExamples\FastestMode.cs" />
     <Compile Include="Tests\ClashOfCodeExamples\ShortestMode.cs" />
