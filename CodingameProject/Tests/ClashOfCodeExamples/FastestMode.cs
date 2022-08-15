@@ -94,19 +94,19 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
         [TestCase(123456789, false)]
         public void IsLucky(int inputNumber, bool expectedResult)
         {
-            bool isLucky = DoesNotContainSixOrEight(inputNumber) && ContainsSixOrEight(inputNumber);
+            bool isLucky = ContainsSixOrEight(inputNumber) && DoesNotContainSixAndEight(inputNumber);
             Console.WriteLine(isLucky ? "Lucky" : "Not Lucky");
             Assert.That(isLucky, Is.EqualTo(expectedResult));
-        }
-
-        private static bool DoesNotContainSixOrEight(int inputNumber)
-        {  
-            return (inputNumber.ToString().Contains('6') == false || inputNumber.ToString().Contains('8') == false); 
         }
 
         private static bool ContainsSixOrEight(int inputNumber)
         {
             return inputNumber.ToString().Contains('6') || inputNumber.ToString().Contains('8');
+        }
+
+        private static bool DoesNotContainSixAndEight(int inputNumber)
+        {
+            return (inputNumber.ToString().Contains('6') && inputNumber.ToString().Contains('8')) == false;
         }
     }
 }
