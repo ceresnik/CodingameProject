@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -72,6 +73,40 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
                 numbersFromZero.Add(i);
             }
             return numbersFromZero;
+        }
+
+        /// <summary>
+        /// Number is Lucky in case it contains 6 or 8.
+        /// Number is Not Lucky in case it contains both 6 and 8, or none of them.
+        /// </summary>
+        /// <param name="inputNumber"></param>
+        /// <param name="expectedResult"></param>
+        [Test]
+        [TestCase(1, false)]
+        [TestCase(6, true)]
+        [TestCase(8, true)]
+        [TestCase(12345, false)]
+        [TestCase(666, true)]
+        [TestCase(888, true)]
+        [TestCase(68, false)]
+        [TestCase(678, false)]
+        [TestCase(578, true)]
+        [TestCase(123456789, false)]
+        public void IsLucky(int inputNumber, bool expectedResult)
+        {
+            bool isLucky = DoesNotContainSixOrEight(inputNumber) && ContainsSixOrEight(inputNumber);
+            Console.WriteLine(isLucky ? "Lucky" : "Not Lucky");
+            Assert.That(isLucky, Is.EqualTo(expectedResult));
+        }
+
+        private static bool DoesNotContainSixOrEight(int inputNumber)
+        {  
+            return (inputNumber.ToString().Contains('6') == false || inputNumber.ToString().Contains('8') == false); 
+        }
+
+        private static bool ContainsSixOrEight(int inputNumber)
+        {
+            return inputNumber.ToString().Contains('6') || inputNumber.ToString().Contains('8');
         }
     }
 }
