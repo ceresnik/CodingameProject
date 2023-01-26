@@ -494,6 +494,7 @@ namespace KGood.Tests
             Assert.That(sum, Is.EqualTo(4900));
         }
 
+        [Ignore("Needs to read the input from console.")]
         [Test]
         public void Test_GoldSilverBronze()
         {
