@@ -1,4 +1,6 @@
 ﻿using System;
+using System.CodeDom;
+using Pluralsight.Tests;
 
 namespace Pluralsight.Source
 {
@@ -31,6 +33,23 @@ namespace Pluralsight.Source
                 }
                 width = value;
             }
+        }
+
+        public bool TryAddCircle(Circle circle)
+        {
+            if (circle.Centre.X < 0 || circle.Centre.X > Length)
+            {
+                return false;
+            }
+            if (circle.Centre.Y < 0 || circle.Centre.Y - circle.Radius < 0)
+            {
+                return false;
+            }
+            if ((circle.Centre.X + circle.Radius < Length) && (circle.Centre.Y + circle.Radius < Width))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

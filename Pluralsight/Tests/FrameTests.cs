@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using NUnit.Framework;
 using Pluralsight.Source;
 
@@ -63,6 +64,60 @@ namespace Pluralsight.Tests
             Assert.That(frame.Width, Is.EqualTo(20.7), "Width of frame not as expected.");
         }
 
+        [Test]
+        public void TryAddCircle_CircleCentreIsInsideRadiusIsSmall_True()
+        {
+            var circle = CreateCircle(2, 2, 1);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.True);
+        }
+
+        [TestCase(2, 2, 10)]
+        [TestCase(1, 3, 2)]
+        [TestCase(1, 3, 2)]
+        [TestCase(3, 4, 2)]
+        [TestCase(3, 1, 2)]
+        public void TryAddCircle_CircleCentreIsInsideRadiusIsLarge_False(int circleXCoordinate, int circleYCoordinate, int radius)
+        {
+            var circle = CreateCircle(circleXCoordinate, circleYCoordinate, radius);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.False);
+        }
+
+        [TestCase(-2)]
+        [TestCase(6)]
+        public void TryAddCircle_CircleCentreXIsOutside_False(int circleXCoordinate)
+        {
+            var circle = CreateCircle(circleXCoordinate, 2, 1);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.False);
+        }
+
+        [TestCase(-2)]
+        [TestCase(6)]
+        public void TryAddCircle_CircleCentreYIsOutside_False(int circleYCoordinate)
+        {
+            var circle = CreateCircle(2, circleYCoordinate, 1);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.False);
+        }
+
+        [TestCase(-2, -2)]
+        [TestCase(-2, 6)]
+        [TestCase(6, 6)]
+        [TestCase(6, -2)]
+        public void TryAddCircle_CircleCentreXAndYIsOutside_False(int circleXCoordinate, int circleYCoordinate)
+        {
+            var circle = CreateCircle(circleXCoordinate, circleYCoordinate, 1);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.False);
+        }
+
         private static Frame CreateSutWithWidth(double width)
         {
             var frame = new Frame
@@ -79,6 +134,24 @@ namespace Pluralsight.Tests
                 Length = length
             };
             return frame;
+        }
+
+        private static Frame CreateFrame(int length, int width)
+        {
+            return new Frame
+            {
+                Length = length,
+                Width = width
+            };
+        }
+
+        private static Circle CreateCircle(int x, int y, int radius)
+        {
+            return new Circle
+            {
+                Centre = new Point(x, y),
+                Radius = radius
+            };
         }
     }
 }
