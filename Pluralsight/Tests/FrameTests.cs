@@ -14,7 +14,27 @@ namespace Pluralsight.Tests
             {
                 Length = 10
             };
-            Assert.That(frame.Length, Is.EqualTo(10), "Lenght of frame not as expected.");
+            Assert.That(frame.Length, Is.EqualTo(10), "Length of frame not as expected.");
+        }
+
+        [Test]
+        public void Test_SmallestPositiveLength()
+        {
+            var frame = new Frame
+            {
+                Length = double.Epsilon
+            };
+            Assert.That(frame.Length, Is.EqualTo(double.Epsilon), "Length of frame not as expected.");
+        }
+
+        [Test]
+        public void Test_SmallestPositiveWidth()
+        {
+            var frame = new Frame
+            {
+                Width = double.Epsilon
+            };
+            Assert.That(frame.Width, Is.EqualTo(double.Epsilon), "Width of frame not as expected.");
         }
 
         [Test]

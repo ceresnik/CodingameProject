@@ -4,10 +4,10 @@ namespace Pluralsight.Source
 {
     internal class Frame
     {
-        private int length;
-        private int width;
+        private double length;
+        private double width;
 
-        public int Length
+        public double Length
         {
             get => length;
             set
@@ -21,7 +21,7 @@ namespace Pluralsight.Source
             //but remember - letting an object to have it's dimension modifiable is very dangerous idea.
         }
 
-        public int Width
+        public double Width
         {
             get => width;
             set {
