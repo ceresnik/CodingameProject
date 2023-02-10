@@ -38,41 +38,47 @@ namespace Pluralsight.Tests
         [Test]
         public void Test_SmallestPositiveLength()
         {
-            var frame = new Frame
-            {
-                Length = double.Epsilon
-            };
+            var frame = CreateSutWithLength(double.Epsilon);
             Assert.That(frame.Length, Is.EqualTo(double.Epsilon), "Length of frame not as expected.");
         }
 
         [Test]
         public void Test_SmallestPositiveWidth()
         {
-            var frame = new Frame
-            {
-                Width = double.Epsilon
-            };
+            var frame = CreateSutWithWidth(double.Epsilon);
             Assert.That(frame.Width, Is.EqualTo(double.Epsilon), "Width of frame not as expected.");
         }
 
         [Test]
         public void Test_PositiveLength()
         {
-            var frame = new Frame
-            {
-                Length = 10.4
-            };
+            var frame = CreateSutWithLength(10.4);
             Assert.That(frame.Length, Is.EqualTo(10.4), "Length of frame not as expected.");
         }
 
         [Test]
         public void Test_PositiveWidth()
         {
+            var frame = CreateSutWithWidth(20.7);
+            Assert.That(frame.Width, Is.EqualTo(20.7), "Width of frame not as expected.");
+        }
+
+        private static Frame CreateSutWithWidth(double width)
+        {
             var frame = new Frame
             {
-                Width = 20.7
+                Width = width
             };
-            Assert.That(frame.Width, Is.EqualTo(20.7), "Width of frame not as expected.");
+            return frame;
+        }
+
+        private static Frame CreateSutWithLength(double length)
+        {
+            var frame = new Frame
+            {
+                Length = length
+            };
+            return frame;
         }
     }
 }
