@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using NUnit.Framework;
 
 namespace Pluralsight.Tests
@@ -21,12 +20,19 @@ namespace Pluralsight.Tests
         }
 
         [Test]
-        public void Circle_HasCentre()
+        public void Circle_HasCentreX()
         {
             var circle = new Circle();
-            var coordinatesOfCentre = new Point(2, 5);
-            circle.Centre = coordinatesOfCentre;
-            Assert.That(circle.Centre, Is.EqualTo(coordinatesOfCentre), "Coordinates of Centre of the circle not as expected.");
+            circle.X = 2;
+            Assert.That(circle.X, Is.EqualTo(2), "X coordinate of Centre of the circle not as expected.");
+        }
+
+        [Test]
+        public void Circle_HasCentreY()
+        {
+            var circle = new Circle();
+            circle.Y = 5;
+            Assert.That(circle.Y, Is.EqualTo(5), "Y coordinate of Centre of the circle not as expected.");
         }
     }
 }

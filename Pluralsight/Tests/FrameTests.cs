@@ -118,7 +118,17 @@ namespace Pluralsight.Tests
         }
 
         [Test]
-        public void TryAddCircle_CircleTouchesUpperBorder_True()
+        public void TryAddCircle_CircleTouchesUpperEdge_True()
+        {
+            var circle = CreateCircle(2, 4, 1);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.True);
+        }
+
+        [Ignore]
+        [Test]
+        public void TryAddCircle_CircleGoesOutsideUpperEdge_False()
         {
             var circle = CreateCircle(2, 4, 1);
             var frame = CreateFrame(5, 5);
@@ -157,7 +167,8 @@ namespace Pluralsight.Tests
         {
             return new Circle
             {
-                Centre = new Point(x, y),
+                X = x,
+                Y = y,
                 Radius = radius
             };
         }

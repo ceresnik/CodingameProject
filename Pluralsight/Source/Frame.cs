@@ -48,19 +48,19 @@ namespace Pluralsight.Source
 
         public bool TryAddCircle(Circle circle)
         {
-            if (circle.Centre.X < 0 || circle.Centre.X > Length)
+            if (circle.X < 0 || circle.X > Length)
             {
                 return false;
             }
-            if (circle.Centre.Y < 0 || circle.Centre.Y > Width)
+            if (circle.Y < 0 || circle.Y > Width)
             {
                 return false;
             }
-            if (circle.Centre.X - circle.Radius < 0)
+            if (circle.X - circle.Radius < 0)
             {
                 return false;
             }
-            if (circle.Centre.X + circle.Radius < Length && circle.Centre.Y + circle.Radius <= Width)
+            if (circle.X + circle.Radius < Length && circle.Y + circle.Radius <= Width)
             {
                 return true;
             }
