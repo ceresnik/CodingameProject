@@ -56,11 +56,11 @@ namespace Pluralsight.Source
             {
                 return false;
             }
-            if (circle.X - circle.Radius < 0)
+            if (circle.X - circle.Radius < 0 || circle.Y - circle.Radius < 0)
             {
                 return false;
             }
-            if (circle.X + circle.Radius < Length && circle.Y + circle.Radius <= Width)
+            if (circle.X + circle.Radius <= Length && circle.Y + circle.Radius <= Width)
             {
                 return true;
             }

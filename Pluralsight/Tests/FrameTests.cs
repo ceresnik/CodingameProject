@@ -126,14 +126,67 @@ namespace Pluralsight.Tests
             Assert.That(result, Is.True);
         }
 
-        [Ignore]
         [Test]
         public void TryAddCircle_CircleGoesOutsideUpperEdge_False()
         {
-            var circle = CreateCircle(2, 4, 1);
+            var circle = CreateCircle(2, 4.1, 1);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.False);
+        }
+
+        [Test]
+        public void TryAddCircle_CircleTouchesRightEdge_True()
+        {
+            var circle = CreateCircle(4, 2, 1);
             var frame = CreateFrame(5, 5);
             bool result = frame.TryAddCircle(circle);
             Assert.That(result, Is.True);
+        }
+
+        [Test]
+        public void TryAddCircle_CircleGoesOutsideRightEdge_False()
+        {
+            var circle = CreateCircle(4.1, 2, 1);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.False);
+        }
+
+        [Test]
+        public void TryAddCircle_CircleTouchesLowerEdge_True()
+        {
+            var circle = CreateCircle(2, 1, 1);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.True);
+        }
+
+        [Test]
+        public void TryAddCircle_CircleGoesOutsideLowerEdge_False()
+        {
+            var circle = CreateCircle(2, 0.9, 1);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.False);
+        }
+
+        [Test]
+        public void TryAddCircle_CircleTouchesLeftEdge_True()
+        {
+            var circle = CreateCircle(1, 2, 1);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.True);
+        }
+
+        [Test]
+        public void TryAddCircle_CircleGoesOutsideLeftEdge_False()
+        {
+            var circle = CreateCircle(0.9, 2, 1);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.False);
         }
 
         private static Frame CreateSutWithWidth(double width)
@@ -163,7 +216,7 @@ namespace Pluralsight.Tests
             };
         }
 
-        private static Circle CreateCircle(int x, int y, int radius)
+        private static Circle CreateCircle(double x, double y, int radius)
         {
             return new Circle
             {
