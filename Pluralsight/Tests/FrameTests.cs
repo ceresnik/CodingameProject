@@ -75,7 +75,6 @@ namespace Pluralsight.Tests
 
         [TestCase(2, 2, 10)]
         [TestCase(1, 3, 2)]
-        [TestCase(1, 3, 2)]
         [TestCase(3, 4, 2)]
         [TestCase(3, 1, 2)]
         public void TryAddCircle_CircleCentreIsInsideRadiusIsLarge_False(int circleXCoordinate, int circleYCoordinate, int radius)
@@ -116,6 +115,15 @@ namespace Pluralsight.Tests
             var frame = CreateFrame(5, 5);
             bool result = frame.TryAddCircle(circle);
             Assert.That(result, Is.False);
+        }
+
+        [Test]
+        public void TryAddCircle_CircleTouchesUpperBorder_True()
+        {
+            var circle = CreateCircle(2, 4, 1);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.True);
         }
 
         private static Frame CreateSutWithWidth(double width)

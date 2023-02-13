@@ -1,11 +1,22 @@
 ﻿using System;
-using System.CodeDom;
 using Pluralsight.Tests;
 
 namespace Pluralsight.Source
 {
     internal class Frame
     {
+        /*
+         * -------------------------------
+         * - W                           -
+         * - i                           -
+         * - d                           -
+         * - t                           -
+         * - h                           -
+         * -                             -
+         * -                             -
+         * -          Length             -
+         * -------------------------------
+         */
         private double length;
         private double width;
 
@@ -41,11 +52,15 @@ namespace Pluralsight.Source
             {
                 return false;
             }
-            if (circle.Centre.Y < 0 || circle.Centre.Y - circle.Radius < 0)
+            if (circle.Centre.Y < 0 || circle.Centre.Y > Width)
             {
                 return false;
             }
-            if ((circle.Centre.X + circle.Radius < Length) && (circle.Centre.Y + circle.Radius < Width))
+            if (circle.Centre.X - circle.Radius < 0)
+            {
+                return false;
+            }
+            if (circle.Centre.X + circle.Radius < Length && circle.Centre.Y + circle.Radius <= Width)
             {
                 return true;
             }
