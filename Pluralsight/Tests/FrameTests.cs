@@ -127,7 +127,7 @@ namespace Pluralsight.Tests
         }
 
         [Test]
-        public void TryAddCircle_CircleGoesOutsideUpperEdge_False()
+        public void TryAddCircle_CircleCrossesUpperEdge_False()
         {
             var circle = CreateCircle(2, 4.1, 1);
             var frame = CreateFrame(5, 5);
@@ -145,7 +145,7 @@ namespace Pluralsight.Tests
         }
 
         [Test]
-        public void TryAddCircle_CircleGoesOutsideRightEdge_False()
+        public void TryAddCircle_CircleCrossesRightEdge_False()
         {
             var circle = CreateCircle(4.1, 2, 1);
             var frame = CreateFrame(5, 5);
@@ -163,7 +163,7 @@ namespace Pluralsight.Tests
         }
 
         [Test]
-        public void TryAddCircle_CircleGoesOutsideLowerEdge_False()
+        public void TryAddCircle_CircleCrossesLowerEdge_False()
         {
             var circle = CreateCircle(2, 0.9, 1);
             var frame = CreateFrame(5, 5);
@@ -181,9 +181,36 @@ namespace Pluralsight.Tests
         }
 
         [Test]
-        public void TryAddCircle_CircleGoesOutsideLeftEdge_False()
+        public void TryAddCircle_CircleCrossesLeftEdge_False()
         {
             var circle = CreateCircle(0.9, 2, 1);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.False);
+        }
+
+        [Test]
+        public void TryAddCircle_CircleCompletelyOutsideTheFrame_False()
+        {
+            var circle = CreateCircle(10, 10, 2);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.False);
+        }
+
+        [Test]
+        public void TryAddCircle_CircleOutsideTheFrameButCrossesTheFrame_False()
+        {
+            var circle = CreateCircle(6, 6, 2);
+            var frame = CreateFrame(5, 5);
+            bool result = frame.TryAddCircle(circle);
+            Assert.That(result, Is.False);
+        }
+
+        [Test]
+        public void TryAddCircle_CircleInsideTheFrameButCrossesAllEdges_False()
+        {
+            var circle = CreateCircle(2, 2, 10);
             var frame = CreateFrame(5, 5);
             bool result = frame.TryAddCircle(circle);
             Assert.That(result, Is.False);
