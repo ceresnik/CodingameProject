@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Pluralsight.Tests;
 
 namespace Pluralsight.Source
@@ -19,7 +20,7 @@ namespace Pluralsight.Source
          */
         private double length;
         private double width;
-        private int circlesCount;
+        private readonly ICollection<ICircle> circles = new List<ICircle>();
 
         public double Length
         {
@@ -47,13 +48,9 @@ namespace Pluralsight.Source
             }
         }
 
-        public int CirclesCount
-        {
-            get => circlesCount;
-            set => circlesCount = value;
-        }
+        public int CirclesCount => circles.Count;
 
-        public bool TryAddCircle(Circle circle)
+        public bool TryAddCircle(ICircle circle)
         {
             if (circle.X < 0 || circle.X > Length)
             {
@@ -69,8 +66,11 @@ namespace Pluralsight.Source
             }
             if (circle.X + circle.Radius <= Length && circle.Y + circle.Radius <= Width)
             {
-                circlesCount++;
-                return true;
+                if (circles.Contains(circle) == false)
+                {
+                    circles.Add(circle);
+                    return true;
+                }
             }
             return false;
         }

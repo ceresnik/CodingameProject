@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using NUnit.Framework;
 using Pluralsight.Source;
 
@@ -270,6 +269,17 @@ namespace Pluralsight.Tests
             Assert.That(frame.CirclesCount, Is.EqualTo(0));
         }
 
+        [Test]
+        public void TryAddCircle_TwoIdenticalCirclesInsideTheFrame_CircleCountIsOne()
+        {
+            var circle1 = CreateCircle(2, 2, 1);
+            var circle2 = CreateCircle(2, 2, 1);
+            var frame = CreateFrame(5, 5);
+            frame.TryAddCircle(circle1);
+            frame.TryAddCircle(circle2);
+            Assert.That(frame.CirclesCount, Is.EqualTo(1));
+        }
+
         private static Frame CreateSutWithWidth(double width)
         {
             var frame = new Frame
@@ -297,7 +307,7 @@ namespace Pluralsight.Tests
             };
         }
 
-        private static Circle CreateCircle(double x, double y, int radius)
+        private static ICircle CreateCircle(double x, double y, int radius)
         {
             return new Circle
             {
