@@ -216,6 +216,60 @@ namespace Pluralsight.Tests
             Assert.That(result, Is.False);
         }
 
+        [Test]
+        public void TryAddCircle_CircleInsideTheFrame_CircleCountIsOne()
+        {
+            var circle = CreateCircle(2, 2, 1);
+            var frame = CreateFrame(5, 5);
+            frame.TryAddCircle(circle);
+            Assert.That(frame.CirclesCount, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void TryAddCircle_TenCirclesInsideTheFrame_CircleCountIsTen()
+        {
+            var frame = CreateFrame(15, 15);
+            for (int i = 0; i < 10; i++)
+            {
+                var circle = CreateCircle(2 + i, 2 + i, 1);
+                frame.TryAddCircle(circle);
+            }
+            Assert.That(frame.CirclesCount, Is.EqualTo(10));
+        }
+
+        [Test]
+        public void TryAddCircle_TenCirclesInsideTenCirclesOutsideTheFrame_CircleCountIsTen()
+        {
+            var frame = CreateFrame(11, 11);
+            for (int i = 0; i < 20; i++)
+            {
+                var circle = CreateCircle(1 + i, 1 + i, 1);
+                frame.TryAddCircle(circle);
+            }
+            Assert.That(frame.CirclesCount, Is.EqualTo(10));
+        }
+
+        [Test]
+        public void TryAddCircle_CircleOutsideTheFrame_CircleCountIsZero()
+        {
+            var circle = CreateCircle(10, 10, 1);
+            var frame = CreateFrame(5, 5);
+            frame.TryAddCircle(circle);
+            Assert.That(frame.CirclesCount, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void TryAddCircle_TenCirclesOutsideTheFrame_CircleCountIsZero()
+        {
+            var frame = CreateFrame(5, 5);
+            for (int i = 0; i < 10; i++)
+            {
+                var circle = CreateCircle(5 + i, 5 + i, 1);
+                frame.TryAddCircle(circle);
+            }
+            Assert.That(frame.CirclesCount, Is.EqualTo(0));
+        }
+
         private static Frame CreateSutWithWidth(double width)
         {
             var frame = new Frame

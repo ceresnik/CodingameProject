@@ -19,6 +19,7 @@ namespace Pluralsight.Source
          */
         private double length;
         private double width;
+        private int circlesCount;
 
         public double Length
         {
@@ -46,6 +47,12 @@ namespace Pluralsight.Source
             }
         }
 
+        public int CirclesCount
+        {
+            get => circlesCount;
+            set => circlesCount = value;
+        }
+
         public bool TryAddCircle(Circle circle)
         {
             if (circle.X < 0 || circle.X > Length)
@@ -62,6 +69,7 @@ namespace Pluralsight.Source
             }
             if (circle.X + circle.Radius <= Length && circle.Y + circle.Radius <= Width)
             {
+                circlesCount++;
                 return true;
             }
             return false;
