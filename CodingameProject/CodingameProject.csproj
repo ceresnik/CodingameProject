@@ -175,7 +175,12 @@
   <ItemGroup>
     <Content Include="test.library.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Pluralsight\Pluralsight.csproj">
+      <Project>{44543f25-bb9a-48bb-8383-124a8cb0c0e7}</Project>
+      <Name>Pluralsight</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

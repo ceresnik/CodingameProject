@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Pluralsight.Tests;
 
 namespace Pluralsight.Source
 {
-    internal class Frame
+    public class Frame
     {
         /*
          * -------------------------------
@@ -73,6 +72,15 @@ namespace Pluralsight.Source
                 }
             }
             return false;
+        }
+
+        public void Draw()
+        {
+            Console.WriteLine($"Frame: Length (horizontal):{Length}, Width (vertical):{Width}");
+            foreach (var circle in circles)
+            {
+                circle.Draw();
+            }
         }
     }
 }

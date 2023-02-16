@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Pluralsight.Tests
+namespace Pluralsight.Source
 {
-    internal class Circle : ICircle, IEquatable<ICircle>
+    public class Circle : ICircle, IEquatable<ICircle>
     {
         private double radius;
 
@@ -23,8 +23,6 @@ namespace Pluralsight.Tests
 
         public bool Equals(ICircle other)
         {
-            //return other != null && Math.Abs(other.X - X) < 0.1 && Math.Abs(other.Y - Y) < 0.1
-            //       && Math.Abs(other.Radius - Radius) < 0.1;
             return other != null && other.X == X && other.Y == Y && other.Radius == Radius;
         }
 
@@ -37,12 +35,10 @@ namespace Pluralsight.Tests
         {
             return Radius.GetHashCode() ^ X.GetHashCode() ^ Y.GetHashCode();
         }
-    }
 
-    internal interface ICircle
-    {
-        double X { get; set; }
-        double Y { get; set; }
-        double Radius { get; set; }
+        public void Draw()
+        {
+            Console.WriteLine($"Circle: X={X}, Y={Y}, Radius={radius}.");
+        }
     }
 }
