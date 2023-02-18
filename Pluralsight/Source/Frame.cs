@@ -19,7 +19,8 @@ namespace Pluralsight.Source
          */
         private double length;
         private double width;
-        private readonly ICollection<ICircle> circles = new List<ICircle>();
+        //private readonly ICollection<ICircle> circles = new List<ICircle>();
+        private readonly ICollection<ICircle> circles = new HashSet<ICircle>();
 
         public double Length
         {
