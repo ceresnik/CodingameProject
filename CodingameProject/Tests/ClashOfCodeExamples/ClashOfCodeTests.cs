@@ -11,7 +11,6 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
     [TestFixture]
     class ClashOfCodeTests
     {
-
         [Test]
         public void SortItemsInListAccordingToLength()
         {
@@ -61,5 +60,67 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
             }
         }
 
+        [Test]
+        public void SegregateLowersAndUppers_1()
+        {
+            string input = "AeBfCgDhZz";
+            var upperList = input.Where(x => x >= 'A' && x <= 'Z');
+            var lowerList = input.Where(x => x >= 'a' && x <= 'z');
+            Console.WriteLine(upperList.ToArray());
+            Console.WriteLine(lowerList.ToArray());
+            Assert.That(upperList, Is.EqualTo("ABCDZ"));
+            Assert.That(lowerList, Is.EqualTo("efghz"));
+        }
+
+        [Test]
+        public void SegregateLowersAndUppers_2()
+        {
+            string input = "AeBfCgDhZz";
+            var upperList = new List<char>();
+            var lowerList = new List<char>();
+            input.ToList().ForEach(x =>
+            {
+                if (char.IsLower(x))
+                    lowerList.Add(x);
+                else
+                    upperList.Add(x);
+            });
+            Console.WriteLine(upperList.ToArray());
+            Console.WriteLine(lowerList.ToArray());
+            Assert.That(upperList, Is.EqualTo("ABCDZ"));
+            Assert.That(lowerList, Is.EqualTo("efghz"));
+        }
+
+        [Test]
+        public void SegregateLowersAndUppers_Dominik()
+        {
+            string input = "AeBfCgDhZz";
+            string low = string.Empty;
+            string hig = string.Empty;
+            foreach (char item in input)
+            {
+                if (char.IsLower(item))
+                {
+                    low += item;
+                }
+                else
+                {
+                    hig += item;
+                }
+            }
+            Console.WriteLine(low.ToArray());
+            Console.WriteLine(hig.ToArray());
+            Assert.That(hig, Is.EqualTo("ABCDZ"));
+            Assert.That(low, Is.EqualTo("efghz"));
+        }
+
+        [TestCase("Hello", "Hll")]
+        [TestCase("This Is a sentence", "Ths s  sntnc")]
+        public void RemoveVowels(string input, string expected)
+        {
+            var forbiddenChars = new List<char> { 'a', 'e', 'i', 'o', 'u' };
+            var result = input.Where(x => forbiddenChars.Contains(char.ToLower(x)) == false);
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
