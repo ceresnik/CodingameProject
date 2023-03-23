@@ -122,5 +122,29 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
             var result = input.Where(x => forbiddenChars.Contains(char.ToLower(x)) == false);
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase(5, -14, "Lower")]
+        [TestCase(5, -15, "Same")]
+        [TestCase(5, -16, "Higher")]
+        public void CelsiusToFahrenheit(int input1, int input2, string expected)
+        {
+            int b = input1;
+            int celsius = input2;
+
+            //var tf = (int)(t * (double)9 / 5 + 32);
+            //var tf = (int)(t * ((double)9/5) + 32);
+            //var tf = t * (9/5) + 32;
+            //var tf = 9 / 5 * t + 32;
+            var tf = celsius * (9f / 5) + 32;
+            
+            int celsiusConvertedToFahrenheit1 = celsius * 9 / 5 + 32;
+            int celsiusConvertedToFahrenheit2 = celsius * (9 / 5) + 32;
+
+            var result = "";
+            if (Math.Abs(b - tf) < 0.0001) result = "Same";
+            if (b < tf) result = "Lower";
+            if (b > tf) result = "Higher";
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
