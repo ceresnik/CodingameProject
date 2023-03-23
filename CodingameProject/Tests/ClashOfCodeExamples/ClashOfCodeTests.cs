@@ -146,5 +146,20 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
             if (b > tf) result = "Higher";
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase(2, 3, 16)]
+        [TestCase(2, 4, 65536)]
+        [TestCase(3, 3, 7625597484987)]
+        [TestCase(9, 2, 387420489)]
+        public void Tetration(long baseNum, int height, long expected)
+        {
+            long num = baseNum;
+            for (int i = 1; i < height; i++)
+            {
+                num = (long)Math.Pow(baseNum, num);
+            }
+            Console.WriteLine(num);
+            Assert.That(num, Is.EqualTo(expected));
+        }
     }
 }
