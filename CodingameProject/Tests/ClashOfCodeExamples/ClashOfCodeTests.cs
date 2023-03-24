@@ -161,5 +161,32 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
             Console.WriteLine(num);
             Assert.That(num, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void EvenAndOdd()
+        {
+            int a = 2;
+            int b = 3;
+            int c = 4;
+            var list = new List<int> { a, b, c };
+            int result = 0;
+            list.ForEach(x => result += x % 2 == 0 ? x : -x);
+            Console.WriteLine(result);
+            int expected = 3;
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(4, 9, 4, "4")]
+        [TestCase(9, 9, 4, "9")]
+        [TestCase(4, 9, 9, "9")]
+        [TestCase(-657, -657, -657, "-657")]
+        [TestCase(5, 7, 9, "no solution")]
+        public void GroupingTest(int a, int b, int c, string expected)
+        {
+            var list = new List<int> { a, b, c };
+            var occurrences = list.GroupBy(x => x).Where(x => x.Count() >= 2).Select(x => x).ToList();
+            string result = occurrences.Count == 0 ? "no solution" : occurrences.First().Key.ToString();
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
