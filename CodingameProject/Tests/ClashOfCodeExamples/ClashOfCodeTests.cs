@@ -188,5 +188,23 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
             string result = occurrences.Count == 0 ? "no solution" : occurrences.First().Key.ToString();
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [TestCase(15, "It is true that we do not know what we have got until we lose it, but it is also true that we do not know what we have been " +
+                      "missing until it arrives.", "also")]
+        [TestCase(8, "Everybody wants to go to heaven, but nobody wants to die.", "die")]
+        public void Test(int n, string sentence, string expected)
+        {
+            sentence = sentence.ToLower();
+            var forbiddenChars = new[] {',', '.', '\u0022' };
+            foreach (char c in forbiddenChars)
+            {
+                if (sentence.Contains(c))
+                {
+                    sentence = sentence.Replace(c.ToString(), "");
+                }
+            }
+            var result = sentence.Split().Distinct().ToList();
+            Assert.AreEqual(expected, result[n - 1]);
+        }
     }
 }
