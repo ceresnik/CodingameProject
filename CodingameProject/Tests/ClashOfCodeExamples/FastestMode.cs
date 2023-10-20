@@ -108,5 +108,57 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
         {
             return (inputNumber.ToString().Contains('6') && inputNumber.ToString().Contains('8')) == false;
         }
+
+        [TestCase(RockPaperScissors.ROCK, RockPaperScissors.PAPER, ResultEnum.PLAYER2)]
+        [TestCase(RockPaperScissors.ROCK, RockPaperScissors.SCISSORS, ResultEnum.PLAYER1)]
+        [TestCase(RockPaperScissors.PAPER, RockPaperScissors.ROCK, ResultEnum.PLAYER1)]
+        [TestCase(RockPaperScissors.PAPER, RockPaperScissors.SCISSORS, ResultEnum.PLAYER2)]
+        [TestCase(RockPaperScissors.SCISSORS, RockPaperScissors.ROCK, ResultEnum.PLAYER2)]
+        [TestCase(RockPaperScissors.SCISSORS, RockPaperScissors.PAPER, ResultEnum.PLAYER1)]
+        [TestCase(RockPaperScissors.ROCK, RockPaperScissors.ROCK, ResultEnum.DRAW)]
+        [TestCase(RockPaperScissors.SCISSORS, RockPaperScissors.SCISSORS, ResultEnum.DRAW)]
+        [TestCase(RockPaperScissors.PAPER, RockPaperScissors.PAPER, ResultEnum.DRAW)]
+        [Test]
+        public void TestRockPaperScissors(RockPaperScissors player1Choice, RockPaperScissors player2Choice, ResultEnum expectedResult)
+        {
+            var result = PlayRockPaperScissors(player1Choice, player2Choice);
+            Assert.AreEqual(expectedResult, result, "Result is bad.");
+        }
+
+        private ResultEnum PlayRockPaperScissors(RockPaperScissors player1Choice, RockPaperScissors player2Choice)
+        {
+            ResultEnum result = ResultEnum.DRAW;
+            switch (player1Choice)
+            {
+                case RockPaperScissors.ROCK when player2Choice == RockPaperScissors.SCISSORS:
+                case RockPaperScissors.PAPER when player2Choice == RockPaperScissors.ROCK:
+                case RockPaperScissors.SCISSORS when player2Choice == RockPaperScissors.PAPER:
+                    result = ResultEnum.PLAYER1;
+                    break;
+            }
+            switch (player1Choice)
+            {
+                case RockPaperScissors.PAPER when player2Choice == RockPaperScissors.SCISSORS:
+                case RockPaperScissors.SCISSORS when player2Choice == RockPaperScissors.ROCK:
+                case RockPaperScissors.ROCK when player2Choice == RockPaperScissors.PAPER:
+                    result = ResultEnum.PLAYER2;
+                    break;
+            }
+            return result;
+        }
+
+        public enum RockPaperScissors
+        {
+            ROCK,
+            PAPER,
+            SCISSORS
+        }
+
+        public enum ResultEnum
+        {
+            PLAYER1,
+            PLAYER2,
+            DRAW
+        }
     }
 }
