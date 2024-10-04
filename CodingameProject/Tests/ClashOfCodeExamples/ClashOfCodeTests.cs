@@ -192,19 +192,61 @@ namespace CodingameProject.Tests.ClashOfCodeExamples
         [TestCase(15, "It is true that we do not know what we have got until we lose it, but it is also true that we do not know what we have been " +
                       "missing until it arrives.", "also")]
         [TestCase(8, "Everybody wants to go to heaven, but nobody wants to die.", "die")]
-        public void Test(int n, string sentence, string expected)
+        public void ExtractTheNthWord(int positionOfTheWordToExtract, string inputSentence, string expected)
         {
-            sentence = sentence.ToLower();
-            var forbiddenChars = new[] {',', '.', '\u0022' };
+            inputSentence = inputSentence.ToLower();
+            char[] forbiddenChars = {',', '.', '\u0022' };// `\u0022` is a double quote
             foreach (char c in forbiddenChars)
             {
-                if (sentence.Contains(c))
+                if (inputSentence.Contains(c))
                 {
-                    sentence = sentence.Replace(c.ToString(), "");
+                    inputSentence = inputSentence.Replace(c.ToString(), ""); // replace all forbidden characters by empty string
                 }
             }
-            var result = sentence.Split().Distinct().ToList();
-            Assert.AreEqual(expected, result[n - 1]);
+            var result = inputSentence.Split().Distinct().ToList();
+            Assert.AreEqual(expected, result[positionOfTheWordToExtract - 1]);
+        }
+
+        /// <summary>
+        /// I am playing a game that is a lot like 2048, but it doesn't tell me my score, so I don't know how well I am doing!
+        /// All I have to do to calculate the score is add up the values of all of the squares. Empty squares, represented
+        /// by periods, are worth 0 points. The rest are tricky, though, because each square is equal to two to the power to
+        /// what is shown as a hexadecimal number.
+        /// That means that 1 is represented as 0 (2^0 = 1) and the classic 2048 is represented as b (2^11 = 2048).
+        /// </summary>
+        [TestCase(". . . . \r\n . . 0 . \r\n . 0 . 1 \r\n . 1 . . \r\n", 6)]
+        [TestCase("5 6 5 3 \r\n 0 1 . b \r\n 5 2 1 . \r\n . . 0 0", 2227)]
+        [TestCase("e c a 8 2 3 4 . \r\n c 0 4 . 3 5 . 6 \r\n f 4 1 2 . . 3 7 \r\n . . 3 . a . . . \r\n . . 9 . . . 1 . \r\n 0 0 . 3 . . . 2 \r\n . 1 . 0 . 3 4 . \r\n . . . 5 . 3 2 . \r\n", 60562)]
+        [TestCase("0 c 2 f \r\n 3 a 4 7 \r\n 0 9 1 b \r\n e d 4 a \r\n", 66224)]
+        public void Test2048(string board, int expected)
+        {
+            // Define a regular expression for valid hexadecimal digits
+            var hexPattern = new System.Text.RegularExpressions.Regex("^[0-9A-Fa-f]$");
+
+            // Split the input string into individual 
+            string[] input = board.Split(' ');
+
+            // Initialize the score
+            int score = 0;
+
+            //Linq solution:
+            //int score = (from thePowerOfTwo in input where hexPattern.IsMatch(thePowerOfTwo) select Convert.ToInt32(thePowerOfTwo, 16) into hexValue select (int) Math.Pow(2, hexValue)).Sum();
+
+            // Iterate through each square
+            foreach (string thePowerOfTwo in input)
+            {
+                // If the square is a valid hexadecimal digit
+                if (hexPattern.IsMatch(thePowerOfTwo))
+                {
+                    // Convert the hexadecimal digit to an integer
+                    int hexValue = Convert.ToInt32(thePowerOfTwo, 16);
+
+                    // Calculate the value of the square (2^hexValue)
+                    score += (int)Math.Pow(2, hexValue);
+                }
+            }
+
+            Assert.That(score, Is.EqualTo(expected), $"{score} is not a good answer.");
         }
     }
 }
